@@ -30,3 +30,19 @@ D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach_MarkupCompile.cache
 D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.g.resources
 D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.Properties.Resources.resources
 D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.GenerateResource.Cache
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.exe.config
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.exe
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.pdb
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\Assets\Images\background.jpg
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.exe
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.pdb
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csprojResolveAssemblyReference.cache
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\ButtonTemplates.baml
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\MainWindow.baml
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\App.baml
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\MainWindow.g.cs
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\App.g.cs
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach_MarkupCompile.cache
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.g.resources
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.Properties.Resources.resources
+F:\Hoc tap\CNTT\NM CNPM\do-an\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.GenerateResource.Cache
