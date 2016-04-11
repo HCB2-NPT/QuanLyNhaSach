@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\
+D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\
 QuanLyNhaSach
 none
 false
 DEBUG;TRACE
-D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\App.xaml
-11151548125
+D:\HCDH\QuanLyNhaSach\QuanLyNhaSach\App.xaml
+2-1767209870
 
 12-1485034182
 141012385901
-MainWindow.xaml;
+ButtonTemplates.xaml;MainWindow.xaml;
 
 False
 

@@ -20,12 +20,12 @@
 							<ImageBrush ImageSource="Assets/Images/Menu-64.png"/>
 						</Button.Background>
 					</Button>
-					<Button VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White">
+					<Button VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="White" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White">
 						<Button.Background>
 							<ImageBrush ImageSource="Assets/Images/Book-40 (1).png"/>
 						</Button.Background>
 					</Button>
-					<Button VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}">
+					<Button VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="White" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}">
 						<Button.Background>
 							<ImageBrush ImageSource="Assets/Images/Bill-64.png"/>
 						</Button.Background>

@@ -7,7 +7,7 @@
 				<ControlTemplate TargetType="{x:Type Button}">
 					<DockPanel>
 						<Grid Background="{TemplateBinding Background}" Width="40" Margin="0"/>
-						<TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,0,0,0" FontSize="21.333" FontFamily="Segoe UI Light"/>
+						<TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,0,0,0" FontSize="21.333" FontFamily="Segoe UI Light" Foreground="{TemplateBinding BorderBrush}"/>
 					</DockPanel>
 				</ControlTemplate>
 			</Setter.Value>
