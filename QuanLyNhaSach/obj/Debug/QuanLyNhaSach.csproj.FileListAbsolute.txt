@@ -1,0 +1,16 @@
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.exe.config
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.exe
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\QuanLyNhaSach.pdb
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csprojResolveAssemblyReference.cache
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\MainWindow.baml
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\MainWindow.g.cs
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\App.g.cs
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach_MarkupCompile.cache
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.g.resources
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.Properties.Resources.resources
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.GenerateResource.Cache
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.exe
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.pdb
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\bin\Debug\Assets\Images\background.jpg
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\ButtonTemplates.baml
+D:\HCDH\NM-CNPM\QuanLyNhaSach\QuanLyNhaSach\QuanLyNhaSach\obj\Debug\App.baml
