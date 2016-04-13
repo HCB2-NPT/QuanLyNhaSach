@@ -6,7 +6,8 @@
          
     	<ResourceDictionary>
     		<ResourceDictionary.MergedDictionaries>
-    			<ResourceDictionary Source="ButtonTemplates.xaml"/>
+    			<ResourceDictionary Source="Templates/ButtonTemplates.xaml"/>
+    			<ResourceDictionary Source="ListBoxItemTemplates.xaml"/>
     		</ResourceDictionary.MergedDictionaries>
     	</ResourceDictionary>
          
