@@ -1,13 +1,15 @@
 ﻿<Application x:Class="QuanLyNhaSach.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Login.xaml">
     <Application.Resources>
          
     	<ResourceDictionary>
     		<ResourceDictionary.MergedDictionaries>
     			<ResourceDictionary Source="Templates/ButtonTemplates.xaml"/>
-    			<ResourceDictionary Source="ListBoxItemTemplates.xaml"/>
+                <ResourceDictionary Source="Templates/ListBoxTemplates.xaml"/>
+                <ResourceDictionary Source="Templates/TextBoxTemplates.xaml"/>
+                <ResourceDictionary Source="Templates/PasswordBoxTemplates.xaml"/>
     		</ResourceDictionary.MergedDictionaries>
     	</ResourceDictionary>
          

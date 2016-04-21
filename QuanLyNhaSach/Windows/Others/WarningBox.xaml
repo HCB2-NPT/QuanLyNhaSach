@@ -1,15 +1,15 @@
-﻿<Window x:Name="window" x:Class="QuanLyNhaSach.WarningBox"
+﻿<Window x:Name="window" x:Class="QuanLyNhaSach.Windows.Others.WarningBox"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        ResizeMode="NoResize" WindowStyle="None" BorderThickness="1" BorderBrush="#FF076AB9" SizeToContent="WidthAndHeight" Closed="Window_Closed" WindowStartupLocation="CenterOwner">
+        ResizeMode="NoResize" WindowStyle="None" BorderThickness="1" BorderBrush="#FF076AB9" SizeToContent="WidthAndHeight" Closed="Window_Closed" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" PreviewKeyDown="window_PreviewKeyDown">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
     <Grid>
         <DockPanel>
-            <DockPanel x:Name="menu" DockPanel.Dock="Top" Height="32" LastChildFill="False" Background="#FF135995" HorizontalAlignment="Left" Width="237.653">
+            <DockPanel x:Name="menu" DockPanel.Dock="Top" Height="32" LastChildFill="False" Background="#FF135995" VerticalAlignment="Top">
                 <TextBlock x:Name="tb_title" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,16,4" Foreground="White" FontFamily="Segoe UI Light" FontSize="13.333" Text="..."/>
-                <Button x:Name="btnClose" Content="Button" DockPanel.Dock="Right" Width="40" BorderThickness="0" Click="close" Height="32" Template="{DynamicResource ButtonDelete}">
+                <Button x:Name="btnClose" Content="Button" DockPanel.Dock="Right" Width="40" BorderThickness="0" Click="close" Height="32" Template="{DynamicResource ButtonDelete}" IsTabStop="False">
                     <Button.Background>
                         <ImageBrush ImageSource="{Binding Icon.WindowClose}"/>
                     </Button.Background>
@@ -17,6 +17,8 @@
             </DockPanel>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="8"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="8"/>
@@ -32,7 +34,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="tb_name" Grid.Row="1" Grid.Column="1" Text="...................." FontSize="13.333" FontFamily="Segoe UI Light"/>
                 <TextBlock x:Name="tb_content" Grid.Row="3" Grid.Column="1" Text="................................................................" FontSize="13.333" Margin="16,0,0,0" FontFamily="Segoe UI Light"/>
-                <Button x:Name="btn_ok" Grid.Row="5" Grid.Column="1" FontSize="13.333" Foreground="#FF0769B9" Style="{DynamicResource ButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Height="24" Width="108" Click="close" HorizontalContentAlignment="Center" Content="Understand?!">
+                <TextBox x:Name="tb_exception" Grid.Row="5" Grid.Column="1" IsEnabled="False" Background="#FFF5F4F4" TextWrapping="Wrap" Focusable="False" IsTabStop="False" Height="{Binding ErrorExceptionHeight, ElementName=window}"/>
+                <Button x:Name="btn_ok" Grid.Row="7" Grid.Column="1" FontSize="13.333" Foreground="#FF0769B9" Style="{DynamicResource ButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Height="24" Width="108" Click="close" HorizontalContentAlignment="Center" Content="Tôi hiểu?!">
                     <Button.Resources>
                         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
                             <Setter Property="Template">

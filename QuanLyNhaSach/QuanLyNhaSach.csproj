@@ -8,12 +8,12 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuanLyNhaSach</RootNamespace>
-    <AssemblyName>QuanLyNhaSach</AssemblyName>
+    <AssemblyName>Tiki Bookshop</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -49,8 +49,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bookstore.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -71,15 +77,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\Scripts\EventClickOut.cs" />
+    <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
+    <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
+    <Compile Include="Manager\Adapter\DataConnector.cs" />
+    <Compile Include="Manager\Errors\AppError.cs" />
+    <Compile Include="Manager\Errors\DataError.cs" />
+    <Compile Include="Manager\Errors\LoginError.cs" />
+    <Compile Include="Manager\Errors\QueryError.cs" />
+    <Compile Include="Window Handlers\MainWindow\Events.cs" />
+    <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
+    <Compile Include="Window Handlers\MainWindow\Event of TitleMain.cs" />
+    <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
+    <Compile Include="Windows\Others\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Scripts\Cursor.cs" />
+    <Compile Include="Assets\Scripts\User32DLL.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Manager\Data\Binding.cs" />
+    <Compile Include="Manager\SettingManager.cs" />
+    <Compile Include="Manager\Data\AccessLevel.cs" />
+    <Compile Include="Manager\Data\Account.cs" />
+    <Compile Include="Manager\Data\Customer.cs" />
     <Compile Include="Manager\Data\Error.cs" />
-    <Compile Include="TitleMainRightClick.xaml.cs">
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Windows\Others\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Others\TitleMainRightClick.xaml.cs">
       <DependentUpon>TitleMainRightClick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WarningBox.xaml.cs">
+    <Compile Include="Windows\Others\ToolBox.xaml.cs">
+      <DependentUpon>ToolBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Others\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
-    <Page Include="ListBoxItemTemplates.xaml">
+    <Page Include="Templates\PasswordBoxTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Others\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Others\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ListBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -87,7 +141,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,23 +153,31 @@
     <Compile Include="Assets\Scripts\WindowDragger.cs" />
     <Compile Include="Assets\Scripts\WindowsResizer.cs" />
     <Compile Include="Assets\Scripts\WpfScreen.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TitleMainRightClick.xaml">
+    <Page Include="Templates\TextBoxTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Others\TitleMainRightClick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WarningBox.xaml">
+    <Page Include="Windows\Others\ToolBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Others\WarningBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\ConfigManager.cs" />
-    <Compile Include="Manager\IconManager.cs" />
-    <Compile Include="Manager\Manager.cs" />
+    <Compile Include="Manager\CommonIconManager.cs" />
+    <Compile Include="Manager\~Manager.cs" />
     <Compile Include="Manager\ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -185,10 +247,42 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\close.png" />
     <Resource Include="Assets\Images\close_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Calculator-64.png" />
+    <Resource Include="Assets\Images\Maintenance-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Message-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\group_picture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bookstore.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

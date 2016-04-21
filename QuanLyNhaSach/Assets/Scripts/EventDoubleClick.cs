@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace QuanLyNhaSach
+namespace QuanLyNhaSach.Assets.Scripts
 {
     public class EventDoubleClick
     {
-        public Window Window { get; set; }
+        public Window Window { get; private set; }
 
-        public UIElement Control { get; set; }
+        public UIElement Control { get; private set; }
 
         public EventDoubleClickDelegate Action { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Manager
 {
-    public class Manager
+    public class Manager //constant
     {
         private static Manager _current = null;
         public static Manager Current
@@ -23,12 +23,14 @@ namespace QuanLyNhaSach.Manager
             }
         }
 
-        public DataManager Data { get { return DataManager.Current; } }
-
         public ConfigManager Config { get { return ConfigManager.Current; } }
 
         public CommonIconManager Icon { get { return CommonIconManager.Current; } }
 
         public ErrorManager Error { get { return ErrorManager.Current; } }
+
+        public UserManager User { get { return UserManager.Current; } }
+
+        public DataManager Data { get { return DataManager.Current; } }
     }
 }

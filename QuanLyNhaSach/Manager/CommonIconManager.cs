@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Manager
 {
-    public class CommonIconManager
+    public class CommonIconManager //constant
     {
         private static CommonIconManager _current = null;
         public static CommonIconManager Current
