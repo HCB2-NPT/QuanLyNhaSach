@@ -77,6 +77,15 @@ namespace QuanLyNhaSach.Windows
         {
             if (DockChucNang.Width > 0)
                 (this.FindResource("CloseFunctions") as Storyboard).Begin();
+            var item = listboxDSChucNang.SelectedItem as Manager.Data.Binding;
+            if (item != null)
+            {
+                var tab = item.Tag as TabItem;
+                if (tab != null)
+                {
+                    tab.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
         }
     }
 }

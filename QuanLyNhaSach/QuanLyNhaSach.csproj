@@ -284,6 +284,9 @@
   <ItemGroup>
     <Resource Include="bookstore.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Resize Four Directions-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

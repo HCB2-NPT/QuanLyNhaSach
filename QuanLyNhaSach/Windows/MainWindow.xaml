@@ -219,5 +219,6 @@
 				-->
             </DockPanel>
         </DockPanel>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="16" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/Resize Four Directions-64.png" Stretch="Fill"/>
     </Grid>
 </Window>

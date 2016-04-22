@@ -120,5 +120,10 @@ namespace QuanLyNhaSach
 			else
 				pbMK.ToolTip = null;
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            HandleLoginData(Manager.Manager.Current.User.Login(Username, Password, LoginWarningTimes));
+        }
     }
 }

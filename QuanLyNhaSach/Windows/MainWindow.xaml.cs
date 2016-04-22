@@ -25,6 +25,8 @@ namespace QuanLyNhaSach.Windows
     {
         private Assets.Scripts.WindowsDragger EventWindowDrag { get; set; }
 
+        private Assets.Scripts.WindowsResizer EventWindowResize { get; set; }
+
         private Assets.Scripts.EventDoubleClick EventTitleMainDoubleClick { get; set; }
 
         private Assets.Scripts.EventClickOut EventPanelFunctionClickOut { get; set; }
@@ -43,6 +45,8 @@ namespace QuanLyNhaSach.Windows
             InitializeComponent();
             
             EventWindowDrag = new Assets.Scripts.WindowsDragger(this, TitleMain);
+
+            EventWindowResize = new Assets.Scripts.WindowsResizer(this, resizer);
             
             EventTitleMainDoubleClick = new Assets.Scripts.EventDoubleClick(this, TitleMain, TitleMainDoubleClick);
             
