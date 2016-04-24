@@ -25,8 +25,6 @@ namespace QuanLyNhaSach.Manager
 
         public ConfigManager Config { get { return ConfigManager.Current; } }
 
-        public CommonIconManager Icon { get { return CommonIconManager.Current; } }
-
         public ErrorManager Error { get { return ErrorManager.Current; } }
 
         public UserManager User { get { return UserManager.Current; } }

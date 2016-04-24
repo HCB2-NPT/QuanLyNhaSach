@@ -30,18 +30,18 @@
     <StackPanel>
         <Button x:Name="minimize" Content="Minimize" Style="{DynamicResource ButtonStyle}" BorderThickness="0" Click="minimize_Click" IsTabStop="False">
         	<Button.Background>
-        		<ImageBrush ImageSource="{Binding Icon.WindowState_Minimize_Black}"/>
+                <ImageBrush ImageSource="../../Assets/Images/minimize_black.png"/>
         	</Button.Background>
         </Button>
         <Button x:Name="maximize" Content="Maximize" Style="{DynamicResource ButtonStyle}" BorderThickness="0" Click="maximize_Click" IsTabStop="False">
         	<Button.Background>
-        		<ImageBrush ImageSource="{Binding Icon.WindowState_Maximize_Black}"/>
+                <ImageBrush ImageSource="../../Assets/Images/maximize_black.png"/>
         	</Button.Background>
         </Button>
         <Border BorderThickness="0,1,0,0" BorderBrush="Gainsboro"/>
         <Button x:Name="close" Content="Close" Style="{DynamicResource ButtonStyle}" ToolTip="Alt + F4" BorderThickness="0" Click="close_Click" IsTabStop="False">
         	<Button.Background>
-        		<ImageBrush ImageSource="{Binding Icon.WindowClose_Black}"/>
+                <ImageBrush ImageSource="../../Assets/Images/close_black.png"/>
         	</Button.Background>
         </Button>
     </StackPanel>

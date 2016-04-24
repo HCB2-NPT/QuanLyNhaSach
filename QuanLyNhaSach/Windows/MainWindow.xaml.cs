@@ -37,13 +37,14 @@ namespace QuanLyNhaSach.Windows
 
         private QuanLyNhaSach.Windows.Others.About About { get; set; }
 
-        private string _MainWindow_MaxMin = Manager.CommonIconManager.Current.WindowState_Maximize;
-        public string MainWindow_MaxMin { get { return _MainWindow_MaxMin; } set { _MainWindow_MaxMin = value; NotifyPropertyChanged("MainWindow_MaxMin"); } }
+        public bool ShowMaximized { get { return WindowState == System.Windows.WindowState.Normal; } }
+
+        public bool ShowRestore { get { return WindowState == System.Windows.WindowState.Maximized; } }
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
             EventWindowDrag = new Assets.Scripts.WindowsDragger(this, TitleMain);
 
             EventWindowResize = new Assets.Scripts.WindowsResizer(this, resizer);

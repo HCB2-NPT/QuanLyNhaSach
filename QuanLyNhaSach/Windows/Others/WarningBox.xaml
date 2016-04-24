@@ -11,7 +11,7 @@
                 <TextBlock x:Name="tb_title" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,16,4" Foreground="White" FontFamily="Segoe UI Light" FontSize="13.333" Text="..."/>
                 <Button x:Name="btnClose" Content="Button" DockPanel.Dock="Right" Width="40" BorderThickness="0" Click="close" Height="32" Template="{DynamicResource ButtonDelete}" IsTabStop="False">
                     <Button.Background>
-                        <ImageBrush ImageSource="{Binding Icon.WindowClose}"/>
+                        <ImageBrush ImageSource="../../Assets/Images/close.png"/>
                     </Button.Background>
                 </Button>
             </DockPanel>
@@ -55,7 +55,7 @@
                                         </ControlTemplate.Resources>
                                         <Border x:Name="border" SnapsToDevicePixels="true" Background="#000769B9">
                                             <DockPanel>
-                                                <Image VerticalAlignment="Top" Margin="4" Source="{Binding Icon.Error}" Visibility="{Binding IsCrash, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" ToolTip="The App will be crash by Error!!!"/>
+                                                <Image VerticalAlignment="Top" Margin="4" Source="../../Assets/Images/Error-40.png" Visibility="{Binding IsCrash, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" ToolTip="The App will be crash by Error!!!"/>
                                                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                             </DockPanel>
                                         </Border>

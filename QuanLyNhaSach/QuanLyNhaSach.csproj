@@ -81,14 +81,19 @@
     <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
     <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
     <Compile Include="Manager\Adapter\DataConnector.cs" />
-    <Compile Include="Manager\Errors\AppError.cs" />
-    <Compile Include="Manager\Errors\DataError.cs" />
-    <Compile Include="Manager\Errors\LoginError.cs" />
-    <Compile Include="Manager\Errors\QueryError.cs" />
+    <Compile Include="Manager\Data\AccessLevel.cs" />
+    <Compile Include="Manager\Data\Account.cs" />
+    <Compile Include="Manager\Data\Binding.cs" />
+    <Compile Include="Manager\Data\Customer.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\AppError.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\DataError.cs" />
+    <Compile Include="Manager\Data\Error.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\LoginError.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\QueryError.cs" />
     <Compile Include="Window Handlers\MainWindow\Events.cs" />
     <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
     <Compile Include="Window Handlers\MainWindow\Event of TitleMain.cs" />
-    <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
+    <Compile Include="Window Handlers\MainWindow\Logout.cs" />
     <Compile Include="Windows\Others\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -98,12 +103,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager\DataManager.cs" />
-    <Compile Include="Manager\Data\Binding.cs" />
     <Compile Include="Manager\SettingManager.cs" />
-    <Compile Include="Manager\Data\AccessLevel.cs" />
-    <Compile Include="Manager\Data\Account.cs" />
-    <Compile Include="Manager\Data\Customer.cs" />
-    <Compile Include="Manager\Data\Error.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Windows\Others\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
@@ -176,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\ConfigManager.cs" />
-    <Compile Include="Manager\CommonIconManager.cs" />
     <Compile Include="Manager\~Manager.cs" />
     <Compile Include="Manager\ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

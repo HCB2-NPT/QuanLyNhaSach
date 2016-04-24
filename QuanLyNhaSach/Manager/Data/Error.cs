@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QuanLyNhaSach.Manager.Data
 {
@@ -21,8 +22,19 @@ namespace QuanLyNhaSach.Manager.Data
 
         public Data.Error Call(string exception = null)
         {
-            WarningBox.ErrorException = exception;
-            WarningBox.ShowDialog();
+            if (WarningBox != null)
+            {
+                WarningBox.ErrorException = exception;
+                foreach (Window item in Application.Current.Windows)
+                {
+                    if (item.IsActive)
+                    {
+                        WarningBox.Owner = item;
+                        break;
+                    }
+                }
+                WarningBox.ShowDialog();
+            }
             return this;
         }
     }

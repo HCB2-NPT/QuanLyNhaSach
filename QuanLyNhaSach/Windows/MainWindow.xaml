@@ -5,6 +5,7 @@
         Height="600" Width="800" x:Name="window"
         MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Storyboard x:Key="MenuFullToMini">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="_menuMini">
                 <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
@@ -46,7 +47,7 @@
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -57,17 +58,24 @@
                 </TextBlock>
                 <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" Height="32" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonDelete}" Click="btnClose_Click" IsTabStop="False">
                     <Button.Background>
-                        <ImageBrush ImageSource="{Binding Icon.WindowClose}"/>
+                        <ImageBrush ImageSource="../Assets/Images/close.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnMaxMin" DockPanel.Dock="Right" Width="40" Height="32" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False">
-                    <Button.Background>
-                        <ImageBrush ImageSource="{Binding MainWindow_MaxMin, ElementName=window}"/>
-                    </Button.Background>
-                </Button>
+                <Grid DockPanel.Dock="Right" Width="40" Height="32">
+                    <Button x:Name="btnRestore" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowRestore, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="../Assets/Images/restore.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnMaximize" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Maximize.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
                 <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Height="32" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" >
                     <Button.Background>
-                        <ImageBrush ImageSource="{Binding Icon.WindowState_Minimize}"/>
+                        <ImageBrush ImageSource="../Assets/Images/Minimize.png"/>
                     </Button.Background>
                 </Button>
             </DockPanel>

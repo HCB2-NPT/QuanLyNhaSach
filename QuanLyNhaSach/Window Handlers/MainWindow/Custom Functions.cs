@@ -88,15 +88,11 @@ namespace QuanLyNhaSach.Windows
         private void MinimizeAndMaximize()
         {
             if (WindowState == System.Windows.WindowState.Normal)
-            {
                 this.WindowState = System.Windows.WindowState.Maximized;
-                MainWindow_MaxMin = Manager.Manager.Current.Icon.WindowState_Normal;
-            }
             else
-            {
                 WindowState = System.Windows.WindowState.Normal;
-                MainWindow_MaxMin = Manager.Manager.Current.Icon.WindowState_Maximize;
-            }
+            NotifyPropertyChanged("ShowMaximized");
+            NotifyPropertyChanged("ShowRestore");
         }
 
         /*
