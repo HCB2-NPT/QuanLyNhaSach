@@ -10,7 +10,10 @@
                 <ResourceDictionary Source="Templates/ListBoxTemplates.xaml"/>
                 <ResourceDictionary Source="Templates/TextBoxTemplates.xaml"/>
                 <ResourceDictionary Source="Templates/PasswordBoxTemplates.xaml"/>
+<<<<<<< HEAD
                 <ResourceDictionary Source="Templates/ListViewItemTemplates.xaml"/>
+=======
+>>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     		</ResourceDictionary.MergedDictionaries>
     	</ResourceDictionary>
          

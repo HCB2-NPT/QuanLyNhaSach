@@ -1,0 +1,47 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="window" x:Class="QuanLyNhaSach.Login"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded" Icon="Assets/Images/Literature Filled-100.png" PreviewKeyDown="window_PreviewKeyDown" AllowsTransparency="True" Background="{x:Null}" Closed="window_Closed" SizeToContent="WidthAndHeight">
+    <Border BorderThickness="1" BorderBrush="#ff005eaa" HorizontalAlignment="Center" VerticalAlignment="Center" Width="360" Height="240" Margin="32">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="24"/>
+        </Border.Effect>
+        <DockPanel Background="White">
+            <Grid x:Name="menu" DockPanel.Dock="Top" Background="#FF135895">
+                <Grid Background="{Binding LoginWarningColor, ElementName=window}"/>
+                <DockPanel LastChildFill="False">
+                    <TextBlock Text="Quản lý nhà sách - Đăng nhập..." Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,6,0,8" FontFamily="Segoe UI Light" FontSize="13.333"/>
+                    <Button x:Name="btnClose" Height="32" Width="40" DockPanel.Dock="Right" Template="{DynamicResource ButtonDelete}" Click="btnClose_Click" IsTabStop="False">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Assets/Images/close.png"/>
+                        </Button.Background>
+                    </Button>
+                </DockPanel>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="16"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tbEmail" Grid.Column="1" Height="23" Margin="0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13.333" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Email@meomeo.com.canh" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE"/>
+                <PasswordBox x:Name="pbMK" Margin="0" Style="{DynamicResource WaterMask}" ToolTip="B********p" Grid.Column="1" Grid.Row="7" VerticalAlignment="Top" OpacityMask="#FFAEAEAE" BorderThickness="0,0,0,1" Padding="16,0,0,0" PasswordChanged="pbMK_PasswordChanged"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Bottom"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Bottom"><Run Text="Mật khẩu:"/></TextBlock>
+                <Button x:Name="btnLogin" Grid.ColumnSpan="3" Margin="0" Grid.Row="8" Content="Đăng nhập" FontSize="16" Padding="0" BorderThickness="0" Background="#A3DDDDDD" Click="btnLogin_Click"/>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>

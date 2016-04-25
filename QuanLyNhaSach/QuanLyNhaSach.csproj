@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -78,6 +78,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
+<<<<<<< HEAD
     <Compile Include="ListViewItemUserControl.xaml.cs">
       <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
     </Compile>
@@ -107,6 +108,34 @@
     <Compile Include="Manager\Data\Account.cs" />
     <Compile Include="Manager\Data\Customer.cs" />
     <Compile Include="Manager\Data\Error.cs" />
+=======
+    <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
+    <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
+    <Compile Include="Manager\Adapter\DataConnector.cs" />
+    <Compile Include="Manager\Data\AccessLevel.cs" />
+    <Compile Include="Manager\Data\Account.cs" />
+    <Compile Include="Manager\Data\Binding.cs" />
+    <Compile Include="Manager\Data\Customer.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\AppError.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\DataError.cs" />
+    <Compile Include="Manager\Data\Error.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\LoginError.cs" />
+    <Compile Include="Manager\ErrorManager - Errors\QueryError.cs" />
+    <Compile Include="Window Handlers\MainWindow\Events.cs" />
+    <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
+    <Compile Include="Window Handlers\MainWindow\Event of TitleMain.cs" />
+    <Compile Include="Window Handlers\MainWindow\Logout.cs" />
+    <Compile Include="Windows\Others\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\Scripts\Cursor.cs" />
+    <Compile Include="Assets\Scripts\User32DLL.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Manager\SettingManager.cs" />
+>>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Windows\Others\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
@@ -120,6 +149,7 @@
     <Compile Include="Windows\Others\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Page Include="ListViewItemUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,6 +158,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+=======
+>>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Page Include="Templates\PasswordBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,7 +219,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\ConfigManager.cs" />
+<<<<<<< HEAD
     <Compile Include="Manager\CommonIconManager.cs" />
+=======
+>>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Compile Include="Manager\~Manager.cs" />
     <Compile Include="Manager\ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -296,6 +331,7 @@
     <Resource Include="bookstore.ico" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Resource Include="Assets\Images\Checkmark-96.png" />
     <Resource Include="Assets\Images\Trash-104.png" />
     <Resource Include="Assets\Images\Undo-96.png" />
@@ -304,6 +340,9 @@
     <Resource Include="Assets\Images\Plus Math-64.png" />
     <Resource Include="Assets\Images\Search-64.png" />
     <Resource Include="Assets\Images\Trash-64.png" />
+=======
+    <Resource Include="Assets\Images\Resize Four Directions-64.png" />
+>>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
