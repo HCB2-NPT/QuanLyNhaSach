@@ -1,7 +1,9 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Windows.MainWindow"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Windows.MainWindow"
         Height="600" Width="800" x:Name="window"
         MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed">
     <Window.Resources>
@@ -82,43 +84,43 @@
             <DockPanel>
                 <!--
 				-->
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
-                    <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
+                    <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Menu-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnSachFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnSachFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Book-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnHoaDonFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnHoaDonFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Bill-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnKhachHangFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Khách Hàng" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnKhachHangFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Khách Hàng" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Business Contact-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Contacts-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnBaoCaoFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Báo Cáo" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnBaoCaoFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Báo Cáo" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Rules-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnDangXuatFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Đăng Xuất" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="Logout_Click" Focusable="False">
+                    <Button x:Name="btnDangXuatFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Đăng Xuất" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="Logout_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Shutdown-64.png"/>
                         </Button.Background>
@@ -130,7 +132,7 @@
                                     <ImageBrush ImageSource="../Assets/Images/Maintenance-64.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="btnSettingsFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Focusable="False">
+                            <Button x:Name="btnSettingsFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Focusable="False" Click="btnSettings_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../Assets/Images/Settings-64.png"/>
                                 </Button.Background>
@@ -185,7 +187,7 @@
                             <ImageBrush ImageSource="../Assets/Images/Shutdown-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnSettingsMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Focusable="False">
+                    <Button x:Name="btnSettingsMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Focusable="False" Click="btnSettings_Click">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Settings-64.png"/>
                         </Button.Background>
@@ -202,19 +204,12 @@
                     </Button>
                 </DockPanel>
                 <Grid x:Name="grid">
-                    <TabControl BorderBrush="{x:Null}" Background="{x:Null}" Margin="0">
-                        <TabItem Header="TabItem" BorderBrush="{x:Null}">
-                            <Grid Background="White"/>
-                        </TabItem>
-                        <TabItem Header="TabItem" >
-                            <Grid Background="White"/>
-                        </TabItem>
-                    </TabControl>
+                    <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="#FFFAFAFA" Theme="Custom"/>
                     <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
                         <Border Margin="0" DockPanel.Dock="Top" Height="40" Width="200">
                             <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
                         </Border>
-                        <ListBox x:Name="listboxDSChucNang" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DockPanel.Dock="Top" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
+                        <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DockPanel.Dock="Top" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -227,6 +222,6 @@
 				-->
             </DockPanel>
         </DockPanel>
-        <Image x:Name="resizer" HorizontalAlignment="Right" Height="16" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/Resize Four Directions-64.png" Stretch="Fill"/>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Width="20" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4"/>
     </Grid>
 </Window>

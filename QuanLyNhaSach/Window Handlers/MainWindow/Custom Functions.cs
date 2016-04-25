@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using QuanLyNhaSach.Window_Handlers.MainWindow.Functions;
 
 namespace QuanLyNhaSach.Windows
 {
@@ -27,7 +28,7 @@ namespace QuanLyNhaSach.Windows
             {
                 var _book = new Manager.Data.Binding();
                 {
-                    _book.Children.Add(new Manager.Data.Binding("Thư viện") { Tag = "<Tab mà nó giữ>" });
+                    _book.Children.Add(new Manager.Data.Binding("Thư viện") { Tag = typeof(tabQuanLySach) });
                     _book.Children.Add(new Manager.Data.Binding("Thể loại") { Tag = "<Tab mà nó giữ>" });
                     _book.Children.Add(new Manager.Data.Binding("Tác Giả") { Tag = "<Tab mà nó giữ>" });
                 }

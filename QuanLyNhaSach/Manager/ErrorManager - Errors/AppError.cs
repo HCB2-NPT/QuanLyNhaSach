@@ -38,5 +38,16 @@ namespace QuanLyNhaSach.Manager
                     false);
             }
         }
+
+        public Data.Error AppCanNotUseNow
+        {
+            get
+            {
+                return new Data.Error(
+                    "Thiếu chức năng!",
+                    "Chức năng chưa được làm.",
+                    false);
+            }
+        }
     }
 }

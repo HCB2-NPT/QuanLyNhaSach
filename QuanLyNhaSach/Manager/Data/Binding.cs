@@ -13,12 +13,15 @@ namespace QuanLyNhaSach.Manager.Data
 
         public object Tag { get; set; }
 
+        public bool Key { get; set; }
+
         public ObservableCollection<Binding> Children { get; private set; }
 
         public Binding(object data = null)
         {
             Data = data;
             Tag = null;
+            Key = false;
             Children = new ObservableCollection<Binding>();
         }
     }

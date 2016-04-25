@@ -78,14 +78,52 @@ namespace QuanLyNhaSach.Windows
             if (DockChucNang.Width > 0)
                 (this.FindResource("CloseFunctions") as Storyboard).Begin();
             var item = listboxDSChucNang.SelectedItem as Manager.Data.Binding;
+            listboxDSChucNang.SelectedItem = null;
             if (item != null)
             {
-                var tab = item.Tag as TabItem;
-                if (tab != null)
+                var type = item.Tag as Type;
+                var key = item.Key;
+                if (type != null)
                 {
-                    tab.Visibility = System.Windows.Visibility.Visible;
+                    if (key)
+                    {
+                        WPF.MDI.MdiChild first = null;
+                        foreach (var i in mdiContainer.Children)
+                        {
+                            if (i.Content.GetType().ToString() == type.ToString())
+                            {
+                                first = i;
+                                break;
+                            }
+                        }
+                        if (first != null)
+                        {
+                            first.Focus();
+                            return;
+                        }
+                    }
+                    var mdiChild = new WPF.MDI.MdiChild() { Content = (UIElement)Activator.CreateInstance(type), Title = item.Data as string };
+                    mdiChild.WindowState = System.Windows.WindowState.Maximized;
+                    mdiContainer.Children.Add(mdiChild);
                 }
             }
+            mdiContainer.MdiLayout = WPF.MDI.MdiLayout.Cascade;
+        }
+
+        /*
+         * Sự kiện khi thêm xóa một child vào mdi container
+         */
+        void mdiContainer_ChildrenChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            NotifyPropertyChanged("ShowMdiContainer");
+        }
+
+        /*
+         * Hiện bảng Setting
+         */
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.ErrorManager.Current.AppCanNotUseNow.Call();
         }
     }
 }

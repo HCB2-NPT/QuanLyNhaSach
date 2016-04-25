@@ -41,9 +41,13 @@ namespace QuanLyNhaSach.Windows
 
         public bool ShowRestore { get { return WindowState == System.Windows.WindowState.Maximized; } }
 
+        public bool ShowMdiContainer { get { return mdiContainer.Children.Count > 0; } }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            mdiContainer.Children.CollectionChanged += mdiContainer_ChildrenChanged;
 
             EventWindowDrag = new Assets.Scripts.WindowsDragger(this, TitleMain);
 

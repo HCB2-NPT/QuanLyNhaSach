@@ -4,7 +4,7 @@
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         x:Name="window" x:Class="QuanLyNhaSach.Windows.Others.About"
         WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
-        Height="100" Width="300">
+        Height="100" Width="400">
     <Window.Resources>
         <Style x:Key="ButtonClose" TargetType="{x:Type Button}">
             <Setter Property="Template">
