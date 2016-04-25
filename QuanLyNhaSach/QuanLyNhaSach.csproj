@@ -316,13 +316,13 @@
     <Resource Include="Assets\Images\Undo-96.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\WPF.MDI\WPF.MDI\WPF.MDI.csproj">
+    <Resource Include="Assets\Images\resizer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPF.MDI\WPF.MDI.csproj">
       <Project>{be1ed569-5e0b-4df0-8964-33ad2aae4c4a}</Project>
       <Name>WPF.MDI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Images\resizer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
