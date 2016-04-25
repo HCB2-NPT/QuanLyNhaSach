@@ -78,6 +78,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
+    <Compile Include="ListViewItemUserControl.xaml.cs">
+      <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
     <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
     <Compile Include="Manager\Adapter\DataConnector.cs" />
@@ -117,6 +120,10 @@
     <Compile Include="Windows\Others\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="ListViewItemUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Templates\ListViewItemTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -287,6 +294,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bookstore.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Checkmark-96.png" />
+    <Resource Include="Assets\Images\Trash-104.png" />
+    <Resource Include="Assets\Images\Undo-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Plus Math-64.png" />
+    <Resource Include="Assets\Images\Search-64.png" />
+    <Resource Include="Assets\Images\Trash-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
