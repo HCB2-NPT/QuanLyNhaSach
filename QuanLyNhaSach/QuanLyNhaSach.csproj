@@ -78,37 +78,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
-<<<<<<< HEAD
-    <Compile Include="ListViewItemUserControl.xaml.cs">
-      <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
-    <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
-    <Compile Include="Manager\Adapter\DataConnector.cs" />
-    <Compile Include="Manager\Errors\AppError.cs" />
-    <Compile Include="Manager\Errors\DataError.cs" />
-    <Compile Include="Manager\Errors\LoginError.cs" />
-    <Compile Include="Manager\Errors\QueryError.cs" />
-    <Compile Include="Window Handlers\MainWindow\Events.cs" />
-    <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
-    <Compile Include="Window Handlers\MainWindow\Event of TitleMain.cs" />
-    <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
-    <Compile Include="Windows\Others\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\Scripts\Cursor.cs" />
-    <Compile Include="Assets\Scripts\User32DLL.cs" />
-    <Compile Include="Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Manager\DataManager.cs" />
-    <Compile Include="Manager\Data\Binding.cs" />
-    <Compile Include="Manager\SettingManager.cs" />
-    <Compile Include="Manager\Data\AccessLevel.cs" />
-    <Compile Include="Manager\Data\Account.cs" />
-    <Compile Include="Manager\Data\Customer.cs" />
-    <Compile Include="Manager\Data\Error.cs" />
-=======
     <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
     <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
     <Compile Include="Manager\Adapter\DataConnector.cs" />
@@ -135,7 +104,6 @@
     </Compile>
     <Compile Include="Manager\DataManager.cs" />
     <Compile Include="Manager\SettingManager.cs" />
->>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Windows\Others\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
@@ -149,17 +117,6 @@
     <Compile Include="Windows\Others\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Page Include="ListViewItemUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Templates\ListViewItemTemplates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-=======
->>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Page Include="Templates\PasswordBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -219,10 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\ConfigManager.cs" />
-<<<<<<< HEAD
-    <Compile Include="Manager\CommonIconManager.cs" />
-=======
->>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
     <Compile Include="Manager\~Manager.cs" />
     <Compile Include="Manager\ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -242,9 +195,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Assets\Images\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -253,6 +203,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\About-64.png" />
@@ -331,18 +284,7 @@
     <Resource Include="bookstore.ico" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Resource Include="Assets\Images\Checkmark-96.png" />
-    <Resource Include="Assets\Images\Trash-104.png" />
-    <Resource Include="Assets\Images\Undo-96.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Images\Plus Math-64.png" />
-    <Resource Include="Assets\Images\Search-64.png" />
-    <Resource Include="Assets\Images\Trash-64.png" />
-=======
     <Resource Include="Assets\Images\Resize Four Directions-64.png" />
->>>>>>> 63d2bb614bc1a27cd008c7b478d786cb3e6d4bf3
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

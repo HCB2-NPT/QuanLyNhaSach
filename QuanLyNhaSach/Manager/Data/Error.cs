@@ -35,7 +35,6 @@ namespace QuanLyNhaSach.Manager.Data
                 }
                 WarningBox.ShowDialog();
             }
-
             return this;
         }
     }
