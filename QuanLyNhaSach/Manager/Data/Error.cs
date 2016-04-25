@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Manager.Data
 {
-    public class Error
+    public class Error //constant
     {
-        public static string ErrorTitle { get { return "Báo lỗi..."; } }
+        public Windows.Others.WarningBox WarningBox { get; private set; }
 
-        public string Name { get; set; }
+        public Error LastCreatedError { get; private set; }
 
-        public string Content { get; set; }
-
-        public bool IsCrash { get; set; }
-
-        public Error(string name, string content, bool isCrash = true)
+        public Error(string name, string content, bool isCrash = true, string exception = null)
         {
-            WarningBox.Show(ErrorTitle, name, content, isCrash);
-            Name = name;
-            Content = content;
-            IsCrash = isCrash;
+            if (!ErrorManager.Current.Ignore)
+                WarningBox = new QuanLyNhaSach.Windows.Others.WarningBox(ErrorManager.ErrorTitle, name, content, isCrash, exception);
+            LastCreatedError = this;
+        }
+
+        public Data.Error Call(string exception = null)
+        {
+            WarningBox.ErrorException = exception;
+            WarningBox.ShowDialog();
+            return this;
         }
     }
 }

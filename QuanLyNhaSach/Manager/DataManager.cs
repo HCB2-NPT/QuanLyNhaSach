@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Manager
 {
-    public class DataManager : INotifyPropertyChanged
+    public class DataManager //constant
     {
         private static DataManager _current = null;
         public static DataManager Current
@@ -24,17 +23,8 @@ namespace QuanLyNhaSach.Manager
             }
         }
 
-        private string _MainWindow_MaxMin = Manager.Current.Icon.WindowState_Maximize;
-        public string MainWindow_MaxMin { get { return _MainWindow_MaxMin; } set { _MainWindow_MaxMin = value; NotifyPropertyChanged("MainWindow_MaxMin"); } }
+        public string FOLDER_DATA { get { return "./Data/"; } }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        public string FOLDER_IMAGES { get { return FOLDER_DATA + "Images/"; } }
     }
 }

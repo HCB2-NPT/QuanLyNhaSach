@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Manager
 {
-    public class ErrorManager
+    public partial class ErrorManager //constant
     {
         private static ErrorManager _current = null;
         public static ErrorManager Current
@@ -24,10 +24,9 @@ namespace QuanLyNhaSach.Manager
             }
         }
 
-        public Data.Error TestError()
-        {
-            return new Data.Error("Tên lỗi...",
-                "Fix vầy nè...");
-        }
+        private bool _ignore = false;
+        public bool Ignore { get { return _ignore; } set { _ignore = value; } }
+
+        public static string ErrorTitle { get { return "Báo lỗi..."; } }
     }
 }
