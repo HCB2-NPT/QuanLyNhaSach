@@ -75,7 +75,6 @@ namespace QuanLyNhaSach
                 }
                 else
                     MainWindow.Visibility = System.Windows.Visibility.Visible;
-                MainWindow.HandleAfterLogin();
             }
             else if (checkFail)
             {

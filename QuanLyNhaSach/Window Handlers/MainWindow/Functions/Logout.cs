@@ -14,6 +14,7 @@ namespace QuanLyNhaSach.Windows
          */
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
+            VisualWindowClose();
             Visibility = System.Windows.Visibility.Hidden;
             Manager.Manager.Current.User.Logout();
             Owner.Visibility = System.Windows.Visibility.Visible;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using QuanLyNhaSach.Window_Handlers.MainWindow.Functions;
+using System.Windows.Media.Animation;
 
 namespace QuanLyNhaSach.Windows
 {
@@ -13,7 +14,7 @@ namespace QuanLyNhaSach.Windows
         /*
          * Xử lý sau khi login
          */
-        public void HandleAfterLogin()
+        private void HandleAfterLogin()
         {
             if (Manager.UserManager.Current.Info.AccessLevel.ID == 3)
             {
@@ -34,7 +35,7 @@ namespace QuanLyNhaSach.Windows
                 }
                 var _bill = new Manager.Data.Binding();
                 {
-                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "" });
+                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "", Key = true });
                     _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = "" });
                 }
                 var _customer = new Manager.Data.Binding();
@@ -66,7 +67,7 @@ namespace QuanLyNhaSach.Windows
                 }
                 var _bill = new Manager.Data.Binding();
                 {
-                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "" });
+                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "", Key = true });
                     _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = "" });
                 }
                 var _customer = new Manager.Data.Binding();
@@ -89,7 +90,7 @@ namespace QuanLyNhaSach.Windows
         private void MinimizeAndMaximize()
         {
             if (WindowState == System.Windows.WindowState.Normal)
-                this.WindowState = System.Windows.WindowState.Maximized;
+                WindowState = System.Windows.WindowState.Maximized;
             else
                 WindowState = System.Windows.WindowState.Normal;
             NotifyPropertyChanged("ShowMaximized");
@@ -117,6 +118,29 @@ namespace QuanLyNhaSach.Windows
             }
             controlFull.Tag = tag;
             controlMini.Tag = tag;
+        }
+
+        private void VisualWindowClose()
+        {
+            //thu nhỏ window lại
+            if (WindowState != System.Windows.WindowState.Normal)
+                MinimizeAndMaximize();
+            //đóng ds chức năng nếu có mở
+            if (DockChucNang.Width > 0)
+                (this.FindResource("CloseFunctions") as Storyboard).Begin();
+            //mở thanh menu rộng ra như ban đầu
+            (this.FindResource("MenuMiniToFull") as Storyboard).Begin();
+            //đóng các window con
+            if (TitleMainRightClick != null)
+                TitleMainRightClick.Visibility = System.Windows.Visibility.Hidden;
+            if (ToolBox != null)
+                ToolBox.Visibility = System.Windows.Visibility.Hidden;
+            if (About != null)
+                About.Visibility = System.Windows.Visibility.Hidden;
+            //xóa các chức năng đã mở
+            foreach (var item in mdiContainer.Children)
+                item.Close();
+            mdiContainer.Children.Clear();
         }
     }
 }

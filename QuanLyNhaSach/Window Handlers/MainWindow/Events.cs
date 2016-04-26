@@ -85,17 +85,10 @@ namespace QuanLyNhaSach.Windows
                 var key = item.Key;
                 if (type != null)
                 {
-                    if (key)
+                    if (!key)
                     {
-                        WPF.MDI.MdiChild first = null;
-                        foreach (var i in mdiContainer.Children)
-                        {
-                            if (i.Content.GetType().ToString() == type.ToString())
-                            {
-                                first = i;
-                                break;
-                            }
-                        }
+                        var type_string = type.ToString();
+                        var first = mdiContainer.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
                         if (first != null)
                         {
                             first.Focus();
@@ -124,6 +117,17 @@ namespace QuanLyNhaSach.Windows
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
             Manager.ErrorManager.Current.AppCanNotUseNow.Call();
+        }
+
+        /*
+         * chạy ngay khi đăng nhập vào
+         */
+        private void window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var oldValue = (bool)e.OldValue;
+            var newValue = (bool)e.NewValue;
+            if (!oldValue && newValue)
+                HandleAfterLogin();
         }
     }
 }

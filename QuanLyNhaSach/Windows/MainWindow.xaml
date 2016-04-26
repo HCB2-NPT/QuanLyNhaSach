@@ -5,7 +5,7 @@
         xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Windows.MainWindow"
         Height="600" Width="800" x:Name="window"
-        MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed">
+        MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed" IsVisibleChanged="window_IsVisibleChanged">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Storyboard x:Key="MenuFullToMini">
@@ -49,7 +49,7 @@
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -84,7 +84,7 @@
             <DockPanel>
                 <!--
 				-->
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Menu-64.png"/>
