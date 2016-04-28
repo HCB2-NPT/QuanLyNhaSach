@@ -9,10 +9,8 @@
         <DockPanel>
             <DockPanel x:Name="menu" DockPanel.Dock="Top" Height="32" LastChildFill="False" Background="#FF135995" VerticalAlignment="Top">
                 <TextBlock x:Name="tb_title" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,16,4" Foreground="White" FontFamily="Segoe UI Light" FontSize="13.333" Text="..."/>
-                <Button x:Name="btnClose" Content="Button" DockPanel.Dock="Right" Width="40" BorderThickness="0" Click="close" Height="32" Template="{DynamicResource ButtonDelete}" IsTabStop="False">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../../Assets/Images/close.png"/>
-                    </Button.Background>
+                <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" BorderThickness="0" Click="close" Height="32" Style="{DynamicResource WindowButtonStyle}" IsTabStop="False" Background="{x:Null}" OpacityMask="#FFE74C3C">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/close.png" Width="16" Height="16"/>
                 </Button>
             </DockPanel>
             <Grid>

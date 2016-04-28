@@ -961,7 +961,7 @@ namespace WPF.MDI
 					{
 						if (previousWindowState == WindowState.Normal)
 							mdiChild.originalDimension = new Rect(mdiChild.Position.X, mdiChild.Position.Y, mdiChild.ActualWidth, mdiChild.ActualHeight);
-                        
+
                         if (mdiChild.buttonsPanel != null)
 						    mdiChild.buttonsPanel.Children.Clear();
                         try

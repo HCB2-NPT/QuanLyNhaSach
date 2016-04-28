@@ -18,6 +18,10 @@
 		/// </summary>
 		Aero,
         /// <summary>
+        /// Windows 8 & 10 theme.
+        /// </summary>
+        Metro,
+        /// <summary>
         /// Depending on MdiChild.
         /// </summary>
         Custom

@@ -41,7 +41,17 @@ namespace QuanLyNhaSach.Windows
 
         public bool ShowRestore { get { return WindowState == System.Windows.WindowState.Maximized; } }
 
-        public bool ShowMdiContainer { get { return mdiContainer.Children.Count > 0; } }
+        public bool ShowMdiContainer
+        {
+            get
+            {
+                if (mdiContainer == null)
+                    return false;
+                if (mdiContainer.Children == null)
+                    return false;
+                return mdiContainer.Children.Count > 0;
+            }
+        }
 
         public MainWindow()
         {

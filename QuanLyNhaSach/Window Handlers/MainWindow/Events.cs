@@ -100,7 +100,6 @@ namespace QuanLyNhaSach.Windows
                     mdiContainer.Children.Add(mdiChild);
                 }
             }
-            mdiContainer.MdiLayout = WPF.MDI.MdiLayout.Cascade;
         }
 
         /*

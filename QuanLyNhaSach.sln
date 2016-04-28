@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhaSach", "QuanLyNhaSach\QuanLyNhaSach.csproj", "{704AE2FD-A7D2-4C64-A81B-4E3FC025A8E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.MDI", "WPF.MDI\WPF.MDI.csproj", "{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhaSach.UnitTest", "QuanLyNhaSach.UnitTest\QuanLyNhaSach.UnitTest.csproj", "{C3896D77-6765-4A21-B773-C7D8F6D8A74A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3896D77-6765-4A21-B773-C7D8F6D8A74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3896D77-6765-4A21-B773-C7D8F6D8A74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3896D77-6765-4A21-B773-C7D8F6D8A74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3896D77-6765-4A21-B773-C7D8F6D8A74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

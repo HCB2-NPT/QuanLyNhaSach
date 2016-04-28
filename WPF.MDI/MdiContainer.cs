@@ -446,6 +446,9 @@ namespace WPF.MDI
 				case ThemeType.Aero:
 					Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = new ResourceDictionary { Source = new Uri(@"/WPF.MDI;component/Themes/Aero.xaml", UriKind.Relative) });
 					break;
+                case ThemeType.Metro:
+                    Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = new ResourceDictionary { Source = new Uri(@"/WPF.MDI;component/Themes/Metro.xaml", UriKind.Relative) });
+					break;
                 case ThemeType.Custom:
                     Application.Current.Resources.MergedDictionaries.Add(currentResourceDictionary = new ResourceDictionary { Source = new Uri(@"/WPF.MDI;component/Themes/Custom.xaml", UriKind.Relative) });
 					break;

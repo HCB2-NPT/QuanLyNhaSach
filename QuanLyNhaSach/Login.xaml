@@ -12,10 +12,8 @@
                 <Grid Background="{Binding LoginWarningColor, ElementName=window}"/>
                 <DockPanel LastChildFill="False">
                     <TextBlock Text="Quản lý nhà sách - Đăng nhập..." Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,6,0,8" FontFamily="Segoe UI Light" FontSize="13.333"/>
-                    <Button x:Name="btnClose" Height="32" Width="40" DockPanel.Dock="Right" Template="{DynamicResource ButtonDelete}" Click="btnClose_Click" IsTabStop="False">
-                        <Button.Background>
-                            <ImageBrush ImageSource="Assets/Images/close.png"/>
-                        </Button.Background>
+                    <Button x:Name="btnClose" Height="32" Width="40" DockPanel.Dock="Right" Style="{DynamicResource WindowButtonStyle}" Click="btnClose_Click" IsTabStop="False" Background="{x:Null}" OpacityMask="#FFE74C3C" BorderThickness="0">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/close.png" Width="16" Height="16"/>
                     </Button>
                 </DockPanel>
             </Grid>

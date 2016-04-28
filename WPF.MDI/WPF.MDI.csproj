@@ -102,13 +102,17 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\Custom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Custom.xaml">
+    <Page Include="Themes\Metro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +188,12 @@
     <Resource Include="Themes\Luna\TopMiddleUnfocused.png" />
     <Resource Include="Themes\Luna\TopRightFocused.png" />
     <Resource Include="Themes\Luna\TopRightUnfocused.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Metro\close.png" />
+    <Resource Include="Themes\Metro\Maximize.png" />
+    <Resource Include="Themes\Metro\Minimize.png" />
+    <Resource Include="Themes\Metro\restore.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

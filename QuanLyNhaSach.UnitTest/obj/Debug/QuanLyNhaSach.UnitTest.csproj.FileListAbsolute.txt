@@ -1,0 +1,12 @@
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Assets\Images\background.jpg
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\nunit.framework.dll
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.exe
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.dll
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.pdb
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\nunit.framework.xml
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.pdb
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.pdb

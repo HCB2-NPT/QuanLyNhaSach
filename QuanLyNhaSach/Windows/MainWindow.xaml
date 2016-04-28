@@ -49,7 +49,7 @@
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -58,33 +58,25 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" Height="32" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonDelete}" Click="btnClose_Click" IsTabStop="False">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../Assets/Images/close.png"/>
-                    </Button.Background>
+                <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="btnClose_Click" IsTabStop="False" SnapsToDevicePixels="False" BorderThickness="0" OpacityMask="#FFE74C3C" Background="{x:Null}">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/close.png" Width="16" Height="16" />
                 </Button>
                 <Grid DockPanel.Dock="Right" Width="40" Height="32">
-                    <Button x:Name="btnRestore" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowRestore, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}">
-                        <Button.Background>
-                            <ImageBrush ImageSource="../Assets/Images/restore.png"/>
-                        </Button.Background>
+                    <Button x:Name="btnRestore" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowRestore, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/restore.png" Width="12" Height="12"/>
                     </Button>
-                    <Button x:Name="btnMaximize" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Maximize.png"/>
-                        </Button.Background>
+                    <Button x:Name="btnMaximize" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Maximize.png" Width="12" Height="12"/>
                     </Button>
                 </Grid>
-                <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Height="32" Margin="0" BorderBrush="{x:Null}" Template="{DynamicResource ButtonTemplatesFunction}" Padding="0" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" >
-                    <Button.Background>
-                        <ImageBrush ImageSource="../Assets/Images/Minimize.png"/>
-                    </Button.Background>
+                <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" SnapsToDevicePixels="False" Background="{x:Null}" OpacityMask="#FF0567B9" >
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Minimize.png" Width="12" Height="2" Stretch="Fill"/>
                 </Button>
             </DockPanel>
             <DockPanel>
                 <!--
 				-->
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Menu-64.png"/>
@@ -204,7 +196,10 @@
                     </Button>
                 </DockPanel>
                 <Grid x:Name="grid">
-                    <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="#FFFAFAFA" Theme="Custom"/>
+                    <DockPanel LastChildFill="True">
+                        <DockPanel Width="40" DockPanel.Dock="Right" Background="#FFF0F0F0" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}"/>
+                        <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="#FFFAFAFA" Theme="Custom"/>
+                    </DockPanel>
                     <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
                         <Border Margin="0" DockPanel.Dock="Top" Height="40" Width="200">
                             <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
@@ -218,8 +213,6 @@
                         </ListBox>
                     </DockPanel>
                 </Grid>
-                <!--
-				-->
             </DockPanel>
         </DockPanel>
         <Image x:Name="resizer" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Width="20" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4"/>
