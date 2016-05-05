@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace QuanLyNhaSach.Manager.Data
+namespace QuanLyNhaSach.Manager.Adapter
 {
     public class DataConnector : IDisposable
     {

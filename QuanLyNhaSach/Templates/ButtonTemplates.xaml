@@ -46,50 +46,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <ControlTemplate x:Key="Button_IconText_Templates" TargetType="{x:Type Button}">
-        <DockPanel LastChildFill="False" Width="100" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Border BorderBrush="{x:Null}" BorderThickness="0" Height="32" Width="32" Margin="0" Padding="0" Background="{TemplateBinding Background}" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
-            <Border BorderBrush="#99FFFFFF" BorderThickness="1" Height="Auto" VerticalAlignment="Stretch" Width="1" Margin="0,2"/>
-            <TextBlock TextWrapping="Wrap" Text="{TemplateBinding Content}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" Foreground="{TemplateBinding Foreground}" FontSize="12"/>
-        </DockPanel>
-    </ControlTemplate>
     
-    <Style x:Key="ButtonFocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" Margin="2"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#F3F3F3" Offset="0"/>
-        <GradientStop Color="#EBEBEB" Offset="0.5"/>
-        <GradientStop Color="#DDDDDD" Offset="0.5"/>
-        <GradientStop Color="#CDCDCD" Offset="1"/>
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
-    <Style x:Key="Btn_icontext_templates" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" RenderDefaulted="{TemplateBinding IsDefaulted}" SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Themes:ButtonChrome>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <ControlTemplate x:Key="Button_Icon_Template" TargetType="{x:Type Button}">
         <Border Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
     </ControlTemplate>

@@ -35,18 +35,18 @@ namespace QuanLyNhaSach.Windows
                 }
                 var _bill = new Manager.Data.Binding();
                 {
-                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "", Key = true });
-                    _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = "" });
+                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = typeof(tabThemHoaDonMoi), Key = true });
+                    _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = typeof(tabQuanLyHoaDonCu) });
                 }
                 var _customer = new Manager.Data.Binding();
                 {
-                    _customer.Children.Add(new Manager.Data.Binding("Thông tin khách hàng") { Tag = "" });
-                    _customer.Children.Add(new Manager.Data.Binding("Thu Công Nợ") { Tag = "" });
+                    _customer.Children.Add(new Manager.Data.Binding("Khách hàng") { Tag = typeof(tabKhachHang) });
+                    _customer.Children.Add(new Manager.Data.Binding("Đòi nợ") { Tag = typeof(tabPhieuThuTien) });
                 }
                 var _report = new Manager.Data.Binding();
                 {
                     _report.Children.Add(new Manager.Data.Binding("Tồn Kho") { Tag = "" });
-                    _report.Children.Add(new Manager.Data.Binding("Công Nợ") { Tag = "" });
+                    _report.Children.Add(new Manager.Data.Binding("Công nợ") { Tag = "" });
                 }
 				var _account = new Manager.Data.Binding();
                 {
@@ -67,13 +67,13 @@ namespace QuanLyNhaSach.Windows
                 }
                 var _bill = new Manager.Data.Binding();
                 {
-                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = "", Key = true });
-                    _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = "" });
+                    _bill.Children.Add(new Manager.Data.Binding("Lập Hóa Đơn") { Tag = typeof(tabThemHoaDonMoi), Key = true });
+                    _bill.Children.Add(new Manager.Data.Binding("Hóa Đơn Cũ") { Tag = typeof(tabQuanLyHoaDonCu) });
                 }
                 var _customer = new Manager.Data.Binding();
                 {
-                    _customer.Children.Add(new Manager.Data.Binding("Thông tin khách hàng") { Tag = "" });
-                    _customer.Children.Add(new Manager.Data.Binding("Thu Công Nợ") { Tag = "" });
+                    _customer.Children.Add(new Manager.Data.Binding("Tra cứu") { Tag = "" });
+                    _customer.Children.Add(new Manager.Data.Binding("Đòi nợ") { Tag = "" });
                 }
                 ShowFunction(btnSachFull, btnSachMini, true, _book);
                 ShowFunction(btnHoaDonFull, btnHoaDonMini, true, _bill);

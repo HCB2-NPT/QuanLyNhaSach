@@ -15,7 +15,7 @@ namespace QuanLyNhaSach.Manager.Adapter
             var result = new ObservableCollection<AccessLevel>();
             try
             {
-                var reader = Data.DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
+                var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
                 if (reader != null)
                 {
                     while (reader.Read())

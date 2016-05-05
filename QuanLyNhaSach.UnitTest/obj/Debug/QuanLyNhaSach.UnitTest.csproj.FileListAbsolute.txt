@@ -10,3 +10,14 @@ C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\b
 C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.csprojResolveAssemblyReference.cache
 C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.dll
 C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Assets\Images\background.jpg
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.exe
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.dll
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.pdb
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.pdb
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.csprojFakesResolveAssemblyReference.cache
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.pdb

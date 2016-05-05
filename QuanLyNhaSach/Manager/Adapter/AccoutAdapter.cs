@@ -14,7 +14,7 @@ namespace QuanLyNhaSach.Manager.Adapter
             result = null;
             try
             {
-                var reader = Data.DataConnector.ExecuteQuery(
+                var reader = DataConnector.ExecuteQuery(
                     string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, tk.bixoa " +
                     "from taikhoan tk, phanquyen pq " +
                     "where tk.email = '{0}' and tk.matkhau = '{1}' {2} and tk.maphanquyen = pq.maphanquyen", username, password, findDeletedToo ? "" : "and tk.bixoa = 'false'"));

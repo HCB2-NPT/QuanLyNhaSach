@@ -5,38 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:usercontrols="clr-namespace:QuanLyNhaSach.Window_Handlers.MainWindow.Functions.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600" Background="White">
+             d:DesignHeight="600" d:DesignWidth="600" Background="LightGray">
     <DockPanel>
-        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="48" Background="#FFF4F4F4">
-            <Button DockPanel.Dock="Right" Width="40" Height="40" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="4" Template="{DynamicResource Button_Icon_Template}">
+        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="8,4" Height="48" Background="#FFF4F4F4">
+            <Button DockPanel.Dock="Right" Width="24" Height="24" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="4" Template="{DynamicResource Button_Icon_Template}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Search-64.png"/>
                 </Button.Background>
             </Button>
             <TextBox Style="{StaticResource TextBoxListViewItem}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" VerticalAlignment="Center" Margin="8,0,0,0"/>
         </DockPanel>
-        <DockPanel Margin="0">
-            <Border Margin="4" DockPanel.Dock="Top" Padding="16,0">
-                <StackPanel Orientation="Horizontal">
-
-                    <DockPanel Background="#FF2BBD00" Width="100" Margin="4,0">
-                        <Button Content="Thêm Sách" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource Btn_icontext_templates}" Template="{DynamicResource Button_IconText_Templates}" Margin="0">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Plus Math-64.png"/>
-                            </Button.Background>
-                        </Button>
-
-                    </DockPanel>
-                    <DockPanel Background="#FFC0392B" Width="100" Margin="4,0">
-                        <Button Content="Xóa Chọn" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource Btn_icontext_templates}" Template="{DynamicResource Button_IconText_Templates}">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Trash-64.png"/>
-                            </Button.Background>
-                        </Button>
-                    </DockPanel>
-                </StackPanel>
-            </Border>
-            <ListView x:Name="listbox_DSSach" ItemTemplate="{DynamicResource Item_DS_Sach}" Margin="4" BorderThickness="0" Background="Gray" />
+        <DockPanel DockPanel.Dock="Top" Height="40" LastChildFill="False" Margin="8,4" Background="White">
+        	<Button Content="Thêm Sách" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource Button_Icon_Template}" Margin="8,0,0,0" BorderThickness="0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+        		<Button.Background>
+        			<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png"/>
+        		</Button.Background>
+        	</Button>
+        	<Button Content="Xóa Chọn" BorderBrush="#99FFFFFF" Foreground="White" Template="{DynamicResource Button_Icon_Template}" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0,0,0">
+        		<Button.Background>
+        			<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png"/>
+        		</Button.Background>
+        	</Button>
         </DockPanel>
+        <ListView x:Name="listbox_DSSach" ItemTemplate="{DynamicResource Item_DS_Sach}" BorderThickness="0" Background="White" Margin="8,4" />
     </DockPanel>
 </UserControl>

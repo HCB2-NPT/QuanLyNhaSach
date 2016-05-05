@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="QuanLyNhaSach.Window_Handlers.MainWindow.Functions.tabQuanLyHoaDonCu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:UserControls="clr-namespace:QuanLyNhaSach.Window_Handlers.MainWindow.Functions.UserControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600" Background="LightGray">
+    <DockPanel>
+        <DockPanel Margin="8,4" DockPanel.Dock="Top" Height="48" Background="White">
+            <Button Content="Button" Height="24" VerticalAlignment="Center" Width="24" DockPanel.Dock="Right" Template="{DynamicResource Button_Icon_Template}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Search-64.png"/>
+                </Button.Background>
+            </Button>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
+        </DockPanel>
+        <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="8,4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,0,0" Grid.Column="1"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
+
+                <TextBlock Text="100,000" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,8,0" Grid.Column="1"/>
+                <TextBox Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Grid.Column="1"/>
+                <TextBlock Text="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
+
+            </Grid>
+        </DockPanel>
+        <Grid Margin="8,4" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel Margin="10,0">
+                <Button HorizontalAlignment="Left" Template="{DynamicResource Button_TextOnly}" Foreground="White" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="24" Height="24" Margin="4,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="24" HorizontalAlignment="Left" Template="{DynamicResource Button_TextOnly}" BorderBrush="{x:Null}" BorderThickness="0" Width="24" Margin="4,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="24" HorizontalAlignment="Right" Template="{DynamicResource Button_TextOnly}" BorderBrush="{x:Null}" Width="24" Margin="0,0,8,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+            <ListView BorderThickness="0" Grid.Row="1" Background="{x:Null}">
+                <ListView.View>
+                    <GridView/>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </DockPanel>
+</UserControl>

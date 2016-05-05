@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
     <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
+    <Compile Include="Manager\Adapter\CustomerAdapter.cs" />
     <Compile Include="Manager\Adapter\DataConnector.cs" />
     <Compile Include="Manager\Data\AccessLevel.cs" />
     <Compile Include="Manager\Data\Account.cs" />
@@ -95,11 +96,35 @@
     <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
     <Compile Include="Window Handlers\MainWindow\Events of TitleMain.cs" />
     <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
+    <Compile Include="Window Handlers\MainWindow\Functions\tabKhachHang.xaml.cs">
+      <DependentUpon>tabKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\tabPhieuNhapSach.xaml.cs">
+      <DependentUpon>tabPhieuNhapSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\tabPhieuThuTien.xaml.cs">
+      <DependentUpon>tabPhieuThuTien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLyHoaDonCu.xaml.cs">
+      <DependentUpon>tabQuanLyHoaDonCu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLyPhieuNhap.xaml.cs">
+      <DependentUpon>tabQuanLyPhieuNhap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLySach.xaml.cs">
       <DependentUpon>tabQuanLySach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\tabThemHoaDonMoi.xaml.cs">
+      <DependentUpon>tabThemHoaDonMoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemChiTietHD.xaml.cs">
+      <DependentUpon>ListViewItemChiTietHD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemUserControl.xaml.cs">
       <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window Handlers\MainWindow\Functions\UserControls\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window Handlers\MainWindow\Theme Menu Events.cs" />
     <Compile Include="Windows\Others\About.xaml.cs">
@@ -138,11 +163,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabKhachHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabPhieuNhapSach.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabPhieuThuTien.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabQuanLyHoaDonCu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabQuanLyPhieuNhap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Window Handlers\MainWindow\Functions\tabQuanLySach.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\tabThemHoaDonMoi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemChiTietHD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window Handlers\MainWindow\Functions\UserControls\NumericUpDown.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -326,13 +383,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\Alphabetical Sorting-64.png" />
-    <Resource Include="Assets\Images\Rotate to Landscape-64.png" />
-    <Resource Include="Assets\Images\Rotate to Portrait-64.png" />
-    <Resource Include="Assets\Images\Xbox Windows-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Images\Xbox Menu-64.png" />
+    <Resource Include="Assets\Images\Buy-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Buy-64 %28white%29.png" />
+    <Resource Include="Assets\Images\Delete-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Health Book-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Minus Math -64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Plus Math-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Refresh-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Save-64 %28blue%29.png" />
+    <Resource Include="Assets\Images\Support-64 %28blue%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

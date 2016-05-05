@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="QuanLyNhaSach.Window_Handlers.MainWindow.Functions.tabKhachHang"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600" Background="LightGray">
+    <DockPanel>
+    	<DockPanel Margin="8,4" DockPanel.Dock="Top" Height="48" Background="White">
+    		<Button Content="Button" Height="24" VerticalAlignment="Center" Width="24" DockPanel.Dock="Right" Template="{DynamicResource Button_Icon_Template}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4">
+    			<Button.Background>
+    				<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Search-64.png"/>
+    			</Button.Background>
+    		</Button>
+    		<TextBox TextWrapping="Wrap" ToolTip="Số Điện Thoại" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
+    	</DockPanel>
+    	<Grid Margin="8,4" DockPanel.Dock="Top" Height="200" Background="White">
+    		<Grid.RowDefinitions>
+    			<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="80"/>
+			</Grid.ColumnDefinitions>
+    		<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}"/>
+			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1"/>
+			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2"/>
+			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3"/>
+			<Button Grid.Column="1" Template="{DynamicResource Button_Icon_Template}" BorderThickness="0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Button.Background>
+					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png"/>
+				</Button.Background>
+			</Button>
+			<Button Grid.Column="1" Grid.Row="1" Template="{DynamicResource Button_Icon_Template}" BorderThickness="0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Button.Background>
+					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png"/>
+				</Button.Background>
+			</Button>
+			<Button Grid.Column="1" Grid.Row="2" Template="{DynamicResource Button_Icon_Template}" BorderThickness="0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Button.Background>
+					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Support-64 (blue).png"/>
+				</Button.Background>
+			</Button>
+			<Button Grid.Column="1" Grid.Row="3" Template="{DynamicResource Button_Icon_Template}" BorderThickness="0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Button.Background>
+					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png"/>
+				</Button.Background>
+			</Button>
+		</Grid>
+    	<ListView Name="lv_DSKhachHang" DockPanel.Dock="Top" Margin="8,4"/>
+    </DockPanel>
+</UserControl>
