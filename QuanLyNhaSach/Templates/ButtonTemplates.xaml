@@ -32,7 +32,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <DockPanel x:Name="dockPanel1" Background="#00000000">
-                        <DockPanel x:Name="dockPanel" Width="200">
+                        <DockPanel x:Name="dockPanel" Width="{TemplateBinding Width}">
                             <Grid Background="{TemplateBinding Background}" Width="48" Margin="-4"/>
                             <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" Margin="8,0,0,0"/>
                         </DockPanel>

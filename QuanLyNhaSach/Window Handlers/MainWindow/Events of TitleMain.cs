@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace QuanLyNhaSach.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         /*
          * Sự kiện double click vào title

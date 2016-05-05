@@ -93,7 +93,7 @@
     <Compile Include="Manager\ErrorManager - Errors\QueryError.cs" />
     <Compile Include="Window Handlers\MainWindow\Events.cs" />
     <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
-    <Compile Include="Window Handlers\MainWindow\Event of TitleMain.cs" />
+    <Compile Include="Window Handlers\MainWindow\Events of TitleMain.cs" />
     <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
     <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLySach.xaml.cs">
       <DependentUpon>tabQuanLySach.xaml</DependentUpon>
@@ -101,6 +101,7 @@
     <Compile Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemUserControl.xaml.cs">
       <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window Handlers\MainWindow\Theme Menu Events.cs" />
     <Compile Include="Windows\Others\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -323,6 +324,15 @@
       <Project>{be1ed569-5e0b-4df0-8964-33ad2aae4c4a}</Project>
       <Name>WPF.MDI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Alphabetical Sorting-64.png" />
+    <Resource Include="Assets\Images\Rotate to Landscape-64.png" />
+    <Resource Include="Assets\Images\Rotate to Portrait-64.png" />
+    <Resource Include="Assets\Images\Xbox Windows-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Xbox Menu-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

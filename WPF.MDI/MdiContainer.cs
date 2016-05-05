@@ -97,10 +97,18 @@ namespace WPF.MDI
 		/// <summary>
 		/// Gets correct canvas height for internal usage.
 		/// </summary>
-		internal double InnerHeight
+		public double InnerHeight
 		{
 			get { return ActualHeight - _topPanel.ActualHeight; }
 		}
+
+        /// <summary>
+        /// Gets correct canvas width for internal usage.
+        /// </summary>
+        public double InnerWidth
+        {
+            get { return ActualWidth; }
+        }
 
 		#endregion
 

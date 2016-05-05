@@ -18,7 +18,7 @@ namespace WPF.MDI
 		/// <summary>
 		/// Width of minimized window.
 		/// </summary>
-		internal const int MinimizedWidth = 160;
+		internal const int MinimizedWidth = 200;
 
 		/// <summary>
 		/// Height of minimized window.
@@ -287,7 +287,7 @@ namespace WPF.MDI
 
 		#endregion
 
-		/// <summary>
+        /// <summary>
 		/// Gets or sets the container.
 		/// </summary>
 		/// <value>The container.</value>
@@ -920,41 +920,45 @@ namespace WPF.MDI
 					break;
 				case WindowState.Minimized:
 					{
-						if (previousWindowState == WindowState.Normal)
-							mdiChild.originalDimension = new Rect(mdiChild.Position.X, mdiChild.Position.Y, mdiChild.ActualWidth, mdiChild.ActualHeight);
+                        if (previousWindowState == WindowState.Normal)
+                            mdiChild.originalDimension = new Rect(mdiChild.Position.X, mdiChild.Position.Y, mdiChild.ActualWidth, mdiChild.ActualHeight);
 
-						double newLeft, newTop;
-						if (mdiChild.minimizedPosition.X >= 0 || mdiChild.minimizedPosition.Y >= 0)
-						{
-							newLeft = mdiChild.minimizedPosition.X;
-							newTop = mdiChild.minimizedPosition.Y;
-						}
-						else
-						{
-							#region Simple
-							int minimizedWindows = 0;
-							for (int i = 0; i < mdiChild.Container.Children.Count; i++)
-								if (mdiChild.Container.Children[i] != mdiChild && mdiChild.Container.Children[i].WindowState == WindowState.Minimized)
-									minimizedWindows++;
-							int capacity = Convert.ToInt32(mdiChild.Container.ActualWidth) / MdiChild.MinimizedWidth,
-								row = minimizedWindows / capacity + 1,
-								col = minimizedWindows % capacity;
-							newTop = mdiChild.Container.InnerHeight - MdiChild.MinimizedHeight * row;
-							newLeft = MdiChild.MinimizedWidth * col;
-							#endregion
-							#region Complex
-							//List<MdiChild> minimizedWindows = new List<MdiChild>();
-							//for (int i = 0; i < mdiChild.Container.Children.Count; i++)
-							//    if (mdiChild.Container.Children[i] != mdiChild && mdiChild.Container.Children[i].WindowState == WindowState.Minimized)
-							//        minimizedWindows.Add(mdiChild.Container.Children[i]);
+                        double newLeft, newTop;
+                        if (mdiChild.minimizedPosition.X >= 0 || mdiChild.minimizedPosition.Y >= 0)
+                        {
+                            newLeft = mdiChild.minimizedPosition.X;
+                            newTop = mdiChild.minimizedPosition.Y;
+                        }
+                        else
+                        {
+                            #region Simple
+                            int minimizedWindows = 0;
+                            for (int i = 0; i < mdiChild.Container.Children.Count; i++)
+                                if (mdiChild.Container.Children[i] != mdiChild && mdiChild.Container.Children[i].WindowState == WindowState.Minimized)
+                                    minimizedWindows++;
+                            int capacity = Convert.ToInt32(mdiChild.Container.ActualWidth) / MdiChild.MinimizedWidth,
+                                row = minimizedWindows / capacity + 1,
+                                col = minimizedWindows % capacity;
+                            //if (mdiChild.header != null)
+                                newTop = mdiChild.Container.InnerHeight - mdiChild.MinHeight * row;
+                            //else
+                                //newTop = mdiChild.Container.InnerHeight - MdiChild.MinimizedHeight * row;
+                            newLeft = MdiChild.MinimizedWidth * col;
+                            #endregion
+                            #region Complex
+                            //List<MdiChild> minimizedWindows = new List<MdiChild>();
+                            //for (int i = 0; i < mdiChild.Container.Children.Count; i++)
+                            //    if (mdiChild.Container.Children[i] != mdiChild && mdiChild.Container.Children[i].WindowState == WindowState.Minimized)
+                            //        minimizedWindows.Add(mdiChild.Container.Children[i]);
 
-							#endregion
-						}
+                            #endregion
+                        }
 
-						mdiChild.Position = new Point(newLeft, newTop);
+                        mdiChild.Position = new Point(newLeft, newTop);
 
-						mdiChild.Width = MdiChild.MinimizedWidth;
-						mdiChild.Height = MdiChild.MinimizedHeight;
+                        mdiChild.Width = MdiChild.MinimizedWidth;
+                        //mdiChild.Height = MdiChild.MinimizedHeight;
+                        mdiChild.Height = mdiChild.MinHeight;
 					}
 					break;
 				case WindowState.Maximized:
@@ -976,7 +980,7 @@ namespace WPF.MDI
 
 						mdiChild.Position = new Point(0, 0);
 						mdiChild.Width = mdiChild.Container.ActualWidth;
-						mdiChild.Height = mdiChild.Container.InnerHeight - 2; // ContentBorder.BorderThickness="1" in template
+                        mdiChild.Height = mdiChild.Container.InnerHeight;// -2 - (mdiChild.MinHeight * 10); // ContentBorder.BorderThickness="1" in template
 
 						if (mdiChild.Container.AllowWindowStateMax)
 						{

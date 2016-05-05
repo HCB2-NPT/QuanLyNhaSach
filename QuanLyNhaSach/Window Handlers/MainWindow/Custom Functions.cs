@@ -9,7 +9,7 @@ using System.Windows.Media.Animation;
 
 namespace QuanLyNhaSach.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         /*
          * Xử lý sau khi login

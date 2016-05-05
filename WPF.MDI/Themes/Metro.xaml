@@ -5,7 +5,7 @@
     <SolidColorBrush x:Key="TitleBackground" Color="#FF135995" />
     <SolidColorBrush x:Key="BorderBrush" Color="#FF005EAA" />
     
-    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="Mdi_WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -47,51 +47,54 @@
     <Style TargetType="{x:Type local:MdiChild}">
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="300" />
-        <Setter Property="MinWidth" Value="300" />
-        <Setter Property="MinHeight" Value="300" />
+        <Setter Property="MinWidth" Value="200" />
+        <Setter Property="MinHeight" Value="24" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MdiChild}">
-                    <Border BorderThickness="1" BorderBrush="{StaticResource BorderBrush}">
-                        <Grid>
-                            <DockPanel LastChildFill="True">
-                                <Grid Name="HeaderContent" DockPanel.Dock="Top" Background="{StaticResource TitleBackground}" Height="24" VerticalAlignment="Top" IsHitTestVisible="False">
-                                    <TextBlock Name="Header" Foreground="White" Text="{TemplateBinding Title}" FontFamily="Seogui UI Light" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="16, 0, 0, 0"/>
-                                </Grid>
+                    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource BorderBrush}">
+                            <Grid>
+                                <DockPanel LastChildFill="True">
+                                    <Grid Name="HeaderContent" DockPanel.Dock="Top" Background="{StaticResource TitleBackground}" Height="24" VerticalAlignment="Top" IsHitTestVisible="False">
+                                        <TextBlock Name="Header" Foreground="White" Text="{TemplateBinding Title}" FontFamily="Seogui UI Light" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="16, 0, 0, 0"/>
+                                    </Grid>
 
-                                <Border Name="ContentHost" Background="{TemplateBinding Background}">
-                                    <ContentControl Content="{TemplateBinding Content}" />
-                                </Border>
-                            </DockPanel>
+                                    <Border Name="ContentHost" Background="{TemplateBinding Background}">
+                                        <ContentControl Content="{TemplateBinding Content}" />
+                                    </Border>
+                                </DockPanel>
 
-                            <Thumb Opacity="0" Height="30" VerticalAlignment="Top" Name="DragThumb" />
+                                <Thumb Opacity="0" Height="30" VerticalAlignment="Top" Name="DragThumb" />
 
-                            <StackPanel Height="24" Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <Button Name="MinimizeButton" Width="32" Style="{DynamicResource WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
-                                    <Image Width="12" Height="12" Source="{StaticResource ButtonMinimize}" />
-                                </Button>
-                                <Button Name="MaximizeButton" Width="32" Style="{DynamicResource WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
-                                    <Image Name="btnMax_img" Width="12" Height="12" Source="{StaticResource ButtonMaximize}"/>
-                                </Button>
-                                <Button Name="CloseButton" Width="32" Style="{DynamicResource WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonCloseColorOver}" Background="{x:Null}" BorderThickness="0">
-                                    <Image Width="16" Height="16" Source="{StaticResource ButtonClose}" />
-                                </Button>
-                            </StackPanel>
+                                <StackPanel Height="24" Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Button Name="MinimizeButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
+                                        <Image Width="12" Height="12" Source="{StaticResource ButtonMinimize}" />
+                                    </Button>
+                                    <Button Name="MaximizeButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
+                                        <Image Name="btnMax_img" Width="12" Height="12" Source="{StaticResource ButtonMaximize}"/>
+                                    </Button>
+                                    <Button Name="CloseButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonCloseColorOver}" Background="{x:Null}" BorderThickness="0">
+                                        <Image Width="16" Height="16" Source="{StaticResource ButtonClose}" />
+                                    </Button>
+                                </StackPanel>
 
-                            <Thumb Name="ResizeLeft" Width="6" Margin="0,6,0,6" HorizontalAlignment="Left" Cursor="SizeWE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeTop" Height="4" Margin="6,0,6,0" VerticalAlignment="Top" Cursor="SizeNS" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeRight" Width="6" Margin="0,6,0,6" HorizontalAlignment="Right" Cursor="SizeWE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeBottom" Height="6" Margin="6,0,6,0" VerticalAlignment="Bottom" Cursor="SizeNS" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeTopLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="SizeNWSE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeTopRight" Width="6" Height="6" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeBottomRight" Width="6" Height="6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                            <Thumb Name="ResizeBottomLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
-                        </Grid>
-                    </Border>
+                                <Thumb Name="ResizeLeft" Width="6" Margin="0,6,0,6" HorizontalAlignment="Left" Cursor="SizeWE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeTop" Height="4" Margin="6,0,6,0" VerticalAlignment="Top" Cursor="SizeNS" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeRight" Width="6" Margin="0,6,0,6" HorizontalAlignment="Right" Cursor="SizeWE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeBottom" Height="6" Margin="6,0,6,0" VerticalAlignment="Bottom" Cursor="SizeNS" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeTopLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="SizeNWSE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeTopRight" Width="6" Height="6" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeBottomRight" Width="6" Height="6" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                                <Thumb Name="ResizeBottomLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
+                            </Grid>
+                        </Border>
+                        <Grid Name="Screen" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-9999" Background="#77000000"/>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Focused" Value="False">
-                            <Setter Property="Opacity" Value="0.64" />
+                            <Setter TargetName="Screen" Property="Panel.ZIndex" Value="0" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="btnMax_img" Property="Source" Value="{StaticResource ButtonRestore}"/>

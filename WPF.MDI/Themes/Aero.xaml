@@ -85,7 +85,7 @@
         <GradientStop Color="#FFE2EDF7" Offset="1"/>
     </LinearGradientBrush>
 
-    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="Mdi_WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -189,7 +189,7 @@
         <GradientStop Color="#FFFAEE6B" Offset="1.0" />
     </LinearGradientBrush>
 
-    <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="Mdi_CloseButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -243,7 +243,7 @@
         <GradientStop Color="#FFDAE8F6" Offset="1"/>
     </LinearGradientBrush>
 
-    <Style x:Key="MaximizedButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="Mdi_MaximizedButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="18" />
         <Setter Property="Height" Value="18" />
         <Setter Property="IsTabStop" Value="False" />
@@ -314,8 +314,8 @@
     <Style TargetType="{x:Type local:MdiChild}">
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="300" />
-        <Setter Property="MinWidth" Value="150" />
-        <Setter Property="MinHeight" Value="35" />
+        <Setter Property="MinWidth" Value="200" />
+        <Setter Property="MinHeight" Value="34" />
         <Setter Property="Background" Value="{StaticResource ChildBackground}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -328,13 +328,13 @@
                             <Thumb Name="DragThumb" Height="30" VerticalAlignment="Top" Opacity="0" />
 
                             <StackPanel Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,9,8,0" VerticalAlignment="Top" >
-                                <Button Name="MinimizeButton" Width="31" Height="17" Margin="0,0,2,0" RenderOptions.BitmapScalingMode="NearestNeighbor" Style="{DynamicResource WindowButtonStyle}">
+                                <Button Name="MinimizeButton" Width="31" Height="17" Margin="0,0,2,0" RenderOptions.BitmapScalingMode="NearestNeighbor" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                     <Image Width="11" Height="5" Margin="0,3,0,0" Source="/WPF.MDI;component/Themes/Aero/Minimize.png" />
                                 </Button>
-                                <Button Name="MaximizeButton" Width="31" Height="17" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                                <Button Name="MaximizeButton" Width="31" Height="17" Margin="0,0,2,0" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                     <Image Width="11" Height="9" Source="/WPF.MDI;component/Themes/Aero/Maximize.png" />
                                 </Button>
-                                <Button Name="CloseButton" Width="31" Height="17" Style="{DynamicResource CloseButtonStyle}" />
+                                <Button Name="CloseButton" Width="31" Height="17" Style="{DynamicResource Mdi_CloseButtonStyle}" />
                             </StackPanel>
 
                             <Grid Name="HeaderContent" Height="28" Margin="6,0,109,0" VerticalAlignment="Top" IsHitTestVisible="False">
@@ -394,7 +394,7 @@
                             <Setter TargetName="MinimizeButton" Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Button Width="31" Height="17" Style="{DynamicResource WindowButtonStyle}">
+                                        <Button Width="31" Height="17" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                             <Image Width="12" Height="11" Source="{StaticResource RestoreImage}" />
                                         </Button>
                                     </ControlTemplate>
@@ -409,7 +409,7 @@
                             <Setter TargetName="MinimizeButton" Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Button Tag="0" Width="31" Height="17" Style="{DynamicResource WindowButtonStyle}">
+                                        <Button Tag="0" Width="31" Height="17" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                             <Image Width="12" Height="11" Source="{StaticResource RestoreImage}" />
                                         </Button>
                                     </ControlTemplate>
@@ -448,7 +448,7 @@
                             <Setter TargetName="MinimizeButton" Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Button Style="{DynamicResource MaximizedButtonStyle}">
+                                        <Button Style="{DynamicResource Mdi_MaximizedButtonStyle}">
                                             <Image Width="14" Height="13" Source="{StaticResource MaximizedMinimizeImage}" />
                                         </Button>
                                     </ControlTemplate>
@@ -457,7 +457,7 @@
                             <Setter TargetName="MaximizeButton" Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Button Style="{DynamicResource MaximizedButtonStyle}">
+                                        <Button Style="{DynamicResource Mdi_MaximizedButtonStyle}">
                                             <Image Width="14" Height="13" Source="{StaticResource MaximizedRestoreImage}" />
                                         </Button>
                                     </ControlTemplate>
@@ -466,7 +466,7 @@
                             <Setter TargetName="CloseButton" Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Button Style="{DynamicResource MaximizedButtonStyle}">
+                                        <Button Style="{DynamicResource Mdi_MaximizedButtonStyle}">
                                             <Image Width="14" Height="13" Source="{StaticResource MaximizedCloseImage}" />
                                         </Button>
                                     </ControlTemplate>

@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:WPF.MDI;assembly=WPF.MDI">
     
-    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="Mdi_WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
@@ -101,8 +101,8 @@
     <Style TargetType="{x:Type local:MdiChild}">
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="300" />
-        <Setter Property="MinWidth" Value="150" />
-        <Setter Property="MinHeight" Value="31" />
+        <Setter Property="MinWidth" Value="200" />
+        <Setter Property="MinHeight" Value="30" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -124,13 +124,13 @@
                         <Thumb Opacity="0" Height="30" VerticalAlignment="Top" Name="DragThumb" />                        
                         
                         <StackPanel Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,6,0">
-                            <Button Name="MinimizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                            <Button Name="MinimizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                 <Image Width="21" Height="21" Source="{StaticResource MinimizeNormalFocused}" />
                             </Button>
-                            <Button Name="MaximizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource WindowButtonStyle}">
+                            <Button Name="MaximizeButton" Height="21" Width="21" Margin="0,0,2,0" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                 <Image Width="21" Height="21" Source="{StaticResource MaximizeNormalFocused}"/>
                             </Button>
-                            <Button Name="CloseButton" Width="21" Height="21" Style="{DynamicResource WindowButtonStyle}">
+                            <Button Name="CloseButton" Width="21" Height="21" Style="{DynamicResource Mdi_WindowButtonStyle}">
                                 <Image Width="21" Height="21" Source="{StaticResource CloseNormalFocused}" />
                             </Button>
                         </StackPanel>

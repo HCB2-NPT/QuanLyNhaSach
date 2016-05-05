@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
+using WPF.MDI;
 
 namespace QuanLyNhaSach.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         /*
          * Sự kiện đóng danh sách chức năng khi click ra ngoài
@@ -96,7 +98,6 @@ namespace QuanLyNhaSach.Windows
                         }
                     }
                     var mdiChild = new WPF.MDI.MdiChild() { Content = (UIElement)Activator.CreateInstance(type), Title = item.Data as string };
-                    mdiChild.WindowState = System.Windows.WindowState.Maximized;
                     mdiContainer.Children.Add(mdiChild);
                 }
             }
@@ -108,6 +109,23 @@ namespace QuanLyNhaSach.Windows
         void mdiContainer_ChildrenChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             NotifyPropertyChanged("ShowMdiContainer");
+
+            WindowsMenu.Items.Clear();
+            MenuItem mi;
+            for (int i = 0; i < mdiContainer.Children.Count; i++)
+            {
+                MdiChild child = mdiContainer.Children[i];
+                mi = new MenuItem { Header = child.Title };
+                mi.Click += (o, ev) => child.Focus();
+                WindowsMenu.Items.Add(mi);
+            }
+            WindowsMenu.Items.Add(new Separator());
+            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
+            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
+            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Horizontally" });
+            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileHorizontal;
+            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
+            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
         }
 
         /*

@@ -49,7 +49,7 @@
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -66,7 +66,7 @@
                         <Image Source="/Tiki Bookshop;component/Assets/Images/restore.png" Width="12" Height="12"/>
                     </Button>
                     <Button x:Name="btnMaximize" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9">
-                        <Image Source="/Tiki Bookshop;component/Assets/Images/Maximize.png" Width="12" Height="12"/>
+                        <Image x:Name="btnMaximize_img" Source="/Tiki Bookshop;component/Assets/Images/Maximize.png" Width="12" Height="12"/>
                     </Button>
                 </Grid>
                 <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" SnapsToDevicePixels="False" Background="{x:Null}" OpacityMask="#FF0567B9" >
@@ -74,9 +74,7 @@
                 </Button>
             </DockPanel>
             <DockPanel>
-                <!--
-				-->
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../Assets/Images/Menu-64.png"/>
@@ -135,7 +133,6 @@
                                 </Button.Background>
                             </Button>
                         </DockPanel>
-
                     </Border>
                 </DockPanel>
                 <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False" d:IsLocked="True">
@@ -197,24 +194,41 @@
                 </DockPanel>
                 <Grid x:Name="grid">
                     <DockPanel LastChildFill="True">
-                        <DockPanel Width="40" DockPanel.Dock="Right" Background="#FFF0F0F0" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}"/>
-                        <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="#FFFAFAFA" Theme="Custom"/>
+                        <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="#FFEFEFEF" Theme="Metro">
+                            <mdi:MdiContainer.Menu>
+                                <Menu DockPanel.Dock="Top">
+                                    <MenuItem Header="+">
+                                        <MenuItem Header="Close this" Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click"/>
+                                        <MenuItem Header="Close all but this" Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click"/>
+                                        <MenuItem Header="Close all" Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="Theme">
+                                        <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
+                                        <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
+                                        <MenuItem Header="Metro" Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
+                                    </MenuItem>
+                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" />
+                                </Menu>
+                            </mdi:MdiContainer.Menu>
+                        </mdi:MdiContainer>
                     </DockPanel>
                     <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
-                        <Border Margin="0" DockPanel.Dock="Top" Height="40" Width="200">
-                            <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
-                        </Border>
-                        <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DockPanel.Dock="Top" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                        </ListBox>
+                        <DockPanel LastChildFill="True" Width="200">
+                            <Border Margin="0" DockPanel.Dock="Top" Height="40">
+                                <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
+                            </Border>
+                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+                        </DockPanel>
                     </DockPanel>
                 </Grid>
             </DockPanel>
         </DockPanel>
-        <Image x:Name="resizer" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Width="20" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4"/>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="16" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4"/>
     </Grid>
 </Window>
