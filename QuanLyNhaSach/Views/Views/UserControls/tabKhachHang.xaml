@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabKhachHang" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="600" d:DesignWidth="600" MinWidth="600" MinHeight="200">
     <DockPanel>
         <DockPanel Margin="0" Width="300" LastChildFill="False">
             <DockPanel DockPanel.Dock="Top" Height="40" Background="#FFF1F1F1">

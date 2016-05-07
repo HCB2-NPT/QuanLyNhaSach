@@ -88,6 +88,7 @@
     <Compile Include="Bus\Fill.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
+    <Compile Include="Objects\Author.cs" />
     <Compile Include="Objects\Binding.cs" />
     <Compile Include="Objects\Book.cs" />
     <Compile Include="Objects\Customer.cs" />
@@ -127,6 +128,9 @@
     <Compile Include="Views\Views\UserControls\tabQuanLySach.xaml.cs">
       <DependentUpon>tabQuanLySach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabTheLoai.xaml.cs">
+      <DependentUpon>tabTheLoai.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabThemHoaDonMoi.xaml.cs">
       <DependentUpon>tabThemHoaDonMoi.xaml</DependentUpon>
     </Compile>
@@ -157,6 +161,10 @@
     <Page Include="Views\Styles\ListViewTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Styles\MenuItemContainer_Template.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Styles\PasswordBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -201,6 +209,10 @@
     <Page Include="Views\Views\UserControls\tabQuanLySach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabTheLoai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabThemHoaDonMoi.xaml">
       <Generator>MSBuild:Compile</Generator>

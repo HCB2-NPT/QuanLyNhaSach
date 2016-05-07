@@ -11,7 +11,8 @@
                 <ResourceDictionary Source="Views/Styles/ListViewTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/TextBoxTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/PasswordBoxTemplates.xaml"/>
-    		</ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/Styles/MenuItemContainer_Template.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
     	</ResourceDictionary>
          
     </Application.Resources>
