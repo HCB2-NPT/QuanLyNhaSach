@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace QuanLyNhaSach.Bus
 {
-    public class Fill
+    public class FillData
     {
         public static void Customers(ItemsControl ic)
         {
