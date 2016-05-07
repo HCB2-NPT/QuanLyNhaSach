@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Views.Views.Windows.MainWindow"
-        Height="600" Width="800" x:Name="window"
-        MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../../../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed" IsVisibleChanged="window_IsVisibleChanged">
+        Height="600" Width="900" x:Name="window"
+        MinHeight="600" MinWidth="900" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../../../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed" IsVisibleChanged="window_IsVisibleChanged">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Storyboard x:Key="MenuFullToMini">
@@ -229,6 +229,6 @@
                 </Grid>
             </DockPanel>
         </DockPanel>
-        <Image x:Name="resizer" HorizontalAlignment="Right" Height="16" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4"/>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="12" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4" Visibility="{Binding ShowResizer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}"/>
     </Grid>
 </Window>

@@ -125,6 +125,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 WindowState = System.Windows.WindowState.Normal;
             NotifyPropertyChanged("ShowMaximized");
             NotifyPropertyChanged("ShowRestore");
+            NotifyPropertyChanged("ShowResizer");
         }
 
         /*
@@ -384,6 +385,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     }
                     var mdiChild = new WPF.MDI.MdiChild() { Content = (UIElement)Activator.CreateInstance(type), Title = item.Data as string };
                     mdiChild.Background = Brushes.Transparent;
+                    mdiChild.BorderThickness = new Thickness(0);
                     mdiContainer.Children.Add(mdiChild);
                 }
             }

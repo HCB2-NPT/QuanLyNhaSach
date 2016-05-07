@@ -58,6 +58,14 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 return mdiContainer.Children.Count > 0;
             }
         }
+
+        public bool ShowResizer
+        {
+            get
+            {
+                return WindowState == System.Windows.WindowState.Normal;
+            }
+        }
         #endregion
 
         #region Constructor

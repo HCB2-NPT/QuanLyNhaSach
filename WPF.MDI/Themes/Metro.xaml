@@ -52,11 +52,13 @@
         <Setter Property="MinimizedWidth" Value="200" />
         <Setter Property="MinimizedHeight" Value="24" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MdiChild}">
                     <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Border BorderThickness="1" BorderBrush="{StaticResource BorderBrush}">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid>
                                 <DockPanel LastChildFill="True">
                                     <Grid Name="HeaderContent" DockPanel.Dock="Top" Background="{StaticResource TitleBackground}" Height="24" VerticalAlignment="Top" IsHitTestVisible="False">
