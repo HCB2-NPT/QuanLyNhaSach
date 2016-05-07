@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:MDI="clr-namespace:WPF.MDI;assembly=WPF.MDI">
+	<!-- Resource dictionary entries should be defined here. -->
+	<Style x:Key="mdi_menuitem_container" TargetType="{x:Type MDI:MdiContainer}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
