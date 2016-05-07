@@ -409,7 +409,7 @@ namespace WPF.MDI
             if (buttonsPanel != null)
                 buttonsPanel.Children.Clear();
 
-            bool k = WindowState == System.Windows.WindowState.Maximized;
+            bool k = WindowState == System.Windows.WindowState.Maximized && Container.Theme != ThemeType.Metro;
 
             if (minimizeButton != null)
             {
@@ -999,15 +999,18 @@ namespace WPF.MDI
 						if (previousWindowState == WindowState.Normal)
 							mdiChild.originalDimension = new Rect(mdiChild.Position.X, mdiChild.Position.Y, mdiChild.ActualWidth, mdiChild.ActualHeight);
 
-                        if (mdiChild.buttonsPanel != null)
-						    mdiChild.buttonsPanel.Children.Clear();
                         try
                         {
                             StackPanel sp = new StackPanel { Orientation = Orientation.Horizontal };
-                            sp.Children.Add(mdiChild.minimizeButton);
-                            sp.Children.Add(mdiChild.maximizeButton);
-                            sp.Children.Add(mdiChild.closeButton);
                             mdiChild.Buttons = sp;
+                            if (mdiChild.Container.Theme != ThemeType.Metro)
+                            {
+                                if (mdiChild.buttonsPanel != null)
+                                    mdiChild.buttonsPanel.Children.Clear();
+                                sp.Children.Add(mdiChild.minimizeButton);
+                                sp.Children.Add(mdiChild.maximizeButton);
+                                sp.Children.Add(mdiChild.closeButton);
+                            }
                         }
                         catch { }
 

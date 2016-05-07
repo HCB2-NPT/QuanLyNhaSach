@@ -387,7 +387,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = item.Data as string };
                     mdiChild.MinWidth = content.MinWidth;
                     mdiChild.MinHeight = content.MinHeight;
-                    mdiChild.Background = Brushes.Transparent;
+                    mdiChild.Background = content.Background;
                     mdiContainer.Children.Add(mdiChild);
                 }
             }
