@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Adapters
                     Book b;
                     while (reader.Read())
                     {
-                        
+                        b = new Book();
                     }
                 }
             }
