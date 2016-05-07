@@ -19,6 +19,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
     /// </summary>
     public partial class About : Window
     {
+        #region Constructor
         public About()
         {
             InitializeComponent();
@@ -26,10 +27,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
             Top = workingArea.Height - Height - 16;
             Left = workingArea.Width - Width - 16;
         }
-
-        private void btnClose_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	Visibility = System.Windows.Visibility.Hidden;
-        }
+        #endregion
     }
 }

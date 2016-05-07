@@ -14,5 +14,8 @@ namespace QuanLyNhaSach.Assets.Scripts
 
         [DllImport("USER32.DLL")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        public static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
     }
 }

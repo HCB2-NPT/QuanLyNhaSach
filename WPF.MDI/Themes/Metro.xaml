@@ -56,7 +56,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MdiChild}">
                     <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid>
                                 <DockPanel LastChildFill="True">
                                     <Grid Name="HeaderContent" DockPanel.Dock="Top" Background="{StaticResource TitleBackground}" Height="24" VerticalAlignment="Top" IsHitTestVisible="False">
@@ -100,6 +100,7 @@
                             <Setter TargetName="Screen" Property="Opacity" Value="1"/>
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="Border" Property="BorderThickness" Value="0"/>
                             <Setter TargetName="btnMax_img" Property="Source" Value="{StaticResource ButtonRestore}"/>
                             <Setter TargetName="MinimizeButton" Property="Background" Value="{StaticResource TitleButtonBackgroundColorWhenMaximized}"/>
                             <Setter TargetName="MaximizeButton" Property="Background" Value="{StaticResource TitleButtonBackgroundColorWhenMaximized}"/>

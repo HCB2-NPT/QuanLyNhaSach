@@ -19,8 +19,11 @@ namespace QuanLyNhaSach.Views.Views.Windows
     /// </summary>
     public partial class TitleMainRightClick : Window
     {
-		public Window Host { get; set; }
-		
+        #region Properties
+        public Window Host { get; set; }
+        #endregion
+
+        #region Constructor
         public TitleMainRightClick(Window host)
         {
             InitializeComponent();
@@ -28,34 +31,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
 			Host = host;
             _Show();
         }
-
-        public void _Show()
-        {
-            minimize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Minimized);
-            maximize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Maximized);
-            Visibility = System.Windows.Visibility.Visible;
-        }
-
-        private void Window_Deactivated(object sender, EventArgs e)
-        {
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void minimize_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	Host.WindowState = System.Windows.WindowState.Minimized;
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void maximize_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	Host.WindowState = System.Windows.WindowState.Maximized;
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void close_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        #endregion
     }
 }

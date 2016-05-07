@@ -92,7 +92,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
 		}
         #endregion
 
-        #region INotifyPropertyChanged Implements
+        #region Implements
+        /*
+         * INotifyPropertyChanged
+         */
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

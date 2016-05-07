@@ -86,7 +86,8 @@
     <Compile Include="Adapters\AccoutAdapter.cs" />
     <Compile Include="Adapters\CustomerAdapter.cs" />
     <Compile Include="Adapters\DataConnector.cs" />
-    <Compile Include="Bus\Fill.cs" />
+    <Compile Include="Bus\AppHandler.cs" />
+    <Compile Include="Bus\FillData.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
     <Compile Include="Objects\Genre.cs" />
@@ -99,7 +100,8 @@
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\ErrorTypes\LoginErrors.cs" />
     <Compile Include="Errors\ErrorTypes\QueryErrors.cs" />
-    <Compile Include="Views\Handlers\Windows\MainWindow.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\About.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\MainWindow.cs" />
     <Compile Include="Views\Views\UserControls\ListViewItemChiTietHD.xaml.cs">
       <DependentUpon>ListViewItemChiTietHD.xaml</DependentUpon>
     </Compile>
@@ -141,6 +143,10 @@
     </Compile>
     <Compile Include="Assets\Scripts\Cursor.cs" />
     <Compile Include="Assets\Scripts\User32DLL.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\TitleMainRightClick.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\ToolBox.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\WarningBox.cs" />
+    <Compile Include="Views\Views\Windows\Handlers\Login.cs" />
     <Compile Include="Views\Views\Windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -394,7 +400,7 @@
     <Resource Include="Assets\Images\Support-64 %28blue%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Handlers\UserControls\" />
+    <Folder Include="Views\Views\UserControls\Handlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

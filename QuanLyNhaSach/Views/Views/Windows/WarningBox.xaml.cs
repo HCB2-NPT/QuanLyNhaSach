@@ -20,6 +20,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
     /// </summary>
     public partial class WarningBox : Window, IDisposable, INotifyPropertyChanged
     {
+        #region Properties
         public string ErrorTitle { get { return tb_title.Text; } set { tb_title.Text = value; } }
 
         public string ErrorName { get { return tb_name.Text; } set { tb_name.Text = value; } }
@@ -28,12 +29,19 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         public string ErrorException { get { return tb_exception.Text; } set { tb_exception.Text = value; NotifyPropertyChanged("ErrorExceptionHeight"); } }
 
+        public bool IsCrash { get; set; }
+        #endregion
+
+        #region Binding Controlers
         public double ErrorExceptionHeight { get { return !string.IsNullOrEmpty(ErrorException) ? double.NaN : 0; } }
 
-        public bool IsCrash { get; set; }
-
         private Assets.Scripts.WindowsDragger EventWindowDrag { get; set; }
+        #endregion
 
+        #region Implements
+        /*
+         * INotifyPropertyChanged
+         */
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
@@ -41,6 +49,16 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /*
+         * IDisposable
+         */
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+        #endregion
+
+        #region Constructor
         public WarningBox(string title, string name, string content, bool isCrash = false, string exception = null)
         {
             InitializeComponent();
@@ -52,35 +70,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
             ErrorContent = content;
             IsCrash = isCrash;
         }
-
-        public static void Show(string title, string name, string content, bool isCrash = false, string exception = null)
-        {
-            var b = new WarningBox(title, name, content, isCrash, exception);
-            b.ShowDialog();
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            if (IsCrash)
-                Application.Current.Shutdown();
-            else
-                Dispose();
-        }
-
-        private void close(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
-
-        private void window_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-                Close();
-        }
+        #endregion
     }
 }

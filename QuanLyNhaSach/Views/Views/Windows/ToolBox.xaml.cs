@@ -20,70 +20,11 @@ namespace QuanLyNhaSach.Views.Views.Windows
     /// </summary>
     public partial class ToolBox : Window
     {
+        #region Constructor
         public ToolBox()
         {
             InitializeComponent();
         }
-
-        private void _ca_Click(object sender, RoutedEventArgs e)
-        {
-            var procList = Process.GetProcessesByName("OUTLOOK");
-            if (procList.Count().Equals(0))
-                try
-                {
-                    Process.Start("outlook", "/select outlook:calendar");
-                }
-                catch
-                {
-                    Managers.ErrorManager.Current.OutLookError.Call();
-                }
-            else
-            {
-                Assets.Scripts.User32DLL.SetForegroundWindow(procList.First().MainWindowHandle);
-            }
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void _cal_Click(object sender, RoutedEventArgs e)
-        {
-            if (Process.GetProcessesByName("Calculator").Count().Equals(0))
-                try
-                {
-                    Process.Start("calc.exe");
-                }
-                catch
-                {
-                    Managers.ErrorManager.Current.OutLookError.Call();
-                }
-            else
-            {
-                Assets.Scripts.User32DLL.SetForegroundWindow(Assets.Scripts.User32DLL.FindWindow(null, "Calculator"));
-            }
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void _mes_Click(object sender, RoutedEventArgs e)
-        {
-            var procList = Process.GetProcessesByName("OUTLOOK");
-            if (procList.Count().Equals(0))
-                try
-                {
-                    Process.Start("outlook");
-                }
-                catch
-                {
-                    Managers.ErrorManager.Current.OutLookError.Call();
-                }
-            else
-            {
-                Assets.Scripts.User32DLL.SetForegroundWindow(procList.First().MainWindowHandle);
-            }
-            Visibility = System.Windows.Visibility.Hidden;
-        }
-
-        private void Window_Deactivated(object sender, EventArgs e)
-        {
-            Visibility = System.Windows.Visibility.Hidden;
-        }
+        #endregion
     }
 }

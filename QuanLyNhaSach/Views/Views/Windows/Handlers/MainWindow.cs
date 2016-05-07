@@ -208,7 +208,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            Bus.AppHandler.Shutdown();
         }
         #endregion
 
@@ -388,7 +388,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     mdiChild.MinWidth = content.MinWidth;
                     mdiChild.MinHeight = content.MinHeight;
                     mdiChild.Background = Brushes.Transparent;
-                    mdiChild.BorderThickness = new Thickness(0);
                     mdiContainer.Children.Add(mdiChild);
                 }
             }
