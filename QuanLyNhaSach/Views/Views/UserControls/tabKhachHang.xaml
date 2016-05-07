@@ -1,0 +1,78 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabKhachHang" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <DockPanel>
+        <DockPanel Margin="0" Width="300" LastChildFill="False">
+            <DockPanel DockPanel.Dock="Top" Height="40" Background="#FFF1F1F1">
+                <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,0">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
+                </Button>
+                <TextBox TextWrapping="Wrap" ToolTip="Số Điện Thoại" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Background="{x:Null}" BorderThickness="0" FontSize="14"/>
+            </DockPanel>
+            <Grid Margin="0" DockPanel.Dock="Top" Background="White">
+                <Grid Margin="0,0,0,40" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3"/>
+                </Grid>
+                <DockPanel Margin="0,160,0,0" LastChildFill="False">
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
+                    </Button>
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                    </Button>
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Support-64 (blue).png" Width="24" Height="24"/>
+                    </Button>
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" OpacityMask="#FFB3D6F2">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
+                    </Button>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <ListView x:Name="lv_DSKhachHang" Margin="0" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <UserControls:lvi_DSKhachHang Height="100" VerticalAlignment="Top"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="#FFC9DFF2"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </DockPanel>
+</UserControl>

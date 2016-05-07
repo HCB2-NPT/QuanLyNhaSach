@@ -1,0 +1,57 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
+	mc:Ignorable="d"
+	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabPhieuNhapSach"
+	x:Name="UserControl"
+	d:DesignHeight="600" d:DesignWidth="600">
+
+    <DockPanel>
+        <DockPanel Margin="0,4,0,0" Width="300" LastChildFill="False">
+            <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1">
+                <DockPanel LastChildFill="False" DockPanel.Dock="Top" Margin="4">
+                    <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Foreground="#FFB8B8B8"/>
+                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" DockPanel.Dock="Right"/>
+                </DockPanel>
+                <DockPanel Margin="4" DockPanel.Dock="Top">
+                    <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,4" Foreground="#FFB8B8B8"/>
+                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Background="White">
+                <Grid DockPanel.Dock="Top" Margin="8,4" Height="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tên Sách" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="1"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="2"/>
+                    <DockPanel Margin="0,0,8,0" Grid.Row="3" LastChildFill="False">
+                        <UserControls:NumericUpDown HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" DockPanel.Dock="Right"/>
+                        <TextBlock Text="Số lượng" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFAEAEAE" Margin="0,12" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                    <Button Grid.Row="4" VerticalAlignment="Center" Height="40" Width="40" Foreground="#FF3498DB" BorderBrush="#FF3498DB" HorizontalAlignment="Right" Margin="0" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png" Stretch="Uniform" Margin="2"/>
+                    </Button>
+                </Grid>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel Margin="0,4,0,8">
+            <Button VerticalAlignment="Top" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2">
+                <DockPanel Background="White" Width="90">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
+                    <TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DockPanel>
+            </Button>
+            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="{x:Null}" ItemTemplate="{DynamicResource lvi_PhieuNhapSach}"/>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
