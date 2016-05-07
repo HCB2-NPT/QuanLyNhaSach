@@ -79,6 +79,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Adapters\BookAdapter.cs" />
+    <Compile Include="Adapters\GenreAdapter.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Bus\Fill.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
+    <Compile Include="Objects\Genre.cs" />
     <Compile Include="Objects\Author.cs" />
     <Compile Include="Objects\Binding.cs" />
     <Compile Include="Objects\Book.cs" />

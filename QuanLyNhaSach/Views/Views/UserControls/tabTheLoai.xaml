@@ -6,14 +6,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
     <DockPanel>
-        <DockPanel LastChildFill="False" Width="200" Background="White">
+        <DockPanel Width="200" Background="White">
             <DockPanel DockPanel.Dock="Top" Height="50">
                 <Button VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0,0,8,0">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
                 <TextBox TextWrapping="Wrap" ToolTip="Tên Thể Loại" VerticalAlignment="Center" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,4,0"/>
             </DockPanel>
+            <ListView x:Name="lv_DSSachCoTheLoai" BorderThickness="0" DockPanel.Dock="Top" BorderBrush="{x:Null}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemTemplate="{DynamicResource lviSachCoTheLoai}"/>
         </DockPanel>
-        <DockPanel LastChildFill="False"/>
+        <ListView x:Name="lv_DSTheLoai" DockPanel.Dock="Top" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" ItemTemplate="{DynamicResource lvi_DSTheLoai}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="#FFC9DFF2"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </DockPanel>
 </UserControl>
