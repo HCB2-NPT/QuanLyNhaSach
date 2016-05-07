@@ -30,6 +30,9 @@ namespace WPF.MDI
 		
 		#region Dependency Properties
 
+        public static readonly DependencyProperty CanDragOutProperty =
+            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiContainer));
+
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiContainer.Theme dependency property.
 		/// </summary>
@@ -57,6 +60,12 @@ namespace WPF.MDI
 		#endregion
 
 		#region Property Accessors
+
+        public bool CanDragOut
+        {
+            get { return (bool)GetValue(CanDragOutProperty); }
+            set { SetValue(CanDragOutProperty, value); }
+        }
 
 		/// <summary>
 		/// Gets or sets the container theme.
@@ -334,10 +343,15 @@ namespace WPF.MDI
 						mdiChild.Loaded += (s, a) => Focus(mdiChild);
 
 						_windowOffset += WindowOffset;
-						if (_windowOffset + mdiChild.Width > ActualWidth)
-							_windowOffset = 0;
-						if (_windowOffset + mdiChild.Height > ActualHeight)
-							_windowOffset = 0;
+                        if (ActualWidth > 0 && ActualHeight > 0)
+                        {
+                            if (_windowOffset + mdiChild.Width > ActualWidth)
+                                _windowOffset = 0;
+                            if (_windowOffset + mdiChild.Height > ActualHeight)
+                                _windowOffset = 0;
+                        }
+
+                        mdiChild.CanDragOut = CanDragOut;
 					}
 					break;
 				case NotifyCollectionChangedAction.Remove:

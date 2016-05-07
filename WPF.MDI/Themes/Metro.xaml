@@ -94,7 +94,7 @@
                                 <Thumb Name="ResizeBottomLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
                             </Grid>
                         </Border>
-                        <Grid Name="Screen" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-9999" Opacity="0" Background="#77000000"/>
+                        <Grid Name="Screen" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-9999" Opacity="0" Background="#55000000"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Focused" Value="False">

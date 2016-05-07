@@ -26,6 +26,9 @@ namespace WPF.MDI
         public static readonly DependencyProperty MinimizedHeightProperty =
             DependencyProperty.Register("MinimizedHeight", typeof(int), typeof(MdiChild));
 
+        public static readonly DependencyProperty CanDragOutProperty =
+            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiChild));
+
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiChild.ContentProperty dependency property.
 		/// </summary>
@@ -144,6 +147,12 @@ namespace WPF.MDI
         {
             get { return (int)GetValue(MinimizedHeightProperty); }
             set { SetValue(MinimizedHeightProperty, value); }
+        }
+
+        public bool CanDragOut
+        {
+            get { return (bool)GetValue(CanDragOutProperty); }
+            set { SetValue(CanDragOutProperty, value); }
         }
 
 		/// <summary>
@@ -723,6 +732,13 @@ namespace WPF.MDI
 				newLeft = 0;
 			if (newTop < 0)
 				newTop = 0;
+            if (!CanDragOut)
+            {
+                if (newLeft + ActualWidth > Container.InnerWidth)
+                    newLeft = Container.InnerWidth - ActualWidth;
+                if (newTop + ActualHeight > Container.InnerHeight)
+                    newTop = Container.InnerHeight - ActualHeight;
+            }
 
 			Position = new Point(newLeft, newTop);
 

@@ -194,7 +194,7 @@
                 </DockPanel>
                 <Grid x:Name="grid">
                     <DockPanel LastChildFill="True">
-                        <mdi:MdiContainer Name="mdiContainer" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
+                        <mdi:MdiContainer Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
                             <mdi:MdiContainer.Menu>
                                 <Menu DockPanel.Dock="Top">
                                     <MenuItem Header="+">
@@ -212,7 +212,7 @@
                             </mdi:MdiContainer.Menu>
                         </mdi:MdiContainer>
                     </DockPanel>
-                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
+                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
                         <DockPanel LastChildFill="True" Width="200">
                             <Border Margin="0" DockPanel.Dock="Top" Height="40">
                                 <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
@@ -229,6 +229,6 @@
                 </Grid>
             </DockPanel>
         </DockPanel>
-        <Image x:Name="resizer" HorizontalAlignment="Right" Height="12" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4" Visibility="{Binding ShowResizer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}"/>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="12" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4" Visibility="{Binding ShowResizer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" d:IsLocked="True"/>
     </Grid>
 </Window>

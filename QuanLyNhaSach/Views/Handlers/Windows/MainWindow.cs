@@ -383,7 +383,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
                             return;
                         }
                     }
-                    var mdiChild = new WPF.MDI.MdiChild() { Content = (UIElement)Activator.CreateInstance(type), Title = item.Data as string };
+                    var content = (UserControl)Activator.CreateInstance(type);
+                    var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = item.Data as string };
+                    mdiChild.MinWidth = content.MinWidth;
+                    mdiChild.MinHeight = content.MinHeight;
                     mdiChild.Background = Brushes.Transparent;
                     mdiChild.BorderThickness = new Thickness(0);
                     mdiContainer.Children.Add(mdiChild);
