@@ -67,7 +67,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="Fakes\nunit.core.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -413,7 +413,7 @@ namespace WPF.MDI
 		/// <summary>
 		/// Gets MdiChild with maximum ZIndex.
 		/// </summary>
-		internal MdiChild GetTopChild()
+		public MdiChild GetTopChild()
 		{
 			if (_windowCanvas.Children.Count < 1)
 				return null;
@@ -516,11 +516,11 @@ namespace WPF.MDI
 			for (int i = 0; i < minimizedWindows.Count; i++)
 			{
 				MdiChild mdiChild = minimizedWindows[i];
-				int capacity = Convert.ToInt32(mdiContainer.ActualWidth) / MdiChild.MinimizedWidth,
+				int capacity = Convert.ToInt32(mdiContainer.ActualWidth) / mdiChild.MinimizedWidth,
 					row = i / capacity + 1,
 					col = i % capacity;
-				containerHeight = mdiContainer.InnerHeight - MdiChild.MinimizedHeight * row;
-				double newLeft = MdiChild.MinimizedWidth * col;
+				containerHeight = mdiContainer.InnerHeight - mdiChild.MinimizedHeight * row;
+                double newLeft = mdiChild.MinimizedWidth * col;
 				mdiChild.Position = new Point(newLeft, containerHeight);
 			}
 

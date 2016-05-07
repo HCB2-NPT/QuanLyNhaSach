@@ -18,7 +18,7 @@ namespace QuanLyNhaSach
         {
             var processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
             if (processes.Length > 1)
-                Manager.ErrorManager.Current.CantOpenAppMoreTimes.Call();
+                Managers.ErrorManager.Current.CantOpenAppMoreTimes.Call();
             base.OnStartup(e);
         }
     }

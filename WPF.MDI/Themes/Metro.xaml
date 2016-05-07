@@ -47,8 +47,10 @@
     <Style TargetType="{x:Type local:MdiChild}">
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="300" />
-        <Setter Property="MinWidth" Value="200" />
-        <Setter Property="MinHeight" Value="24" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="MinHeight" Value="200" />
+        <Setter Property="MinimizedWidth" Value="200" />
+        <Setter Property="MinimizedHeight" Value="24" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -90,11 +92,12 @@
                                 <Thumb Name="ResizeBottomLeft" Width="6" Height="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Opacity="0" IsHitTestVisible="{TemplateBinding Resizable}" />
                             </Grid>
                         </Border>
-                        <Grid Name="Screen" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-9999" Background="#77000000"/>
+                        <Grid Name="Screen" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="-9999" Opacity="0" Background="#77000000"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Focused" Value="False">
                             <Setter TargetName="Screen" Property="Panel.ZIndex" Value="0" />
+                            <Setter TargetName="Screen" Property="Opacity" Value="1"/>
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="btnMax_img" Property="Source" Value="{StaticResource ButtonRestore}"/>

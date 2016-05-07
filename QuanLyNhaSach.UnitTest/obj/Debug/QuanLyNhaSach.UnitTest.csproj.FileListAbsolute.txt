@@ -21,3 +21,15 @@ C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.M
 C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.csprojFakesResolveAssemblyReference.cache
 C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.dll
 C:\Users\Shin\Desktop\Do An\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Assets\Images\background.jpg
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\nunit.framework.dll
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.exe
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.dll
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\Tiki Bookshop.pdb
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\nunit.framework.xml
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\bin\Debug\WPF.MDI.pdb
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.dll
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.pdb
+C:\Users\ToChinhTin\Desktop\Merge 7.5.2016\QuanLyNhaSach\QuanLyNhaSach.UnitTest\obj\Debug\QuanLyNhaSach.UnitTest.csprojResolveAssemblyReference.cache

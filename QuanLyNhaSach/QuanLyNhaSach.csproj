@@ -78,76 +78,75 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adapters\BookAdapter.cs" />
+    <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
-    <Compile Include="Manager\Adapter\AccessLevelAdapter.cs" />
-    <Compile Include="Manager\Adapter\AccoutAdapter.cs" />
-    <Compile Include="Manager\Adapter\CustomerAdapter.cs" />
-    <Compile Include="Manager\Adapter\DataConnector.cs" />
-    <Compile Include="Manager\Data\AccessLevel.cs" />
-    <Compile Include="Manager\Data\Account.cs" />
-    <Compile Include="Manager\Data\Binding.cs" />
-    <Compile Include="Manager\Data\Customer.cs" />
-    <Compile Include="Manager\ErrorManager - Errors\AppError.cs" />
-    <Compile Include="Manager\ErrorManager - Errors\DataError.cs" />
-    <Compile Include="Manager\Data\Error.cs" />
-    <Compile Include="Manager\ErrorManager - Errors\LoginError.cs" />
-    <Compile Include="Manager\ErrorManager - Errors\QueryError.cs" />
-    <Compile Include="Window Handlers\MainWindow\Events.cs" />
-    <Compile Include="Window Handlers\MainWindow\Custom Functions.cs" />
-    <Compile Include="Window Handlers\MainWindow\Events of TitleMain.cs" />
-    <Compile Include="Window Handlers\MainWindow\Functions\Logout.cs" />
-    <Compile Include="Window Handlers\MainWindow\Functions\tabKhachHang.xaml.cs">
-      <DependentUpon>tabKhachHang.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabPhieuNhapSach.xaml.cs">
-      <DependentUpon>tabPhieuNhapSach.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabPhieuThuTien.xaml.cs">
-      <DependentUpon>tabPhieuThuTien.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLyHoaDonCu.xaml.cs">
-      <DependentUpon>tabQuanLyHoaDonCu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLyPhieuNhap.xaml.cs">
-      <DependentUpon>tabQuanLyPhieuNhap.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabQuanLySach.xaml.cs">
-      <DependentUpon>tabQuanLySach.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\tabThemHoaDonMoi.xaml.cs">
-      <DependentUpon>tabThemHoaDonMoi.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemChiTietHD.xaml.cs">
+    <Compile Include="Adapters\AccessLevelAdapter.cs" />
+    <Compile Include="Adapters\AccoutAdapter.cs" />
+    <Compile Include="Adapters\CustomerAdapter.cs" />
+    <Compile Include="Adapters\DataConnector.cs" />
+    <Compile Include="Bus\Fill.cs" />
+    <Compile Include="Objects\AccessLevel.cs" />
+    <Compile Include="Objects\Account.cs" />
+    <Compile Include="Objects\Binding.cs" />
+    <Compile Include="Objects\Book.cs" />
+    <Compile Include="Objects\Customer.cs" />
+    <Compile Include="Errors\ErrorTypes\AppErrors.cs" />
+    <Compile Include="Errors\ErrorTypes\DataErrors.cs" />
+    <Compile Include="Errors\Error.cs" />
+    <Compile Include="Errors\ErrorTypes\LoginErrors.cs" />
+    <Compile Include="Errors\ErrorTypes\QueryErrors.cs" />
+    <Compile Include="Views\Handlers\Windows\MainWindow.cs" />
+    <Compile Include="Views\Views\UserControls\ListViewItemChiTietHD.xaml.cs">
       <DependentUpon>ListViewItemChiTietHD.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemUserControl.xaml.cs">
+    <Compile Include="Views\Views\UserControls\ListViewItemUserControl.xaml.cs">
       <DependentUpon>ListViewItemUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window Handlers\MainWindow\Functions\UserControls\NumericUpDown.xaml.cs">
+    <Compile Include="Views\Views\UserControls\lvi_DSKhachHang.xaml.cs">
+      <DependentUpon>lvi_DSKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\NumericUpDown.xaml.cs">
       <DependentUpon>NumericUpDown.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window Handlers\MainWindow\Theme Menu Events.cs" />
-    <Compile Include="Windows\Others\About.xaml.cs">
+    <Compile Include="Views\Views\UserControls\tabKhachHang.xaml.cs">
+      <DependentUpon>tabKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabPhieuNhapSach.xaml.cs">
+      <DependentUpon>tabPhieuNhapSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabPhieuThuTien.xaml.cs">
+      <DependentUpon>tabPhieuThuTien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabQuanLyHoaDonCu.xaml.cs">
+      <DependentUpon>tabQuanLyHoaDonCu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabQuanLyPhieuNhap.xaml.cs">
+      <DependentUpon>tabQuanLyPhieuNhap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabQuanLySach.xaml.cs">
+      <DependentUpon>tabQuanLySach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabThemHoaDonMoi.xaml.cs">
+      <DependentUpon>tabThemHoaDonMoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\Windows\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\Scripts\Cursor.cs" />
     <Compile Include="Assets\Scripts\User32DLL.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="Views\Views\Windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager\DataManager.cs" />
-    <Compile Include="Manager\SettingManager.cs" />
-    <Compile Include="Manager\UserManager.cs" />
-    <Compile Include="Windows\Others\Setting.xaml.cs">
-      <DependentUpon>Setting.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Others\TitleMainRightClick.xaml.cs">
+    <Compile Include="Managers\DataManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Views\Views\Windows\TitleMainRightClick.xaml.cs">
       <DependentUpon>TitleMainRightClick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Others\ToolBox.xaml.cs">
+    <Compile Include="Views\Views\Windows\ToolBox.xaml.cs">
       <DependentUpon>ToolBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Others\WarningBox.xaml.cs">
+    <Compile Include="Views\Views\Windows\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
     <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
@@ -155,75 +154,75 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="Templates\ListViewTemplates.xaml">
+    <Page Include="Views\Styles\ListViewTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Templates\PasswordBoxTemplates.xaml">
+    <Page Include="Views\Styles\PasswordBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabKhachHang.xaml">
+    <Page Include="Views\Views\UserControls\ListViewItemChiTietHD.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabPhieuNhapSach.xaml">
+    <Page Include="Views\Views\UserControls\ListViewItemUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabPhieuThuTien.xaml">
+    <Page Include="Views\Views\UserControls\lvi_DSKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabQuanLyHoaDonCu.xaml">
+    <Page Include="Views\Views\UserControls\NumericUpDown.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabQuanLyPhieuNhap.xaml">
+    <Page Include="Views\Views\UserControls\tabKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabQuanLySach.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\tabThemHoaDonMoi.xaml">
+    <Page Include="Views\Views\UserControls\tabPhieuNhapSach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemChiTietHD.xaml">
+    <Page Include="Views\Views\UserControls\tabPhieuThuTien.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\UserControls\ListViewItemUserControl.xaml">
+    <Page Include="Views\Views\UserControls\tabQuanLyHoaDonCu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window Handlers\MainWindow\Functions\UserControls\NumericUpDown.xaml">
+    <Page Include="Views\Views\UserControls\tabQuanLyPhieuNhap.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Others\About.xaml">
+    <Page Include="Views\Views\UserControls\tabQuanLySach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="Views\Views\UserControls\tabThemHoaDonMoi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Others\Setting.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Templates\ListBoxTemplates.xaml">
+    <Page Include="Views\Views\Windows\About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Templates\ButtonTemplates.xaml">
+    <Page Include="Views\Views\Windows\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\MainWindow.xaml">
+    <Page Include="Views\Styles\ListBoxTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Styles\ButtonTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -235,31 +234,31 @@
     <Compile Include="Assets\Scripts\WindowDragger.cs" />
     <Compile Include="Assets\Scripts\WindowsResizer.cs" />
     <Compile Include="Assets\Scripts\WpfScreen.cs" />
-    <Compile Include="Windows\MainWindow.xaml.cs">
+    <Compile Include="Views\Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Templates\TextBoxTemplates.xaml">
+    <Page Include="Views\Styles\TextBoxTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Others\TitleMainRightClick.xaml">
+    <Page Include="Views\Views\Windows\TitleMainRightClick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Others\ToolBox.xaml">
+    <Page Include="Views\Views\Windows\ToolBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Others\WarningBox.xaml">
+    <Page Include="Views\Views\Windows\WarningBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager\ConfigManager.cs" />
-    <Compile Include="Manager\~Manager.cs" />
-    <Compile Include="Manager\ErrorManager.cs" />
+    <Compile Include="Managers\ConfigManager.cs" />
+    <Compile Include="Managers\~Manager.cs" />
+    <Compile Include="Managers\ErrorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -392,6 +391,9 @@
     <Resource Include="Assets\Images\Refresh-64 %28blue%29.png" />
     <Resource Include="Assets\Images\Save-64 %28blue%29.png" />
     <Resource Include="Assets\Images\Support-64 %28blue%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Handlers\UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
