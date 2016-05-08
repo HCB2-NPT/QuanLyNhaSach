@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Book>();
                     while (reader.Read())
                     {
-                        result.Add(FindBook(new Book(reader.GetInt32(0))));
+                        //result.Add(FindBook(new Book(reader.GetInt32(0))));
                     }
                 }
             }
@@ -48,7 +48,7 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Book>();
                     while (reader.Read())
                     {
-                        result.Add(FindBook(new Book(reader.GetInt32(0))));
+                        //result.Add(FindBook(new Book(reader.GetInt32(0))));
                     }
                 }
             }

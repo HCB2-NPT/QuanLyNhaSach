@@ -23,7 +23,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabTheLoai()
         {
             InitializeComponent();
-            lv_DSTheLoai.ItemsSource = Adapters.GenreAdapter.GetAllGenres();
+            lv_DSTheLoai.ItemsSource = Adapters.GenreAdapter.GetAll();
         }
     }
 }

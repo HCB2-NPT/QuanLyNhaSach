@@ -108,7 +108,7 @@
                 </Button>
             </DockPanel>
             <DockPanel>
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -200,7 +200,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="btnQuyDinhFull_Click" Focusable="False">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>
@@ -228,7 +228,7 @@
                 </DockPanel>
                 <Grid x:Name="grid">
                     <DockPanel LastChildFill="True">
-                        <mdi:MdiContainer Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
+                        <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
                             <mdi:MdiContainer.Menu>
                                 <Menu Height="24">
                                     <Menu.ItemsPanel>
@@ -237,14 +237,14 @@
                                         </ItemsPanelTemplate>
                                     </Menu.ItemsPanel>
                                     <MenuItem Header="+" Style="{StaticResource MenuItem_BaseStyle}">
-                                        <MenuItem Header="Close this" Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Close all but this" Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Close all" Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Close this" x:Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Close all but this" x:Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Close all" x:Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
                                     </MenuItem>
                                     <MenuItem Header="Theme" Style="{StaticResource MenuItem_BaseStyle}">
-                                        <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Metro" Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
                                     </MenuItem>
                                     <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" Style="{StaticResource MenuItem_BaseStyle}"/>
                                 </Menu>

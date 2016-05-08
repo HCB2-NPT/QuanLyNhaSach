@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabQuyDinh" 
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600">
+             d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600" MinHeight="500">
     <DockPanel LastChildFill="True">
         <Button Content="Thay đổi quy định" BorderThickness="0" Background="#FF3498DB" Foreground="White" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom"/>
         <Grid DockPanel.Dock="Top">

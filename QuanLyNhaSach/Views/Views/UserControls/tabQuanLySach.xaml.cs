@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             InitializeComponent();
             ListViewItemUserControl lvi = new ListViewItemUserControl();
-            listbox_DSSach.ItemsSource = Adapters.BookAdapter.GetAllBook();
+            listbox_DSSach.ItemsSource = Adapters.BookAdapter.GetAll();
         }
     }
 }

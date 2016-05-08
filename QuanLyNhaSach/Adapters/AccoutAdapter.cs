@@ -50,8 +50,8 @@ namespace QuanLyNhaSach.Adapters
             {
                 var reader = DataConnector.ExecuteQuery(
                     @"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen, tk.bixoa " +
-                    "from taikhoan tk, phanquyen pq" +
-                    "tk.maphanquyen = pq.maphanquyen and tk.bixoa = 'true'");
+                    "from taikhoan tk, phanquyen pq " +
+                    "where tk.maphanquyen = pq.maphanquyen and tk.bixoa = 'true'");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Account>();
@@ -82,8 +82,8 @@ namespace QuanLyNhaSach.Adapters
             {
                 var reader = DataConnector.ExecuteQuery(
                     string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, tk.maphanquyen, tk.bixoa " +
-                    "from taikhoan tk" +
-                    "tk.mataikhoan = {0} {1} and tk.maphanquyen = pq.maphanquyen", id, findDeletedToo ? "" : "and tk.bixoa = 'false'"));
+                    "from taikhoan tk " +
+                    "where tk.mataikhoan = {0} {1} and tk.maphanquyen = pq.maphanquyen", id, findDeletedToo ? "" : "and tk.bixoa = 'false'"));
                 if (reader != null)
                 {
                     result = new Account();
@@ -115,7 +115,7 @@ namespace QuanLyNhaSach.Adapters
             {
                 var reader = DataConnector.ExecuteQuery(
                     string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, tk.maphanquyen, tk.bixoa " +
-                    "from taikhoan tk" +
+                    "from taikhoan tk " +
                     "where tk.email = '{0}' and tk.matkhau = '{1}' {2}", username, password, findDeletedToo ? "" : "and tk.bixoa = 'false'"));
                 if (reader != null)
                 {

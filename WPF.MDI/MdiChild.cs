@@ -456,6 +456,13 @@ namespace WPF.MDI
                 closeButton.Click += new RoutedEventHandler(closeButton_Click);
             }
 
+            var content = Content as FrameworkElement;
+            if (content != null)
+            {
+                this.MinWidth = content.MinWidth;
+                this.MinHeight = content.MinHeight + MinimizedHeight;
+            }
+
 			Thumb dragThumb = (Thumb)Template.FindName("DragThumb", this);
 
 			if (dragThumb != null)
