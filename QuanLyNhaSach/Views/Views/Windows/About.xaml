@@ -4,7 +4,7 @@
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         x:Name="window" x:Class="QuanLyNhaSach.Views.Views.Windows.About"
         WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
-        Height="100" Width="400">
+        Height="180" Width="600" AllowsTransparency="True" Background="{x:Null}">
     <Window.Resources>
         <Style x:Key="ButtonClose" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -26,25 +26,64 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <DockPanel x:Name="dockPanel" LastChildFill="True">
-        <Image x:Name="image" Source="../../../Assets/group_picture.jpg" Width="{Binding Height, ElementName=image}" Height="{Binding Height, ElementName=window}" Stretch="Fill"/>
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0" Direction="0" BlurRadius="16"/>
+    </Window.Effect>
+    <DockPanel x:Name="dockPanel" Height="180" Width="560" LastChildFill="True" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+        <Image x:Name="image" Source="../../../Assets/group_picture.jpg" Width="{Binding Height, ElementName=image}" Height="{Binding Height, ElementName=dockPanel}" Stretch="Fill"/>
         <Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="16"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                     <ColumnDefinition Width="16"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="16"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="8"/>
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Nhà sách Tiki" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
-                <TextBlock HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" Text="Made by NPT" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
-                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="www.null.com" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3" Foreground="#FF636363"/>
+                <TextBlock HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" Text="Made by team NPT" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="www.null.com" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" Foreground="#FF636363"/>
+                <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderThickness="0,1,1,0" Padding="4,2">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Grid FlowDirection="RightToLeft">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Credits"/>
+                        <Border BorderThickness="1,0,0,0" BorderBrush="Black" Grid.Column="2" Grid.RowSpan="4"/>
+
+                        <TextBlock Text=" ~ MahApps.Metro" Grid.Row="1" Margin="0" ToolTip="http://mahapps.com/" Grid.ColumnSpan="2"/>
+                        <TextBlock Text=" ~ WPF.MDI" Grid.Row="2" Margin="0" ToolTip="https://wpfmdi.codeplex.com/" Grid.ColumnSpan="2"/>
+                        <TextBlock Text=" ~ NUnit and NUnit Adapter" Grid.Row="3" Margin="0" ToolTip="From NuGet" Grid.ColumnSpan="2"/>
+                        <TextBlock Text=" ~ Report Library ...finding" Grid.Row="4" Margin="0" ToolTip="..." Grid.ColumnSpan="2"/>
+
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" Text="Tô Chính Tín" Margin="0,0,4,0"/>
+                    </Grid>
+                </Border>
             </Grid>
             <Button x:Name="btnClose" Content="" HorizontalAlignment="Right" Height="16" Margin="0,8,8,0" Style="{DynamicResource ButtonClose}" VerticalAlignment="Top" Width="16" Click="btnClose_Click"/>
         </Grid>
