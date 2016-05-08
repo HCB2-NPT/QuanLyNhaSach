@@ -11,15 +11,21 @@ namespace QuanLyNhaSach.Objects
     {
         public Author()
         {
-           
+            _id = 0;
         }
+
+        public Author(int id)
+        {
+            _id = id;
+        }
+
         private int _id;
 
         public int ID
         {
             get { return _id; }
-            set { _id = value; NotifyPropertyChanged("ID"); }
         }
+
         private string _name;
 
         public string Name

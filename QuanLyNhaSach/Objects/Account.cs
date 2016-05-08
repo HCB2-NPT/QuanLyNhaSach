@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public int ID { get { return _id; } private set { _id = value; NotifyPropertyChanged("ID"); } }
+        public int ID { get { return _id; } }
         public string Email { get { return _email; } set { _email = value; NotifyPropertyChanged("Email"); } }
         public string Password { get { return _password; } set { _password = value; NotifyPropertyChanged("Password"); } }
         public string Name { get { return _name; } set { _name = value; NotifyPropertyChanged("Name"); } }

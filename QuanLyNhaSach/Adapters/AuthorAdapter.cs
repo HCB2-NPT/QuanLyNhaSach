@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Adapters
 {
-    public class GenreAdapter
+    public class AuthorAdapter
     {
-        public static ObservableCollection<Genre> GetAll()
+        public static ObservableCollection<Author> GetAll()
         {
-            ObservableCollection<Genre> result = null;
+            ObservableCollection<Author> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select MaTheLoai,TenTheLoai from TheLoai");
+                var reader = DataConnector.ExecuteQuery("select MaTacGia,TenTacGia from TacGia");
                 if (reader != null)
                 {
-                    result = new ObservableCollection<Genre>();
+                    result = new ObservableCollection<Author>();
                     while (reader.Read())
                     {
-                        result.Add(new Genre(reader.GetInt32(0))
+                        result.Add(new Author(reader.GetInt32(0))
                         {
                             Name = (string)reader.GetValueDefault(1, null),
                         });
@@ -36,18 +36,18 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static ObservableCollection<Genre> GetGenres(int bookid)
+        public static ObservableCollection<Author> GetAuthors(int bookid)
         {
-            ObservableCollection<Genre> result = null;
+            ObservableCollection<Author> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select tl.MaTheLoai, tl.TenTheLoai from TheLoai tl, ChiTietTheLoaiSach ct where tl.MaTheLoai = ct.MaTheLoai and ct.MaSach = " + bookid);
+                var reader = DataConnector.ExecuteQuery("select tg.MaTacGia, tg.TenTacGia from TacGia tg, ChiTietTacGiaSach ct where tg.MaTacGia = ct.MaTacGia and ct.MaSach = " + bookid);
                 if (reader != null)
                 {
-                    result = new ObservableCollection<Genre>();
+                    result = new ObservableCollection<Author>();
                     while (reader.Read())
                     {
-                        result.Add(new Genre(reader.GetInt32(0))
+                        result.Add(new Author(reader.GetInt32(0))
                         {
                             Name = (string)reader.GetValueDefault(1, null),
                         });

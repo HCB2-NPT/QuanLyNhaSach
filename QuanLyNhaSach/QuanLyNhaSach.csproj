@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adapters\AuthorAdapter.cs" />
     <Compile Include="Adapters\BookAdapter.cs" />
     <Compile Include="Adapters\GenreAdapter.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="Adapters\CustomerAdapter.cs" />
     <Compile Include="Adapters\DataConnector.cs" />
     <Compile Include="Bus\AppHandler.cs" />
-    <Compile Include="Bus\FillData.cs" />
+    <Compile Include="Managers\FillData.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
     <Compile Include="Objects\Genre.cs" />

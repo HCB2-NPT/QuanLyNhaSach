@@ -67,7 +67,6 @@ namespace QuanLyNhaSach.Objects
         public int ID
         {
             get { return _id; }
-            set { _id = value; NotifyPropertyChanged("ID"); }
         }
         public Book()
         {

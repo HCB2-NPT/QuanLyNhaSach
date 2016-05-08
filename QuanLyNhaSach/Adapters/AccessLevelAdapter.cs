@@ -13,19 +13,45 @@ namespace QuanLyNhaSach.Adapters
     {
         public static ObservableCollection<AccessLevel> GetAll()
         {
-            var result = new ObservableCollection<AccessLevel>();
+            ObservableCollection<AccessLevel> result = null;
             try
             {
                 var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
                 if (reader != null)
                 {
+                    result = new ObservableCollection<AccessLevel>();
                     while (reader.Read())
                     {
-                        var a = new AccessLevel(reader.GetInt32(0))
+                        result.Add(new AccessLevel(reader.GetInt32(0))
+                        {
+                            Name = (string)reader.GetValueDefault(1, null)
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
+        public static AccessLevel GetAcessLevel(int id)
+        {
+            AccessLevel result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen where maphanquyen = " + id);
+                if (reader != null)
+                {
+                    result = new AccessLevel();
+                    while (reader.Read())
+                    {
+                        result = new AccessLevel(reader.GetInt32(0))
                         {
                             Name = (string)reader.GetValueDefault(1, null)
                         };
-                        result.Add(a);
+                        break;
                     }
                 }
             }

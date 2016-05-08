@@ -10,22 +10,6 @@ namespace QuanLyNhaSach.Objects
 {
     public class AccessLevel : INotifyPropertyChanged
     {
-        //==================================================
-        /*
-         * Khởi tạo các quyền truy cập sẵn có!
-         */
-        private static ObservableCollection<AccessLevel> _accessLevelList = null;
-        public static ObservableCollection<AccessLevel> AccessLevelList
-        {
-            get
-            {
-                if (_accessLevelList == null)
-                    _accessLevelList = Adapters.AccessLevelAdapter.GetAll();
-                return _accessLevelList;
-            }
-        }
-        //==================================================
-
         private int _id;
         private string _name = null;
 
@@ -46,7 +30,7 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public int ID { get { return _id; } private set { _id = value; NotifyPropertyChanged("ID"); } }
+        public int ID { get { return _id; } }
         public string Name { get { return _name; } set { _name = value; NotifyPropertyChanged("Name"); } }
     }
 }

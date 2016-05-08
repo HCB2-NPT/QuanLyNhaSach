@@ -34,7 +34,7 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public int ID { get { return _id; } private set { _id = value; NotifyPropertyChanged("ID"); } }
+        public int ID { get { return _id; } }
         public string Email { get { return _email; } set { _email = value; NotifyPropertyChanged("Email"); } }
         public string Name { get { return _name; } set { _name = value; NotifyPropertyChanged("Name"); } }
         public bool IsDeleted { get { return _isDeleted; } set { _isDeleted = value; NotifyPropertyChanged("IsDeleted"); } }

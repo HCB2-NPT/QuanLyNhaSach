@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,14 @@ namespace QuanLyNhaSach.Objects
         {
             _id = id;
         }
+
         private int _id;
 
         public int ID
         {
             get { return _id; }
-            set { _id = value; NotifyPropertyChanged("ID"); }
         }
+
         private string _name;
 
         public string Name
