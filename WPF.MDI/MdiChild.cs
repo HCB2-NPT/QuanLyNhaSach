@@ -163,7 +163,7 @@ namespace WPF.MDI
 		public UIElement Content
 		{
 			get { return (UIElement)GetValue(ContentProperty); }
-			set { SetValue(ContentProperty, value); }
+            set { SetValue(ContentProperty, value); }
 		}
 
 		/// <summary>
