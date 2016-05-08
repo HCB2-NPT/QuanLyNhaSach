@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Views/Styles/ListViewTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/TextBoxTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/PasswordBoxTemplates.xaml"/>
+                <ResourceDictionary Source="Views/Styles/CheckBoxTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
     	</ResourceDictionary>
          

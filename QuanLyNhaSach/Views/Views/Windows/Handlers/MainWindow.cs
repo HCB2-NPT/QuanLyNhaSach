@@ -61,7 +61,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 {
                     _book.Children.Add(new Binding("Thư viện") { Tag = typeof(tabQuanLySach) });
                     _book.Children.Add(new Binding("Thể loại") { Tag = typeof(tabTheLoai) });
-                    _book.Children.Add(new Binding("Tác Giả") { Tag = "<Tab mà nó giữ>" });
+                    _book.Children.Add(new Binding("Tác Giả") { Tag = typeof(tabTacGia) });
                 }
                 var _bill = new Binding();
                 {
@@ -427,6 +427,33 @@ namespace QuanLyNhaSach.Views.Views.Windows
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
             mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
+        }
+        #endregion
+
+        #region Controls Events
+        private void btnQuyDinhFull_Click(object sender, RoutedEventArgs e)
+        {
+            var type = typeof(tabQuyDinh) as Type;
+            var key = false;
+            if (type != null)
+            {
+                if (!key)
+                {
+                    var type_string = type.ToString();
+                    var first = mdiContainer.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
+                    if (first != null)
+                    {
+                        first.Focus();
+                        return;
+                    }
+                }
+                var content = (UserControl)Activator.CreateInstance(type);
+                var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = "Quy định cửa hàng" };
+                mdiChild.MinWidth = content.MinWidth;
+                mdiChild.MinHeight = content.MinHeight;
+                mdiChild.Background = content.Background;
+                mdiContainer.Children.Add(mdiChild);
+            }
         }
         #endregion
     }

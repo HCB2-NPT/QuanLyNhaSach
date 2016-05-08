@@ -103,5 +103,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        
     }
 }

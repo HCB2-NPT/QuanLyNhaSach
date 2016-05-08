@@ -108,7 +108,7 @@
                 </Button>
             </DockPanel>
             <DockPanel>
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -139,7 +139,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="btnQuyDinhFull_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>

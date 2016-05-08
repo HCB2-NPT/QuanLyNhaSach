@@ -100,6 +100,12 @@
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\ErrorTypes\LoginErrors.cs" />
     <Compile Include="Errors\ErrorTypes\QueryErrors.cs" />
+    <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">
+      <DependentUpon>tabQuyDinh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabTacGia.xaml.cs">
+      <DependentUpon>tabTacGia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\Windows\Handlers\About.cs" />
     <Compile Include="Views\Views\Windows\Handlers\MainWindow.cs" />
     <Compile Include="Views\Views\UserControls\ListViewItemChiTietHD.xaml.cs">
@@ -166,6 +172,10 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
+    <Page Include="Views\Styles\CheckBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Styles\ListViewTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -213,6 +223,14 @@
     <Page Include="Views\Views\UserControls\tabQuanLySach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabQuyDinh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabTacGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabTheLoai.xaml">
       <SubType>Designer</SubType>
