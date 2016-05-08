@@ -35,6 +35,40 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Style x:Key="MenuItem_BaseStyle" TargetType="MenuItem">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Padding" Value="6,0,6,2"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border Name="background" Background="Transparent">
+                            <Grid>
+                                <ContentPresenter Content="{TemplateBinding Icon}" Margin="-100,0,0,0" Width="24" Height="24"/>
+                                <ContentPresenter Content="{TemplateBinding Header}" Margin="36,4,8,0" MinWidth="128"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="background" Property="Background" Value="#FFB3D6F2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Role" Value="TopLevelHeader">
+                    <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}"/>
+                    <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#FFB3D6F2" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="true">
+                    <Setter Property="Background" Value="#FFB3D6F2" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="_btnMenuMini">
@@ -196,18 +230,23 @@
                     <DockPanel LastChildFill="True">
                         <mdi:MdiContainer Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
                             <mdi:MdiContainer.Menu>
-                                <Menu DockPanel.Dock="Top">
-                                    <MenuItem Header="+">
-                                        <MenuItem Header="Close this" Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click"/>
-                                        <MenuItem Header="Close all but this" Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click"/>
-                                        <MenuItem Header="Close all" Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click"/>
+                                <Menu Height="24">
+                                    <Menu.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True" VerticalAlignment="Center"/>
+                                        </ItemsPanelTemplate>
+                                    </Menu.ItemsPanel>
+                                    <MenuItem Header="+" Style="{StaticResource MenuItem_BaseStyle}">
+                                        <MenuItem Header="Close this" Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Close all but this" Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Close all" Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
                                     </MenuItem>
-                                    <MenuItem Header="Theme">
-                                        <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
-                                        <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
-                                        <MenuItem Header="Metro" Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
+                                    <MenuItem Header="Theme" Style="{StaticResource MenuItem_BaseStyle}">
+                                        <MenuItem Header="Luna" Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Aero" Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                        <MenuItem Header="Metro" Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
                                     </MenuItem>
-                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" />
+                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" Style="{StaticResource MenuItem_BaseStyle}"/>
                                 </Menu>
                             </mdi:MdiContainer.Menu>
                         </mdi:MdiContainer>

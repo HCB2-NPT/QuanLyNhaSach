@@ -387,7 +387,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = item.Data as string };
                     mdiChild.MinWidth = content.MinWidth;
                     mdiChild.MinHeight = content.MinHeight;
-                    mdiChild.Background = Brushes.Transparent;
+                    mdiChild.Background = content.Background;
                     mdiContainer.Children.Add(mdiChild);
                 }
             }
@@ -413,15 +413,20 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild child = mdiContainer.Children[i];
                 mi = new MenuItem { Header = child.Title };
                 mi.Click += (o, ev) => child.Focus();
-                WindowsMenu.Items.Add(mi);
+                mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
+                WindowsMenu.Items.Insert(i, mi);
             }
+
             WindowsMenu.Items.Add(new Separator());
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
+            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Horizontally" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileHorizontal;
+            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
+            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
         }
         #endregion
     }

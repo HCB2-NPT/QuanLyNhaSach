@@ -38,8 +38,6 @@
     <SolidColorBrush x:Key="TitleButtonColorOver" Color="#FA0567B9" />
     <SolidColorBrush x:Key="TitleButtonCloseColorOver" Color="#FFE81123" />
 
-    <SolidColorBrush x:Key="TitleButtonBackgroundColorWhenMaximized" Color="#FFB6B6B6" />
-
     <SolidColorBrush x:Key="ChildBackgroundBrush" Color="#FFEFEBDE" />
 
     <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
@@ -102,9 +100,6 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="Border" Property="BorderThickness" Value="0"/>
                             <Setter TargetName="btnMax_img" Property="Source" Value="{StaticResource ButtonRestore}"/>
-                            <Setter TargetName="MinimizeButton" Property="Background" Value="{StaticResource TitleButtonBackgroundColorWhenMaximized}"/>
-                            <Setter TargetName="MaximizeButton" Property="Background" Value="{StaticResource TitleButtonBackgroundColorWhenMaximized}"/>
-                            <Setter TargetName="CloseButton" Property="Background" Value="{StaticResource TitleButtonBackgroundColorWhenMaximized}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
