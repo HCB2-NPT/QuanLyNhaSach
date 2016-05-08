@@ -43,7 +43,7 @@ namespace QuanLyNhaSach.Managers
                 if (_user != null)
                     return ErrorManager.Current.LoginDuplicate.Call();
                 Account user;
-                if (!Adapters.AccoutAdapter.IsExists(username, password, out user))
+                if (!Bus.CheckData.IsAccountExist(username, password, out user))
                     return ErrorManager.Current.NotExistsAccount.Call();
                 Info = user;
                 return null;

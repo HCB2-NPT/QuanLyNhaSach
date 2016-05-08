@@ -15,6 +15,18 @@ namespace QuanLyNhaSach.Bus
             Application.Current.Shutdown(exitcode);
         }
 
+        public static void VirtualWindowClose(Window window)
+        {
+            if (window.Visibility != Visibility.Hidden)
+                window.Visibility = Visibility.Hidden;
+        }
+
+        public static void VirtualWindowOpen(Window window)
+        {
+            if (window.Visibility != Visibility.Visible)
+                window.Visibility = Visibility.Visible;
+        }
+
         public static void ProcessStart(params string[] processStartParameters)
         {
             if (processStartParameters.Length <= 1)

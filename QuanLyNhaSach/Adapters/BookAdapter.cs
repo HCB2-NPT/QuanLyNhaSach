@@ -13,19 +13,28 @@ namespace QuanLyNhaSach.Adapters
     {
         public static ObservableCollection<Book> GetAll()
         {
-            
             ObservableCollection<Book> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select Sach.MaSach,TenSach,TenTheLoai,TenTacGia,SoLuongTon,DonGia,AnhBia,BiXoa" +
-                                                        "from Sach,ChiTietTheLoaiSach,ChiTietTacGiaSach" +
-                                                        "where Sach.MaSach = ChiTietTheLoaiSach.MaSach and ChiTietTheLoaiSach.MaTheLoai = TheLoai.MaTheLoai and Sach.MaSach=ChiTietTacGiaSach.MaSach and ChiTietTacGiaSach.MaTacGia=TacGia.MaTacGia");
+                var reader = DataConnector.ExecuteQuery("select MaSach,TenSach,AnhBia,SoLuongTon,DonGia,BiXoa " +
+                                                        "from Sach ");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Book>();
                     while (reader.Read())
                     {
-                        //result.Add(FindBook(new Book(reader.GetInt32(0))));
+                        var id = reader.GetInt32(0);
+                        result.Add(new Book(id)
+                        {
+                            Name = (string)reader.GetValueDefault(1, null),
+                            Image = (string)reader.GetValueDefault(2, null),
+                            Number = (int)reader.GetValueDefault(3, 0),
+                            Price = (int)reader.GetValueDefault(4, 0),
+                            IsDelete = (bool)reader.GetValueDefault(5, false),
+
+                            Authors = AuthorAdapter.GetAuthorsForBook(id),
+                            Genres = GenreAdapter.GetGenresForBook(id)
+                        });
                     }
                 }
             }
@@ -35,20 +44,102 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
-        public static ObservableCollection<Book> GetBook(Genre g)
+
+        public static ObservableCollection<Book> GetDeletedBooks()
         {
             ObservableCollection<Book> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select Sach.MaSach,TenSach,TenTheLoai,TenTacGia,SoLuongTon,DonGia,AnhBia,BiXoa" +
-                                                        "from Sach,TacGia,TheLoai,ChiTietTheLoaiSach,ChiTietTacGiaSach" +
-                                                        "where Sach.MaSach = ChiTietTheLoaiSach.MaSach and ChiTietTheLoaiSach.MaTheLoai = TheLoai.MaTheLoai and Sach.MaSach=ChiTietTacGiaSach.MaSach and ChiTietTacGiaSach.MaTacGia=TacGia.MaTacGia and TheLoai.MaTheLoai = " + g.ID);
+                var reader = DataConnector.ExecuteQuery("select MaSach,TenSach,AnhBia,SoLuongTon,DonGia " +
+                                                        "from Sach " +
+                                                        "where BiXoa = 'true'");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Book>();
                     while (reader.Read())
                     {
-                        //result.Add(FindBook(new Book(reader.GetInt32(0))));
+                        var id = reader.GetInt32(0);
+                        result.Add(new Book(id)
+                        {
+                            Name = (string)reader.GetValueDefault(1, null),
+                            Image = (string)reader.GetValueDefault(2, null),
+                            Number = (int)reader.GetValueDefault(3, 0),
+                            Price = (int)reader.GetValueDefault(4, 0),
+                            IsDelete = true,
+
+                            Authors = AuthorAdapter.GetAuthorsForBook(id),
+                            Genres = GenreAdapter.GetGenresForBook(id)
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
+        public static ObservableCollection<Book> GetBooksForGenre(int genreid)
+        {
+            ObservableCollection<Book> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select s.MaSach,s.TenSach,s.AnhBia,s.SoLuongTon,s.DonGia,s.BiXoa " +
+                                                        "from Sach s, ChiTietTheLoaiSach ct " +
+                                                        "where s.MaSach = ct.MaSach and ct.MaTheLoai = " + genreid);
+                if (reader != null)
+                {
+                    result = new ObservableCollection<Book>();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        result.Add(new Book(id)
+                        {
+                            Name = (string)reader.GetValueDefault(1, null),
+                            Image = (string)reader.GetValueDefault(2, null),
+                            Number = (int)reader.GetValueDefault(3, 0),
+                            Price = (int)reader.GetValueDefault(4, 0),
+                            IsDelete = (bool)reader.GetValueDefault(5, false),
+
+                            Authors = AuthorAdapter.GetAuthorsForBook(id),
+                            Genres = GenreAdapter.GetGenresForBook(id)
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
+        public static ObservableCollection<Book> GetBooksForAuthor(int authorid)
+        {
+            ObservableCollection<Book> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select s.MaSach,s.TenSach,s.AnhBia,s.SoLuongTon,s.DonGia,s.BiXoa " +
+                                                        "from Sach s, ChiTietTacGiaSach ct " +
+                                                        "where s.MaSach = ct.MaSach and ct.MaTacGia = " + authorid);
+                if (reader != null)
+                {
+                    result = new ObservableCollection<Book>();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        result.Add(new Book(id)
+                        {
+                            Name = (string)reader.GetValueDefault(1, null),
+                            Image = (string)reader.GetValueDefault(2, null),
+                            Number = (int)reader.GetValueDefault(3, 0),
+                            Price = (int)reader.GetValueDefault(4, 0),
+                            IsDelete = (bool)reader.GetValueDefault(5, false),
+
+                            Authors = AuthorAdapter.GetAuthorsForBook(id),
+                            Genres = GenreAdapter.GetGenresForBook(id)
+                        });
                     }
                 }
             }

@@ -36,7 +36,7 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static ObservableCollection<Genre> GetGenres(int bookid)
+        public static ObservableCollection<Genre> GetGenresForBook(int bookid)
         {
             ObservableCollection<Genre> result = null;
             try

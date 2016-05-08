@@ -13,7 +13,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #region Window Events
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
         #endregion
 
@@ -21,19 +21,19 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void _ca_Click(object sender, RoutedEventArgs e)
         {
             Bus.AppHandler.ProcessStart("OUTLOOK", "outlook", "/select outlook:calendar");
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
 
         private void _cal_Click(object sender, RoutedEventArgs e)
         {
             Bus.AppHandler.ProcessStart("Calculator", "calc.exe");
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
 
         private void _mes_Click(object sender, RoutedEventArgs e)
         {
             Bus.AppHandler.ProcessStart("OUTLOOK", "outlook");
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
         #endregion
     }

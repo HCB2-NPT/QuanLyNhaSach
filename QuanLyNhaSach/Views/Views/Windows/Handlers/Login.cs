@@ -19,8 +19,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (error == null)
             {
+                Bus.AppHandler.VirtualWindowClose(this);
                 LoginWarningTimes = 0;
-                Visibility = System.Windows.Visibility.Hidden;
                 Username = "";
                 Password = "";
                 if (MainWindow == null)
@@ -30,7 +30,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     MainWindow.Show();
                 }
                 else
-                    MainWindow.Visibility = System.Windows.Visibility.Visible;
+                    Bus.AppHandler.VirtualWindowOpen(MainWindow);
             }
             else if (!Managers.Manager.Current.Error.Ignore)
             {

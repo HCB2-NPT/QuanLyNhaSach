@@ -23,7 +23,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabKhachHang()
         {
             InitializeComponent();
-            lv_DSKhachHang.ItemsSource = Adapters.CustomerAdapter.GetAllCustomers();
+            lv_DSKhachHang.ItemsSource = Adapters.CustomerAdapter.GetAll();
             //DataContext = Manager.Manager.Current; //để binding
         }
     }

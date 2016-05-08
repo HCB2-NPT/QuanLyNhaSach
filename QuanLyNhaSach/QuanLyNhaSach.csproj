@@ -84,11 +84,13 @@
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
-    <Compile Include="Adapters\AccoutAdapter.cs" />
+    <Compile Include="Adapters\AccountAdapter.cs" />
     <Compile Include="Adapters\CustomerAdapter.cs" />
     <Compile Include="Adapters\DataConnector.cs" />
     <Compile Include="Bus\AppHandler.cs" />
+    <Compile Include="Bus\CheckData.cs" />
     <Compile Include="Bus\FillData.cs" />
+    <Compile Include="Bus\SearchData.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
     <Compile Include="Objects\Genre.cs" />

@@ -10,21 +10,20 @@ namespace QuanLyNhaSach.Objects
 {
     public class Book : INotifyPropertyChanged
     {
-        private ObservableCollection<Author> _listAuthor;
+        private ObservableCollection<Author> _authors;
 
-        public ObservableCollection<Author> ListAuthor
+        public ObservableCollection<Author> Authors
         {
-            get { return _listAuthor; }
-            set { _listAuthor = value; NotifyPropertyChanged("ListAuthor"); }
+            get { return _authors; }
+            set { _authors = value; NotifyPropertyChanged("Authors"); }
         }
-        private ObservableCollection<Genre> _listGenre;
+        private ObservableCollection<Genre> _genres;
 
-        public ObservableCollection<Genre> ListGenre
+        public ObservableCollection<Genre> Genres
         {
-            get { return _listGenre; }
-            set { _listGenre = value; NotifyPropertyChanged("ListGenre"); }
+            get { return _genres; }
+            set { _genres = value; NotifyPropertyChanged("Genres"); }
         }
-        private string _author = "";
 
       
         private string _name;

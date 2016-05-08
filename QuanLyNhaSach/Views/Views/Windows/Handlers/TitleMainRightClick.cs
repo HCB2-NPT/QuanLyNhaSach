@@ -13,7 +13,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             minimize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Minimized);
             maximize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Maximized);
-            Visibility = System.Windows.Visibility.Visible;
+            Bus.AppHandler.VirtualWindowOpen(this);
         }
         #endregion
 
@@ -21,20 +21,20 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void minimize_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Host.WindowState = System.Windows.WindowState.Minimized;
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
 
         private void maximize_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Host.WindowState = System.Windows.WindowState.Maximized;
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
         #endregion
 
         #region Window Events
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
         
         private void close_Click(object sender, System.Windows.RoutedEventArgs e)

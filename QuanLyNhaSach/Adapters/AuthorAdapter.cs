@@ -36,7 +36,7 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static ObservableCollection<Author> GetAuthors(int bookid)
+        public static ObservableCollection<Author> GetAuthorsForBook(int bookid)
         {
             ObservableCollection<Author> result = null;
             try

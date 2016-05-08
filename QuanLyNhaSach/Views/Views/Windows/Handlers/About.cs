@@ -11,7 +11,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #region Window Events
         private void btnClose_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Visibility = System.Windows.Visibility.Hidden;
+            Bus.AppHandler.VirtualWindowClose(this);
         }
         #endregion
     }

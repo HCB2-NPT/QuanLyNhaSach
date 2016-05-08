@@ -36,7 +36,7 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static AccessLevel GetAcessLevel(int id)
+        public static AccessLevel GetAcessLevelById(int id)
         {
             AccessLevel result = null;
             try
@@ -44,7 +44,6 @@ namespace QuanLyNhaSach.Adapters
                 var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen where maphanquyen = " + id);
                 if (reader != null)
                 {
-                    result = new AccessLevel();
                     while (reader.Read())
                     {
                         result = new AccessLevel(reader.GetInt32(0))

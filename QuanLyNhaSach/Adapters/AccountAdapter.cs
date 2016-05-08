@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Adapters
 {
-    public class AccoutAdapter
+    public class AccountAdapter
     {
         public static ObservableCollection<Account> GetAll(bool findDeletedToo = false)
         {
@@ -18,8 +18,8 @@ namespace QuanLyNhaSach.Adapters
             {
                 var reader = DataConnector.ExecuteQuery(
                     string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen, tk.bixoa " +
-                    "from taikhoan tk, phanquyen pq" +
-                    "{0} tk.maphanquyen = pq.maphanquyen", findDeletedToo ? "" : "tk.bixoa = 'false' and"));
+                    "from taikhoan tk, phanquyen pq " +
+                    "where {0} tk.maphanquyen = pq.maphanquyen", findDeletedToo ? "" : "tk.bixoa = 'false' and"));
                 if (reader != null)
                 {
                     result = new ObservableCollection<Account>();
@@ -49,7 +49,7 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 var reader = DataConnector.ExecuteQuery(
-                    @"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen, tk.bixoa " +
+                    @"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen " +
                     "from taikhoan tk, phanquyen pq " +
                     "where tk.maphanquyen = pq.maphanquyen and tk.bixoa = 'true'");
                 if (reader != null)
@@ -63,7 +63,7 @@ namespace QuanLyNhaSach.Adapters
                             Password = (string)reader.GetValueDefault(2, null),
                             Name = (string)reader.GetValueDefault(3, null),
                             AccessLevel = new AccessLevel(reader.GetInt32(4)) { Name = (string)reader.GetValueDefault(5, null) },
-                            IsDeleted = (bool)reader.GetValueDefault(6, false),
+                            IsDeleted = true,
                         });
                     }
                 }
@@ -86,7 +86,6 @@ namespace QuanLyNhaSach.Adapters
                     "where tk.mataikhoan = {0} {1} and tk.maphanquyen = pq.maphanquyen", id, findDeletedToo ? "" : "and tk.bixoa = 'false'"));
                 if (reader != null)
                 {
-                    result = new Account();
                     while (reader.Read())
                     {
                         result = new Account(reader.GetInt32(0))
@@ -94,7 +93,7 @@ namespace QuanLyNhaSach.Adapters
                             Email = (string)reader.GetValueDefault(1, null),
                             Password = (string)reader.GetValueDefault(2, null),
                             Name = (string)reader.GetValueDefault(3, null),
-                            AccessLevel = AccessLevelAdapter.GetAcessLevel(reader.GetInt32(4)),
+                            AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4)),
                             IsDeleted = (bool)reader.GetValueDefault(5, false),
                         };
                         break;
@@ -126,7 +125,7 @@ namespace QuanLyNhaSach.Adapters
                             Email = (string)reader.GetValueDefault(1, null),
                             Password = (string)reader.GetValueDefault(2, null),
                             Name = (string)reader.GetValueDefault(3, null),
-                            AccessLevel = AccessLevelAdapter.GetAcessLevel(reader.GetInt32(4)),
+                            AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4)),
                             IsDeleted = (bool)reader.GetValueDefault(5, false),
                         };
                         break;

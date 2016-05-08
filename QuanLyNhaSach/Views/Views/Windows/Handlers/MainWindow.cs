@@ -131,7 +131,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         /*
          * Đóng (ảo) MainWindow khi đăng xuất
          */
-        private void VisualWindowClose()
+        private void VirtualWindowClose()
         {
             //thu nhỏ window lại
             if (WindowState != System.Windows.WindowState.Normal)
@@ -198,11 +198,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 TitleMainRightClick = new TitleMainRightClick(this);
                 TitleMainRightClick.Show();
             }
+            TitleMainRightClick._Show();
             var p = Assets.Scripts.Cursor.GetCursorPosition();
             TitleMainRightClick.Left = p.X;
             TitleMainRightClick.Top = p.Y;
-            if (!TitleMainRightClick.IsVisible)
-                TitleMainRightClick._Show();
             TitleMainRightClick.Focus();
         }
 
@@ -287,16 +286,16 @@ namespace QuanLyNhaSach.Views.Views.Windows
         }
         #endregion
 
-        #region Login Events
+        #region Login/Logout Events
         /*
          * Sự kiện đăng xuất
          */
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            VisualWindowClose();
-            Visibility = System.Windows.Visibility.Hidden;
+            VirtualWindowClose();
+            Bus.AppHandler.VirtualWindowClose(this);
             Managers.Manager.Current.User.Logout();
-            Owner.Visibility = System.Windows.Visibility.Visible;
+            Bus.AppHandler.VirtualWindowOpen(Owner);
         }
 
         /*
@@ -322,11 +321,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 ToolBox = new ToolBox();
                 ToolBox.Show();
             }
+            Bus.AppHandler.VirtualWindowOpen(ToolBox);
             var p = Assets.Scripts.Cursor.GetCursorPosition();
             ToolBox.Left = p.X;
             ToolBox.Top = p.Y;
-            if (!ToolBox.IsVisible)
-                ToolBox.Visibility = System.Windows.Visibility.Visible;
             ToolBox.Focus();
         }
         
@@ -340,8 +338,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 About = new About();
                 About.Show();
             }
-            if (!About.IsVisible)
-                About.Visibility = System.Windows.Visibility.Visible;
+            Bus.AppHandler.VirtualWindowOpen(About);
             About.Focus();
         }
 
