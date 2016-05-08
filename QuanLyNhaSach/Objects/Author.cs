@@ -9,9 +9,13 @@ namespace QuanLyNhaSach.Objects
 {
     public class Author : INotifyPropertyChanged
     {
-        private string _id;
+        public Author()
+        {
+           
+        }
+        private int _id;
 
-        public string ID
+        public int ID
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged("ID"); }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,20 +10,23 @@ namespace QuanLyNhaSach.Objects
 {
     public class Book : INotifyPropertyChanged
     {
+        private ObservableCollection<Author> _listAuthor;
+
+        public ObservableCollection<Author> ListAuthor
+        {
+            get { return _listAuthor; }
+            set { _listAuthor = value; NotifyPropertyChanged("ListAuthor"); }
+        }
+        private ObservableCollection<Genre> _listGenre;
+
+        public ObservableCollection<Genre> ListGenre
+        {
+            get { return _listGenre; }
+            set { _listGenre = value; NotifyPropertyChanged("ListGenre"); }
+        }
         private string _author = "";
 
-        public string Author
-        {
-            get { return _author; }
-            set { _author = value; NotifyPropertyChanged("Author"); }
-        }
-        private string _type = "";
-
-        public string Type
-        {
-            get { return _type; }
-            set { _type = value; NotifyPropertyChanged("Type"); }
-        }
+      
         private string _name;
 
         public string Name
