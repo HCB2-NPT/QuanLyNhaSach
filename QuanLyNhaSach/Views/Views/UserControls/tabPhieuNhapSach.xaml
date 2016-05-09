@@ -4,11 +4,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
-	mc:Ignorable="d"
+	xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabPhieuNhapSach"
 	x:Name="UserControl"
 	d:DesignHeight="600" d:DesignWidth="600">
-
     <DockPanel>
         <DockPanel Margin="0,4,0,0" Width="300" LastChildFill="False">
             <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1">
