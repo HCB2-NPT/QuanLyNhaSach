@@ -4,7 +4,7 @@
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         x:Name="window" x:Class="QuanLyNhaSach.Views.Views.Windows.About"
         WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
-        Height="180" Width="600" AllowsTransparency="True" Background="{x:Null}">
+        Height="180" Width="560">
     <Window.Resources>
         <Style x:Key="ButtonClose" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -26,11 +26,8 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Window.Effect>
-        <DropShadowEffect ShadowDepth="0" Direction="0" BlurRadius="16"/>
-    </Window.Effect>
-    <DockPanel x:Name="dockPanel" Height="180" Width="560" LastChildFill="True" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
-        <Image x:Name="image" Source="../../../Assets/group_picture.jpg" Width="{Binding Height, ElementName=image}" Height="{Binding Height, ElementName=dockPanel}" Stretch="Fill"/>
+    <DockPanel x:Name="dockPanel" LastChildFill="True">
+        <Image x:Name="image" Source="../../../Assets/group_picture.jpg" Width="{Binding Height, ElementName=image}" Height="{Binding Height, ElementName=window}" Stretch="Fill"/>
         <Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -79,9 +76,9 @@
                         <TextBlock Text=" ~ NUnit and NUnit Adapter" Grid.Row="3" Margin="0" ToolTip="From NuGet" Grid.ColumnSpan="2"/>
                         <TextBlock Text=" ~ Report Library ...finding" Grid.Row="4" Margin="0" ToolTip="..." Grid.ColumnSpan="2"/>
 
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0"/>
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0"/>
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" Text="Tô Chính Tín" Margin="0,0,4,0"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0" ToolTip="1542243"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0" ToolTip="1542255"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" Text="Tô Chính Tín" Margin="0,0,4,0" ToolTip="1542276"/>
                     </Grid>
                 </Border>
             </Grid>

@@ -24,8 +24,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             InitializeComponent();
             var workingArea = Assets.Scripts.WpfScreen.GetScreenFrom(this).WorkingArea;
-            Top = workingArea.Height - Height - 16;
-            Left = workingArea.Width - Width - 16;
+            Top = workingArea.Height - Height;
+            Left = workingArea.Width - Width;
         }
         #endregion
     }

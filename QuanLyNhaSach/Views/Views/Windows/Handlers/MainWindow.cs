@@ -336,6 +336,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
             if (About == null)
             {
                 About = new About();
+                About.Owner = this;
                 About.Show();
             }
             Bus.AppHandler.VirtualWindowOpen(About);
