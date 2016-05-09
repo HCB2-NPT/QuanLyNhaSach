@@ -7,24 +7,28 @@
 	mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyPhieuNhap"
 	x:Name="UserControl"
-	d:DesignWidth="600" d:DesignHeight="600" Background="LightGray">
-	
-	<DockPanel>
-		<DockPanel Margin="8,4" DockPanel.Dock="Top" Height="48" Background="White">
-			<Button Content="Button" Height="24" VerticalAlignment="Center" Width="24" DockPanel.Dock="Right" Template="{DynamicResource Button_Icon_Template}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4">
-				<Button.Background>
-					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Search-64.png"/>
-				</Button.Background>
-			</Button>
-			<TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
-		</DockPanel>
-		<DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
-			<ListView>
-			</ListView>
-		</DockPanel>
-		<DockPanel Margin="0,4,0,8" Width="584" Background="White">
-			<ListView DockPanel.Dock="Top"/>
-		</DockPanel>
-	</DockPanel>
-	
-	</UserControl>
+	d:DesignWidth="600" d:DesignHeight="600" Background="White">
+
+    <DockPanel>
+
+        <DockPanel Margin="8,4" DockPanel.Dock="Top" Height="48" Background="White">
+            <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
+                <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
+            </Button>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
+            <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}"/>
+        </DockPanel>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0,0,16,8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" DockPanel.Dock="Bottom">
+            <DockPanel Background="White">
+                <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
+                <TextBlock Text="Lưu thay đổi" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
+            </DockPanel>
+        </Button>
+        <DockPanel Margin="8" Background="White" DockPanel.Dock="Top">
+            <ListView DockPanel.Dock="Top" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" Margin="0"/>
+        </DockPanel>
+    </DockPanel>
+
+</UserControl>
