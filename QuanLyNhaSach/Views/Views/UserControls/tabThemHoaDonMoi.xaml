@@ -10,7 +10,7 @@
     <DockPanel>
         <DockPanel LastChildFill="False" DockPanel.Dock="Top" Height="60" Margin="8,4" Background="White">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="4"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="24,0,0,0" Padding="8,4,0,0"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="24,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Sách" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="4"/>
@@ -25,18 +25,19 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0"/>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Thể Loại" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="1"/>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tác Giả" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="2"/>
+                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>
+                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Thể Loại" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
+                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tác Giả" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
                 <DockPanel Margin="0,0,8,0" Grid.Column="1" Grid.RowSpan="2">
                     <MetroControls:NumericUpDown TextAlignment="Right" Maximum="300" Minimum="0" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="Số lượng:" Margin="0,0,4,0" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock Text="Số lượng:" Margin="0,0,4,0" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999"/>
                 </DockPanel>
-                <Border Grid.Column="1" Margin="4" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Left" Padding="2" VerticalAlignment="Center" BorderBrush="#FF135995" BorderThickness="1">
-                    <Button VerticalAlignment="Center" Height="32" Width="100" Foreground="#FF3498DB" BorderBrush="#FF3498DB" HorizontalAlignment="Left">
-                        <Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png"/>
-                    </Button>
-                </Border>
+                <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,8,0" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Center" OpacityMask="#FFB3D6F2">
+                	<DockPanel>
+                		<Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png" Width="24" Height="24" Stretch="Fill"/>	
+						<TextBlock Text="Nhập" Foreground="#FF3498DB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0,0,0"/>
+					</DockPanel>
+                </Button>
             </Grid>
         </DockPanel>
         <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="8,4">
@@ -50,14 +51,18 @@
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,0,0"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="1"/>
-                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="2"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="1"/>
+                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="2"/>
 
-                <TextBlock Text="100,000" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,8,0"/>
-                <TextBox Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center"/>
-                <TextBlock Text="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,8,0" Grid.Row="2"/>
-                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Content="In Hóa Đơn" Background="#FF3498DB" BorderBrush="{x:Null}" Foreground="White" BorderThickness="0" Margin="0,8,16,8" Width="80" Height="60" Grid.RowSpan="3" Grid.Column="1"/>
+                <TextBlock Text="100,000" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0"/>
+                <TextBox Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Foreground="#FF999999"/>
+                <TextBlock Text="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Row="2"/>
+                <Button Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="0" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+					<Border Background="#FFCCCCCC">
+						<TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF767676"/>
+					</Border>
+				</Button>
 
             </Grid>
         </DockPanel>

@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:usercontrols="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600" Background="LightGray">
+             d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
         <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="8,4" Height="48" Background="#FFF4F4F4">
             <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,8">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
             </Button>
-            <TextBox Style="{StaticResource TextBoxListViewItem}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" VerticalAlignment="Center" Margin="8,0,0,0"/>
+            <TextBox Style="{StaticResource TextBoxListViewItem}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#FF999999"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="8,4" Background="White">
             <Button BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="8,0,0,0" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
@@ -24,6 +24,6 @@
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
             </Button>
         </DockPanel>
-        <ListView x:Name="listbox_DSSach" BorderThickness="0" Background="White" Margin="8,4" ItemTemplate="{DynamicResource lvi_QuanLySach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" />
+        <ListView x:Name="listbox_DSSach" BorderThickness="0" Background="#FFCCCCCC" Margin="8,4" ItemTemplate="{DynamicResource lvi_QuanLySach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" Foreground="{x:Null}" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
     </DockPanel>
 </UserControl>

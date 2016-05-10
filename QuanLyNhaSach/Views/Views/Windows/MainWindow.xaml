@@ -78,12 +78,12 @@
             <BeginStoryboard Storyboard="{StaticResource MenuFullToMini}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="WindowGrid">
+    <Grid x:Name="WindowGrid" d:IsLocked="True">
         <Grid.Background>
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">

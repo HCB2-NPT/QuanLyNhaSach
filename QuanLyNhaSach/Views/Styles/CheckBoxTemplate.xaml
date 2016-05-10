@@ -3,10 +3,10 @@
     <ControlTemplate x:Key="CheckBoxQuyDinh" TargetType="{x:Type CheckBox}">
         <Grid Background="{TemplateBinding Background}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="36"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <CheckBox Width="Auto" Height="Auto" Margin="4,10,4,0" IsChecked="{TemplateBinding IsChecked}" VerticalAlignment="Top" HorizontalAlignment="Center" BorderBrush="{TemplateBinding BorderBrush}" Foreground="{TemplateBinding Foreground}"/>
+            <CheckBox Height="Auto" Margin="4,10,4,0" IsChecked="{TemplateBinding IsChecked}" VerticalAlignment="Top" HorizontalAlignment="Center" BorderBrush="{TemplateBinding BorderBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" />
         </Grid>
     </ControlTemplate>

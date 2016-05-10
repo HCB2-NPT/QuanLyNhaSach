@@ -15,10 +15,10 @@
             <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
-            <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}"/>
+            <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}" Foreground="#FF999999" BorderBrush="#FF999999"/>
         </DockPanel>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0,0,16,8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" DockPanel.Dock="Bottom">
             <DockPanel Background="White">
@@ -27,7 +27,7 @@
             </DockPanel>
         </Button>
         <DockPanel Margin="8" Background="White" DockPanel.Dock="Top">
-            <ListView DockPanel.Dock="Top" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" Margin="0"/>
+            <ListView DockPanel.Dock="Top" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" Margin="0" BorderBrush="#FF999999" Foreground="#FF999999"/>
         </DockPanel>
     </DockPanel>
 

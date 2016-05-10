@@ -11,7 +11,7 @@
             <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
         </DockPanel>
         <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="8,4">
             <Grid>
@@ -24,13 +24,13 @@
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,0,0" Grid.Column="1"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
-                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Column="1"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
 
-                <TextBlock Text="100,000" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="4,0,8,0" Grid.Column="1"/>
-                <TextBox Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF5B5B5B" BorderThickness="0,0,0,1" Background="{x:Null}" Text="0" BorderBrush="#FFB8B8B8"/>
-                <TextBlock Text="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC1C1C1" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="100,000" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Column="1"/>
+                <TextBox Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF999999" BorderThickness="0,0,0,1" Background="{x:Null}" Text="0" BorderBrush="#FF999999"/>
+                <TextBlock Text="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
 
             </Grid>
         </DockPanel>

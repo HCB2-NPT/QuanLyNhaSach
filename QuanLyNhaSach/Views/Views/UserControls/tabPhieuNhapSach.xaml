@@ -13,12 +13,12 @@
         <DockPanel Margin="0,4,0,0" Width="300" LastChildFill="False">
             <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1">
                 <DockPanel LastChildFill="False" DockPanel.Dock="Top" Margin="4">
-                    <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Foreground="#FFB8B8B8"/>
-                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" DockPanel.Dock="Right"/>
+                    <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Foreground="#FF999999"/>
+                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" DockPanel.Dock="Right" Background="{x:Null}" Foreground="#FF999999"/>
                 </DockPanel>
                 <DockPanel Margin="4" DockPanel.Dock="Top">
-                    <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,4" Foreground="#FFB8B8B8"/>
-                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right"/>
+                    <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,4" Foreground="#FF999999"/>
+                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right" Foreground="#FF999999"/>
                 </DockPanel>
             </DockPanel>
             <DockPanel DockPanel.Dock="Top" Background="White">
@@ -30,12 +30,12 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tên Sách" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="1"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="2"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tên Sách" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
                     <DockPanel Margin="16,0,0,0" Grid.Row="3" LastChildFill="False" HorizontalAlignment="Left">
-                        <MetroControls:NumericUpDown DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Số lượng" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFAEAEAE" Margin="0,0,4,0" DockPanel.Dock="Right"/>
+                        <MetroControls:NumericUpDown DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF999999"/>
+                        <TextBlock Text="Số lượng" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="0,0,4,0" DockPanel.Dock="Right"/>
                     </DockPanel>
                     <Button Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Foreground="#FF3498DB" BorderBrush="#FF3498DB" HorizontalAlignment="Right" Margin="0,0,8,0" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png" Stretch="Uniform" Margin="0"/>

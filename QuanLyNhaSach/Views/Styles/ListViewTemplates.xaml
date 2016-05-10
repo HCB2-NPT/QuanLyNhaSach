@@ -32,7 +32,7 @@
         </DockPanel>
     </DataTemplate>
     <DataTemplate x:Key="lvi_QuanLySach">
-        <DockPanel Height="100" Width="800" Background="White" Margin="4,4,4,0">
+        <DockPanel Height="Auto" Width="Auto" Background="White" Margin="4">
             <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Image}" Stretch="Fill"/>
             <Grid DockPanel.Dock="Right" Width="100">
                 <Grid.RowDefinitions>
@@ -109,11 +109,11 @@
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Background" Value="#FFC9DFF2"/>
+                <Setter Property="Background" Value="#CC47AAFF"/>
             </Trigger>
         </Style.Triggers>
     </Style>
-    <DataTemplate x:Key="lviSachCoTheLoai">
+    <DataTemplate x:Key="lviSachCoTheLoaiorTacGia">
         <DockPanel Width="300" Background="White" Height="100">
             <Image Name="Image" Width="80" Margin="1" Source="{Binding AnhBia}" Stretch="Fill" Height="100"/>
             <Button Width="Auto" DockPanel.Dock="Right" Height="40" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0" Margin="2,0" HorizontalAlignment="Center" VerticalAlignment="Center">

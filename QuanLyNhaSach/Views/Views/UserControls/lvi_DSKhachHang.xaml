@@ -13,28 +13,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0">
+            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Họ tên: {0}">
                         <Binding Path="Name"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="1">
+            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="1">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Điện Thoại: {0}">
                         <Binding Path="Phone"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="2">
+            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="2">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Địa Chỉ: {0}">
                         <Binding Path="Adress"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="3">
+            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="3">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Email: {0}">
                         <Binding Path="Email"/>
@@ -42,8 +42,8 @@
                 </TextBlock.Text>
             </TextBlock>
             <DockPanel LastChildFill="True" Grid.RowSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8">
-                <TextBlock DockPanel.Dock="Top" Text="{Binding TienNo}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Button x:Name="button" Style="{DynamicResource Btn_IconOnly}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="32" Margin="0" Grid.Row="2" Grid.RowSpan="2" Click="Button_Click" OpacityMask="#FFB3D6F2">
+                <TextBlock DockPanel.Dock="Top" Text="{Binding TienNo}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999"/>
+                <Button x:Name="button" Style="{DynamicResource Btn_IconOnly}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="32" Margin="0" Grid.Row="2" Grid.RowSpan="2" Click="Button_Click" OpacityMask="#FFB3D6F2" Foreground="#FF999999">
                     <DockPanel LastChildFill="True" Margin="8,2">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Bill-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0,0,0" Text="Trả nợ"/>

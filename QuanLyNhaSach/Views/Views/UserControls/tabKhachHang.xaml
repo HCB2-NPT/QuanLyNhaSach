@@ -12,7 +12,7 @@
                 <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,0">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
                 </Button>
-                <TextBox TextWrapping="Wrap" ToolTip="Số Điện Thoại" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Background="{x:Null}" BorderThickness="0" FontSize="14"/>
+                <TextBox TextWrapping="Wrap" ToolTip="Số Điện Thoại" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Background="{x:Null}" BorderThickness="0" FontSize="14" Foreground="#FF999999"/>
             </DockPanel>
             <Grid Margin="0" DockPanel.Dock="Top" Background="White">
                 <Grid Margin="0,0,0,40" Background="White">
@@ -22,10 +22,10 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3" Foreground="#FF999999"/>
                 </Grid>
                 <DockPanel Margin="0,160,0,0" LastChildFill="False">
                     <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
