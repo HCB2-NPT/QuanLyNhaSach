@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 using WPF.MDI;
 
 namespace QuanLyNhaSach.Views.Views.Windows
@@ -149,19 +150,17 @@ namespace QuanLyNhaSach.Views.Views.Windows
             if (About != null)
                 About.Visibility = System.Windows.Visibility.Hidden;
             //xóa các chức năng đã mở
-            foreach (var item in mdiContainer.Children)
-                item.Close();
             mdiContainer.Children.Clear();
         }
 
         /*
          * Xử lý mở tab (mdi child)
          */
-        private void OpenTab(Type type, bool key)
+        private void OpenTab(Type type, string title, bool canDuplicate)
         {
             if (type != null)
             {
-                if (!key)
+                if (!canDuplicate)
                 {
                     var type_string = type.ToString();
                     var first = mdiContainer.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
@@ -172,7 +171,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     }
                 }
                 var content = (UserControl)Activator.CreateInstance(type);
-                var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = "Quy định cửa hàng" };
+                var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = title};
                 mdiChild.Background = content.Background;
                 mdiContainer.Children.Add(mdiChild);
             }
@@ -390,7 +389,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
             var item = listboxDSChucNang.SelectedItem as Binding;
             listboxDSChucNang.SelectedItem = null;
             if (item != null)
-                OpenTab(item.Tag as Type, item.Key);
+                OpenTab(item.Tag as Type, item.Data as string, item.Key);
         }
 
         /*
@@ -413,27 +412,23 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild child = mdiContainer.Children[i];
                 mi = new MenuItem { Header = child.Title };
                 mi.Click += (o, ev) => child.Focus();
-                mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
                 WindowsMenu.Items.Insert(i, mi);
             }
 
             WindowsMenu.Items.Add(new Separator());
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
-            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Horizontally" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileHorizontal;
-            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
-            mi.Style = this.FindResource("MenuItem_BaseStyle") as Style;
         }
         #endregion
 
         #region Button Events
         private void btnQuyDinhFull_Click(object sender, RoutedEventArgs e)
         {
-            OpenTab(typeof(tabQuyDinh) as Type, false);
+            OpenTab(typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
         }
         #endregion
     }

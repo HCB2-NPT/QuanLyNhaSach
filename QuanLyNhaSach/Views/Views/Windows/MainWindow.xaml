@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mdi="clr-namespace:WPF.MDI;assembly=WPF.MDI"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Views.Views.Windows.MainWindow"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         Height="600" Width="900" x:Name="window"
         MinHeight="600" MinWidth="900" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../../../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed" IsVisibleChanged="window_IsVisibleChanged">
     <Window.Resources>
@@ -35,40 +36,6 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Style x:Key="MenuItem_BaseStyle" TargetType="MenuItem">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Padding" Value="6,0,6,2"/>
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Border Name="background" Background="Transparent">
-                            <Grid>
-                                <ContentPresenter Content="{TemplateBinding Icon}" Margin="-100,0,0,0" Width="24" Height="24"/>
-                                <ContentPresenter Content="{TemplateBinding Header}" Margin="36,4,8,0" MinWidth="128"/>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="background" Property="Background" Value="#FFB3D6F2"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Role" Value="TopLevelHeader">
-                    <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}"/>
-                    <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="#FFB3D6F2" />
-                </Trigger>
-                <Trigger Property="IsKeyboardFocusWithin" Value="true">
-                    <Setter Property="Background" Value="#FFB3D6F2" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="_btnMenuMini">
@@ -78,13 +45,13 @@
             <BeginStoryboard Storyboard="{StaticResource MenuFullToMini}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="WindowGrid" d:IsLocked="True">
+    <Grid x:Name="WindowGrid">
         <Grid.Background>
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
-                <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
+                <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2" d:IsLocked="True">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
                             <Binding Path="Config.ProgramName" />
@@ -92,76 +59,76 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="btnClose_Click" IsTabStop="False" SnapsToDevicePixels="False" BorderThickness="0" OpacityMask="#FFE74C3C" Background="{x:Null}">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/close.png" Width="16" Height="16" />
+                <Button x:Name="btnClose" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="btnClose_Click" IsTabStop="False" SnapsToDevicePixels="False" BorderThickness="0" OpacityMask="#FFE74C3C" Background="{x:Null}" d:IsLocked="True">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/close.png" Width="16" Height="16" d:IsLocked="True" />
                 </Button>
-                <Grid DockPanel.Dock="Right" Width="40" Height="32">
-                    <Button x:Name="btnRestore" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowRestore, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9">
-                        <Image Source="/Tiki Bookshop;component/Assets/Images/restore.png" Width="12" Height="12"/>
+                <Grid DockPanel.Dock="Right" Width="40" Height="32" d:IsLocked="True">
+                    <Button x:Name="btnRestore" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowRestore, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9" d:IsLocked="True">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/restore.png" Width="12" Height="12" d:IsLocked="True"/>
                     </Button>
-                    <Button x:Name="btnMaximize" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9">
-                        <Image x:Name="btnMaximize_img" Source="/Tiki Bookshop;component/Assets/Images/Maximize.png" Width="12" Height="12"/>
+                    <Button x:Name="btnMaximize" Style="{DynamicResource WindowButtonStyle}" Click="btnMaxMin_Click" BorderThickness="0" IsTabStop="False" Visibility="{Binding ShowMaximized, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" SnapsToDevicePixels="False" OpacityMask="#FF0567B9" d:IsLocked="True">
+                        <Image x:Name="btnMaximize_img" Source="/Tiki Bookshop;component/Assets/Images/Maximize.png" Width="12" Height="12" d:IsLocked="True"/>
                     </Button>
                 </Grid>
-                <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" SnapsToDevicePixels="False" Background="{x:Null}" OpacityMask="#FF0567B9" >
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Minimize.png" Width="12" Height="2" Stretch="Fill"/>
+                <Button x:Name="Minisize" DockPanel.Dock="Right" Width="40" Style="{DynamicResource WindowButtonStyle}" Click="Minisize_Click" BorderThickness="0" IsTabStop="False" SnapsToDevicePixels="False" Background="{x:Null}" OpacityMask="#FF0567B9" d:IsLocked="True" >
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Minimize.png" Width="12" Height="2" Stretch="Fill" d:IsLocked="True"/>
                 </Button>
             </DockPanel>
             <DockPanel>
                 <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
-                    <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnSachFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnSachFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Sách" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Book-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnHoaDonFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnHoaDonFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Hóa Đơn" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Bill-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnKhachHangFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Khách Hàng" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnKhachHangFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Khách Hàng" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Business Contact-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Contacts-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnBaoCaoFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Báo Cáo" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnBaoCaoFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Báo Cáo" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="btnQuyDinhFull_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="btnQuyDinhFull_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnDangXuatFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Đăng Xuất" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="Logout_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnDangXuatFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Đăng Xuất" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="Logout_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Shutdown-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Border Height="40" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" BorderThickness="0,1,0,0" BorderBrush="#FF005EAA">
-                        <DockPanel LastChildFill="False" HorizontalAlignment="Right" Width="200">
-                            <Button x:Name="btnToolFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="showToolBox" Focusable="False">
+                    <Border Height="40" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" BorderThickness="0,1,0,0" BorderBrush="#FF005EAA" d:IsLocked="True">
+                        <DockPanel LastChildFill="False" HorizontalAlignment="Right" Width="200" d:IsLocked="True">
+                            <Button x:Name="btnToolFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="showToolBox" Focusable="False" d:IsLocked="True">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../../../Assets/Images/Maintenance-64.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="btnSettingsFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Focusable="False" Click="btnSettings_Click">
+                            <Button x:Name="btnSettingsFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Focusable="False" Click="btnSettings_Click" d:IsLocked="True">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../../../Assets/Images/Settings-64.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="btnInformationFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Click="showAbout" Focusable="False">
+                            <Button x:Name="btnInformationFull" Margin="0" Width="40" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Click="showAbout" Focusable="False" d:IsLocked="True">
                                 <Button.Background>
                                     <ImageBrush ImageSource="../../../Assets/Images/About-64.png"/>
                                 </Button.Background>
@@ -170,57 +137,57 @@
                     </Border>
                 </DockPanel>
                 <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False" d:IsLocked="True">
-                    <Button x:Name="_btnMenuMini" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False">
+                    <Button x:Name="_btnMenuMini" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnSachMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnSachMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Book-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnHoaDonMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnHoaDonMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Bill-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnKhachHangMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnKhachHangMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Business Contact-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnTaiKhoanMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnTaiKhoanMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Contacts-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnBaoCaoMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnBaoCaoMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="btnQuyDinhFull_Click" Focusable="False">
+                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="btnQuyDinhFull_Click" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnDangXuatMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="Logout_Click" Focusable="False">
+                    <Button x:Name="btnDangXuatMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="Logout_Click" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Shutdown-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnSettingsMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Focusable="False" Click="btnSettings_Click">
+                    <Button x:Name="btnSettingsMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Focusable="False" Click="btnSettings_Click" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Settings-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnInfomationMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Click="showAbout" Focusable="False">
+                    <Button x:Name="btnInfomationMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Bottom" Margin="0" Click="showAbout" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/About-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnToolMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" DockPanel.Dock="Bottom" Click="showToolBox" Focusable="False">
+                    <Button x:Name="btnToolMini" Height="40" Style="{DynamicResource BtnChucNang}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" DockPanel.Dock="Bottom" Click="showToolBox" Focusable="False" d:IsLocked="True">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Maintenance-64.png"/>
                         </Button.Background>
@@ -230,33 +197,28 @@
                     <DockPanel LastChildFill="True">
                         <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
                             <mdi:MdiContainer.Menu>
-                                <Menu Height="24">
-                                    <Menu.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel IsItemsHost="True" VerticalAlignment="Center"/>
-                                        </ItemsPanelTemplate>
-                                    </Menu.ItemsPanel>
-                                    <MenuItem Header="+" Style="{StaticResource MenuItem_BaseStyle}">
-                                        <MenuItem Header="Close this" x:Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Close all but this" x:Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Close all" x:Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                <Menu Width="9999">
+                                    <MenuItem Header="+">
+                                        <MenuItem Header="Close this" x:Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click"/>
+                                        <MenuItem Header="Close all but this" x:Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" />
+                                        <MenuItem Header="Close all" x:Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" />
                                     </MenuItem>
-                                    <MenuItem Header="Theme" Style="{StaticResource MenuItem_BaseStyle}">
-                                        <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
-                                        <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                    <MenuItem Header="Theme">
+                                        <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
+                                        <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
+                                        <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
                                     </MenuItem>
-                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private" Style="{StaticResource MenuItem_BaseStyle}"/>
+                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private"/>
                                 </Menu>
                             </mdi:MdiContainer.Menu>
                         </mdi:MdiContainer>
                     </DockPanel>
                     <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
-                        <DockPanel LastChildFill="True" Width="200">
-                            <Border Margin="0" DockPanel.Dock="Top" Height="40">
-                                <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
+                        <DockPanel LastChildFill="True" Width="200" d:IsLocked="True">
+                            <Border Margin="0" DockPanel.Dock="Top" Height="40" d:IsLocked="True">
+                                <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0" d:IsLocked="True"/>
                             </Border>
-                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
+                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged" d:IsLocked="True">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
