@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,8 +85,37 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        #region FormatProperty
 
+        public string AuthorsFormat
+        {
+            get
+            {
+                string format = "";
+                int count = 0;
+                foreach (Author item in Authors)
+                {
+                    format += item.Name + ", ";
+                    count++;
+                    if (count>=5)
+                        break;
+                }
+                if (!string.IsNullOrEmpty(format)&& count>=5)
+                    format += ", ...";
+                return format;
+            }
+        }
+
+        public string ImageFormat
+        {
+            get
+            {
+                if (File.Exists(Image))
+                    return Image;
+                else
+                    return Directory.GetCurrentDirectory() + "\\" + Image;
+            }
+        }
+        #endregion
     }
-
-   
 }

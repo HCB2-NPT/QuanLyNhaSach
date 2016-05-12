@@ -41,5 +41,24 @@ namespace QuanLyNhaSach.Objects
         public string Adress { get { return _adress; } set { _adress = value; NotifyPropertyChanged("Adress"); } }
         public string Phone { get { return _phone; } set { _phone = value; NotifyPropertyChanged("Phone"); } }
         public int Debt { get { return _debt; } set { _debt = value; NotifyPropertyChanged("Debt"); } }
+
+        public int PhoneByInteger
+        {
+            get
+            {
+                int result;
+                if (int.TryParse(Phone, out result))
+                    return result;
+                return 0;
+            }
+        }
+
+        public string CustomerInfo
+        {
+            get
+            {
+                return string.Format("{0:0000 0000 0000} - {1}", PhoneByInteger, Name);
+            }
+        }
     }
 }
