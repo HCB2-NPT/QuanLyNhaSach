@@ -9,6 +9,7 @@ namespace QuanLyNhaSach.Objects
 {
     public class BuyingBook : INotifyPropertyChanged
     {
+        private BookCart _bookCart;
         private Book _book;
         public Book Book
         {
@@ -29,6 +30,8 @@ namespace QuanLyNhaSach.Objects
             {
                 _number = value;
                 NotifyPropertyChanged("Number");
+                NotifyPropertyChanged("Total");
+                _bookCart.UpdateItemNumber();
             }
         }
 
@@ -37,25 +40,26 @@ namespace QuanLyNhaSach.Objects
         public int Total
         {
             get { return Book.Price*Number; }
-            set { _total = Book.Price * Number; NotifyPropertyChanged("Total"); }
         }
 
 
 
-        public BuyingBook(Book b, int _num)
+        public BuyingBook(BookCart bc,Book b, int _num)
         {
+            _bookCart = bc;
             _book = b;
             _number = _num;
         }
 
-        public BuyingBook()
+        public BuyingBook(BookCart bc)
         {
+            _bookCart = bc;
             _book = new Book();
             _number = 0;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
+        public void NotifyPropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
