@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,8 +35,9 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             tb_NameBook.ItemsSource = Adapters.BookAdapter.GetAll();
             tb_NameBook.FilterMode = AutoCompleteFilterMode.Contains;
             tb_NameBook.IsTextCompletionEnabled = true;
+            tblock_TienHoaDon.DataContext = BookCart;
 
-            lv_ChiTietHoaDon.ItemsSource = GioHang;
+            lv_ChiTietHoaDon.ItemsSource = BookCart.Cart;
             //tb_SDTKH.ItemsSource = Adapters.CustomerAdapter.ListCustomer;
         }
         private Customer c;
@@ -44,12 +46,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private Book b;
         public Book SelectedBook { get { return b; } set { b = value; NotifyPropertyChanged("SelectedBook"); } }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
 
         private void tb_SDTKH_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -69,22 +66,28 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
 
         #region XuLyHoaDon
-        private ObservableCollection<BuyingBook> _listbook = new ObservableCollection<BuyingBook>();
-        public ObservableCollection<BuyingBook> GioHang
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
         {
-            get
-            {
-                return _listbook;
-            }
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private BookCart _bookCart = new BookCart();
+
+        public BookCart BookCart
+        {
+            get { return _bookCart; }
             set
             {
-                _listbook = value;
-                NotifyPropertyChanged("GioHang");
+                _bookCart = value;
+
             }
         }
+
         private void btn_ThemSachVaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            var item = GioHang.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
+            var item = BookCart.Cart.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
             if(item!=null)
             {
                 item.Number += (int)num_SLSach.Value;
@@ -92,11 +95,26 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             else
             {
-                BuyingBook buybook = new BuyingBook(SelectedBook, (int)num_SLSach.Value);
-                GioHang.Add(buybook);
+                BuyingBook buybook = new BuyingBook(BookCart,SelectedBook, (int)num_SLSach.Value);
+                BookCart.Cart.Add(buybook);
             }
         }
-
         #endregion
+
+        private void tb_TienKhachTra_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890".IndexOf(e.Text) == -1;
+        }
+
+        private void tb_TienKhachTra_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BookCart.PayMoney = int.Parse(tb_TienKhachTra.Text);
+            BookCart.UpdateReturnMoney();
+        }
+
+        private void window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tb_SDTKH.SelectedItem = (tb_SDTKH.ItemsSource as ObservableCollection<Customer>).First();
+        }
     }
 }

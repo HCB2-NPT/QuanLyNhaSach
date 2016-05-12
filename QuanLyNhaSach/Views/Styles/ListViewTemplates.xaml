@@ -107,7 +107,7 @@
     </DataTemplate>
     <DataTemplate x:Key="lvi_ChiTietHoaDonCu">
         <DockPanel Width="Auto" Background="White" Margin="2">
-            <Image x:Name="Image" Width="100" Margin="4,4,0,4" Source="{Binding ImageFormat}" Stretch="Fill"/>
+            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
             <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
                 <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="24" Height="24"/>    

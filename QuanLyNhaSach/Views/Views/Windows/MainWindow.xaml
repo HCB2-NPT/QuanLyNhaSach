@@ -213,12 +213,12 @@
                             </mdi:MdiContainer.Menu>
                         </mdi:MdiContainer>
                     </DockPanel>
-                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
-                        <DockPanel LastChildFill="True" Width="200" d:IsLocked="True">
-                            <Border Margin="0" DockPanel.Dock="Top" Height="40" d:IsLocked="True">
+                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
+                        <DockPanel LastChildFill="True" Width="200">
+                            <Border Margin="0" DockPanel.Dock="Top" Height="40">
                                 <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0" d:IsLocked="True"/>
                             </Border>
-                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged" d:IsLocked="True">
+                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
