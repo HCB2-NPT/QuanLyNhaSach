@@ -31,58 +31,7 @@
             </DockPanel>
         </DockPanel>
     </DataTemplate>
-    <DataTemplate x:Key="lvi_QuanLySach">
-        <DockPanel Height="Auto" Width="Auto" Background="White" Margin="4">
-            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding ImageFormat}" Stretch="Fill"/>
-            <Grid DockPanel.Dock="Right" Width="100">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Width="24" Height="24"/>
-                </Button>
-                <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="1">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
-                </Button>
-                <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.RowSpan="3" Grid.Row="2">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
-                </Button>
-            </Grid>
-            <DockPanel>
-                <Grid Margin="8,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <!--<TextBox VerticalAlignment="Center" Text="Tên Sách"  Style="{DynamicResource TextBoxListViewItem}" Margin="4" />-->
-                    <TextBox Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tên Sách" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI Light" Text="{Binding Name}"/>
-                    <TextBox Grid.Row="1" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI Light" Text="{Binding Authors}"/>
-                    <TextBox Grid.Row="2" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Text="{Binding Genres}" FontFamily="Segoe UI Light"/>
-                    <TextBlock Foreground="#FFABADB3" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,8,0">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Số lượng: {0}">
-                                <Binding Path="Number"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,0,8,0" Grid.Row="2">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Đơn giá: {0}">
-                                <Binding Path="Price"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </Grid>
-            </DockPanel>
-        </DockPanel>
-    </DataTemplate>
+    
     <DataTemplate x:Key="lvi_DSTheLoai">
         <DockPanel Background="White" Width="Auto" Height="60" Margin="2">
             <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="4,0">

@@ -110,10 +110,12 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
+                if (Image == null)
+                    return Directory.GetCurrentDirectory() + "\\Data\\Images\\no_image.png";
                 if (File.Exists(Image))
                     return Image;
                 else
-                    return Directory.GetCurrentDirectory() + "\\" + Image;
+                    return Directory.GetCurrentDirectory() + "\\Data\\Images\\" + Image;
             }
         }
         #endregion
