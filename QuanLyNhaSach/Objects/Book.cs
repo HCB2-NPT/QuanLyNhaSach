@@ -16,14 +16,24 @@ namespace QuanLyNhaSach.Objects
         public ObservableCollection<Author> Authors
         {
             get { return _authors; }
-            set { _authors = value; NotifyPropertyChanged("Authors"); }
+            set
+            {
+                _authors = value; 
+                NotifyPropertyChanged("Authors");
+                NotifyPropertyChanged("AuthorsFormat");
+            }
         }
         private ObservableCollection<Genre> _genres;
 
         public ObservableCollection<Genre> Genres
         {
             get { return _genres; }
-            set { _genres = value; NotifyPropertyChanged("Genres"); }
+            set
+            {
+                _genres = value;
+                NotifyPropertyChanged("Genres");
+                NotifyPropertyChanged("GenresFormat");
+            }
         }
 
       
@@ -39,7 +49,12 @@ namespace QuanLyNhaSach.Objects
         public string Image
         {
             get { return _image; }
-            set { _image = value; NotifyPropertyChanged("Image"); }
+            set
+            {
+                _image = value;
+                NotifyPropertyChanged("Image");
+                NotifyPropertyChanged("ImageFormat");
+            }
         }
         private int _number;
 
@@ -92,20 +107,44 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 string format = "";
-                int count = 0;
+                int max_length = 40;
                 foreach (Author item in Authors)
                 {
                     format += item.Name + ", ";
-                    count++;
-                    if (count>=5)
+                    if (format.Length > max_length)
                         break;
                 }
-                if (!string.IsNullOrEmpty(format)&& count>=5)
+                format = format.TrimEnd(' ', ',');
+                if (format.Length > max_length)
+                {
+                    format = format.Remove(40);
                     format += ", ...";
+                }
                 return format;
             }
         }
 
+        public string GenresFormat
+        {
+            get
+            {
+                int max_length = 40;
+                string format = "";
+                foreach (Genre item in Genres)
+                {
+                    format += item.Name + ", ";
+                    if (format.Length > max_length)
+                        break;
+                }
+                format = format.TrimEnd(' ', ',');
+                if (format.Length > max_length)
+                {
+                    format = format.Remove(40);
+                    format += ", ...";
+                }
+                return format;
+            }
+        }
         public string ImageFormat
         {
             get
@@ -118,6 +157,7 @@ namespace QuanLyNhaSach.Objects
                     return Directory.GetCurrentDirectory() + "\\Data\\Images\\" + Image;
             }
         }
+
         #endregion
     }
 }

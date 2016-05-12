@@ -1,6 +1,7 @@
 ﻿using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             tb_NameBook.ItemsSource = Adapters.BookAdapter.GetAll();
             tb_NameBook.FilterMode = AutoCompleteFilterMode.Contains;
             tb_NameBook.IsTextCompletionEnabled = true;
-            
+
+            lv_ChiTietHoaDon.ItemsSource = GioHang;
             //tb_SDTKH.ItemsSource = Adapters.CustomerAdapter.ListCustomer;
         }
         private Customer c;
@@ -58,7 +60,43 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void tb_NameBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
+            {
                 SelectedBook = e.AddedItems[0] as Book;
+                tb_TacGia.Text = SelectedBook.AuthorsFormat;
+                tb_TheLoai.Text = SelectedBook.GenresFormat;
+                tb_SoLuongTon.DataContext = SelectedBook;
+            }
         }
+
+        #region XuLyHoaDon
+        private ObservableCollection<BuyingBook> _listbook = new ObservableCollection<BuyingBook>();
+        public ObservableCollection<BuyingBook> GioHang
+        {
+            get
+            {
+                return _listbook;
+            }
+            set
+            {
+                _listbook = value;
+                NotifyPropertyChanged("GioHang");
+            }
+        }
+        private void btn_ThemSachVaoHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            var item = GioHang.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
+            if(item!=null)
+            {
+                item.Number += (int)num_SLSach.Value;
+                lv_ChiTietHoaDon.SelectedItem = item;
+            }
+            else
+            {
+                BuyingBook buybook = new BuyingBook(SelectedBook, (int)num_SLSach.Value);
+                GioHang.Add(buybook);
+            }
+        }
+
+        #endregion
     }
 }
