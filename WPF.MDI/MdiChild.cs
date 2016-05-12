@@ -974,7 +974,7 @@ namespace WPF.MDI
                             for (int i = 0; i < mdiChild.Container.Children.Count; i++)
                                 if (mdiChild.Container.Children[i] != mdiChild && mdiChild.Container.Children[i].WindowState == WindowState.Minimized)
                                     minimizedWindows++;
-                            int capacity = Convert.ToInt32(mdiChild.Container.ActualWidth) / mdiChild.MinimizedWidth,
+                            int capacity = Convert.ToInt32(mdiChild.Container.InnerWidth) / mdiChild.MinimizedWidth,
                                 row = minimizedWindows / capacity + 1,
                                 col = minimizedWindows % capacity;
                             newTop = mdiChild.Container.InnerHeight - mdiChild.MinimizedHeight * row;
@@ -1029,7 +1029,7 @@ namespace WPF.MDI
                             mdiChild.MinHeight = mdiChild._minimizedHeight;
                         }
 
-						mdiChild.Width = mdiChild.Container.ActualWidth;
+						mdiChild.Width = mdiChild.Container.InnerWidth;
                         mdiChild.Height = mdiChild.Container.InnerHeight;
 
 						if (mdiChild.Container.AllowWindowStateMax)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class Customer : INotifyPropertyChanged
+    public class Customer : Editable
     {
         private int _id;
         private string _name = null;
@@ -17,12 +17,12 @@ namespace QuanLyNhaSach.Objects
         private string _email = null;
         private bool _isDeleted = false;
 
-        public Customer()
+        public Customer() : base(true)
         {
             _id = 0;
         }
 
-        public Customer(int id)
+        public Customer(int id) : base()
         {
             _id = id;
         }

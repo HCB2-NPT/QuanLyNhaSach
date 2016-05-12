@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class Genre : INotifyPropertyChanged
+    public class Genre : Editable
     {
-        public Genre()
+        public Genre() : base(true)
         {
             _id =0;
         }
 
-        public Genre(int id)
+        public Genre(int id) : base()
         {
             _id = id;
         }

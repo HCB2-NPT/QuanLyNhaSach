@@ -11,47 +11,38 @@ namespace QuanLyNhaSach.Adapters
 {
     public class AccessLevelAdapter
     {
-        //=========================
-        private static ObservableCollection<AccessLevel> _accessLevels;
-        public static ObservableCollection<AccessLevel> AccessLevels
-        {
-            get
-            {
-                if (_accessLevels == null)
-                    _accessLevels = Adapters.AccessLevelAdapter.GetAll();
-                return _accessLevels;
-            }
-        }
-        //=========================
+        private static ObservableCollection<AccessLevel> _accessLevels = null;
 
         public static ObservableCollection<AccessLevel> GetAll()
         {
-            ObservableCollection<AccessLevel> result = null;
-            try
+            if (_accessLevels == null)
             {
-                var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
-                if (reader != null)
+                try
                 {
-                    result = new ObservableCollection<AccessLevel>();
-                    while (reader.Read())
+                    var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
+                    if (reader != null)
                     {
-                        result.Add(new AccessLevel(reader.GetInt32(0))
+                        _accessLevels = new ObservableCollection<AccessLevel>();
+                        while (reader.Read())
                         {
-                            Name = (string)reader.GetValueDefault(1, null)
-                        });
+                            _accessLevels.Add(new AccessLevel(reader.GetInt32(0))
+                            {
+                                Name = (string)reader.GetValueDefault(1, null)
+                            });
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
-            }
-            return result;
+            return _accessLevels;
         }
 
         public static AccessLevel GetAcessLevelById(int id)
         {
-            return AccessLevels.FirstOrDefault(x => x.ID == id);
+            return GetAll().FirstOrDefault(x => x.ID == id);
         }
     }
 }

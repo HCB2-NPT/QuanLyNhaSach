@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class Book : INotifyPropertyChanged
+    public class Book : Editable
     {
         private ObservableCollection<Author> _authors;
 
@@ -83,12 +83,12 @@ namespace QuanLyNhaSach.Objects
         {
             get { return _id; }
         }
-        public Book()
+        public Book() : base(true)
         {
             _id = 0;
         }
 
-        public Book(int id)
+        public Book(int id) : base()
         {
             _id = id;
         }
@@ -118,8 +118,10 @@ namespace QuanLyNhaSach.Objects
                 if (format.Length > max_length)
                 {
                     format = format.Remove(40);
-                    format += ", ...";
+                    format += "...";
                 }
+                if (string.IsNullOrEmpty(format))
+                    format = "<Không có tác giả rõ ràng>";
                 return format;
             }
         }
@@ -140,8 +142,10 @@ namespace QuanLyNhaSach.Objects
                 if (format.Length > max_length)
                 {
                     format = format.Remove(40);
-                    format += ", ...";
+                    format += "...";
                 }
+                if (string.IsNullOrEmpty(format))
+                    format = "<Không có thể loại rõ ràng>";
                 return format;
             }
         }

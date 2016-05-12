@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class Author : INotifyPropertyChanged
+    public class Author : Editable
     {
-        public Author()
+        public Author() : base(true)
         {
             _id = 0;
         }
 
-        public Author(int id)
+        public Author(int id) : base()
         {
             _id = id;
         }

@@ -22,15 +22,16 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Customer>();
                     while (reader.Read())
                     {
-                        result.Add(new Customer(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Debt = (int)reader.GetValueDefault(2, 0),
-                            Adress = (string)reader.GetValueDefault(3, null),
-                            Phone = (string)reader.GetValueDefault(4, null),
-                            Email = (string)reader.GetValueDefault(5, null),
-                            IsDeleted = (bool)reader.GetValueDefault(6, false),
-                        });
+                        var item = new Customer(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Debt = (int)reader.GetValueDefault(2, 0);
+                        item.Adress = (string)reader.GetValueDefault(3, null);
+                        item.Phone = (string)reader.GetValueDefault(4, null);
+                        item.Email = (string)reader.GetValueDefault(5, null);
+                        item.IsDeleted = (bool)reader.GetValueDefault(6, false);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -52,15 +53,16 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Customer>();
                     while (reader.Read())
                     {
-                        result.Add(new Customer(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Debt = (int)reader.GetValueDefault(2, 0),
-                            Adress = (string)reader.GetValueDefault(3, null),
-                            Phone = (string)reader.GetValueDefault(4, null),
-                            Email = (string)reader.GetValueDefault(5, null),
-                            IsDeleted = true,
-                        });
+                        var item = new Customer(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Debt = (int)reader.GetValueDefault(2, 0);
+                        item.Adress = (string)reader.GetValueDefault(3, null);
+                        item.Phone = (string)reader.GetValueDefault(4, null);
+                        item.Email = (string)reader.GetValueDefault(5, null);
+                        item.IsDeleted = true;
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -81,15 +83,16 @@ namespace QuanLyNhaSach.Adapters
                 {
                     while (reader.Read())
                     {
-                        result = new Customer(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Debt = (int)reader.GetValueDefault(2, 0),
-                            Adress = (string)reader.GetValueDefault(3, null),
-                            Phone = phoneNumber,
-                            Email = (string)reader.GetValueDefault(4, null),
-                            IsDeleted = (bool)reader.GetValueDefault(5, false),
-                        };
+                        var item = new Customer(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Debt = (int)reader.GetValueDefault(2, 0);
+                        item.Adress = (string)reader.GetValueDefault(3, null);
+                        item.Phone = phoneNumber;
+                        item.Email = (string)reader.GetValueDefault(4, null);
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.EndInit();
+                        result = item;
                         break;
                     }
                 }

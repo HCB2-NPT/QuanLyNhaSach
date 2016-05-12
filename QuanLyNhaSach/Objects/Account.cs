@@ -16,13 +16,12 @@ namespace QuanLyNhaSach.Objects
         private AccessLevel _accessLevel = null;
         private bool _isDeleted = false;
         
-        public Account()
+        public Account() : base(true)
         {
-            IsCreatedItem = true;
             _id = 0;
         }
 
-        public Account(int id)
+        public Account(int id) : base()
         {
             _id = id;
         }

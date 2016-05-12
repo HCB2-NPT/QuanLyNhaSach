@@ -9,7 +9,7 @@ namespace QuanLyNhaSach.Objects
 {
     public class Editable : INotifyPropertyChanged
     {
-        public Editable()
+        public Editable(bool isNew = false)
         {
             IsCreatedItem = false;
             IsEditedItem = false;

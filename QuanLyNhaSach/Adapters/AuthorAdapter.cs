@@ -22,10 +22,11 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Author>();
                     while (reader.Read())
                     {
-                        result.Add(new Author(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                        });
+                        var item = new Author(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -47,10 +48,11 @@ namespace QuanLyNhaSach.Adapters
                     result = new ObservableCollection<Author>();
                     while (reader.Read())
                     {
-                        result.Add(new Author(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                        });
+                        var item = new Author(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }

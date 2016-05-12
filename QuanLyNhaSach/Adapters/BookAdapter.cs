@@ -24,17 +24,17 @@ namespace QuanLyNhaSach.Adapters
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        result.Add(new Book(id)
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Image = (string)reader.GetValueDefault(2, null),
-                            Number = (int)reader.GetValueDefault(3, 0),
-                            Price = (int)reader.GetValueDefault(4, 0),
-                            IsDelete = (bool)reader.GetValueDefault(5, false),
-
-                            Authors = AuthorAdapter.GetAuthorsForBook(id),
-                            Genres = GenreAdapter.GetGenresForBook(id)
-                        });
+                        var item = new Book(id);
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Image = (string)reader.GetValueDefault(2, null);
+                        item.Number = (int)reader.GetValueDefault(3, 0);
+                        item.Price = (int)reader.GetValueDefault(4, 0);
+                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
+                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -59,17 +59,17 @@ namespace QuanLyNhaSach.Adapters
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        result.Add(new Book(id)
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Image = (string)reader.GetValueDefault(2, null),
-                            Number = (int)reader.GetValueDefault(3, 0),
-                            Price = (int)reader.GetValueDefault(4, 0),
-                            IsDelete = true,
-
-                            Authors = AuthorAdapter.GetAuthorsForBook(id),
-                            Genres = GenreAdapter.GetGenresForBook(id)
-                        });
+                        var item = new Book(id);
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Image = (string)reader.GetValueDefault(2, null);
+                        item.Number = (int)reader.GetValueDefault(3, 0);
+                        item.Price = (int)reader.GetValueDefault(4, 0);
+                        item.IsDelete = true;
+                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
+                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -94,17 +94,17 @@ namespace QuanLyNhaSach.Adapters
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        result.Add(new Book(id)
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Image = (string)reader.GetValueDefault(2, null),
-                            Number = (int)reader.GetValueDefault(3, 0),
-                            Price = (int)reader.GetValueDefault(4, 0),
-                            IsDelete = (bool)reader.GetValueDefault(5, false),
-
-                            Authors = AuthorAdapter.GetAuthorsForBook(id),
-                            Genres = GenreAdapter.GetGenresForBook(id)
-                        });
+                        var item = new Book(id);
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Image = (string)reader.GetValueDefault(2, null);
+                        item.Number = (int)reader.GetValueDefault(3, 0);
+                        item.Price = (int)reader.GetValueDefault(4, 0);
+                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
+                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -129,17 +129,17 @@ namespace QuanLyNhaSach.Adapters
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        result.Add(new Book(id)
-                        {
-                            Name = (string)reader.GetValueDefault(1, null),
-                            Image = (string)reader.GetValueDefault(2, null),
-                            Number = (int)reader.GetValueDefault(3, 0),
-                            Price = (int)reader.GetValueDefault(4, 0),
-                            IsDelete = (bool)reader.GetValueDefault(5, false),
-
-                            Authors = AuthorAdapter.GetAuthorsForBook(id),
-                            Genres = GenreAdapter.GetGenresForBook(id)
-                        });
+                        var item = new Book(id);
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Image = (string)reader.GetValueDefault(2, null);
+                        item.Number = (int)reader.GetValueDefault(3, 0);
+                        item.Price = (int)reader.GetValueDefault(4, 0);
+                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
+                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }

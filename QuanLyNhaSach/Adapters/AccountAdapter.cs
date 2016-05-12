@@ -17,9 +17,9 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 var reader = DataConnector.ExecuteQuery(
-                    string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen, tk.bixoa " +
-                    "from taikhoan tk, phanquyen pq " +
-                    "where {0} tk.maphanquyen = pq.maphanquyen", findDeletedToo ? "" : "tk.bixoa = 'false' and"));
+                    string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, tk.maphanquyen, tk.bixoa " +
+                    "from taikhoan tk " +
+                    "{0}", findDeletedToo ? "" : "where tk.bixoa = 'false'"));
                 if (reader != null)
                 {
                     result = new ObservableCollection<Account>();
@@ -30,8 +30,8 @@ namespace QuanLyNhaSach.Adapters
                         item.Email = (string)reader.GetValueDefault(1, null);
                         item.Password = (string)reader.GetValueDefault(2, null);
                         item.Name = (string)reader.GetValueDefault(3, null);
-                        item.AccessLevel = new AccessLevel(reader.GetInt32(4)) { Name = (string)reader.GetValueDefault(5, null) };
-                        item.IsDeleted = (bool)reader.GetValueDefault(6, false);
+                        item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
                         item.EndInit();
                         result.Add(item);
                     }
@@ -50,22 +50,23 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 var reader = DataConnector.ExecuteQuery(
-                    @"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, pq.maphanquyen, pq.tenphanquyen " +
-                    "from taikhoan tk, phanquyen pq " +
-                    "where tk.maphanquyen = pq.maphanquyen and tk.bixoa = 'true'");
+                    @"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, tk.maphanquyen " +
+                    "from taikhoan tk " +
+                    "where tk.bixoa = 'true'");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Account>();
                     while (reader.Read())
                     {
-                        result.Add(new Account(reader.GetInt32(0))
-                        {
-                            Email = (string)reader.GetValueDefault(1, null),
-                            Password = (string)reader.GetValueDefault(2, null),
-                            Name = (string)reader.GetValueDefault(3, null),
-                            AccessLevel = new AccessLevel(reader.GetInt32(4)) { Name = (string)reader.GetValueDefault(5, null) },
-                            IsDeleted = true,
-                        });
+                        var item = new Account(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Email = (string)reader.GetValueDefault(1, null);
+                        item.Password = (string)reader.GetValueDefault(2, null);
+                        item.Name = (string)reader.GetValueDefault(3, null);
+                        item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
+                        item.IsDeleted = true;
+                        item.EndInit();
+                        result.Add(item);
                     }
                 }
             }
@@ -89,14 +90,15 @@ namespace QuanLyNhaSach.Adapters
                 {
                     while (reader.Read())
                     {
-                        result = new Account(reader.GetInt32(0))
-                        {
-                            Email = (string)reader.GetValueDefault(1, null),
-                            Password = (string)reader.GetValueDefault(2, null),
-                            Name = (string)reader.GetValueDefault(3, null),
-                            AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4)),
-                            IsDeleted = (bool)reader.GetValueDefault(5, false),
-                        };
+                        var item = new Account(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Email = (string)reader.GetValueDefault(1, null);
+                        item.Password = (string)reader.GetValueDefault(2, null);
+                        item.Name = (string)reader.GetValueDefault(3, null);
+                        item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.EndInit();
+                        result = item;
                         break;
                     }
                 }
@@ -121,14 +123,15 @@ namespace QuanLyNhaSach.Adapters
                 {
                     while (reader.Read())
                     {
-                        result = new Account(reader.GetInt32(0))
-                        {
-                            Email = (string)reader.GetValueDefault(1, null),
-                            Password = (string)reader.GetValueDefault(2, null),
-                            Name = (string)reader.GetValueDefault(3, null),
-                            AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4)),
-                            IsDeleted = (bool)reader.GetValueDefault(5, false),
-                        };
+                        var item = new Account(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Email = (string)reader.GetValueDefault(1, null);
+                        item.Password = (string)reader.GetValueDefault(2, null);
+                        item.Name = (string)reader.GetValueDefault(3, null);
+                        item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.EndInit();
+                        result = item;
                         break;
                     }
                 }

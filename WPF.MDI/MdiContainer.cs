@@ -306,8 +306,8 @@ namespace WPF.MDI
 				MdiChild mdiChild = Children[i];
 				if (mdiChild.WindowState == WindowState.Maximized)
 				{
-					mdiChild.Width = ActualWidth;
-					mdiChild.Height = ActualHeight;
+					mdiChild.Width = InnerWidth;
+					mdiChild.Height = InnerHeight;
 				}
 				if (mdiChild.WindowState == WindowState.Minimized)
 				{
