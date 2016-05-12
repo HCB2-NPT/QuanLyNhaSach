@@ -33,7 +33,7 @@
     </DataTemplate>
     <DataTemplate x:Key="lvi_QuanLySach">
         <DockPanel Height="Auto" Width="Auto" Background="White" Margin="4">
-            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Image}" Stretch="Fill"/>
+            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding ImageFormat}" Stretch="Fill"/>
             <Grid DockPanel.Dock="Right" Width="100">
                 <Grid.RowDefinitions>
                     <RowDefinition/>

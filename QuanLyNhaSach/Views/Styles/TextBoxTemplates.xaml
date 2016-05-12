@@ -20,7 +20,7 @@
 				<ControlTemplate TargetType="{x:Type TextBox}">
 					<Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 						<Grid>
-							<TextBlock x:Name="watermask" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="Stretch" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" FlowDirection="{TemplateBinding FlowDirection}" Opacity="0" Margin="4,0,0,0" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}"/>
+							<TextBlock x:Name="watermask" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="Center" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" FlowDirection="{TemplateBinding FlowDirection}" Opacity="0" Margin="4,0,0,0" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalAlignment="Left"/>
 							<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
 						</Grid>
 					</Border>
@@ -98,59 +98,7 @@
 			</MultiTrigger>
 		</Style.Triggers>
 	</Style>
-	<Style x:Key="TextBoxListViewItem" TargetType="{x:Type TextBox}">
-		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-		<Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-		<Setter Property="HorizontalContentAlignment" Value="Left"/>
-		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-		<Setter Property="AllowDrop" Value="true"/>
-		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-		<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-		<Setter Property="TextWrapping" Value="Wrap"/>
-		<Setter Property="BorderThickness" Value="0,0,0,1"/>
-		<Setter Property="Padding" Value="16,4,0,0"/>
-		<Setter Property="OpacityMask" Value="#FFAEAEAE"/>
-		<Setter Property="BorderBrush" Value="#FF808080"/>
-		<Setter Property="BorderThickness" Value="0,0,0,1"/>
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type TextBox}">
-					<Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-						<Grid>
-							<TextBlock x:Name="watermask" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="Stretch" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" FlowDirection="{TemplateBinding FlowDirection}" Opacity="0" Margin="4,0,0,0"/>
-							<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-						</Grid>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="Text" Value="">
-							<Setter Property="Opacity" TargetName="watermask" Value="1"/>
-						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Opacity" TargetName="border" Value="0.56"/>
-						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
-						</Trigger>
-						<Trigger Property="IsKeyboardFocused" Value="true">
-							<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-		<Style.Triggers>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-					<Condition Property="IsSelectionActive" Value="false"/>
-				</MultiTrigger.Conditions>
-				<Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-			</MultiTrigger>
-		</Style.Triggers>
-	</Style>
+    
     <!-- Resource dictionary entries should be defined here. -->
 	
 	<Style x:Key="AutoCompleteBox_watermark" TargetType="{x:Type Controls:AutoCompleteBox}">

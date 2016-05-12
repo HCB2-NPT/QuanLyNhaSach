@@ -7,23 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
-        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="48" Background="#FFF4F4F4">
-            <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,8">
+        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF4F4F4">
+            <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
             </Button>
-            <TextBox Style="{StaticResource TextBoxListViewItem}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#FF999999"/>
+            <TextBox Style="{DynamicResource TextBoxWaterMask}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" OpacityMask="#FFBBBBBB" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}"/>
         </DockPanel>
-        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="8,4" Background="White">
-            <Button BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="8,0,0,0" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
-                <Image Source="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png" Width="24" Height="24"/>
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0" Background="White">
+            <Button BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" BorderThickness="0" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Width="64">
+                <DockPanel>
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png" Width="24" Height="24"/>
+                    <TextBlock Text="Thêm" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="4,0"/>
+                </DockPanel>
             </Button>
-            <Button BorderBrush="#99FFFFFF" Foreground="White" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0">
-                <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+            <Button BorderBrush="#99FFFFFF" Foreground="White" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" FontFamily="Segoe UI" FontWeight="Normal" FontSize="16" Width="64">
+                <DockPanel>
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                    <TextBlock Text="Xóa" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="4,0" FontSize="12"/>
+                </DockPanel>
             </Button>
-            <Button HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right">
-                <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
+            <Button HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right">
+                <DockPanel Width="64">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
+                    <TextBlock Text="Lưu" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="4,0" FontSize="12"/>
+                </DockPanel>
             </Button>
         </DockPanel>
-        <ListView x:Name="listbox_DSSach" BorderThickness="0" Background="#FFCCCCCC" Margin="8,4" ItemTemplate="{DynamicResource lvi_QuanLySach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" Foreground="{x:Null}" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+        <ListView x:Name="listbox_DSSach" BorderThickness="0" Background="#FFFAFAFA" Margin="0" ItemTemplate="{DynamicResource lvi_QuanLySach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" Foreground="{x:Null}" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
     </DockPanel>
 </UserControl>
