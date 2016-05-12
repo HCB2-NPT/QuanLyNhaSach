@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace QuanLyNhaSach.Views.Views.UserControls
 {
     /// <summary>
@@ -23,6 +24,13 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabThemHoaDonMoi()
         {
             InitializeComponent();
+            tb_SDTKH.ItemsSource = Adapters.CustomerAdapter.GetAll();
+            tb_SDTKH.FilterMode = AutoCompleteFilterMode.Contains;
+            tb_SDTKH.IsTextCompletionEnabled = true;
+            tb_SDTKH.Text = null;
+            //tb_SDTKH.ItemsSource = Adapters.CustomerAdapter.ListCustomer;
         }
+
+        
     }
 }

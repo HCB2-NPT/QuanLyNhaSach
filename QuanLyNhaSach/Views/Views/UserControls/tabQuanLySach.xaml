@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
-        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="8,4" Height="48" Background="#FFF4F4F4">
+        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="48" Background="#FFF4F4F4">
             <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,8">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
             </Button>

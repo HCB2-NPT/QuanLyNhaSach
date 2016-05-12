@@ -40,7 +40,7 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
-
+        
         public static ObservableCollection<Customer> GetDeletedCustomers()
         {
             ObservableCollection<Customer> result = null;
