@@ -8,29 +8,14 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class AccessLevel : INotifyPropertyChanged
+    public class AccessLevel
     {
-        private int _id;
-        private string _name = null;
-
-        public AccessLevel()
-        {
-            _id = 0;
-        }
-
         public AccessLevel(int id)
         {
-            _id = id;
+            ID = id;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public int ID { get { return _id; } }
-        public string Name { get { return _name; } set { _name = value; NotifyPropertyChanged("Name"); } }
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }

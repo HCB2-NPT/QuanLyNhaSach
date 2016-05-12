@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class Account : INotifyPropertyChanged
+    public class Account : Editable
     {
         private int _id;
         private string _email = null;
@@ -18,19 +18,13 @@ namespace QuanLyNhaSach.Objects
         
         public Account()
         {
+            IsCreatedItem = true;
             _id = 0;
         }
 
         public Account(int id)
         {
             _id = id;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public int ID { get { return _id; } }

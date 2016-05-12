@@ -11,6 +11,19 @@ namespace QuanLyNhaSach.Adapters
 {
     public class AccessLevelAdapter
     {
+        //=========================
+        private static ObservableCollection<AccessLevel> _accessLevels;
+        public static ObservableCollection<AccessLevel> AccessLevels
+        {
+            get
+            {
+                if (_accessLevels == null)
+                    _accessLevels = Adapters.AccessLevelAdapter.GetAll();
+                return _accessLevels;
+            }
+        }
+        //=========================
+
         public static ObservableCollection<AccessLevel> GetAll()
         {
             ObservableCollection<AccessLevel> result = null;
@@ -38,27 +51,7 @@ namespace QuanLyNhaSach.Adapters
 
         public static AccessLevel GetAcessLevelById(int id)
         {
-            AccessLevel result = null;
-            try
-            {
-                var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen where maphanquyen = " + id);
-                if (reader != null)
-                {
-                    while (reader.Read())
-                    {
-                        result = new AccessLevel(reader.GetInt32(0))
-                        {
-                            Name = (string)reader.GetValueDefault(1, null)
-                        };
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
-            }
-            return result;
+            return AccessLevels.FirstOrDefault(x => x.ID == id);
         }
     }
 }

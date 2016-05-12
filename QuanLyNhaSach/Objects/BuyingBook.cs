@@ -12,11 +12,13 @@ namespace QuanLyNhaSach.Objects
         private Book _book;
         public Book Book
         {
-          get { return _book; }
+            get { return _book; }
             set
             {
                 _book = value;
                 NotifyPropertyChanged("Book");
+                NotifyPropertyChanged("Number");
+                NotifyPropertyChanged("Total");
             }
         }
 
@@ -29,6 +31,7 @@ namespace QuanLyNhaSach.Objects
             {
                 _number = value;
                 NotifyPropertyChanged("Number");
+                NotifyPropertyChanged("Total");
             }
         }
 
@@ -37,7 +40,6 @@ namespace QuanLyNhaSach.Objects
         public int Total
         {
             get { return Book.Price*Number; }
-            set { _total = Book.Price * Number; NotifyPropertyChanged("Total"); }
         }
 
 
