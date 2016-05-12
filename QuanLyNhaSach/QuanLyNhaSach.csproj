@@ -108,6 +108,7 @@
     <Compile Include="Bus\SearchData.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
+    <Compile Include="Objects\BuyingBook.cs" />
     <Compile Include="Objects\Genre.cs" />
     <Compile Include="Objects\Author.cs" />
     <Compile Include="Objects\Binding.cs" />

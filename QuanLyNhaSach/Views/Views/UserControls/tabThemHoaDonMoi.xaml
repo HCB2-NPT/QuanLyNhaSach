@@ -18,13 +18,13 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <TextBlock Foreground="Black">
-								<TextBlock.Text>
+                                <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0:0000 0000 0000} - {1}">
                                         <Binding Path="PhoneByInteger"/>
                                         <Binding Path="Name"/>
-									</MultiBinding>
-								</TextBlock.Text>
-							</TextBlock>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </toolkit:AutoCompleteBox.ItemTemplate>
@@ -44,7 +44,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
-                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="#FF999999" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged">
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="#FF999999" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="Gray">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -53,17 +53,24 @@
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
+                <TextBox x:Name="tb_TheLoai" Text="{Binding GenresFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999" OpacityMask="Gray" BorderThickness="0,0,0,1"/>
+                <TextBox x:Name="tb_TacGia" Text="{Binding AuthorsFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999" OpacityMask="Gray" BorderThickness="0,0,0,1"/>
+                <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}Tồn kho: {0}">
+                            <Binding Path="Number"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
                 <DockPanel Margin="0,0,8,0" Grid.Column="1" Grid.RowSpan="2">
-                    <MetroControls:NumericUpDown TextAlignment="Right" Maximum="300" Minimum="0" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <MetroControls:NumericUpDown x:Name="num_SLSach" TextAlignment="Right" Maximum="300" Minimum="0" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Value="1"/>
                     <TextBlock Text="Số lượng:" Margin="0,0,4,0" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999"/>
                 </DockPanel>
-                <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,8,0" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Center" OpacityMask="#FFB3D6F2" Background="White" Style="{DynamicResource Btn_IconOnly}" Width="70" Height="30">
-                	<DockPanel LastChildFill="False">
-                		<Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png" Width="24" Height="24" Stretch="Fill"/>	
-						<TextBlock Text="Nhập" Foreground="#FF3498DB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0"/>
-					</DockPanel>
+                <Button x:Name="btn_ThemSachVaoHoaDon" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,8,0" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Center" OpacityMask="#FFB3D6F2" Background="White" Style="{DynamicResource Btn_IconOnly}" Width="70" Height="30" Click="btn_ThemSachVaoHoaDon_Click">
+                    <DockPanel LastChildFill="False">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png" Width="24" Height="24" Stretch="Fill"/>
+                        <TextBlock Text="Nhập" Foreground="#FF3498DB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </DockPanel>
                 </Button>
             </Grid>
         </DockPanel>
@@ -91,6 +98,6 @@
 
             </Grid>
         </DockPanel>
-        <ListView DockPanel.Dock="Top" Margin="0" BorderThickness="0,1" Background="#FFF1F1F1"/>
+        <ListView x:Name="lv_ChiTietHoaDon" DockPanel.Dock="Top" Margin="0" BorderThickness="0,1" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemTemplate="{DynamicResource lvi_ChiTietHoaDonCu}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
     </DockPanel>
 </UserControl>
