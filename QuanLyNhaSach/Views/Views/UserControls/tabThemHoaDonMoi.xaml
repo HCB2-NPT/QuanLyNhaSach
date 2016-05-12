@@ -6,35 +6,28 @@
              xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabThemHoaDonMoi" 
              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Name="window"
              d:DesignHeight="600" d:DesignWidth="600" MinWidth="400" MinHeight="400" Background="White">
     <DockPanel>
         <DockPanel x:Name="dock_KH" LastChildFill="False" DockPanel.Dock="Top" Height="60" Margin="8,4" Background="White">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="4"/>
             <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="24,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
-            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="Phone" VerticalAlignment="Top" Width="500" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="24,0,0,0" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1">
+            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged">
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <TextBlock Foreground="Black">
 								<TextBlock.Text>
-									<MultiBinding StringFormat=" {0} - {1}">
-										<Binding Path="Phone"/>
-										<Binding Path="Name"/>
+                                    <MultiBinding StringFormat="{}{0:0000 0000 0000} - {1}">
+                                        <Binding Path="PhoneByInteger"/>
+                                        <Binding Path="Name"/>
 									</MultiBinding>
 								</TextBlock.Text>
 							</TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </toolkit:AutoCompleteBox.ItemTemplate>
-                <toolkit:AutoCompleteBox.Text>
-                    <MultiBinding StringFormat=" {0}, {1}, {2}, {3}">
-                        <Binding Path="Phone"/>
-                        <Binding Path="Name"/>
-                        <Binding Path="Adress"/>
-                        <Binding Path="Email"/>
-                    </MultiBinding>
-                </toolkit:AutoCompleteBox.Text>
             </toolkit:AutoCompleteBox>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
@@ -50,9 +43,18 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Thể Loại" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
-                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tác Giả" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
+                <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="#FF999999" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged">
+                    <toolkit:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <TextBlock Text="{Binding Name}" Foreground="Black"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
+                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
+                <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
                 <DockPanel Margin="0,0,8,0" Grid.Column="1" Grid.RowSpan="2">
                     <MetroControls:NumericUpDown TextAlignment="Right" Maximum="300" Minimum="0" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <TextBlock Text="Số lượng:" Margin="0,0,4,0" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999"/>
@@ -89,6 +91,6 @@
 
             </Grid>
         </DockPanel>
-        <ListView DockPanel.Dock="Top" Margin="8,4"/>
+        <ListView DockPanel.Dock="Top" Margin="0" BorderThickness="0,1" Background="#FFF1F1F1"/>
     </DockPanel>
 </UserControl>
