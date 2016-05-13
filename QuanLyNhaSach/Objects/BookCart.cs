@@ -64,14 +64,14 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void UpdateItemNumber()
+        public BookCart()
         {
-            NotifyPropertyChanged("TotalMoney");
-            NotifyPropertyChanged("ReturnMoney");
+            _listbook.CollectionChanged += _listbook_CollectionChanged;
         }
 
-        public void UpdateReturnMoney()
+        void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
+            NotifyPropertyChanged("TotalMoney");
             NotifyPropertyChanged("ReturnMoney");
         }
     }

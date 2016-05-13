@@ -33,7 +33,6 @@ namespace QuanLyNhaSach.Objects
                 _number = value;
                 NotifyPropertyChanged("Number");
                 NotifyPropertyChanged("Total");
-                _bookCart.UpdateItemNumber();
             }
         }
 

@@ -100,6 +100,10 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="Border" Property="BorderThickness" Value="0"/>
                             <Setter TargetName="btnMax_img" Property="Source" Value="{StaticResource ButtonRestore}"/>
+                            <Setter Property="Resizable" Value="False" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Minimized">
+                            <Setter Property="Resizable" Value="True" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -31,7 +31,7 @@
             </DockPanel>
         </DockPanel>
     </DataTemplate>
-    
+
     <DataTemplate x:Key="lvi_DSTheLoai">
         <DockPanel Background="White" Width="Auto" Height="60" Margin="2">
             <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="4,0">
@@ -105,50 +105,56 @@
             </DockPanel>
         </DockPanel>
     </DataTemplate>
+
     <DataTemplate x:Key="lvi_ChiTietHoaDonCu">
-        <DockPanel Width="Auto" Background="White" Margin="2">
-            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
-            <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
-                <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="24" Height="24"/>    
-                </Button>
-            </DockPanel>
+        <Border x:Name="border" Background="White" Margin="8,4" BorderBrush="#FF007ACC" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" Color="#FF007ACC" BlurRadius="4"/>
+            </Border.Effect>
             <DockPanel>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <!--<TextBox VerticalAlignment="Center" Text="Tên Sách"  Style="{DynamicResource TextBoxListViewItem}" Margin="4" />-->
-                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.Name}"/>
-                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.AuthorsFormat}" Grid.Row="1"/>
-                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.GenresFormat}" Grid.Row="2"/>
-                    <DockPanel Grid.ColumnSpan="1" Margin="0" Grid.Column="1">
-                        <MetroControls:NumericUpDown Margin="0,0,4,0" Width="100" DockPanel.Dock="Right" Maximum="300" Minimum="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding Number , Mode=TwoWay}"/>
-                        <TextBlock Text="Số Lượng:"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Margin="0,0,4,0" DockPanel.Dock="Right"/>
-                    </DockPanel>
-                    <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Đơn giá: {0} ">
-                                <Binding Path="Book.Price"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                    <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,4,4,4" Grid.Row="2">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Thành Tiền: {0} ">
-                                <Binding Path="Total"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </Grid>
+                <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
+                <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
+                    <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="24" Height="24"/>
+                    </Button>
+                </DockPanel>
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<TextBox VerticalAlignment="Center" Text="Tên Sách"  Style="{DynamicResource TextBoxListViewItem}" Margin="4" />-->
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.Name}"/>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.AuthorsShortFormat}" ToolTip="{Binding Book.AuthorsFormat}" Grid.Row="1"/>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="#FFABADB3" Text="{Binding Book.GenresShortFormat}" ToolTip="{Binding Book.GenresFormat}" Grid.Row="2"/>
+                        <DockPanel Grid.ColumnSpan="1" Margin="0" Grid.Column="1">
+                            <MetroControls:NumericUpDown Margin="0,0,4,0" Width="100" DockPanel.Dock="Right" Maximum="300" Minimum="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding Number , Mode=TwoWay}" BorderThickness="0,0,0,1"/>
+                            <TextBlock Text="Số Lượng:"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Margin="0,0,4,0" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Đơn giá: {0} ">
+                                    <Binding Path="Book.Price"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,4,4,4" Grid.Row="2">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Thành Tiền: {0} ">
+                                    <Binding Path="Total"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Grid>
+                </DockPanel>
             </DockPanel>
-        </DockPanel>
+        </Border>
     </DataTemplate>
     <DataTemplate x:Key="lvi_DSPhieuNhap">
         <DockPanel Height="Auto" Width="Auto">
