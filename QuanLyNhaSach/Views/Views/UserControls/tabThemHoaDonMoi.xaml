@@ -93,7 +93,7 @@
                 <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0" VerticalAlignment="Center" Foreground="#FF135995" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,1,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Right" Padding="0,0,2,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF135995" CaretBrush="#FF135995"/>
                 <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney, ElementName=window}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="0,0,8,0" Grid.Row="2"/>
 
-                <Button Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}">
+                <Button x:Name="btn_InHoaDon" Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click">
                     <Border BorderBrush="#FF767676" BorderThickness="1">
                         <TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
                     </Border>

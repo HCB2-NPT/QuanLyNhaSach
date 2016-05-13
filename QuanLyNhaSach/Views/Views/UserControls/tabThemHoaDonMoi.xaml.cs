@@ -1,4 +1,5 @@
-﻿using QuanLyNhaSach.Objects;
+﻿using QuanLyNhaSach.Managers;
+using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -108,6 +109,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void tb_TienKhachTra_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (string.IsNullOrEmpty(tb_TienKhachTra.Text))
+            {
+                tb_TienKhachTra.Text = "0";
+                return;
+            }
+                
             BookCart.PayMoney = int.Parse(tb_TienKhachTra.Text);
             BookCart.UpdateReturnMoney();
         }
@@ -116,5 +123,41 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             tb_SDTKH.SelectedItem = (tb_SDTKH.ItemsSource as ObservableCollection<Customer>).First();
         }
+
+        private void btn_InHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.Parse(tblock_HoanTien.Text) < 0 && SelectedCustomer.Name == "Khách hàng thông thường")
+            {
+                ErrorManager.Current.UnknowCustomer.Call(SelectedCustomer.Name + " không được nợ tiền cửa hàng. Vui lòng thanh toán đầy đủ!");
+                return;
+            }
+            //if (int.Parse(tblock_HoanTien.Text)<0 && SelectedCustomer.Name!="Khách hàng thông thường")
+            //{
+            //    ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedCustomer.Name + " sau khi mua sẽ nợ nhiều hơn " + RulesManager.Current.TienNoToiDa + " nên không thể hoàn tất thanh toán!");
+            //    return;
+            //}
+            if (int.Parse(tblock_HoanTien.Text) - SelectedCustomer.Debt < -Managers.RulesManager.Current.TienNoToiDa && SelectedCustomer.Name != "Khách hàng thông thường")
+            {
+                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedCustomer.Name + " sau khi mua sẽ nợ nhiều hơn " + RulesManager.Current.TienNoToiDa + " nên không thể hoàn tất thanh toán!");
+                return;
+            }
+            if (SelectedCustomer == null)
+            {
+                ErrorManager.Current.UnknowCustomer.Call("Vui lòng điền thông tin khách hàng!");
+                return;
+            }
+
+            foreach (var item in BookCart.Cart)
+            {
+                if (item.Book.Number - item.Number < Managers.RulesManager.Current.SoLuongSachTonToiThieuSauKhiBan)
+                {
+                    ErrorManager.Current.MinNumberLimitBookInStorage.Call(item.Book.Name + " sau khi bán có số lượng tồn trong kho nhỏ hơn " + RulesManager.Current.SoLuongSachTonToiThieuSauKhiBan);
+                    lv_ChiTietHoaDon.SelectedItem = item;
+                    return;
+                }
+            }
+        }
+
+
     }
 }

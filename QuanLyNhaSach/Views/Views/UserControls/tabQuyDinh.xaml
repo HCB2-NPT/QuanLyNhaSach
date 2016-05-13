@@ -7,10 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600" MinHeight="500">
     <DockPanel LastChildFill="True">
-        <Button BorderThickness="0" Background="{x:Null}" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}">
-            <Border Background="#FF3498DB" >
-                <TextBlock Text="Thay đổi qui định" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            </Border>
+        <Button BorderThickness="0" Background="#FF71B5E2" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}" OpacityMask="#FF0080FF">
+            <TextBlock Text="Thay đổi qui định" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
         </Button>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
@@ -21,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Quy Định :" HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#FF3498DB"/>
+            <TextBlock Text="Quy Định :" HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#FF71B5E2"/>
             <Grid Margin="64,0,0,0" Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>

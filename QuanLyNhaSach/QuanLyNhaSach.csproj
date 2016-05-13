@@ -341,7 +341,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\About-64.png" />
-    <Resource Include="Assets\Images\Bill-64.png" />
     <Resource Include="Assets\Images\Book-64.png" />
     <Resource Include="Assets\Images\Business Contact-64.png" />
     <Resource Include="Assets\Images\Calendar-64.png" />
@@ -439,6 +438,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Checkmark-64 %28blue%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Bill-64 %28blue%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Bill-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -5,15 +5,15 @@
              xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600" Background="White">
+             d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
-        <DockPanel Margin="8,4,16,4" DockPanel.Dock="Top" Height="48" Background="White">
+        <DockPanel Margin="0" DockPanel.Dock="Top" Background="White">
             <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxWaterMask}" Foreground="#FF999999" BorderThickness="0,0,0,1"/>
         </DockPanel>
-        <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="8,4">
+        <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -34,7 +34,7 @@
 
             </Grid>
         </DockPanel>
-        <Grid Margin="8,4" Background="White">
+        <Grid Margin="0" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -43,10 +43,10 @@
                 <Button HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2">
+                <Button Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0,0,8,0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}">
+                <Button Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0,0,8,0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                 </Button>
             </DockPanel>
