@@ -96,6 +96,7 @@
     <Compile Include="Adapters\AuthorAdapter.cs" />
     <Compile Include="Adapters\BookAdapter.cs" />
     <Compile Include="Adapters\GenreAdapter.cs" />
+    <Compile Include="Adapters\RulesAdapter.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Bus\CheckData.cs" />
     <Compile Include="Bus\FillData.cs" />
     <Compile Include="Bus\SearchData.cs" />
+    <Compile Include="Managers\RulesManager.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
     <Compile Include="Objects\BookCart.cs" />

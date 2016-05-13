@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyNhaSach.Managers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -154,11 +155,11 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 if (Image == null)
-                    return Directory.GetCurrentDirectory() + "\\Data\\Images\\no_image.png";
+                    return DataManager.Current.FOLDER_IMAGES + "\\no_image.png";
                 if (File.Exists(Image))
                     return Image;
                 else
-                    return Directory.GetCurrentDirectory() + "\\Data\\Images\\" + Image;
+                    return DataManager.Current.FOLDER_IMAGES + "\\" + Image;
             }
         }
 

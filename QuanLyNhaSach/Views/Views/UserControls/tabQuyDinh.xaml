@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600" MinHeight="500">
     <DockPanel LastChildFill="True">
-        <Button Content="Thay đổi quy định" BorderThickness="0" Background="#FF3498DB" Foreground="White" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom"/>
+        <Button BorderThickness="0" Background="{x:Null}" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}">
+            <Border Background="#FF3498DB" >
+                <TextBlock Text="Thay đổi qui định" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+        </Button>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

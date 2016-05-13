@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +24,10 @@ namespace QuanLyNhaSach.Managers
             }
         }
 
-        public string FOLDER_DATA { get { return "./Data/"; } }
+        public string FOLDER_PROJECT { get { return Directory.GetCurrentDirectory(); } }
 
-        public string FOLDER_IMAGES { get { return FOLDER_DATA + "Images/"; } }
+        public string FOLDER_DATA { get { return FOLDER_PROJECT + "\\Data"; } }
+
+        public string FOLDER_IMAGES { get { return FOLDER_DATA + "\\Images"; } }
     }
 }
