@@ -1,4 +1,4 @@
-﻿using QuanLyNhaSach.Adapters;
+﻿using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,19 +32,11 @@ namespace QuanLyNhaSach.Managers
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public int SoLuongSachTonToiThieuDeNhap { get; set; }
-
-        public int SoLuongSachNhapToiThieu { get; set; }
-
-        public int TienNoToiDa { get; set; }
-
-        public int SoLuongSachTonToiThieuSauKhiBan { get; set; }
-
-        public bool DuocThuVuotSoTienKhachHangDangNo { get; set; }
+        public Rule Rule { get; set; }
 
         private RulesManager()
         {
-            RulesAdapter.GetLastRules(this);
+            Rule = Bus.SearchData.FindLastRule();
         }
     }
 }

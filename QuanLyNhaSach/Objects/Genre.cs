@@ -34,12 +34,5 @@ namespace QuanLyNhaSach.Objects
             get { return _name; }
             set { _name = value; NotifyPropertyChanged("Name"); }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

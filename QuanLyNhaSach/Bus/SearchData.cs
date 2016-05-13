@@ -31,14 +31,19 @@ namespace QuanLyNhaSach.Bus
             return CustomerAdapter.GetCustomerByPhoneNumber(phoneNumber);
         }
 
-        public ObservableCollection<Genre> FindGenresOfBook(int bookid)
+        public static ObservableCollection<Genre> FindGenresOfBook(int bookid)
         {
             return GenreAdapter.GetGenresForBook(bookid);
         }
 
-        public ObservableCollection<Author> FindAuthorsOfBook(int bookid)
+        public static ObservableCollection<Author> FindAuthorsOfBook(int bookid)
         {
             return AuthorAdapter.GetAuthorsForBook(bookid);
+        }
+
+        public static Rule FindLastRule()
+        {
+            return RulesAdapter.GetLastRules();
         }
     }
 }

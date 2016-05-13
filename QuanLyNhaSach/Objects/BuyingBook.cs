@@ -37,8 +37,6 @@ namespace QuanLyNhaSach.Objects
             }
         }
 
-        private int _total = 0;
-
         public int Total
         {
             get { return Book.Price*Number; }

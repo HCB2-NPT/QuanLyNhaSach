@@ -106,7 +106,9 @@
     <Compile Include="Bus\AppHandler.cs" />
     <Compile Include="Bus\CheckData.cs" />
     <Compile Include="Bus\FillData.cs" />
+    <Compile Include="Bus\InsertData.cs" />
     <Compile Include="Bus\SearchData.cs" />
+    <Compile Include="Bus\UpdateData.cs" />
     <Compile Include="Managers\RulesManager.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\ErrorTypes\LoginErrors.cs" />
     <Compile Include="Errors\ErrorTypes\QueryErrors.cs" />
+    <Compile Include="Objects\Rule.cs" />
     <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">
       <DependentUpon>tabQuyDinh.xaml</DependentUpon>
     </Compile>

@@ -9,6 +9,8 @@ namespace QuanLyNhaSach.Objects
 {
     public class Customer : Editable
     {
+        private static int min_length__AdressShortFormat = 60;
+
         private int _id;
         private string _name = null;
         private string _adress = null;
@@ -25,13 +27,6 @@ namespace QuanLyNhaSach.Objects
         public Customer(int id) : base()
         {
             _id = id;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public int ID { get { return _id; } }
@@ -58,6 +53,22 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 return string.Format("{0:0000 0000 0000} - {1}", PhoneByInteger, Name);
+            }
+        }
+
+        public string AdressShortFormat
+        {
+            get
+            {
+                var format = Adress;
+                if (string.IsNullOrEmpty(format))
+                    return "<Không có thông tin địa chỉ>";
+                if (format.Length > min_length__AdressShortFormat)
+                {
+                    format = format.Remove(min_length__AdressShortFormat);
+                    format += "...";
+                }
+                return format;
             }
         }
     }

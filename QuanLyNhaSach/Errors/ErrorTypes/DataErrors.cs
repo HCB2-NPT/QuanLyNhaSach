@@ -19,5 +19,27 @@ namespace QuanLyNhaSach.Managers
                     false);
             }
         }
+
+        public Error DataCantBeUpdate
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi dữ liệu!",
+                    "Đã truy vấn được nhưng có vấn đề xãy ra sau đó,\ncó thể do lỗi dữ liệu đầu vào!",
+                    false);
+            }
+        }
+
+        public Error DataCantBeInsert
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi dữ liệu!",
+                    "Đã truy vấn được nhưng có vấn đề xãy ra sau đó,\ncó thể do lỗi dữ liệu đầu vào!",
+                    false);
+            }
+        }
     }
 }

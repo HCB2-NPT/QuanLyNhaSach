@@ -1,4 +1,5 @@
 ﻿using QuanLyNhaSach.Managers;
+using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,11 +11,12 @@ namespace QuanLyNhaSach.Adapters
 {
     public class RulesAdapter
     {
-        public static void GetLastRules(RulesManager rm)
+        public static Rule GetLastRules()
         {
+            Rule result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select " + 
+                var reader = DataConnector.ExecuteQuery("select MaQuyDinh, NgayCapNhat, " + 
                     "SoLuongSachNhapToiThieu, " + 
                     "SoLuongSachTonToiThieuDeNhap, " + 
                     "SoLuongSachTonToiThieuSauKhiBan, " + 
@@ -25,11 +27,15 @@ namespace QuanLyNhaSach.Adapters
                 {
                     while (reader.Read())
                     {
-                        rm.SoLuongSachTonToiThieuDeNhap = reader.GetInt32(1);
-                        rm.SoLuongSachTonToiThieuSauKhiBan = reader.GetInt32(2);
-                        rm.SoLuongSachNhapToiThieu = reader.GetInt32(0);
-                        rm.TienNoToiDa = reader.GetInt32(3);
-                        rm.DuocThuVuotSoTienKhachHangDangNo = reader.GetBoolean(4);
+                        var item = new Rule(reader.GetInt32(0), reader.GetDateTime(1));
+                        item.BeginInit();
+                        item.MinNumberWhenImport = reader.GetInt32(2);
+                        item.MinNumberToImport = reader.GetInt32(3);
+                        item.MinNumberInStore = reader.GetInt32(4);
+                        item.MaxDebt = reader.GetInt32(5);
+                        item.AllowGetMoneyGreaterDebt = reader.GetBoolean(6);
+                        item.EndInit();
+                        result = item;
                         break;
                     }
                 }
@@ -38,6 +44,21 @@ namespace QuanLyNhaSach.Adapters
             {
                 ErrorManager.Current.DataCantBeRead.Call(ex.Message);
             }
+            return result;
+        }
+
+        public static int InsertNewRule(Rule item)
+        {
+            var error = 0;
+            try
+            {
+                error = DataConnector.ExecuteNonQuery("INSERT INTO QuyDinh () VALUES (value1,value2,value3,...)");
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return error;
         }
     }
 }

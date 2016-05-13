@@ -12,6 +12,12 @@ namespace QuanLyNhaSach.Objects
 {
     public class Book : Editable
     {
+        #region Constant
+        private static int max_length__AuthorsShortFormat = 40;
+        private static int max_length__GenresShortFormat = 60;
+        #endregion
+
+        #region Properties
         private ObservableCollection<Author> _authors;
 
         public ObservableCollection<Author> Authors
@@ -21,7 +27,7 @@ namespace QuanLyNhaSach.Objects
             {
                 _authors = value; 
                 NotifyPropertyChanged("Authors");
-                NotifyPropertyChanged("AuthorsFormat");
+                UpdateAuthorsFormat();
             }
         }
         private ObservableCollection<Genre> _genres;
@@ -84,6 +90,8 @@ namespace QuanLyNhaSach.Objects
         {
             get { return _id; }
         }
+        #endregion
+
         public Book() : base(true)
         {
             _id = 0;
@@ -94,62 +102,95 @@ namespace QuanLyNhaSach.Objects
             _id = id;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
+        #region FormatProperty
+        private void UpdateAuthorsFormat()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            string format = "";
+            foreach (var item in Authors)
+            {
+                format += item.Name + ", ";
+            }
+            format = format.TrimEnd(' ', ',');
+            AuthorsFormat = format;
         }
 
-        #region FormatProperty
-
+        private string _authorsFormat = null;
         public string AuthorsFormat
         {
             get
             {
-                string format = "";
-                int max_length = 40;
-                foreach (Author item in Authors)
+                if (string.IsNullOrEmpty(_authorsFormat))
+                    return "<Không có tác giả rõ ràng>";
+                return _authorsFormat;
+            }
+            set
+            {
+                _authorsFormat = value;
+                NotifyPropertyChanged("AuthorsFormat");
+                NotifyPropertyChanged("AuthorsShortFormat");
+            }
+        }
+
+        public string AuthorsShortFormat
+        {
+            get
+            {
+                var format = AuthorsFormat;
+                if (string.IsNullOrEmpty(format))
+                    return "<Không có tác giả rõ ràng>";
+                if (format.Length > max_length__AuthorsShortFormat)
                 {
-                    format += item.Name + ", ";
-                    if (format.Length > max_length)
-                        break;
-                }
-                format = format.TrimEnd(' ', ',');
-                if (format.Length > max_length)
-                {
-                    format = format.Remove(40);
+                    format = format.Remove(max_length__AuthorsShortFormat);
                     format += "...";
                 }
-                if (string.IsNullOrEmpty(format))
-                    format = "<Không có tác giả rõ ràng>";
                 return format;
             }
         }
 
+        private void UpdateGenresFormat()
+        {
+            string format = "";
+            foreach (var item in Genres)
+            {
+                format += item.Name + ", ";
+            }
+            format = format.TrimEnd(' ', ',');
+            GenresFormat = format;
+        }
+
+        private string _genresFormat = null;
         public string GenresFormat
         {
             get
             {
-                int max_length = 40;
-                string format = "";
-                foreach (Genre item in Genres)
+                if (string.IsNullOrEmpty(_genresFormat))
+                    return "<Không có thể loại rõ ràng>";
+                return _genresFormat;
+            }
+            set
+            {
+                _genresFormat = value;
+                NotifyPropertyChanged("GenresFormat");
+                NotifyPropertyChanged("GenresShortFormat");
+            }
+        }
+
+        public string GenresShortFormat
+        {
+            get
+            {
+                var format = GenresFormat;
+                if (string.IsNullOrEmpty(format))
+                    return "<Không có thể loại rõ ràng>";
+                if (format.Length > max_length__GenresShortFormat)
                 {
-                    format += item.Name + ", ";
-                    if (format.Length > max_length)
-                        break;
-                }
-                format = format.TrimEnd(' ', ',');
-                if (format.Length > max_length)
-                {
-                    format = format.Remove(40);
+                    format = format.Remove(max_length__GenresShortFormat);
                     format += "...";
                 }
-                if (string.IsNullOrEmpty(format))
-                    format = "<Không có thể loại rõ ràng>";
                 return format;
             }
         }
+
         public string ImageFormat
         {
             get
@@ -162,7 +203,6 @@ namespace QuanLyNhaSach.Objects
                     return DataManager.Current.FOLDER_IMAGES + "\\" + Image;
             }
         }
-
         #endregion
     }
 }
