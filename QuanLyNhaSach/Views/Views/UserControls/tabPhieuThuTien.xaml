@@ -6,65 +6,59 @@
 	mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabPhieuThuTien"
 	x:Name="UserControl"
-	d:DesignHeight="600" d:DesignWidth="600" Background="LightGray">
-	<DockPanel Margin="8,4">
-		<DockPanel Margin="0" DockPanel.Dock="Top" Height="48" Background="White">
-			<Button Content="Button" Height="24" VerticalAlignment="Center" Width="24" DockPanel.Dock="Right" Template="{DynamicResource Button_Icon_Template}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4">
-				<Button.Background>
-					<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Search-64.png"/>
-				</Button.Background>
-			</Button>
-			<TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}"/>
-		</DockPanel>
-		<Grid Background="White" DockPanel.Dock="Bottom" Height="150">
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="150"/>
-			</Grid.ColumnDefinitions>
-			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
-			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999"/>
-			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2" Foreground="#FF999999"/>
-			<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3" Foreground="#FF999999"/>
-			<TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
-			<TextBlock Text="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
-			<TextBlock Text="Tiền trả : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="4,0" Foreground="#FF999999"/>
-			<TextBox Text="0" TextAlignment="Right" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Width="80" Margin="4,0,2,0" Foreground="#FF999999" Padding="0,0,-4,0"/>
-			<TextBlock Text="Còn lại : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
-			<TextBlock Text="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
-			<Button VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0,0,8,0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Grid.Row="3" Grid.Column="1">
-				<DockPanel Background="White" Margin="0,0,8,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
-					<TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
-				</DockPanel>
-			</Button>
-		</Grid>
-		<Grid Margin="0,4" Background="White">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="32"/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-			</Grid.ColumnDefinitions>
-			<ListView Grid.Row="1" BorderThickness="0,1" Foreground="#FF999999" BorderBrush="#FF999999"/>
-			<DockPanel LastChildFill="False">
-				<Button Content="" Height="24" VerticalAlignment="Center" Width="24" Template="{DynamicResource Button_Icon_Template}" HorizontalAlignment="Center" Margin="8,0,0,0">
-					<Button.Background>
-						<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png"/>
-					</Button.Background>
-				</Button>
-				<Button Content="" Height="24" VerticalAlignment="Center" Width="24" Template="{DynamicResource Button_Icon_Template}" HorizontalAlignment="Center" Margin="8,0,0,0">
-					<Button.Background>
-						<ImageBrush ImageSource="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png"/>
-					</Button.Background>
-				</Button>
-			</DockPanel>
-		</Grid>
-	</DockPanel>
+	d:DesignHeight="600" d:DesignWidth="600" Background="White">
+    <DockPanel Margin="0">
+        <DockPanel Margin="0" DockPanel.Dock="Top" Height="48" Background="White">
+            <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" OpacityMask="#FFB3D6F2">
+                <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" Foreground="#FFCCCCCC"/>
+        </DockPanel>
+        <Grid Background="White" DockPanel.Dock="Bottom" Height="200">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Grid.Row="3" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1"/>
+            <TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
+            <TextBlock Text="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
+            <TextBlock Text="Tiền trả : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="4,0" Foreground="#FF999999"/>
+            <TextBox Text="0" TextAlignment="Right" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Width="80" Margin="4,0,2,0" Foreground="#FF999999" Padding="0,0,-4,0"/>
+            <TextBlock Text="Còn lại : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
+            <TextBlock Text="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,8,4" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="3" Grid.Column="1" Width="96" Height="40">
+                <DockPanel Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="0" Width="24" Height="24"/>
+                    <TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
+                </DockPanel>
+            </Button>
+        </Grid>
+        <Grid Margin="0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Row="1" BorderThickness="0" Foreground="#FF999999" BorderBrush="{x:Null}"/>
+            <DockPanel LastChildFill="False">
+                <Button Height="40" VerticalAlignment="Center" Width="40" HorizontalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button Height="40" VerticalAlignment="Center" Width="40" HorizontalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Style="{DynamicResource Btn_IconOnly}">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
 </UserControl>

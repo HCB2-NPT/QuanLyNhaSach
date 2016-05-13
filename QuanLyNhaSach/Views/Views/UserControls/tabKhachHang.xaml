@@ -28,16 +28,16 @@
                     <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3" Foreground="#FF999999"/>
                 </Grid>
                 <DockPanel Margin="0,160,0,0" LastChildFill="False">
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                     </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                     </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Support-64 (blue).png" Width="24" Height="24"/>
                     </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" OpacityMask="#FFB3D6F2">
+                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                     </Button>
                 </DockPanel>

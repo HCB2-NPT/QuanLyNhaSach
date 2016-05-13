@@ -8,7 +8,7 @@
     <DockPanel Margin="0">
         <DockPanel Width="200" Background="White">
             <DockPanel DockPanel.Dock="Top" Height="50">
-                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0,0,8,0" Width="40" Height="40" BorderThickness="0,0,0,1">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0,0,8,0" Width="40" Height="40" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
                 <TextBox TextWrapping="Wrap" ToolTip="Tên Tác Giả" VerticalAlignment="Center" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,4,0"/>

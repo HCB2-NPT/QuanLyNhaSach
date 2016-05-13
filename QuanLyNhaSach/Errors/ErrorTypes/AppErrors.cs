@@ -50,5 +50,38 @@ namespace QuanLyNhaSach.Managers
                     false);
             }
         }
+
+        public Error MinNumberLimitBookInStorage
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi Số Lượng!",
+                    "Số lượng trong kho của sản phẩm nhỏ hơn so với quy định.",
+                    false);
+            }
+        }
+
+        public Error LimitMaxDebtMoney
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi tiền nợ khách hàng!",
+                    "Lượng tiền nợ sau khi mua của khách hàng lớn hơn so với qui định.",
+                    false);
+            }
+        }
+
+        public Error UnknowCustomer
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi khách hàng!",
+                    "Khách hàng không có ID không được nợ tiền!",
+                    false);
+            }
+        }
     }
 }

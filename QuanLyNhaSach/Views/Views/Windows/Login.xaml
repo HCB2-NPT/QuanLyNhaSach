@@ -38,7 +38,9 @@
                 <PasswordBox x:Name="pbMK" Margin="0" Style="{DynamicResource WaterMask}" ToolTip="B********p" Grid.Column="1" Grid.Row="7" VerticalAlignment="Top" OpacityMask="#FFAEAEAE" BorderThickness="0,0,0,1" Padding="16,0,0,0" PasswordChanged="pbMK_PasswordChanged"/>
                 <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Bottom"/>
                 <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Bottom"><Run Text="Mật khẩu:"/></TextBlock>
-                <Button x:Name="btnLogin" Grid.ColumnSpan="3" Margin="0" Grid.Row="8" Content="Đăng nhập" FontSize="16" Padding="0" BorderThickness="0" Click="btnLogin_Click" FontWeight="Bold" FontFamily="Segoe UI" Background="#FFF0F0F0"/>
+                <Button x:Name="btnLogin" Grid.ColumnSpan="3" Margin="0" Grid.Row="8" Padding="0" BorderThickness="0" Click="btnLogin_Click" FontWeight="Bold" FontFamily="Segoe UI" Background="#FFF1F1F1" OpacityMask="#FFCADFF0" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Normal" Foreground="#FF80A8F0" Margin="0"><Run Text="Đăng nhập"/></TextBlock>
+                </Button>
             </Grid>
         </DockPanel>
     </Border>
