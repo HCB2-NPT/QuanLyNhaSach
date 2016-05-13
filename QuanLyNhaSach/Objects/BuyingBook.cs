@@ -9,7 +9,6 @@ namespace QuanLyNhaSach.Objects
 {
     public class BuyingBook : INotifyPropertyChanged
     {
-        private BookCart _bookCart;
         private Book _book;
         public Book Book
         {
@@ -43,16 +42,14 @@ namespace QuanLyNhaSach.Objects
 
 
 
-        public BuyingBook(BookCart bc,Book b, int _num)
+        public BuyingBook(Book b, int _num)
         {
-            _bookCart = bc;
             _book = b;
             _number = _num;
         }
 
-        public BuyingBook(BookCart bc)
+        public BuyingBook()
         {
-            _bookCart = bc;
             _book = new Book();
             _number = 0;
         }

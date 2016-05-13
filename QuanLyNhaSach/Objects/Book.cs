@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Objects
             get { return _authors; }
             set
             {
-                _authors = value; 
+                _authors = value;
                 NotifyPropertyChanged("Authors");
                 UpdateAuthorsFormat();
             }
@@ -39,7 +39,7 @@ namespace QuanLyNhaSach.Objects
             {
                 _genres = value;
                 NotifyPropertyChanged("Genres");
-                NotifyPropertyChanged("GenresFormat");
+                UpdateGenresFormat();
             }
         }
 

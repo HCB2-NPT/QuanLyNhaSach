@@ -109,7 +109,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             else
             {
-                BuyingBook buybook = new BuyingBook(BookCart,SelectedBook, (int)num_SLSach.Value);
+                BuyingBook buybook = new BuyingBook(SelectedBook, (int)num_SLSach.Value);
                 BookCart.Cart.Add(buybook);
             }
         }
@@ -142,17 +142,17 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 ErrorManager.Current.UnknowCustomer.Call(SelectedCustomer.Name + " không được nợ tiền cửa hàng. Vui lòng thanh toán đầy đủ!");
                 return;
             }
-            if (Math.Abs(BookCart.ReturnMoney + SelectedCustomer.Debt) < Managers.RulesManager.Current.Rule.MaxDebt && SelectedCustomer.ID != 13)
+            if (Math.Abs(BookCart.ReturnMoney + SelectedCustomer.Debt) < Managers.RuleManager.Current.Rule.MaxDebt && SelectedCustomer.ID != 13)
             {
-                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedCustomer.Name + " sau khi mua sẽ nợ nhiều hơn " + RulesManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
+                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedCustomer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
                 return;
             }
             lv_ChiTietHoaDon.SelectedItems.Clear();
             foreach (var item in BookCart.Cart)
             {
-                if (item.Book.Number - item.Number < Managers.RulesManager.Current.Rule.MinNumberInStore)
+                if (item.Book.Number - item.Number < Managers.RuleManager.Current.Rule.MinNumberInStore)
                 {
-                    ErrorManager.Current.MinNumberLimitBookInStorage.Call(item.Book.Name + " sau khi bán có số lượng tồn trong kho nhỏ hơn " + RulesManager.Current.Rule.MinNumberInStore);
+                    ErrorManager.Current.MinNumberLimitBookInStorage.Call(item.Book.Name + " sau khi bán có số lượng tồn trong kho nhỏ hơn " + RuleManager.Current.Rule.MinNumberInStore);
                     lv_ChiTietHoaDon.SelectedItems.Add(item);
                 }
             }

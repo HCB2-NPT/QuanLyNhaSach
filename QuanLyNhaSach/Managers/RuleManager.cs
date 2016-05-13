@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Managers
 {
-    public class RulesManager : INotifyPropertyChanged
+    public class RuleManager : INotifyPropertyChanged
     {
-        private static RulesManager _current = null;
-        public static RulesManager Current
+        private static RuleManager _current = null;
+        public static RuleManager Current
         {
             get
             {
                 if (_current == null)
-                    _current = new RulesManager();
+                    _current = new RuleManager();
                 return _current;
             }
             private set
@@ -34,7 +34,7 @@ namespace QuanLyNhaSach.Managers
 
         public Rule Rule { get; set; }
 
-        private RulesManager()
+        private RuleManager()
         {
             Rule = Bus.SearchData.FindLastRule();
         }

@@ -109,7 +109,7 @@
     <Compile Include="Bus\InsertData.cs" />
     <Compile Include="Bus\SearchData.cs" />
     <Compile Include="Bus\UpdateData.cs" />
-    <Compile Include="Managers\RulesManager.cs" />
+    <Compile Include="Managers\RuleManager.cs" />
     <Compile Include="Objects\AccessLevel.cs" />
     <Compile Include="Objects\Account.cs" />
     <Compile Include="Objects\BookCart.cs" />

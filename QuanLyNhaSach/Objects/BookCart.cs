@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class BookCart :INotifyPropertyChanged
+    public class BookCart : INotifyPropertyChanged
     {
         private int _payMoney = 0;
         public int PayMoney

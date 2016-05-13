@@ -30,5 +30,7 @@ namespace QuanLyNhaSach.Managers
         public UserManager User { get { return UserManager.Current; } }
 
         public DataManager Data { get { return DataManager.Current; } }
+
+        public RuleManager Rule { get { return RuleManager.Current; } }
     }
 }

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600" MinHeight="500">
     <DockPanel LastChildFill="True">
-        <Button BorderThickness="0" Background="#FF71B5E2" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}" OpacityMask="#FF0080FF">
+        <Button x:Name="btn_saveRules" BorderThickness="0" Background="#FF71B5E2" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}" OpacityMask="#FF0080FF" Click="btn_saveRules_Click">
             <TextBlock Text="Thay đổi qui định" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
         </Button>
         <Grid DockPanel.Dock="Top">
@@ -38,9 +38,9 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock TextWrapping="Wrap" Text="Số lượng nhập tối thiểu: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF95A5A6" Margin="8,0,0,0"/>
-                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Column="1" Width="64" BorderThickness="0,0,0,1"/>
-                        <TextBlock TextWrapping="Wrap" Text="Lượng tồn tối thiểu trước khi nhập: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF95A5A6" Margin="8,0,0,0" Grid.Row="1"/>
-                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Row="1" Grid.Column="1" Width="64" BorderThickness="0,0,0,1"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Column="1" Width="64" BorderThickness="0,0,0,1" Text="{Binding Rule.Rule.MinNumberWhenImport, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="0" FlowDirection="RightToLeft" PreviewTextInput="numberOnly"/>
+                        <TextBlock TextWrapping="Wrap" Text="Lượng tồn tối thiểu để nhập: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF95A5A6" Margin="8,0,0,0" Grid.Row="1"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Row="1" Grid.Column="1" Width="64" BorderThickness="0,0,0,1" Text="{Binding Rule.Rule.MinNumberToImport, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="0" FlowDirection="RightToLeft" PreviewTextInput="numberOnly"/>
                     </Grid>
                 </DockPanel>
                 <DockPanel Margin="4" Grid.Row="1">
@@ -55,12 +55,12 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock TextWrapping="Wrap" Text="Tiền nợ tối đa: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF95A5A6" Margin="8,0,0,0"/>
-                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Column="1" Style="{DynamicResource TextBoxWaterMask}" ToolTip="Tiền Nợ" Width="64" BorderThickness="0,0,0,1"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Column="1" Width="64" BorderThickness="0,0,0,1" Text="{Binding Rule.Rule.MaxDebt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="0" FontFamily="Segoe UI, Lucida Sans Unicode, Verdana" FlowDirection="RightToLeft" PreviewTextInput="numberOnly"/>
                         <TextBlock TextWrapping="Wrap" Text="Lượng tồn tối thiểu sau khi bán: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FF95A5A6" Margin="8,0,0,0" Grid.Row="1"/>
-                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Row="1" Grid.Column="1" Width="64" BorderThickness="0,0,0,1"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" Grid.Row="1" Grid.Column="1" Width="64" BorderThickness="0,0,0,1" Text="{Binding Rule.Rule.MinNumberInStore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Segoe UI" MinHeight="0" FlowDirection="RightToLeft" PreviewTextInput="numberOnly"/>
                     </Grid>
                 </DockPanel>
-                <CheckBox Content="Quy định : Số tiền thu không vượt quá số tiền khách hàng đang nợ." VerticalAlignment="Top" Margin="4,0,4,32" Foreground="#FF95A5A6" FontWeight="Bold" FontSize="16" Template="{DynamicResource CheckBoxQuyDinh}" BorderBrush="#FF95A5A6" Grid.Row="2"/>
+                <CheckBox Content="Quy định : Số tiền thu không vượt quá số tiền khách hàng đang nợ." VerticalAlignment="Top" Margin="4,0,4,32" Foreground="#FF95A5A6" FontWeight="Bold" FontSize="16" Template="{DynamicResource CheckBoxQuyDinh}" BorderBrush="#FF95A5A6" Grid.Row="2" IsChecked="{Binding Rule.Rule.AllowGetMoneyGreaterDebt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"/>
             </Grid>
         </Grid>
     </DockPanel>

@@ -23,6 +23,27 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabQuyDinh()
         {
             InitializeComponent();
+            DataContext = Managers.Manager.Current;
+        }
+
+        private void numberOnly(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890".IndexOf(e.Text) == -1;
+        }
+
+        private void btn_saveRules_Click(object sender, RoutedEventArgs e)
+        {
+            Bus.InsertData.SaveNewRules(Managers.RuleManager.Current.Rule);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Managers.RuleManager.Current.Rule.AllowGetMoneyGreaterDebt = false;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Managers.RuleManager.Current.Rule.AllowGetMoneyGreaterDebt = true;
         }
     }
 }

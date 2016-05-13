@@ -22,7 +22,7 @@ namespace QuanLyNhaSach.Adapters
                     "SoLuongSachTonToiThieuSauKhiBan, " + 
                     "TienNoToiDa, " + 
                     "DuocThuVuotSoTienKhachHangDangNo " + 
-                    "from QuyDinh order by NgayCapNhap desc");
+                    "from QuyDinh order by NgayCapNhat desc");
                 if (reader != null)
                 {
                     while (reader.Read())
@@ -49,16 +49,18 @@ namespace QuanLyNhaSach.Adapters
 
         public static int InsertNewRule(Rule item)
         {
-            var error = 0;
             try
             {
-                error = DataConnector.ExecuteNonQuery("INSERT INTO QuyDinh () VALUES (value1,value2,value3,...)");
+                return DataConnector.ExecuteNonQuery("INSERT INTO QuyDinh " +
+                    "(NgayCapNhat, SoLuongSachTonToiThieuDeNhap, SoLuongSachNhapToiThieu, TienNoToiDa, SoLuongSachTonToiThieuSauKhiBan, DuocThuVuotSoTienKhachHangDangNo) " +
+                    string.Format("VALUES ('{0}', {1}, {2}, {3}, {4}, '{5}')",
+                    DateTime.Now, item.MinNumberToImport, item.MinNumberWhenImport, item.MaxDebt, item.MinNumberInStore, item.AllowGetMoneyGreaterDebt));
             }
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
             }
-            return error;
+            return -1;
         }
     }
 }

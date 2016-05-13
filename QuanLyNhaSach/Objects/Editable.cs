@@ -17,7 +17,7 @@ namespace QuanLyNhaSach.Objects
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void NotifyPropertyChanged(String propertyName)
+        protected void NotifyPropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
