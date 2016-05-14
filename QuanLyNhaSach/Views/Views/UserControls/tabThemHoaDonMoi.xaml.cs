@@ -24,12 +24,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     /// <summary>
     /// Interaction logic for tabThemHoaDonMoi.xaml
     /// </summary>
-    public partial class tabThemHoaDonMoi : UserControl,INotifyPropertyChanged
+    public partial class tabThemHoaDonMoi : UserControl, INotifyPropertyChanged
     {
         #region Properties
-        private BookCart _bookCart = new BookCart();
+        private Bill _bookCart = new Bill();
 
-        public BookCart BookCart
+        public Bill BookCart
         {
             get { return _bookCart; }
             set
@@ -64,7 +64,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             tb_NameBook.IsTextCompletionEnabled = true;
             tblock_TienHoaDon.DataContext = BookCart;
 
-            lv_ChiTietHoaDon.ItemsSource = BookCart.Cart;
+            lv_ChiTietHoaDon.ItemsSource = BookCart.BillItems;
+            DataContext = this;
         }
         #endregion
 
@@ -93,15 +94,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             if (e.AddedItems.Count > 0)
             {
                 SelectedBook = e.AddedItems[0] as Book;
-                tb_TacGia.Text = SelectedBook.AuthorsFormat;
-                tb_TheLoai.Text = SelectedBook.GenresFormat;
-                tb_SoLuongTon.DataContext = SelectedBook;
             }
         }
 
         private void btn_ThemSachVaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            var item = BookCart.Cart.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
+            var item = BookCart.BillItems.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
             if(item!=null)
             {
                 item.Number += (int)num_SLSach.Value;
@@ -109,8 +107,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             else
             {
-                BuyingBook buybook = new BuyingBook(SelectedBook, (int)num_SLSach.Value);
-                BookCart.Cart.Add(buybook);
+                var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value);
+                BookCart.BillItems.Add(buybook);
             }
         }
 
@@ -148,7 +146,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 return;
             }
             lv_ChiTietHoaDon.SelectedItems.Clear();
-            foreach (var item in BookCart.Cart)
+            foreach (var item in BookCart.BillItems)
             {
                 if (item.Book.Number - item.Number < Managers.RuleManager.Current.Rule.MinNumberInStore)
                 {
@@ -168,9 +166,9 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var button = sender as Button;
             if (button.Tag == null)
                 return;
-            var item = button.Tag as BuyingBook;
+            var item = button.Tag as BillItem;
             if (item != null)
-                BookCart.Cart.Remove(item);
+                BookCart.BillItems.Remove(item);
         }
     }
 }

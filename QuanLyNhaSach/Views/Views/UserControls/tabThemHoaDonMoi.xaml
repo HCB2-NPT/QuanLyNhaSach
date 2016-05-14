@@ -11,15 +11,15 @@
              d:DesignHeight="600" d:DesignWidth="600" MinWidth="600" MinHeight="500" Background="White" Loaded="window_Loaded">
     <DockPanel>
         <DockPanel x:Name="dock_KH" LastChildFill="False" DockPanel.Dock="Top" Margin="0">
-            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0"/>
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0" FontSize="14"/>
             <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="24,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
-            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0,16,8" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged" BorderBrush="Black" Background="White">
+            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0,16,8" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged" BorderBrush="Black" Background="White" FontSize="14">
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
                             <TextBlock Foreground="Black">
                                 <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0:0000 0000 0000} - {1}">
+                                    <MultiBinding StringFormat="{}{0:0000 0000 0000} - {1}" Mode="OneWay">
                                         <Binding Path="PhoneByInteger"/>
                                         <Binding Path="Name"/>
                                     </MultiBinding>
@@ -31,7 +31,7 @@
             </toolkit:AutoCompleteBox>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" Height="120" Margin="0" Background="White">
-            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Sách" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0"/>
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Sách" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0" FontSize="14"/>
             <Grid DockPanel.Dock="Top" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -43,22 +43,21 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
                 <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                <TextBlock Text="{Binding Name}" Foreground="Black"/>
+                                <TextBlock Text="{Binding Name, Mode=OneWay}" Foreground="Black"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <TextBox x:Name="tb_TheLoai" Text="{Binding GenresShortFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
-                <TextBox x:Name="tb_TacGia" Text="{Binding AuthorsShortFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TheLoai" Text="{Binding SelectedBook.GenresShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TacGia" Text="{Binding SelectedBook.AuthorsShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
                 <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray" FontSize="14">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}Tồn kho: {0}">
-                            <Binding Path="Number"/>
+                            <Binding Path="SelectedBook.Number" Mode="OneWay"/>
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
@@ -86,17 +85,17 @@
                     <ColumnDefinition Width="180"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" FontSize="14"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" Grid.Row="1" FontSize="14"/>
-                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" Grid.Row="2" FontSize="14"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" FontSize="14"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Grid.Row="1" FontSize="14"/>
+                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Grid.Row="2" FontSize="14"/>
 
-                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding TotalMoney}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF747474" Margin="8,8,0,8" Grid.Column="1" FontSize="14"/>
-                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0,4" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,0,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Left" Padding="2,0,0,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC" Grid.Column="1" FontFamily="Segoe UI"/>
-                <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney, ElementName=window}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFCF1E1E" Margin="8,8,0,8" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding TotalMoney, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF747474" Margin="8,8,0,8" Grid.Column="1" FontSize="14"/>
+                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0,4" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,0,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Left" Padding="2,0,0,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC" Grid.Column="1" FontFamily="Segoe UI" FontSize="14"/>
+                <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFCF1E1E" Margin="8,8,0,8" Grid.Row="2" Grid.Column="1" FontSize="14"/>
 
-                <Button x:Name="btn_InHoaDon" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click" Grid.Row="1">
+                <Button x:Name="btn_InHoaDon" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click" Grid.Row="1" Height="40" Width="96">
                     <Border BorderBrush="#FF767676" BorderThickness="1">
-                        <TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
+                        <TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB" FontSize="14" Margin="4,0"/>
                     </Border>
                 </Button>
 
@@ -110,9 +109,9 @@
                             <DropShadowEffect ShadowDepth="2" Color="#FF007ACC" BlurRadius="4"/>
                         </Border.Effect>
                         <DockPanel>
-                            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
+                            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat, Mode=OneWay}" Stretch="Fill" Height="100"/>
                             <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
-                                <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFF9D6D6" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="removeItem" Tag="{Binding}">
+                                <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFF9D6D6" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="removeItem" Tag="{Binding Mode=OneWay}">
                                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="32" Height="32"/>
                                 </Button>
                             </DockPanel>
@@ -127,23 +126,23 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.Name}" FontSize="14"/>
-                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.AuthorsShortFormat}" ToolTip="{Binding Book.AuthorsFormat}" Grid.Row="1" FontSize="14"/>
-                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.GenresShortFormat}" ToolTip="{Binding Book.GenresFormat}" Grid.Row="2" FontSize="14"/>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.Name, Mode=OneWay}" FontSize="14"/>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.AuthorsShortFormat, Mode=OneWay}" ToolTip="{Binding Book.AuthorsFormat, Mode=OneWay}" Grid.Row="1" FontSize="14"/>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.GenresShortFormat, Mode=OneWay}" ToolTip="{Binding Book.GenresFormat, Mode=OneWay}" Grid.Row="2" FontSize="14"/>
                                     <DockPanel Grid.ColumnSpan="1" Margin="0" Grid.Column="1">
                                         <MetroControls:NumericUpDown Margin="0,0,4,0" Width="100" DockPanel.Dock="Right" Maximum="300" Minimum="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding Number , Mode=TwoWay}" BorderThickness="0,0,0,1"/>
                                         <TextBlock Text="Số Lượng:"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="4,0" DockPanel.Dock="Right"/>
                                     </DockPanel>
                                     <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1" FontSize="14">
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="Đơn giá: {0} ">
+                                            <MultiBinding StringFormat="Đơn giá: {0}" Mode="OneWay">
                                                 <Binding Path="Book.Price"/>
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>
                                     <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="2" FontSize="14">
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="Thành Tiền: {0} ">
+                                            <MultiBinding StringFormat="Thành Tiền: {0}" Mode="OneWay">
                                                 <Binding Path="Total"/>
                                             </MultiBinding>
                                         </TextBlock.Text>
