@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="16"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="tb_name" Grid.Row="1" Grid.Column="1" Text="...................." FontSize="13.333" FontFamily="Segoe UI Light"/>
-                <TextBlock x:Name="tb_content" Grid.Row="3" Grid.Column="1" Text="................................................................" FontSize="13.333" Margin="16,0,0,0" FontFamily="Segoe UI Light"/>
+                <TextBlock x:Name="tb_content" Grid.Row="3" Grid.Column="1" Text="................................................................" FontSize="13.333" Margin="16,0,0,0" FontFamily="Segoe UI Light" TextWrapping="Wrap"/>
                 <TextBox x:Name="tb_exception" Grid.Row="5" Grid.Column="1" IsEnabled="False" Background="#FFF5F4F4" TextWrapping="Wrap" Focusable="False" IsTabStop="False" Height="{Binding ErrorExceptionHeight, ElementName=window}" MinHeight="0"/>
                 <Button x:Name="btn_ok" Grid.Row="7" Grid.Column="1" FontSize="13.333" Foreground="#FF0769B9" Style="{DynamicResource ButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Height="24" Width="108" Click="close" HorizontalContentAlignment="Center" Content="Tôi hiểu?!">
                     <Button.Resources>
