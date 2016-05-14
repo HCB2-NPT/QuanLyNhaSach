@@ -146,7 +146,7 @@
             <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,0" DockPanel.Dock="Right">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Khách trả: {0}">
-                        <Binding Path="PayMoney"/>
+                        <Binding Path="PayMoney" Mode="TwoWay"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>

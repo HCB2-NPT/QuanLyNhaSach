@@ -57,16 +57,23 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             ListBill = Adapters.BillAdapter.GetOldBills();
             lv_DSHoaDon.ItemsSource = ListBill;
             lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
+
+
         }
 
         private void lv_DSHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lv_DSHoaDon.SelectedItem!=null)
-                //SelectedBill = lv_DSHoaDon.SelectedItem as Bill;
                 if (e.AddedItems.Count > 0)
                 {
                     SelectedBill = e.AddedItems[0] as Bill;
+
+                    tblock_TotalMoney.DataContext = SelectedBill;
+                    tblock_ReturnMoney.DataContext = SelectedBill;
+                    tb_PayMoney.DataContext = SelectedBill;
+
                     lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
+                    
                 }
                     
                   
@@ -80,6 +87,21 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var item = button.Tag as BillItem;
             if (item != null)
                 SelectedBill.BillItems.Remove(item);
+        }
+
+        private void tb_PayMoney_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890".IndexOf(e.Text) == -1;
+        }
+
+        private void tb_PayMoney_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_PayMoney.Text))
+            {
+                tb_PayMoney.Text = "0";
+                return;
+            }
+            SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
         }
     }
 }

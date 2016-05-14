@@ -38,6 +38,10 @@ namespace QuanLyNhaSach.Objects
             set
             {
                 _payMoney = value;
+                //test
+                NotifyPropertyChanged("TotalMoney");
+                NotifyPropertyChanged("PayMoney");
+                //
                 NotifyPropertyChanged("ReturnMoney");
             }
         }

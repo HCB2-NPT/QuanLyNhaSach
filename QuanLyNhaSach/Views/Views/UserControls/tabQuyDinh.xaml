@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabQuyDinh" 
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White" MinWidth="600" MinHeight="500">
+             d:DesignHeight="500" d:DesignWidth="600" Width="Auto" Height="Auto" Background="White">
     <DockPanel LastChildFill="True">
         <Button x:Name="btn_saveRules" BorderThickness="0" Background="#FF71B5E2" Foreground="{x:Null}" Height="40" FontSize="16" FontWeight="Bold" Margin="0" DockPanel.Dock="Bottom" Style="{DynamicResource Btn_IconOnly}" BorderBrush="{x:Null}" OpacityMask="#FF0080FF" Click="btn_saveRules_Click">
             <TextBlock Text="Thay đổi qui định" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>

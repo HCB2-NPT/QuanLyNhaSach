@@ -8,7 +8,7 @@
              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              mc:Ignorable="d"
              Name="window"
-             d:DesignHeight="600" d:DesignWidth="600" MinWidth="600" MinHeight="500" Background="White" Loaded="window_Loaded">
+             d:DesignHeight="600" d:DesignWidth="600" Background="White" Loaded="window_Loaded">
     <DockPanel>
         <DockPanel x:Name="dock_KH" LastChildFill="False" DockPanel.Dock="Top" Margin="0">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0" FontSize="14"/>
