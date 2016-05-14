@@ -312,8 +312,8 @@
     <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
 
     <Style TargetType="{x:Type local:MdiChild}">
-        <Setter Property="MinWidth" Value="200" />
-        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="MinHeight" Value="300" />
         <Setter Property="MinimizedWidth" Value="200" />
         <Setter Property="MinimizedHeight" Value="34" />
         <Setter Property="Background" Value="{StaticResource ChildBackground}" />

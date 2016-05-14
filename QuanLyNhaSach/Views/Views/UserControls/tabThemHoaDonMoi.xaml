@@ -8,11 +8,11 @@
              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              mc:Ignorable="d"
              Name="window"
-             d:DesignHeight="600" d:DesignWidth="600" Background="White" Loaded="window_Loaded">
+             d:DesignHeight="600" d:DesignWidth="600" Background="White">
     <DockPanel>
         <DockPanel x:Name="dock_KH" LastChildFill="False" DockPanel.Dock="Top" Margin="0">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0" FontSize="14"/>
-            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0,16,8" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged" BorderBrush="Black" Background="White" FontSize="14">
+            <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ItemsSource="{Binding Customers}" FilterMode="Contains" IsTextCompletionEnabled="True" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0,16,8" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged" BorderBrush="Black" Background="White" FontSize="14">
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -42,7 +42,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" IsTextCompletionEnabled="True" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -88,19 +88,27 @@
                 <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Grid.Row="1" FontSize="14"/>
                 <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Grid.Row="2" FontSize="14"/>
 
-                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding TotalMoney, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF747474" Margin="8,8,0,8" Grid.Column="1" FontSize="14"/>
-                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0,4" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,0,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Left" Padding="2,0,0,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC" Grid.Column="1" FontFamily="Segoe UI" FontSize="14"/>
+                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding BookCart.TotalMoney, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF747474" Margin="8,8,0,8" Grid.Column="1" FontSize="14"/>
+                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0,4" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,0,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Left" Padding="2,0,0,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC" Grid.Column="1" FontFamily="Segoe UI" FontSize="14" Text="0"/>
                 <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFCF1E1E" Margin="8,8,0,8" Grid.Row="2" Grid.Column="1" FontSize="14"/>
 
-                <Button x:Name="btn_InHoaDon" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click" Grid.Row="1" Height="40" Width="96">
+                <Button x:Name="btn_InHoaDon" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click" Grid.Row="1" Height="40" Width="108">
                     <Border BorderBrush="#FF767676" BorderThickness="1">
                         <TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB" FontSize="14" Margin="4,0"/>
+                    </Border>
+                </Button>
+                <Button x:Name="btn_Refresh" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,128,8" BorderThickness="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_Refresh_Click" Grid.Row="1" Height="40" Width="108">
+                    <Border BorderBrush="#FF767676" BorderThickness="1">
+                        <DockPanel LastChildFill="True" Margin="8,4">
+                            <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
+                            <TextBlock Text="Nhập lại" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" FontSize="14"/>
+                        </DockPanel>
                     </Border>
                 </Button>
 
             </Grid>
         </DockPanel>
-        <ListView x:Name="lv_ChiTietHoaDon" DockPanel.Dock="Top" Margin="0" BorderThickness="0" Background="WhiteSmoke" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
+        <ListView x:Name="lv_ChiTietHoaDon" DockPanel.Dock="Top" ItemsSource="{Binding BookCart.BillItems}" Margin="0" BorderThickness="0" Background="WhiteSmoke" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="border" Background="White" Margin="8,4" BorderBrush="#FF007ACC" BorderThickness="1">
@@ -108,7 +116,7 @@
                             <DropShadowEffect ShadowDepth="2" Color="#FF007ACC" BlurRadius="4"/>
                         </Border.Effect>
                         <DockPanel>
-                            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat, Mode=OneWay}" Stretch="Fill" Height="100"/>
+                            <Image x:Name="Image" Width="70" Margin="8" Source="{Binding Book.ImageFormat, Mode=OneWay}" Stretch="Fill" Height="100"/>
                             <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
                                 <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFF9D6D6" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="removeItem" Tag="{Binding Mode=OneWay}">
                                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="32" Height="32"/>

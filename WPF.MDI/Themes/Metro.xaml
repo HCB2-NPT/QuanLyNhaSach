@@ -43,8 +43,8 @@
     <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
 
     <Style TargetType="{x:Type local:MdiChild}">
-        <Setter Property="MinWidth" Value="200" />
-        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="MinHeight" Value="300" />
         <Setter Property="MinimizedWidth" Value="200" />
         <Setter Property="MinimizedHeight" Value="24" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
@@ -104,6 +104,12 @@
                         </Trigger>
                         <Trigger Property="WindowState" Value="Minimized">
                             <Setter Property="Resizable" Value="True" />
+                        </Trigger>
+                        <Trigger Property="MaximizeBox" Value="False">
+                            <Setter TargetName="MaximizeButton" Property="IsEnabled" Value="False"/>
+                        </Trigger>
+                        <Trigger Property="MinimizeBox" Value="False">
+                            <Setter TargetName="MinimizeButton" Property="IsEnabled" Value="False"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

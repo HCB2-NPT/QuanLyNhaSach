@@ -379,6 +379,27 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #endregion
 
         #region Mdi Events
+        private void mdiResizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var first = mdiContainer.Children.FirstOrDefault();
+            if (first != null)
+            {
+                if (first.ActualWidth == mdiContainer.InnerWidth && first.ActualHeight == mdiContainer.InnerHeight)
+                {
+                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                }
+                else
+                {
+                    foreach (var item in mdiContainer.Children)
+                    {
+                        item.Position = new Point(0, 0);
+                        item.Width = mdiContainer.InnerWidth;
+                        item.Height = mdiContainer.InnerHeight;
+                    }
+                }
+            }
+        }
+
         /*
          * Đóng danh sách chức năng khi chức năng được chọn và show tab chức năng được chọn
          */
@@ -400,7 +421,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
-                mdiChild.Loaded += (s, a) => mdiChild.WindowState = System.Windows.WindowState.Maximized;
+                mdiChild.Loaded += (s, a) =>
+                {
+                    mdiChild.Position = new Point(0, 0);
+                    mdiChild.Width = mdiContainer.InnerWidth;
+                    mdiChild.Height = mdiContainer.InnerHeight;
+                    mdiChild.MaximizeBox = false;
+                };
             }
 
             NotifyPropertyChanged("ShowMdiContainer");

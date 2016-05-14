@@ -28,41 +28,45 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     {
         #region Properties
         private Bill _bookCart = new Bill();
-
         public Bill BookCart
         {
             get { return _bookCart; }
             set
             {
                 _bookCart = value;
-
+                NotifyPropertyChanged("BookCart");
             }
+        }
+
+        private ObservableCollection<Customer> _customers = Adapters.CustomerAdapter.GetAll();
+        public ObservableCollection<Customer> Customers
+        {
+            get { return _customers; }
+        }
+
+        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
+        public ObservableCollection<Book> Books
+        {
+            get { return _books; }
         }
         #endregion
 
         #region Binding Controlers
-        private Book b;
-        public Book SelectedBook { get { return b; } set { b = value; NotifyPropertyChanged("SelectedBook"); } }
+        private Book _book;
+        public Book SelectedBook { get { return _book; } set { _book = value; NotifyPropertyChanged("SelectedBook"); } }
         #endregion
 
         #region Constructor
         public tabThemHoaDonMoi()
         {
             InitializeComponent();
-
-            var customers = Adapters.CustomerAdapter.GetAll();
-            tb_SDTKH.ItemsSource = customers;
-            tb_SDTKH.FilterMode = AutoCompleteFilterMode.Contains;
-            tb_SDTKH.IsTextCompletionEnabled = true;
-            tb_SDTKH.Text = customers.FirstOrDefault(x => x.ID == 13).CustomerInfo;
-
-            tb_NameBook.ItemsSource = Adapters.BookAdapter.GetAll();
-            tb_NameBook.FilterMode = AutoCompleteFilterMode.Contains;
-            tb_NameBook.IsTextCompletionEnabled = true;
-            tblock_TienHoaDon.DataContext = BookCart;
-
-            lv_ChiTietHoaDon.ItemsSource = BookCart.BillItems;
             DataContext = this;
+
+            Loaded += (o, e) =>
+            {
+                tb_SDTKH.SelectedItem = Customers.FirstOrDefault(x => x.ID == 13);
+                tb_SDTKH.Text = Customers.FirstOrDefault(x => x.ID == 13).CustomerInfo;
+            };
         }
         #endregion
 
@@ -107,6 +111,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value, SelectedBook.Price);
                 BookCart.BillItems.Add(buybook);
             }
+            num_SLSach.Value = 1;
         }
 
         private void tb_TienKhachTra_TextChanged(object sender, TextChangedEventArgs e)
@@ -120,21 +125,21 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             BookCart.PayMoney = int.Parse(tb_TienKhachTra.Text);
         }
 
-        private void window_Loaded(object sender, RoutedEventArgs e)
-        {
-            tb_SDTKH.SelectedItem = (tb_SDTKH.ItemsSource as ObservableCollection<Customer>).First();
-        }
-
         private void btn_InHoaDon_Click(object sender, RoutedEventArgs e)
         {
             if (BookCart.Customer == null)
             {
-                ErrorManager.Current.UnknowCustomer.Call("Vui lòng điền thông tin khách hàng!");
+                ErrorManager.Current.UnknowCustomer.Call("Vui lòng điền thông tin khách hàng!\nNếu khách hàng không có tài khoản thì hãy thanh toán như một Khách Hàng Thông Thường!");
+                return;
+            }
+            if (BookCart.BillItems.Count == 0)
+            {
+                ErrorManager.Current.BillEmpty.Call("Tồn tại ít nhất 1 mặt hàng để thanh toán!");
                 return;
             }
             if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID == 13)
             {
-                ErrorManager.Current.UnknowCustomer.Call(BookCart.Customer.Name + " không được nợ tiền cửa hàng. Vui lòng thanh toán đầy đủ!");
+                ErrorManager.Current.PopularCustomer.Call("Vui lòng thanh toán đầy đủ!");
                 return;
             }
             if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) < Managers.RuleManager.Current.Rule.MaxDebt && BookCart.Customer.ID != 13)
@@ -154,6 +159,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             if (lv_ChiTietHoaDon.SelectedItems.Count > 0)
                 return;
             Bus.InsertData.NewBill(BookCart);
+            Clear();
         }
 
         private void removeItem(object sender, RoutedEventArgs e)
@@ -164,6 +170,21 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var item = button.Tag as BillItem;
             if (item != null)
                 BookCart.BillItems.Remove(item);
+        }
+
+        void Clear()
+        {
+            tb_SDTKH.SelectedItem = Customers.FirstOrDefault(x => x.ID == 13);
+            tb_SDTKH.Text = Customers.FirstOrDefault(x => x.ID == 13).CustomerInfo;
+            tb_NameBook.SelectedItem = null;
+            tb_NameBook.Text = "";
+            BookCart = new Bill();
+            tb_TienKhachTra.Text = "0";
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
         }
     }
 }

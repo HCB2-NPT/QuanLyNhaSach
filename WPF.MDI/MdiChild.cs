@@ -474,7 +474,7 @@ namespace WPF.MDI
 				{
 					if (WindowState == WindowState.Minimized)
 						minimizeButton_Click(null, null);
-					else if (WindowState == WindowState.Normal)
+					else if ((WindowState == WindowState.Normal || WindowState == WindowState.Maximized) && MaximizeBox)
 						maximizeButton_Click(null, null);
 				};
 			}
