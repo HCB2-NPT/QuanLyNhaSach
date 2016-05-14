@@ -16,7 +16,12 @@ namespace QuanLyNhaSach.Bus
                 return;
             if (!item.IsEditedItem)
                 return;
-            RulesAdapter.InsertNewRule(item);
+            RuleAdapter.InsertNewRule(item);
+        }
+
+        public static void NewBill(Bill newBill)
+        {
+            BillAdapter.InsertNewBill(newBill);
         }
     }
 }

@@ -156,9 +156,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             if (lv_ChiTietHoaDon.SelectedItems.Count > 0)
                 return;
-            /*
-             * insert
-             */
+            Bus.InsertData.NewBill(BookCart);
         }
 
         private void removeItem(object sender, RoutedEventArgs e)

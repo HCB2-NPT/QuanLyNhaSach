@@ -12,7 +12,6 @@
     <DockPanel>
         <DockPanel x:Name="dock_KH" LastChildFill="False" DockPanel.Dock="Top" Margin="0">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Text="Thông tin khách hàng" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="8,8,0,0" FontSize="14"/>
-            <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ToolTip="Số Điện Thoại" DockPanel.Dock="Top" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="24,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
             <toolkit:AutoCompleteBox x:Name="tb_SDTKH" ValueMemberPath="CustomerInfo" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="16,0,16,8" Padding="8,4,0,0" Foreground="#FF999999" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0,0,0,1" SelectionChanged="tb_SDTKH_SelectionChanged" BorderBrush="Black" Background="White" FontSize="14">
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>

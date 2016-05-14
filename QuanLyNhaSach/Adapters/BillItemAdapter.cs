@@ -11,12 +11,12 @@ namespace QuanLyNhaSach.Adapters
 {
     public class BillItemAdapter
     {
-        public static ObservableCollection<BillItem> GetBillItems(int id)
+        public static ObservableCollection<BillItem> GetBillItems(int billid)
         {
             ObservableCollection<BillItem> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select MaSach, SoLuong, DonGian from ChiTietHoaDon where MaHoaDon = " + id);
+                var reader = DataConnector.ExecuteQuery("select MaSach, SoLuong, DonGia from ChiTietHoaDon where MaHoaDon = " + billid);
                 if (reader != null)
                 {
                     result = new ObservableCollection<BillItem>();
@@ -32,6 +32,21 @@ namespace QuanLyNhaSach.Adapters
                 ErrorManager.Current.DataCantBeRead.Call(ex.Message);
             }
             return result;
+        }
+
+        public static int InsertNewBillItems(int billid, BillItem item)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("insert into ChiTietHoaDon " + 
+                    "(MaHoaDon, MaSach, SoLuong, DonGia) " +
+                    string.Format(" values ({0}, {1}, {2}, {3})", billid, item.Book.ID, item.Number, item.Price));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
         }
     }
 }

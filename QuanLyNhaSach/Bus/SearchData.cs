@@ -53,7 +53,7 @@ namespace QuanLyNhaSach.Bus
 
         public static Rule FindLastRule()
         {
-            return RulesAdapter.GetLastRules();
+            return RuleAdapter.GetLastRules();
         }
     }
 }

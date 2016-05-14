@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Adapters
 {
-    public class RulesAdapter
+    public class RuleAdapter
     {
         public static Rule GetLastRules()
         {
