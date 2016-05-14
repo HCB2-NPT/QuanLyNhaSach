@@ -33,6 +33,7 @@ namespace QuanLyNhaSach.Adapters
                             item.BillItems.Add(i);
                         }
                         item.EndInit();
+
                         result.Add(item);
                     }
                 }

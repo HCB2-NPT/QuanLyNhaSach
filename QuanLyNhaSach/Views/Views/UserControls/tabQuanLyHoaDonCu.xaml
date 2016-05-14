@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
+             xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
@@ -52,7 +53,59 @@
                 </Button>
             </DockPanel>
             <ListView x:Name="lv_DSHoaDon" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
-            <ListView x:Name="lv_ChiTietHoaDonCu" BorderThickness="4" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemTemplate="{DynamicResource lvi_ChiTietHoaDonCu}" ItemsSource="{Binding BookCart}"/>
+            <ListView x:Name="lv_ChiTietHoaDonCu" BorderThickness="4" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="border" Background="White" Margin="8,4" BorderBrush="#FF007ACC" BorderThickness="1">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#FF007ACC" BlurRadius="4"/>
+                            </Border.Effect>
+                            <DockPanel>
+                                <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat, Mode=OneWay}" Stretch="Fill" Height="100"/>
+                                <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
+                                    <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFF9D6D6" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="removeItem" Tag="{Binding Mode=OneWay}">
+                                        <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="32" Height="32"/>
+                                    </Button>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.Name, Mode=OneWay}" FontSize="14"/>
+                                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.AuthorsShortFormat, Mode=OneWay}" ToolTip="{Binding Book.AuthorsFormat, Mode=OneWay}" Grid.Row="1" FontSize="14"/>
+                                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.GenresShortFormat, Mode=OneWay}" ToolTip="{Binding Book.GenresFormat, Mode=OneWay}" Grid.Row="2" FontSize="14"/>
+                                        <DockPanel Grid.ColumnSpan="1" Margin="0" Grid.Column="1">
+                                            <MetroControls:NumericUpDown Margin="0,0,4,0" Width="100" DockPanel.Dock="Right" Maximum="300" Minimum="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding Number , Mode=TwoWay}" BorderThickness="0,0,0,1"/>
+                                            <TextBlock Text="Số Lượng:"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="4,0" DockPanel.Dock="Right"/>
+                                        </DockPanel>
+                                        <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1" FontSize="14">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="Đơn giá: {0}" Mode="OneWay">
+                                                    <Binding Path="Price"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                        <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="2" FontSize="14">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="Thành Tiền: {0}" Mode="OneWay">
+                                                    <Binding Path="Total"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </Grid>
+                                </DockPanel>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </DockPanel>
 </UserControl>

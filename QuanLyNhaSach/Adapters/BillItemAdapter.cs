@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
-
+		
         public static int InsertNewBillItems(int billid, BillItem item)
         {
             try
