@@ -397,10 +397,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
          */
         void mdiContainer_ChildrenChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add && e.NewStartingIndex == 0)
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
-                mdiChild.Loaded += (s, a) => mdiChild.WindowState = WindowState.Maximized;
+                mdiChild.Loaded += (s, a) => mdiChild.WindowState = System.Windows.WindowState.Maximized;
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -418,8 +418,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
             WindowsMenu.Items.Add(new Separator());
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
-            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Horizontally" });
-            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileHorizontal;
             WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
             mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
         }
