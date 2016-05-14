@@ -182,5 +182,20 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
+        public static int UpdateNumber(int bookid, int newValue)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("update Sach " +
+                    string.Format("set SoLuongTon = {0} ", newValue) +
+                    "where MaSach = " + bookid);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

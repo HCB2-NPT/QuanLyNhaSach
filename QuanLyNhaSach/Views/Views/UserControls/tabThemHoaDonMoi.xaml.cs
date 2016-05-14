@@ -41,9 +41,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #endregion
 
         #region Binding Controlers
-        private Customer c;
-        public Customer SelectedCustomer { get { return c; } set { c = value; NotifyPropertyChanged("SelectedCustomer"); } }
-
         private Book b;
         public Book SelectedBook { get { return b; } set { b = value; NotifyPropertyChanged("SelectedBook"); } }
         #endregion
@@ -86,7 +83,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void tb_SDTKH_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
-                SelectedCustomer = e.AddedItems[0] as Customer;
+                BookCart.Customer = e.AddedItems[0] as Customer;
         }
 
         private void tb_NameBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -130,19 +127,19 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btn_InHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedCustomer == null)
+            if (BookCart.Customer == null)
             {
                 ErrorManager.Current.UnknowCustomer.Call("Vui lòng điền thông tin khách hàng!");
                 return;
             }
-            if (BookCart.ReturnMoney < 0 && SelectedCustomer.ID == 13)
+            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID == 13)
             {
-                ErrorManager.Current.UnknowCustomer.Call(SelectedCustomer.Name + " không được nợ tiền cửa hàng. Vui lòng thanh toán đầy đủ!");
+                ErrorManager.Current.UnknowCustomer.Call(BookCart.Customer.Name + " không được nợ tiền cửa hàng. Vui lòng thanh toán đầy đủ!");
                 return;
             }
-            if (Math.Abs(BookCart.ReturnMoney + SelectedCustomer.Debt) < Managers.RuleManager.Current.Rule.MaxDebt && SelectedCustomer.ID != 13)
+            if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) < Managers.RuleManager.Current.Rule.MaxDebt && BookCart.Customer.ID != 13)
             {
-                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedCustomer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
+                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + BookCart.Customer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
                 return;
             }
             lv_ChiTietHoaDon.SelectedItems.Clear();

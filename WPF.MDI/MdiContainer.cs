@@ -343,11 +343,11 @@ namespace WPF.MDI
 						mdiChild.Loaded += (s, a) => Focus(mdiChild);
 
 						_windowOffset += WindowOffset;
-                        if (ActualWidth > 0 && ActualHeight > 0)
+                        if (InnerWidth > 0 && InnerHeight > 0)
                         {
-                            if (_windowOffset + mdiChild.Width > ActualWidth)
+                            if (_windowOffset + mdiChild.Width > InnerWidth)
                                 _windowOffset = 0;
-                            if (_windowOffset + mdiChild.Height > ActualHeight)
+                            if (_windowOffset + mdiChild.Height > InnerHeight)
                                 _windowOffset = 0;
                         }
 
@@ -530,7 +530,7 @@ namespace WPF.MDI
 			for (int i = 0; i < minimizedWindows.Count; i++)
 			{
 				MdiChild mdiChild = minimizedWindows[i];
-				int capacity = Convert.ToInt32(mdiContainer.ActualWidth) / mdiChild.MinimizedWidth,
+				int capacity = Convert.ToInt32(mdiContainer.InnerWidth) / mdiChild.MinimizedWidth,
 					row = i / capacity + 1,
 					col = i % capacity;
 				containerHeight = mdiContainer.InnerHeight - mdiChild.MinimizedHeight * row;
@@ -543,7 +543,7 @@ namespace WPF.MDI
 			{
 				case MdiLayout.Cascade:
 					{
-						double newWidth = mdiContainer.ActualWidth * 0.58, // should be non-linear formula here
+						double newWidth = mdiContainer.InnerWidth * 0.58, // should be non-linear formula here
 							newHeight = containerHeight * 0.67,
 							windowOffset = 0;
 						foreach (MdiChild mdiChild in normalWindows)
@@ -556,7 +556,7 @@ namespace WPF.MDI
 							mdiChild.Position = new Point(windowOffset, windowOffset);
 
 							windowOffset += WindowOffset;
-							if (windowOffset + mdiChild.Width > mdiContainer.ActualWidth)
+							if (windowOffset + mdiChild.Width > mdiContainer.InnerWidth)
 								windowOffset = 0;
 							if (windowOffset + mdiChild.Height > containerHeight)
 								windowOffset = 0;
@@ -577,7 +577,7 @@ namespace WPF.MDI
 								col_count.Add(rows);
 						}
 
-						double newWidth = mdiContainer.ActualWidth / cols,
+						double newWidth = mdiContainer.InnerWidth / cols,
 							newHeight = containerHeight / col_count[0],
 							offsetTop = 0,
 							offsetLeft = 0;
@@ -604,44 +604,22 @@ namespace WPF.MDI
 					}
 					break;
 				case MdiLayout.TileVertical:
-					{
-						int rows = (int)Math.Sqrt(normalWindows.Count),
-							cols = normalWindows.Count / rows;
+                    {
+                        int rows = (int)Math.Sqrt(normalWindows.Count),
+                            cols = normalWindows.Count / rows;
 
-						List<int> col_count = new List<int>(); // windows per column
-						for (int i = 0; i < cols; i++)
-						{
-							if (normalWindows.Count % cols > cols - i - 1)
-								col_count.Add(rows + 1);
-							else
-								col_count.Add(rows);
-						}
+                        double w = mdiContainer.InnerWidth / cols,
+                               h = mdiContainer.InnerHeight / rows;
 
-						double newWidth = mdiContainer.ActualWidth / cols,
-							newHeight = containerHeight / col_count[0],
-							offsetTop = 0,
-							offsetLeft = 0;
-
-						for (int i = 0, col_index = 0, prev_count = 0; i < normalWindows.Count; i++)
-						{
-							if (i >= prev_count + col_count[col_index])
-							{
-								prev_count += col_count[col_index++];
-								offsetLeft += newWidth;
-								offsetTop = 0;
-								newHeight = containerHeight / col_count[col_index];
-							}
-
-							MdiChild mdiChild = normalWindows[i];
-							if (mdiChild.Resizable)
-							{
-								mdiChild.Width = newWidth;
-								mdiChild.Height = newHeight;
-							}
-							mdiChild.Position = new Point(offsetLeft, offsetTop);
-							offsetTop += newHeight;
-						}
-					}
+                        int count = 0;
+                        foreach (var item in normalWindows)
+                        {
+                            item.Position = new Point((int)(count % cols) * w, (int)(count / cols) * h);
+                            item.Width = w;
+                            item.Height = h;
+                            count++;
+                        }
+                    }
 					break;
 			}
 			mdiContainer.InvalidateSize();

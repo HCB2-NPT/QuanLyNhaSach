@@ -51,7 +51,10 @@ namespace QuanLyNhaSach.Adapters
             {
                 var reader = DataConnector.ExecuteQuery("select MAX(MaHoaDon) from HoaDon");
                 if (reader != null)
-                    return reader.GetInt32(0);
+                {
+                    if (reader.Read())
+                        return reader.GetInt32(0);
+                }
             }
             catch (Exception ex)
             {
@@ -66,8 +69,8 @@ namespace QuanLyNhaSach.Adapters
             {
                 int result = DataConnector.ExecuteNonQuery("insert into HoaDon " +
                     "(MaKhachHang, NgayLap, TienTra, TongTien, DaLuu) " + 
-                    string.Format("({0}, {1}, {2}, {3}, {4})", newBill.Customer.ID, newBill.DateCreate, newBill.ReturnMoney, newBill.TotalMoney, false));
-                if (result == 0)
+                    string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer.ID, DateTime.Now, newBill.ReturnMoney, newBill.TotalMoney));
+                if (result == 1)
                 {
                     var billid = GetLatestId();
                     if (billid > 0)
@@ -75,6 +78,7 @@ namespace QuanLyNhaSach.Adapters
                         foreach (var item in newBill.BillItems)
                         {
                             BillItemAdapter.InsertNewBillItems(billid, item);
+                            BookAdapter.UpdateNumber(item.Book.ID, item.Book.Number - item.Number);
                         }
                     }
                 }
