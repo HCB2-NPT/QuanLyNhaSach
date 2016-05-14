@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    public class BuyingBook : INotifyPropertyChanged
+    public class BillItem : Editable
     {
+        public Bill Container { get; set; }
         private Book _book;
         public Book Book
         {
@@ -32,6 +33,7 @@ namespace QuanLyNhaSach.Objects
                 _number = value;
                 NotifyPropertyChanged("Number");
                 NotifyPropertyChanged("Total");
+                Container.WhenChildreUpdate();
             }
         }
 
@@ -42,23 +44,16 @@ namespace QuanLyNhaSach.Objects
 
 
 
-        public BuyingBook(Book b, int _num)
+        public BillItem(Book b, int _num) : base()
         {
             _book = b;
             _number = _num;
         }
 
-        public BuyingBook()
+        public BillItem() : base(true)
         {
             _book = new Book();
             _number = 0;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

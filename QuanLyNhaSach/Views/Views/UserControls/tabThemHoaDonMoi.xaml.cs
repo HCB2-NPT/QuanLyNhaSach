@@ -163,6 +163,14 @@ namespace QuanLyNhaSach.Views.Views.UserControls
              */
         }
 
-
+        private void removeItem(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button.Tag == null)
+                return;
+            var item = button.Tag as BuyingBook;
+            if (item != null)
+                BookCart.Cart.Remove(item);
+        }
     }
 }

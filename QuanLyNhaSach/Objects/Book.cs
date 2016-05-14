@@ -13,8 +13,8 @@ namespace QuanLyNhaSach.Objects
     public class Book : Editable
     {
         #region Constant
-        private static int max_length__AuthorsShortFormat = 40;
-        private static int max_length__GenresShortFormat = 60;
+        private static int max_length__AuthorsShortFormat = 30;
+        private static int max_length__GenresShortFormat = 40;
         #endregion
 
         #region Properties
@@ -110,7 +110,8 @@ namespace QuanLyNhaSach.Objects
             {
                 format += item.Name + ", ";
             }
-            format = format.TrimEnd(' ', ',');
+            if (format.Length > 2)
+                format = format.Remove(format.Length - 2);
             AuthorsFormat = format;
         }
 
@@ -154,7 +155,8 @@ namespace QuanLyNhaSach.Objects
             {
                 format += item.Name + ", ";
             }
-            format = format.TrimEnd(' ', ',');
+            if (format.Length > 2)
+                format = format.Remove(format.Length - 2);
             GenresFormat = format;
         }
 

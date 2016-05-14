@@ -44,7 +44,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--<TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="200" ToolTip="Tên Sách" HorizontalAlignment="Left" Style="{DynamicResource TextBoxListViewItem}" Margin="16,0,0,0" Padding="8,4,0,0" Foreground="#FF999999"/>-->
-                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="#FF999999" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3">
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -53,9 +53,9 @@
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <TextBox x:Name="tb_TheLoai" Text="{Binding GenresFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999" OpacityMask="Gray" BorderThickness="0,0,0,1"/>
-                <TextBox x:Name="tb_TacGia" Text="{Binding AuthorsFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999" OpacityMask="Gray" BorderThickness="0,0,0,1"/>
-                <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray">
+                <TextBox x:Name="tb_TheLoai" Text="{Binding GenresShortFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TacGia" Text="{Binding AuthorsShortFormat}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray" FontSize="14">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}Tồn kho: {0}">
                             <Binding Path="Number"/>
@@ -63,13 +63,13 @@
                     </TextBlock.Text>
                 </TextBlock>
                 <DockPanel Margin="0,0,8,0" Grid.Column="1" Grid.RowSpan="2" LastChildFill="True">
-                    <TextBlock Text="Số lượng:" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF767676"/>
+                    <TextBlock Text="Số lượng:" Margin="0,0,4,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" FontSize="14"/>
                     <MetroControls:NumericUpDown x:Name="num_SLSach" TextAlignment="Right" Maximum="300" Minimum="0" DockPanel.Dock="Right" VerticalAlignment="Center" Value="1" BorderThickness="0,0,0,1" FontSize="14"/>
                 </DockPanel>
                 <Button x:Name="btn_ThemSachVaoHoaDon" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,8,0" BorderThickness="0" HorizontalAlignment="Right" OpacityMask="#FFB3D6F2" Background="White" Style="{DynamicResource Btn_IconOnly}" Click="btn_ThemSachVaoHoaDon_Click" Width="96">
                     <DockPanel LastChildFill="True" Margin="8,4">
-                        <Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png" Width="24" Height="24"/>
-                        <TextBlock Text="Nhập" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center"/>
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Buy-64 (blue).png" Width="32" Height="32"/>
+                        <TextBlock Text="Nhập" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" FontSize="14"/>
                     </DockPanel>
                 </Button>
             </Grid>
@@ -82,18 +82,19 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="180"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF767676" Margin="4,0,0,0"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF767676" Margin="4,0,0,0" Grid.Row="1"/>
-                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF767676" Margin="4,0,0,0" Grid.Row="2"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" FontSize="14"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" Grid.Row="1" FontSize="14"/>
+                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="4,7,0,6" Grid.Row="2" FontSize="14"/>
 
-                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding TotalMoney}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF767676" Margin="0,0,8,0"/>
-                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,1,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Right" Padding="0,0,2,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC"/>
-                <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney, ElementName=window}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF767676" Margin="0,0,8,0" Grid.Row="2"/>
+                <TextBlock x:Name="tblock_TienHoaDon" Text="{Binding TotalMoney}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF747474" Margin="8,8,0,8" Grid.Column="1" FontSize="14"/>
+                <TextBox x:Name="tb_TienKhachTra" Grid.Row="1" TextAlignment="Right" Margin="0,4" VerticalAlignment="Center" Foreground="#FF007ACC" PreviewTextInput="tb_TienKhachTra_PreviewTextInput" BorderThickness="0,0,0,1" MinHeight="0" MinWidth="64" HorizontalAlignment="Left" Padding="2,0,0,0" HorizontalContentAlignment="Right" TextChanged="tb_TienKhachTra_TextChanged" BorderBrush="#FF007ACC" CaretBrush="#FF007ACC" SelectionBrush="#FF007ACC" Grid.Column="1" FontFamily="Segoe UI"/>
+                <TextBlock x:Name="tblock_HoanTien" Text="{Binding BookCart.ReturnMoney, ElementName=window}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFCF1E1E" Margin="8,8,0,8" Grid.Row="2" Grid.Column="1"/>
 
-                <Button x:Name="btn_InHoaDon" Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click">
+                <Button x:Name="btn_InHoaDon" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,8,8" BorderThickness="1" Width="80" Height="40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0" OpacityMask="#FFB3D6F2" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Foreground="{x:Null}" Background="{x:Null}" Click="btn_InHoaDon_Click" Grid.Row="1">
                     <Border BorderBrush="#FF767676" BorderThickness="1">
                         <TextBlock Text="In Hóa Đơn" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
                     </Border>
@@ -101,6 +102,58 @@
 
             </Grid>
         </DockPanel>
-        <ListView x:Name="lv_ChiTietHoaDon" DockPanel.Dock="Top" Margin="0" BorderThickness="0" Background="#FFF4F4F4" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemTemplate="{DynamicResource lvi_ChiTietHoaDonCu}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+        <ListView x:Name="lv_ChiTietHoaDon" DockPanel.Dock="Top" Margin="0" BorderThickness="0" Background="WhiteSmoke" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="border" Background="White" Margin="8,4" BorderBrush="#FF007ACC" BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="2" Color="#FF007ACC" BlurRadius="4"/>
+                        </Border.Effect>
+                        <DockPanel>
+                            <Image x:Name="Image" Width="70" Margin="4,4,0,4" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
+                            <DockPanel x:Name="dock_Close" DockPanel.Dock="Right" Width="48">
+                                <Button Style="{DynamicResource Btn_IconOnly}" Width="Auto" Height="Auto" OpacityMask="#FFF9D6D6" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="removeItem" Tag="{Binding}">
+                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="32" Height="32"/>
+                                </Button>
+                            </DockPanel>
+                            <DockPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.Name}" FontSize="14"/>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.AuthorsShortFormat}" ToolTip="{Binding Book.AuthorsFormat}" Grid.Row="1" FontSize="14"/>
+                                    <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Foreground="Black" Text="{Binding Book.GenresShortFormat}" ToolTip="{Binding Book.GenresFormat}" Grid.Row="2" FontSize="14"/>
+                                    <DockPanel Grid.ColumnSpan="1" Margin="0" Grid.Column="1">
+                                        <MetroControls:NumericUpDown Margin="0,0,4,0" Width="100" DockPanel.Dock="Right" Maximum="300" Minimum="0" HorizontalAlignment="Center" VerticalAlignment="Center" Value="{Binding Number , Mode=TwoWay}" BorderThickness="0,0,0,1"/>
+                                        <TextBlock Text="Số Lượng:"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="4,0" DockPanel.Dock="Right"/>
+                                    </DockPanel>
+                                    <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1" FontSize="14">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="Đơn giá: {0} ">
+                                                <Binding Path="Book.Price"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="2" FontSize="14">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="Thành Tiền: {0} ">
+                                                <Binding Path="Total"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Grid>
+                            </DockPanel>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </DockPanel>
 </UserControl>

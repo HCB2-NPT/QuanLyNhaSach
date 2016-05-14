@@ -11,6 +11,37 @@ namespace QuanLyNhaSach.Adapters
 {
     class CustomerAdapter
     {
+        public static Customer GetCustomer(int _id)
+        {
+            Customer c = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaKhachHang,HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa from KhachHang where MaKhachHang = " + _id);
+                if (reader != null)
+                {
+                    c = new Customer();
+                    while (reader.Read())
+                    {
+                        var item = new Customer(reader.GetInt32(0));
+                        c.BeginInit();
+                        c.Name = (string)reader.GetValueDefault(1, null);
+                        c.Debt = (int)reader.GetValueDefault(2, 0);
+                        c.Adress = (string)reader.GetValueDefault(3, null);
+                        c.Phone = (string)reader.GetValueDefault(4, null);
+                        c.Email = (string)reader.GetValueDefault(5, null);
+                        c.IsDeleted = (bool)reader.GetValueDefault(6, false);
+                        c.EndInit();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return c;
+        }
+
         public static ObservableCollection<Customer> GetAll()
         {
             ObservableCollection<Customer> result = null;
