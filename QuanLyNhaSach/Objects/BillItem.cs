@@ -10,6 +10,7 @@ namespace QuanLyNhaSach.Objects
     public class BillItem : Editable
     {
         public Bill Container { get; set; }
+
         private Book _book;
         public Book Book
         {
@@ -18,12 +19,10 @@ namespace QuanLyNhaSach.Objects
             {
                 _book = value;
                 NotifyPropertyChanged("Book");
-                NotifyPropertyChanged("Number");
-                NotifyPropertyChanged("Total");
             }
         }
 
-        private int _number;
+        private int _number = 0;
 
         public int Number
         {
@@ -39,21 +38,34 @@ namespace QuanLyNhaSach.Objects
 
         public int Total
         {
-            get { return Book.Price*Number; }
+            get { return Price*Number; }
+        }
+
+        private int _price = 0;
+        public int Price
+        {
+            get { return _price; }
+            set
+            {
+                _price = value;
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Total");
+                Container.WhenChildreUpdate();
+            }
         }
 
 
 
-        public BillItem(Book b, int _num) : base()
+        public BillItem(Book b, int num, int price) : base()
         {
             _book = b;
-            _number = _num;
+            _number = num;
+            _price = price;
         }
 
         public BillItem() : base(true)
         {
             _book = new Book();
-            _number = 0;
         }
     }
 }

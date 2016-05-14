@@ -136,7 +136,7 @@
                                     <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" Grid.Column="1" Margin="0,4,4,4" Grid.Row="1" FontSize="14">
                                         <TextBlock.Text>
                                             <MultiBinding StringFormat="Đơn giá: {0}" Mode="OneWay">
-                                                <Binding Path="Book.Price"/>
+                                                <Binding Path="Price"/>
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>

@@ -149,5 +149,38 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
+        public static Book GetBook(int id)
+        {
+            Book result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select s.TenSach,s.AnhBia,s.SoLuongTon,s.DonGia,s.BiXoa " +
+                                                        "from Sach s where s.MaSach = " + id);
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        var item = new Book(id);
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(0, null);
+                        item.Image = (string)reader.GetValueDefault(1, null);
+                        item.Number = (int)reader.GetValueDefault(2, 0);
+                        item.Price = (int)reader.GetValueDefault(3, 0);
+                        item.IsDelete = (bool)reader.GetValueDefault(4, false);
+                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
+                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.EndInit();
+                        result = item;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
     }
 }

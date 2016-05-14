@@ -16,6 +16,11 @@ namespace QuanLyNhaSach.Bus
             return AccountAdapter.GetAccount(id, findDeletedToo);
         }
 
+        public static Account FindAccountById(int id, ObservableCollection<Account> accounts)
+        {
+            return accounts.FirstOrDefault(x => x.ID == id);
+        }
+
         public static ObservableCollection<Book> FindBooksOfGenre(int genreid)
         {
             return BookAdapter.GetBooksForGenre(genreid);
@@ -29,6 +34,11 @@ namespace QuanLyNhaSach.Bus
         public static Customer FindCustomerByPhoneNumber(string phoneNumber)
         {
             return CustomerAdapter.GetCustomerByPhoneNumber(phoneNumber);
+        }
+
+        public static Customer FindCustomerByPhoneNumber(string phoneNumber, ObservableCollection<Customer> customers)
+        {
+            return customers.FirstOrDefault(x => x.Phone == phoneNumber);
         }
 
         public static ObservableCollection<Genre> FindGenresOfBook(int bookid)

@@ -107,7 +107,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             else
             {
-                var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value);
+                var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value, SelectedBook.Price);
                 BookCart.BillItems.Add(buybook);
             }
         }
