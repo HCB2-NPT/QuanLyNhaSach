@@ -16,7 +16,7 @@ namespace QuanLyNhaSach.Adapters
             ObservableCollection<BillItem> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select MaSach, SoLuong, DonGian from ChiTietHoaDon where MaHoaDon = " + id);
+                var reader = DataConnector.ExecuteQuery("select MaSach, SoLuong, DonGia from ChiTietHoaDon where MaHoaDon = " + id);
                 if (reader != null)
                 {
                     result = new ObservableCollection<BillItem>();
@@ -33,5 +33,6 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
     }
 }

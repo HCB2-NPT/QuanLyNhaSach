@@ -23,12 +23,14 @@ namespace QuanLyNhaSach.Adapters
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        var item = new Bill(reader.GetInt32(0));
+                        var item = new Bill(id);
                         item.BeginInit();
                         item.Customer = CustomerAdapter.GetCustomer(reader.GetInt32(1));
                         item.DateCreate = reader.GetDateTime(2);
                         item.PayMoney = reader.GetInt32(3);
+                        item.BillItems = BillItemAdapter.GetBillItems(id);
                         item.EndInit();
+
                         result.Add(item);
                     }
                 }

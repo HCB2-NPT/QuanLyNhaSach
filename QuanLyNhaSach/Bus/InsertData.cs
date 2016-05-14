@@ -16,7 +16,7 @@ namespace QuanLyNhaSach.Bus
                 return;
             if (!item.IsEditedItem)
                 return;
-            RulesAdapter.InsertNewRule(item);
+            RuleAdapter.InsertNewRule(item);
         }
     }
 }

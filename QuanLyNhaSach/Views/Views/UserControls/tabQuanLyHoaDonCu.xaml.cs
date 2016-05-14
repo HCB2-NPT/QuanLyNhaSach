@@ -56,12 +56,30 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             InitializeComponent();
             ListBill = Adapters.BillAdapter.GetOldBills();
             lv_DSHoaDon.ItemsSource = ListBill;
+            lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
         }
 
         private void lv_DSHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lv_DSHoaDon.SelectedItem!=null)
-                SelectedBill = lv_DSHoaDon.SelectedItem as Bill;
+                //SelectedBill = lv_DSHoaDon.SelectedItem as Bill;
+                if (e.AddedItems.Count > 0)
+                {
+                    SelectedBill = e.AddedItems[0] as Bill;
+                    lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
+                }
+                    
+                  
+        }
+
+        private void removeItem(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button.Tag == null)
+                return;
+            var item = button.Tag as BillItem;
+            if (item != null)
+                SelectedBill.BillItems.Remove(item);
         }
     }
 }
