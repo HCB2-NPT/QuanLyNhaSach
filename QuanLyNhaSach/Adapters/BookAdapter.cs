@@ -203,5 +203,18 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static int DeleteBook(Book whichBook)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("update Sach set BiXoa = 'true' where MaSach = " + whichBook.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

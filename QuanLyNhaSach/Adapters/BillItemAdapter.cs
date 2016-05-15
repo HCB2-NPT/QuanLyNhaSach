@@ -61,7 +61,7 @@ namespace QuanLyNhaSach.Adapters
             }
             catch (Exception ex)
             {
-                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
             }
         }
 
@@ -86,7 +86,7 @@ namespace QuanLyNhaSach.Adapters
             }
             catch (Exception ex)
             {
-                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
             }
             return -1;
         }

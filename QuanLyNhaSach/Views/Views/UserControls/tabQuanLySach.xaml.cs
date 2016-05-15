@@ -142,7 +142,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             foreach (Book item in listbox_DSSach.SelectedItems.ToList())
             {
                 if (item.IsDeletedItem)
-                    ;
+                    Adapters.BookAdapter.DeleteBook(item);
                 else if (item.IsCreatedItem)
                     ;
                 else if (item.IsEditedItem)
