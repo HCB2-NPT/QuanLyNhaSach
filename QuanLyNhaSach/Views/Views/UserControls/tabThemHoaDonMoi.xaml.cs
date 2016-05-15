@@ -31,23 +31,20 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public Bill BookCart
         {
             get { return _bookCart; }
-            set
-            {
-                _bookCart = value;
-                NotifyPropertyChanged("BookCart");
-            }
         }
 
         private ObservableCollection<Customer> _customers = Adapters.CustomerAdapter.GetAll();
         public ObservableCollection<Customer> Customers
         {
             get { return _customers; }
+            set { _customers = value; NotifyPropertyChanged("Customers"); }
         }
 
         private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
         public ObservableCollection<Book> Books
         {
             get { return _books; }
+            set { _books = value; NotifyPropertyChanged("Books"); }
         }
         #endregion
 
@@ -62,11 +59,9 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             InitializeComponent();
             DataContext = this;
 
-            Loaded += (o, e) =>
-            {
-                tb_SDTKH.SelectedItem = Customers.FirstOrDefault(x => x.ID == 13);
-                tb_SDTKH.Text = Customers.FirstOrDefault(x => x.ID == 13).CustomerInfo;
-            };
+            var c = Customers.FirstOrDefault(x => x.ID == 13);
+            tb_SDTKH.SelectedItem = c;
+            tb_SDTKH.Text = c.CustomerInfo;
         }
         #endregion
 
@@ -78,6 +73,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        void UpdateData()
+        {
+            Customers = Adapters.CustomerAdapter.GetAll();
+            Books = Adapters.BookAdapter.GetAll();
+        }
 
         private void tb_TienKhachTra_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -93,9 +94,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void tb_NameBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
-            {
                 SelectedBook = e.AddedItems[0] as Book;
-            }
         }
 
         private void btn_ThemSachVaoHoaDon_Click(object sender, RoutedEventArgs e)
@@ -105,6 +104,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             {
                 item.Number += (int)num_SLSach.Value;
                 lv_ChiTietHoaDon.SelectedItem = item;
+                lv_ChiTietHoaDon.ScrollIntoView(lv_ChiTietHoaDon.SelectedItem);
             }
             else
             {
@@ -112,17 +112,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 BookCart.BillItems.Add(buybook);
             }
             num_SLSach.Value = 1;
-        }
-
-        private void tb_TienKhachTra_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(tb_TienKhachTra.Text))
-            {
-                tb_TienKhachTra.Text = "0";
-                return;
-            }
-                
-            BookCart.PayMoney = int.Parse(tb_TienKhachTra.Text);
         }
 
         private void btn_InHoaDon_Click(object sender, RoutedEventArgs e)
@@ -142,10 +131,13 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 ErrorManager.Current.PopularCustomer.Call("Vui lòng thanh toán đầy đủ!");
                 return;
             }
-            if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) < Managers.RuleManager.Current.Rule.MaxDebt && BookCart.Customer.ID != 13)
+            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID != 13)
             {
-                ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + BookCart.Customer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
-                return;
+                if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) > Managers.RuleManager.Current.Rule.MaxDebt)
+                {
+                    ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + BookCart.Customer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
+                    return;
+                }
             }
             lv_ChiTietHoaDon.SelectedItems.Clear();
             foreach (var item in BookCart.BillItems)
@@ -174,12 +166,17 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         void Clear()
         {
-            tb_SDTKH.SelectedItem = Customers.FirstOrDefault(x => x.ID == 13);
-            tb_SDTKH.Text = Customers.FirstOrDefault(x => x.ID == 13).CustomerInfo;
+            BookCart.BillItems.Clear();
+            BookCart.PayMoney = 0;
+
+            UpdateData();
+
+            var c = Customers.FirstOrDefault(x => x.ID == 13);
+            tb_SDTKH.SelectedItem = c;
+            tb_SDTKH.Text = c.CustomerInfo;
+
             tb_NameBook.SelectedItem = null;
             tb_NameBook.Text = "";
-            BookCart = new Bill();
-            tb_TienKhachTra.Text = "0";
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)

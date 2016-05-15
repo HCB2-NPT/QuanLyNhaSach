@@ -32,6 +32,7 @@ namespace QuanLyNhaSach.Objects
                 _number = value;
                 NotifyPropertyChanged("Number");
                 NotifyPropertyChanged("Total");
+                NotifyPropertyChanged("TotalFormat");
                 Container.WhenChildreUpdate();
             }
         }
@@ -49,12 +50,28 @@ namespace QuanLyNhaSach.Objects
             {
                 _price = value;
                 NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("PriceFormat");
                 NotifyPropertyChanged("Total");
+                NotifyPropertyChanged("TotalFormat");
                 Container.WhenChildreUpdate();
             }
         }
 
+        public string TotalFormat
+        {
+            get
+            {
+                return Total.ToString("#,##0 vnđ");
+            }
+        }
 
+        public string PriceFormat
+        {
+            get
+            {
+                return Price.ToString("#,##0 vnđ");
+            }
+        }
 
         public BillItem(Book b, int num, int price) : base()
         {

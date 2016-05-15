@@ -99,6 +99,7 @@
     <Compile Include="Adapters\BillAdapter.cs" />
     <Compile Include="Adapters\GenreAdapter.cs" />
     <Compile Include="Adapters\RuleAdapter.cs" />
+    <Compile Include="Assets\Extensions\CollectionExt.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />

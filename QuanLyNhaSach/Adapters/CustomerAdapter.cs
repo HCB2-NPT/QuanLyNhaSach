@@ -134,5 +134,20 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
+        public static int UpdateDebt(int customerid, int newValue)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("update KhachHang " +
+                    string.Format("set SoTienNo = {0} ", newValue) +
+                    "where MaKhachHang = " + customerid);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

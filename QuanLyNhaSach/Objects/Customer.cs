@@ -35,7 +35,7 @@ namespace QuanLyNhaSach.Objects
         public bool IsDeleted { get { return _isDeleted; } set { _isDeleted = value; NotifyPropertyChanged("IsDeleted"); } }
         public string Adress { get { return _adress; } set { _adress = value; NotifyPropertyChanged("Adress"); } }
         public string Phone { get { return _phone; } set { _phone = value; NotifyPropertyChanged("Phone"); } }
-        public int Debt { get { return _debt; } set { _debt = value; NotifyPropertyChanged("Debt"); } }
+        public int Debt { get { return _debt; } set { _debt = value; NotifyPropertyChanged("Debt"); NotifyPropertyChanged("DebtFormat"); } }
 
         public int PhoneByInteger
         {
@@ -69,6 +69,14 @@ namespace QuanLyNhaSach.Objects
                     format += "...";
                 }
                 return format;
+            }
+        }
+
+        public string DebtFormat
+        {
+            get
+            {
+                return Debt.ToString("#,##0 vnđ");
             }
         }
     }

@@ -13,8 +13,8 @@ namespace QuanLyNhaSach.Objects
     public class Book : Editable
     {
         #region Constant
-        private static int max_length__AuthorsShortFormat = 30;
-        private static int max_length__GenresShortFormat = 40;
+        private const int max_length__AuthorsShortFormat = 30;
+        private const int max_length__GenresShortFormat = 40;
         #endregion
 
         #region Properties
@@ -75,7 +75,7 @@ namespace QuanLyNhaSach.Objects
         public int Price
         {
             get { return _price; }
-            set { _price = value; NotifyPropertyChanged("Price"); }
+            set { _price = value; NotifyPropertyChanged("Price"); NotifyPropertyChanged("PriceFormat"); }
         }
         private bool _isdelete;
 
@@ -102,7 +102,7 @@ namespace QuanLyNhaSach.Objects
             _id = id;
         }
 
-        #region FormatProperty
+        #region PropertiesFormat
         private void UpdateAuthorsFormat()
         {
             string format = "";
@@ -203,6 +203,14 @@ namespace QuanLyNhaSach.Objects
                     return Image;
                 else
                     return DataManager.Current.FOLDER_IMAGES + "\\" + Image;
+            }
+        }
+
+        public string PriceFormat
+        {
+            get
+            {
+                return Price.ToString("#,##0 vnđ");
             }
         }
         #endregion

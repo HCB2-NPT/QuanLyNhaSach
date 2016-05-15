@@ -81,6 +81,9 @@ namespace QuanLyNhaSach.Adapters
                             BookAdapter.UpdateNumber(item.Book.ID, item.Book.Number - item.Number);
                         }
                     }
+
+                    if (newBill.ReturnMoney < 0)
+                        CustomerAdapter.UpdateDebt(newBill.Customer.ID, newBill.Customer.Debt + Math.Abs(newBill.ReturnMoney));
                 }
             }
             catch (Exception ex)

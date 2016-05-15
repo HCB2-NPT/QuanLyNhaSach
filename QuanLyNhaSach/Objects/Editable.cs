@@ -11,9 +11,9 @@ namespace QuanLyNhaSach.Objects
     {
         public Editable(bool isNew = false)
         {
-            IsCreatedItem = false;
-            IsEditedItem = false;
-            IsDeletedItem = false;
+            _isCreatedItem = isNew;
+            _isEditedItem = false;
+            _isDeletedItem = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -21,15 +21,26 @@ namespace QuanLyNhaSach.Objects
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            if (!IsInitializingItem)
-                IsEditedItem = true;
+            if (!names.Any(x => x == propertyName))
+            {
+                if (!IsInitializingItem && !IsEditedItem && !IsCreatedItem)
+                    IsEditedItem = true;
+            }
         }
 
-        public bool IsCreatedItem { get; set; }
+        private bool _isCreatedItem;
+        private bool _isEditedItem;
+        private bool _isDeletedItem;
 
-        public bool IsEditedItem { get; set; }
+        private string[] names = { "IsCreatedItem", "IsEditedItem", "IsDeletedItem", "IsNotDeletedItem" };
 
-        public bool IsDeletedItem { get; set; }
+        public bool IsCreatedItem { get { return _isCreatedItem; } set { _isCreatedItem = value; NotifyPropertyChanged("IsCreatedItem"); } }
+
+        public bool IsEditedItem { get { return _isEditedItem; } set { _isEditedItem = value; NotifyPropertyChanged("IsEditedItem"); } }
+
+        public bool IsDeletedItem { get { return _isDeletedItem; } set { _isDeletedItem = value; NotifyPropertyChanged("IsDeletedItem"); NotifyPropertyChanged("IsNotDeletedItem"); } }
+
+        public bool IsNotDeletedItem { get { return !_isDeletedItem; } }
 
         public bool IsInitializingItem { get; set; }
 

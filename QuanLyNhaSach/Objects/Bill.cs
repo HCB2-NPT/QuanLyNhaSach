@@ -15,21 +15,20 @@ namespace QuanLyNhaSach.Objects
         public DateTime DateCreate
         {
             get { return _dateCreate; }
-            set { _dateCreate = value; }
+            set { _dateCreate = value; NotifyPropertyChanged("DateCreate"); }
         }
 
         private Customer _customer;
         public Customer Customer
         {
             get { return _customer; }
-            set { _customer = value; }
+            set { _customer = value; NotifyPropertyChanged("Customer"); }
         }
 
         private int _iDBill;
         public int IDBill
         {
             get { return _iDBill; }
-            set { _iDBill = value; }
         }
         private int _payMoney = 0;
         public int PayMoney
@@ -38,11 +37,12 @@ namespace QuanLyNhaSach.Objects
             set
             {
                 _payMoney = value;
-                //test
-                NotifyPropertyChanged("TotalMoney");
                 NotifyPropertyChanged("PayMoney");
-                //
+                NotifyPropertyChanged("PayMoneyFormat");
+                NotifyPropertyChanged("TotalMoney");
+                NotifyPropertyChanged("TotalMoneyFormat");
                 NotifyPropertyChanged("ReturnMoney");
+                NotifyPropertyChanged("ReturnMoneyFormat");
             }
         }
 
@@ -75,12 +75,6 @@ namespace QuanLyNhaSach.Objects
             {
                 return _billItems;
             }
-            set
-            {
-                _billItems = value;
-                NotifyPropertyChanged("Cart");
-                NotifyPropertyChanged("TotalMoney");
-            }
         }
 
         void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -94,7 +88,9 @@ namespace QuanLyNhaSach.Objects
             }
 
             NotifyPropertyChanged("TotalMoney");
+            NotifyPropertyChanged("TotalMoneyFormat");
             NotifyPropertyChanged("ReturnMoney");
+            NotifyPropertyChanged("ReturnMoneyFormat");
         }
 
         #region Constructor
@@ -119,7 +115,33 @@ namespace QuanLyNhaSach.Objects
         public void WhenChildreUpdate()
         {
             NotifyPropertyChanged("TotalMoney");
+            NotifyPropertyChanged("TotalMoneyFormat");
             NotifyPropertyChanged("ReturnMoney");
+            NotifyPropertyChanged("ReturnMoneyFormat");
+        }
+
+        public string TotalMoneyFormat
+        {
+            get
+            {
+                return TotalMoney.ToString("#,##0 vnđ");
+            }
+        }
+
+        public string ReturnMoneyFormat
+        {
+            get
+            {
+                return ReturnMoney.ToString("#,##0 vnđ");
+            }
+        }
+
+        public string PayMoneyFormat
+        {
+            get
+            {
+                return PayMoney.ToString("#,##0 vnđ");
+            }
         }
     }
 }
