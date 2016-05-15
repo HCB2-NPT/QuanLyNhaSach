@@ -77,12 +77,12 @@ namespace QuanLyNhaSach.Objects
             get { return _price; }
             set { _price = value; NotifyPropertyChanged("Price"); NotifyPropertyChanged("PriceFormat"); }
         }
-        private bool _isdelete;
+        private bool _isdeleted;
 
-        public bool IsDelete
+        public bool IsDeleted
         {
-            get { return _isdelete; }
-            set { _isdelete = value; NotifyPropertyChanged("IsDelete"); }
+            get { return _isdeleted; }
+            set { _isdeleted = value; NotifyPropertyChanged("IsDelete"); }
         }
         private int _id;
 
@@ -198,11 +198,17 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 if (Image == null)
-                    return DataManager.Current.FOLDER_IMAGES + "\\no_image.png";
+                    return DataManager.Current.FOLDER_IMAGES + "\\" + DataManager.Current.NO_IMAGE;
                 if (File.Exists(Image))
                     return Image;
                 else
-                    return DataManager.Current.FOLDER_IMAGES + "\\" + Image;
+                {
+                    var path = DataManager.Current.FOLDER_IMAGES + "\\" + Image;
+                    if (File.Exists(path))
+                        return path;
+                    else
+                        return DataManager.Current.FOLDER_IMAGES + "\\" + DataManager.Current.NO_IMAGE;
+                }
             }
         }
 
@@ -211,6 +217,14 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 return Price.ToString("#,##0 vnđ");
+            }
+        }
+
+        public string ID_Name
+        {
+            get
+            {
+                return string.Format("{0:000} - {1}", ID, Name);
             }
         }
         #endregion

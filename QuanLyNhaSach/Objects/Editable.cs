@@ -23,7 +23,7 @@ namespace QuanLyNhaSach.Objects
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             if (!names.Any(x => x == propertyName))
             {
-                if (!IsInitializingItem && !IsEditedItem && !IsCreatedItem)
+                if (!IsInitializingItem && !IsEditedItem)
                     IsEditedItem = true;
             }
         }

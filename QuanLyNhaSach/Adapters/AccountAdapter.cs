@@ -32,6 +32,7 @@ namespace QuanLyNhaSach.Adapters
                         item.Name = (string)reader.GetValueDefault(3, null);
                         item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -65,6 +66,7 @@ namespace QuanLyNhaSach.Adapters
                         item.Name = (string)reader.GetValueDefault(3, null);
                         item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
                         item.IsDeleted = true;
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -97,6 +99,7 @@ namespace QuanLyNhaSach.Adapters
                         item.Name = (string)reader.GetValueDefault(3, null);
                         item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result = item;
                         break;
@@ -130,6 +133,7 @@ namespace QuanLyNhaSach.Adapters
                         item.Name = (string)reader.GetValueDefault(3, null);
                         item.AccessLevel = AccessLevelAdapter.GetAcessLevelById(reader.GetInt32(4));
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result = item;
                         break;

@@ -26,7 +26,7 @@ namespace QuanLyNhaSach.Adapters
                         var item = new Bill(id);
                         item.BeginInit();
                         item.Customer = CustomerAdapter.GetCustomer(reader.GetInt32(1));
-                        item.DateCreate = reader.GetDateTime(2);
+                        item.DateCreated = reader.GetDateTime(2);
                         item.PayMoney = reader.GetInt32(3);
                         foreach (var i in BillItemAdapter.GetBillItems(id))
                         {
@@ -93,18 +93,31 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
-        public static void UpdateOldBill(Bill bill)
+        public static int FixedBillsOverTime()
         {
-            
             try
             {
-                BillItemAdapter.UpdateOldBillItems(bill);
-                var reader = DataConnector.ExecuteQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.IDBill));
+                return DataConnector.ExecuteNonQuery(string.Format("update HoaDon set DaLuu=1 where DaLuu=0 and DATEDIFF(day, '{0}', NgayLap) < 0", DateTime.Now));
             }
             catch (Exception ex)
             {
-                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
             }
+            return -1;
+        }
+
+        public static int UpdateOldBill(Bill bill)
+        {
+            try
+            {
+                BillItemAdapter.UpdateOldBillItems(bill);
+                return DataConnector.ExecuteNonQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.IDBill));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
         }
 
     }

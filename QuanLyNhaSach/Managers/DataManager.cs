@@ -24,10 +24,25 @@ namespace QuanLyNhaSach.Managers
             }
         }
 
-        public string FOLDER_PROJECT { get { return Directory.GetCurrentDirectory(); } }
+        public DataManager()
+        {
+            folder_project = Directory.GetCurrentDirectory();
+            folder_data = folder_project + "\\Data";
+            folder_images = folder_data + "\\Images";
+            no_images = "no_image.png";
+        }
 
-        public string FOLDER_DATA { get { return FOLDER_PROJECT + "\\Data"; } }
+        private string folder_project;
+        private string folder_data;
+        private string folder_images;
+        private string no_images;
 
-        public string FOLDER_IMAGES { get { return FOLDER_DATA + "\\Images"; } }
+        public string FOLDER_PROJECT { get { return folder_project; } }
+
+        public string FOLDER_DATA { get { return folder_data; } }
+
+        public string FOLDER_IMAGES { get { return folder_images; } }
+
+        public string NO_IMAGE { get { return no_images; } }
     }
 }

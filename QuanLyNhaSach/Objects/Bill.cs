@@ -12,7 +12,7 @@ namespace QuanLyNhaSach.Objects
     {
         private DateTime _dateCreate;
 
-        public DateTime DateCreate
+        public DateTime DateCreated
         {
             get { return _dateCreate; }
             set { _dateCreate = value; NotifyPropertyChanged("DateCreate"); }

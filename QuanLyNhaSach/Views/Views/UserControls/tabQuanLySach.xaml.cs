@@ -14,18 +14,34 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using QuanLyNhaSach.Objects;
+using System.ComponentModel;
+using System.IO;
 
 namespace QuanLyNhaSach.Views.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for tabQuanLySach.xaml
     /// </summary>
-    public partial class tabQuanLySach : UserControl
+    public partial class tabQuanLySach : UserControl, INotifyPropertyChanged
     {
+        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
+        public ObservableCollection<Book> Books
+        {
+            get { return _books; }
+            set { _books = value; NotifyPropertyChanged("Books"); }
+        }
+
         public tabQuanLySach()
         {
             InitializeComponent();
-            Bus.FillData.Books(listbox_DSSach);
+            listbox_DSSach.ItemsSource = Books;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         void RemoveItem(Book item)
@@ -39,12 +55,42 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 item.IsDeletedItem = true;
         }
 
+        void searchItem(string key)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(key))
+                {
+                    listbox_DSSach.ItemsSource = Books;
+                }
+                else
+                {
+                    listbox_DSSach.ItemsSource = Books.Where(x =>
+                        x.ID.ToString().ToLower().Contains(key) ||
+                        x.Name.ToLower().Contains(key) ||
+                        x.Number.ToString().ToLower().Contains(key) ||
+                        x.Price.ToString().ToLower().Contains(key) ||
+                        x.PriceFormat.ToLower().Contains(key) ||
+                        x.AuthorsFormat.ToLower().Contains(key) ||
+                        x.GenresFormat.ToLower().Contains(key) ||
+                        (x.Image == null ? Managers.DataManager.Current.NO_IMAGE.ToLower().Contains(key) : x.Image.ToLower().Contains(key))
+                        ).ToObservableCollection<Book>();
+                }
+            }
+            catch { }
+        }
+
         private void aItemGotFocus(object sender, RoutedEventArgs e)
         {
             var textbox = sender as TextBox;
             var tag = textbox.Tag as Book;
             if (tag != null)
-                listbox_DSSach.SelectedItems.Add(tag);
+            {
+                if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                    listbox_DSSach.SelectedItems.Add(tag);
+                else
+                    listbox_DSSach.SelectedItem = tag;
+            }
         }
 
         private void removeItem(object sender, RoutedEventArgs e)
@@ -65,7 +111,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            Bus.FillData.Books(listbox_DSSach);
+            if (string.IsNullOrEmpty(tbSearch.Text))
+                Books = Adapters.BookAdapter.GetAll();
+            else
+                tbSearch.Text = "";
+            listbox_DSSach.ItemsSource = Books;
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -89,7 +139,53 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            foreach (Book item in listbox_DSSach.SelectedItems.ToList())
+            {
+                if (item.IsDeletedItem)
+                    ;
+                else if (item.IsCreatedItem)
+                    ;
+                else if (item.IsEditedItem)
+                    ;
+            }
+        }
 
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            searchItem(tbSearch.Text.ToLower());
+        }
+
+        private void tbSearch_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                searchItem(tbSearch.Text.ToLower());
+        }
+
+        private void selectImage(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var tag = btn.Tag as Book;
+            if (tag != null)
+            {
+                System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+
+                openFileDialog1.InitialDirectory = "c:\\";
+                openFileDialog1.Filter = "Image files (*.png, *jpg)|*.png; *jpg|All files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.RestoreDirectory = true;
+
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        tag.Image = openFileDialog1.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        //WarningBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }

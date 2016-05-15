@@ -64,16 +64,17 @@ namespace QuanLyNhaSach.Adapters
             }
         }
 
-        public static void DeleteBillItem(Book book)
+        public static int DeleteBillItem(Book book)
         {
             try
             {
-                DataConnector.ExecuteNonQuery("delete from ChiTietHoaDon where MaSach =" + book.ID);
+                return DataConnector.ExecuteNonQuery("delete from ChiTietHoaDon where MaSach =" + book.ID);
             }
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
             }
+            return -1;
         }
     }
 }

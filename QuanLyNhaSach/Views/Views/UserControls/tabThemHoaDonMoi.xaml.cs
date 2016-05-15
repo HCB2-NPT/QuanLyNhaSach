@@ -33,14 +33,14 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             get { return _bookCart; }
         }
 
-        private ObservableCollection<Customer> _customers = Adapters.CustomerAdapter.GetAll();
+        private ObservableCollection<Customer> _customers = Adapters.CustomerAdapter.GetAll(false);
         public ObservableCollection<Customer> Customers
         {
             get { return _customers; }
             set { _customers = value; NotifyPropertyChanged("Customers"); }
         }
 
-        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
+        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll(false);
         public ObservableCollection<Book> Books
         {
             get { return _books; }

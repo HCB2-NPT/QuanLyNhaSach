@@ -11,13 +11,14 @@ namespace QuanLyNhaSach.Adapters
 {
     class BookAdapter
     {
-        public static ObservableCollection<Book> GetAll()
+        public static ObservableCollection<Book> GetAll(bool includeDeleted = true)
         {
             ObservableCollection<Book> result = null;
             try
             {
                 var reader = DataConnector.ExecuteQuery("select MaSach,TenSach,AnhBia,SoLuongTon,DonGia,BiXoa " +
-                                                        "from Sach ");
+                                                        "from Sach " + 
+                                                        string.Format("{0}", includeDeleted ? "" : "where BiXoa = 'false'"));
                 if (reader != null)
                 {
                     result = new ObservableCollection<Book>();
@@ -30,9 +31,10 @@ namespace QuanLyNhaSach.Adapters
                         item.Image = (string)reader.GetValueDefault(2, null);
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
-                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
                         item.Authors = AuthorAdapter.GetAuthorsForBook(id);
                         item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -65,9 +67,10 @@ namespace QuanLyNhaSach.Adapters
                         item.Image = (string)reader.GetValueDefault(2, null);
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
-                        item.IsDelete = true;
+                        item.IsDeleted = true;
                         item.Authors = AuthorAdapter.GetAuthorsForBook(id);
                         item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -100,9 +103,10 @@ namespace QuanLyNhaSach.Adapters
                         item.Image = (string)reader.GetValueDefault(2, null);
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
-                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
                         item.Authors = AuthorAdapter.GetAuthorsForBook(id);
                         item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -135,9 +139,10 @@ namespace QuanLyNhaSach.Adapters
                         item.Image = (string)reader.GetValueDefault(2, null);
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
-                        item.IsDelete = (bool)reader.GetValueDefault(5, false);
+                        item.IsDeleted = (bool)reader.GetValueDefault(5, false);
                         item.Authors = AuthorAdapter.GetAuthorsForBook(id);
                         item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
                     }
@@ -167,9 +172,10 @@ namespace QuanLyNhaSach.Adapters
                         item.Image = (string)reader.GetValueDefault(1, null);
                         item.Number = (int)reader.GetValueDefault(2, 0);
                         item.Price = (int)reader.GetValueDefault(3, 0);
-                        item.IsDelete = (bool)reader.GetValueDefault(4, false);
+                        item.IsDeleted = (bool)reader.GetValueDefault(4, false);
                         item.Authors = AuthorAdapter.GetAuthorsForBook(id);
                         item.Genres = GenreAdapter.GetGenresForBook(id);
+                        item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result = item;
                         break;

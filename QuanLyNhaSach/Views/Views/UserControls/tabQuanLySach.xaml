@@ -11,10 +11,10 @@
     </UserControl.Resources>
     <DockPanel>
         <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF4F4F4">
-            <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0">
+            <Button x:Name="btnSearch" DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0" Click="btnSearch_Click">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
             </Button>
-            <TextBox Style="{DynamicResource TextBoxWaterMask}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" OpacityMask="#FFBBBBBB" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0"/>
+            <TextBox x:Name="tbSearch" Style="{DynamicResource TextBoxWaterMask}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" OpacityMask="#FFBBBBBB" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0" PreviewKeyDown="tbSearch_PreviewKeyDown"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0" Background="White">
             <Button x:Name="btnAdd" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" BorderThickness="0" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Width="96" Click="btnAdd_Click">
@@ -48,7 +48,9 @@
                     <Border Background="White" Margin="8">
                         <Grid>
                             <DockPanel Margin="8">
-                                <Image x:Name="Image" Width="80" Margin="0" Source="{Binding ImageFormat}" Stretch="Fill"/>
+                                <Button Tag="{Binding}" BorderThickness="0" Width="80" Margin="0" Style="{DynamicResource Btn_SelectImage}" OpacityMask="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="selectImage">
+                                    <Image x:Name="Image" Source="{Binding ImageFormat}" Stretch="Fill"/>
+                                </Button>
                                 <Grid DockPanel.Dock="Right">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -79,7 +81,7 @@
                                         <TextBox Tag="{Binding}" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tên Sách" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus"/>
                                         <TextBox Tag="{Binding}" Grid.Row="1" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding AuthorsFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus"/>
                                         <TextBox Tag="{Binding}" Grid.Row="2" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Text="{Binding GenresFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Segoe UI" GotFocus="aItemGotFocus"/>
-                                        <TextBlock Foreground="#FFABADB3" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,8,0" Grid.Row="2" VerticalAlignment="Center">
+                                        <TextBlock Foreground="#FFABADB3" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,8,0" Grid.Row="1" VerticalAlignment="Center">
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="Số lượng: {0}">
                                                     <Binding Path="Number"/>

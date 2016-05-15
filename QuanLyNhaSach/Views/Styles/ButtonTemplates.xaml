@@ -69,4 +69,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="Btn_SelectImage" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                        <Border Name="Background" Opacity="0" Background="#FF3545A8">
+                            <TextBlock Text="Sửa ảnh..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Background" Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -50,11 +50,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
-                <toolkit:AutoCompleteBox x:Name="tb_NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="16,0" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="ID_Name" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14">
                     <toolkit:AutoCompleteBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                <TextBlock Text="{Binding Name, Mode=OneWay}" Foreground="Black"/>
+                                <TextBlock Text="{Binding ID_Name, Mode=OneWay}" Foreground="Black"/>
                             </StackPanel>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
