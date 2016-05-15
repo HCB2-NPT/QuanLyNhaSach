@@ -103,5 +103,13 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
         }
+
+        private void btn_Save_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedBill!=null)
+            {
+                Bus.UpdateData.UpdateOldBill(SelectedBill);
+            }
+        }
     }
 }

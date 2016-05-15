@@ -48,5 +48,32 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static void UpdateOldBillItems(Bill bill)
+        {
+            try
+            {
+                foreach (var item in bill.BillItems)
+                {
+                    DataConnector.ExecuteNonQuery(string.Format("update ChiTietHoaDon set SoLuong={0} where MaHoaDon={1} and MaSach = {2}", item.Number, bill.IDBill, item.Book.ID));
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+        }
+
+        public static void DeleteBillItem(Book book)
+        {
+            try
+            {
+                DataConnector.ExecuteNonQuery("delete from ChiTietHoaDon where MaSach =" + book.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+        }
     }
 }
