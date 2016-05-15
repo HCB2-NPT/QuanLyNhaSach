@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using QuanLyNhaSach.Objects;
 
 namespace QuanLyNhaSach.Views.Views.UserControls
 {
@@ -25,6 +26,22 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             InitializeComponent();
             Bus.FillData.Books(listbox_DSSach);
+        }
+
+        private void aItemGotFocus(object sender, RoutedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var tag = textbox.Tag as Book;
+            if (tag != null)
+                listbox_DSSach.SelectedItem = tag;
+        }
+
+        private void removeItem(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var tag = btn.Tag as Book;
+            if (tag != null)
+                listbox_DSSach.Items.Remove(tag);
         }
     }
 }

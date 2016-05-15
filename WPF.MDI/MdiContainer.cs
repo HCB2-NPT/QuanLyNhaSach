@@ -176,10 +176,10 @@ namespace WPF.MDI
 			gr.RowDefinitions.Add(new RowDefinition());
 
 			_topPanel = new DockPanel { Background = SystemColors.MenuBrush };
-			_topPanel.Children.Add(_menu = new Border());
-			DockPanel.SetDock(_menu, Dock.Left);
-			_topPanel.Children.Add(_buttons = new Border());
-			DockPanel.SetDock(_buttons, Dock.Right);
+            _topPanel.Children.Add(_buttons = new Border());
+            DockPanel.SetDock(_buttons, Dock.Right);
+            _topPanel.Children.Add(_menu = new Border());
+            DockPanel.SetDock(_menu, Dock.Left);
 			_topPanel.SizeChanged += MdiContainer_SizeChanged;
 			_topPanel.Children.Add(new UIElement());
 			gr.Children.Add(_topPanel);

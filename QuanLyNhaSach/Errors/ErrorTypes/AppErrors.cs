@@ -56,7 +56,7 @@ namespace QuanLyNhaSach.Managers
             get
             {
                 return new Error(
-                    "Lỗi Số Lượng!",
+                    "Lỗi thông số!",
                     "Số lượng trong kho của sản phẩm nhỏ hơn so với quy định.",
                     false);
             }
@@ -67,7 +67,7 @@ namespace QuanLyNhaSach.Managers
             get
             {
                 return new Error(
-                    "Lỗi tiền nợ khách hàng!",
+                    "Lỗi thông số!",
                     "Lượng tiền nợ sau khi mua của khách hàng lớn hơn so với qui định.",
                     false);
             }
@@ -78,8 +78,30 @@ namespace QuanLyNhaSach.Managers
             get
             {
                 return new Error(
-                    "Lỗi khách hàng!",
-                    "Khách hàng không có ID không được nợ tiền!",
+                    "Lỗi thông tin!",
+                    "Không có thông tin khách hàng.",
+                    false);
+            }
+        }
+
+        public Error PopularCustomer
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi thông số!",
+                    "Khách hàng thông thường không cho phép nợ!",
+                    false);
+            }
+        }
+
+        public Error BillEmpty
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi thông số!",
+                    "Hóa đơn rỗng.",
                     false);
             }
         }

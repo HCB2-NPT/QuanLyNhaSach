@@ -50,7 +50,7 @@
             <ImageBrush ImageSource="pack://siteoforigin:,,,/Assets/Images/background.jpg"/>
         </Grid.Background>
         <DockPanel>
-            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown">
+            <DockPanel x:Name="TitleMain" Height="32" DockPanel.Dock="Top" Background="#FF135995" LastChildFill="False" MouseRightButtonDown="TitleMain_MouseRightButtonDown" d:IsLocked="True">
                 <TextBlock VerticalAlignment="Center" FontSize="13.333" Foreground="White" Padding="0" Margin="16,0,0,2">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
@@ -75,7 +75,7 @@
                 </Button>
             </DockPanel>
             <DockPanel>
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -136,7 +136,7 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False">
+                <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False" d:IsLocked="True">
                     <Button x:Name="_btnMenuMini" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -194,26 +194,30 @@
                     </Button>
                 </DockPanel>
                 <Grid x:Name="grid">
-                    <DockPanel LastChildFill="True">
-                        <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
-                            <mdi:MdiContainer.Menu>
-                                <Menu Width="9999">
-                                    <MenuItem Header="+">
-                                        <MenuItem Header="Close this" x:Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click"/>
-                                        <MenuItem Header="Close all but this" x:Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" />
-                                        <MenuItem Header="Close all" x:Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" />
-                                    </MenuItem>
-                                    <MenuItem Header="Theme">
-                                        <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
-                                        <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
-                                        <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
-                                    </MenuItem>
-                                    <MenuItem Header="Windows" x:Name="WindowsMenu" x:FieldModifier="private"/>
-                                </Menu>
-                            </mdi:MdiContainer.Menu>
-                        </mdi:MdiContainer>
-                    </DockPanel>
-                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
+                    <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro">
+                        <mdi:MdiContainer.Menu>
+                            <Menu Width="{Binding ActualWidth, ElementName=mdiContainer, Mode=OneWay}">
+                                <Menu.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <DockPanel HorizontalAlignment="Stretch"/>
+                                    </ItemsPanelTemplate>
+                                </Menu.ItemsPanel>
+                                <MenuItem Header="+">
+                                    <MenuItem Header="Đóng đang chọn" x:Name="mdiPlus_closeThis" Click="mdiPlus_closeThis_Click"/>
+                                    <MenuItem Header="Đóng tất cả ngoài đang chọn" x:Name="mdiPlus_closeAllButThis" Click="mdiPlus_closeAllButThis_Click" />
+                                    <MenuItem Header="Đóng tất cả" x:Name="mdiPlus_closeAll" Click="mdiPlus_closeAll_Click" />
+                                </MenuItem>
+                                <MenuItem Header="Giao diện">
+                                    <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
+                                    <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
+                                    <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
+                                </MenuItem>
+                                <MenuItem Header="Cửa sổ" x:Name="WindowsMenu" x:FieldModifier="private"/>
+                                <MenuItem Header="Điều chỉnh kích thước" x:Name="mdiResizeButton" HorizontalAlignment="Right" Click="mdiResizeButton_Click"/>
+                            </Menu>
+                        </mdi:MdiContainer.Menu>
+                    </mdi:MdiContainer>
+                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
                         <DockPanel LastChildFill="True" Width="200">
                             <Border Margin="0" DockPanel.Dock="Top" Height="40">
                                 <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
