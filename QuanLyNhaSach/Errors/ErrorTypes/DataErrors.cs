@@ -41,5 +41,16 @@ namespace QuanLyNhaSach.Managers
                     false);
             }
         }
+
+        public Error DataCantBeDelete
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi dữ liệu!",
+                    "Có vấn đề xãy ra trong khi xóa dữ liệu.\nCó thể dữ liệu đã được xóa nhưng phát sinh lỗi sau đó.",
+                    false);
+            }
+        }
     }
 }

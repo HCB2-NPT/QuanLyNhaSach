@@ -10,27 +10,78 @@ namespace QuanLyNhaSach.Objects
 {
     public class Bill : Editable
     {
+        private int _id;
         private DateTime _dateCreate;
+        private Customer _customer = null;
+        private int _payMoney = 0;
+        private int _totalMoney = 0;
+        private ObservableCollection<BillItem> _billItems = new ObservableCollection<BillItem>();
 
+        private void Init()
+        {
+            _billItems.CollectionChanged += _listbook_CollectionChanged;
+        }
+
+        public void WhenChildreUpdate()
+        {
+            NotifyPropertyChanged("TotalMoney");
+            NotifyPropertyChanged("TotalMoneyFormat");
+            NotifyPropertyChanged("ReturnMoney");
+            NotifyPropertyChanged("ReturnMoneyFormat");
+        }
+
+        #region Constructor
+        public Bill() : base(true)
+        {
+            _id = 0;
+            _dateCreate = DateTime.Now;
+            Init();
+        }
+
+        public Bill(int id, DateTime dateCreated) : base()
+        {
+            _id = id;
+            _dateCreate = dateCreated;
+            Init();
+        }
+        #endregion
+
+        #region Events
+        private void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                foreach (BillItem item in e.NewItems)
+                {
+                    item.Container = this;
+                }
+            }
+
+            NotifyPropertyChanged("TotalMoney");
+            NotifyPropertyChanged("TotalMoneyFormat");
+            NotifyPropertyChanged("ReturnMoney");
+            NotifyPropertyChanged("ReturnMoneyFormat");
+        }
+        #endregion
+
+        #region Properties
         public DateTime DateCreated
         {
             get { return _dateCreate; }
             set { _dateCreate = value; NotifyPropertyChanged("DateCreate"); }
         }
 
-        private Customer _customer;
         public Customer Customer
         {
             get { return _customer; }
             set { _customer = value; NotifyPropertyChanged("Customer"); }
         }
 
-        private int _iDBill;
-        public int IDBill
+        public int ID
         {
-            get { return _iDBill; }
+            get { return _id; }
         }
-        private int _payMoney = 0;
+
         public int PayMoney
         {
             get { return _payMoney; }
@@ -54,7 +105,6 @@ namespace QuanLyNhaSach.Objects
             }
         }
 
-        private int _totalMoney = 0;
         public int TotalMoney
         {
             get
@@ -68,7 +118,6 @@ namespace QuanLyNhaSach.Objects
             }
         }
 
-        private ObservableCollection<BillItem> _billItems = new ObservableCollection<BillItem>();
         public ObservableCollection<BillItem> BillItems
         {
             get
@@ -76,50 +125,9 @@ namespace QuanLyNhaSach.Objects
                 return _billItems;
             }
         }
-
-        void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
-            {
-                foreach (BillItem item in e.NewItems)
-                {
-                    item.Container = this;
-                }
-            }
-
-            NotifyPropertyChanged("TotalMoney");
-            NotifyPropertyChanged("TotalMoneyFormat");
-            NotifyPropertyChanged("ReturnMoney");
-            NotifyPropertyChanged("ReturnMoneyFormat");
-        }
-
-        #region Constructor
-        public Bill() : base(true)
-        {
-            _iDBill = 0;
-            Init();
-        }
-
-        public Bill(int id) : base()
-        {
-            _iDBill = id;
-            Init();
-        }
-
-        private void Init()
-        {
-            _billItems.CollectionChanged += _listbook_CollectionChanged;
-        }
         #endregion
 
-        public void WhenChildreUpdate()
-        {
-            NotifyPropertyChanged("TotalMoney");
-            NotifyPropertyChanged("TotalMoneyFormat");
-            NotifyPropertyChanged("ReturnMoney");
-            NotifyPropertyChanged("ReturnMoneyFormat");
-        }
-
+        #region PropertiesFormat
         public string TotalMoneyFormat
         {
             get
@@ -143,5 +151,6 @@ namespace QuanLyNhaSach.Objects
                 return PayMoney.ToString("#,##0 vnđ");
             }
         }
+        #endregion
     }
 }

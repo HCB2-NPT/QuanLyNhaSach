@@ -17,41 +17,38 @@ namespace QuanLyNhaSach.Objects
         private const int max_length__GenresShortFormat = 40;
         #endregion
 
+        private int _id;
+        private string _name = null;
+        private string _image = null;
+        private int _number = 0;
+        private int _price = 0;
+        private bool _isdeleted = false;
+        private ObservableCollection<Author> _authors = null;
+        private ObservableCollection<Genre> _genres = null;
+
+        #region Constructor
+        public Book() : base(true)
+        {
+            _id = 0;
+        }
+
+        public Book(int id) : base()
+        {
+            _id = id;
+        }
+        #endregion
+
         #region Properties
-        private ObservableCollection<Author> _authors;
-
-        public ObservableCollection<Author> Authors
+        public int ID
         {
-            get { return _authors; }
-            set
-            {
-                _authors = value;
-                NotifyPropertyChanged("Authors");
-                UpdateAuthorsFormat();
-            }
+            get { return _id; }
         }
-        private ObservableCollection<Genre> _genres;
-
-        public ObservableCollection<Genre> Genres
-        {
-            get { return _genres; }
-            set
-            {
-                _genres = value;
-                NotifyPropertyChanged("Genres");
-                UpdateGenresFormat();
-            }
-        }
-
-      
-        private string _name;
 
         public string Name
         {
             get { return _name; }
             set { _name = value; NotifyPropertyChanged("Name"); }
         }
-        private string _image;
 
         public string Image
         {
@@ -63,44 +60,47 @@ namespace QuanLyNhaSach.Objects
                 NotifyPropertyChanged("ImageFormat");
             }
         }
-        private int _number;
 
         public int Number
         {
             get { return _number; }
             set { _number = value; NotifyPropertyChanged("Number"); }
         }
-        private int _price;
 
         public int Price
         {
             get { return _price; }
             set { _price = value; NotifyPropertyChanged("Price"); NotifyPropertyChanged("PriceFormat"); }
         }
-        private bool _isdeleted;
 
         public bool IsDeleted
         {
             get { return _isdeleted; }
-            set { _isdeleted = value; NotifyPropertyChanged("IsDelete"); }
+            set { _isdeleted = value; NotifyPropertyChanged("IsDeleted"); }
         }
-        private int _id;
 
-        public int ID
+        public ObservableCollection<Author> Authors
         {
-            get { return _id; }
+            get { return _authors; }
+            set
+            {
+                _authors = value;
+                NotifyPropertyChanged("Authors");
+                UpdateAuthorsFormat();
+            }
+        }
+
+        public ObservableCollection<Genre> Genres
+        {
+            get { return _genres; }
+            set
+            {
+                _genres = value;
+                NotifyPropertyChanged("Genres");
+                UpdateGenresFormat();
+            }
         }
         #endregion
-
-        public Book() : base(true)
-        {
-            _id = 0;
-        }
-
-        public Book(int id) : base()
-        {
-            _id = id;
-        }
 
         #region PropertiesFormat
         private void UpdateAuthorsFormat()

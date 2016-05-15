@@ -16,17 +16,16 @@ namespace QuanLyNhaSach.Adapters
             ObservableCollection<Bill> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select MaHoaDon,MaKhachHang,NgayLap,TienTra from HoaDon");
+                var reader = DataConnector.ExecuteQuery("select MaHoaDon, NgayLap, MaKhachHang, TienTra from HoaDon");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Bill>();
                     while (reader.Read())
                     {
                         var id = reader.GetInt32(0);
-                        var item = new Bill(id);
+                        var item = new Bill(id, reader.GetDateTime(1));
                         item.BeginInit();
-                        item.Customer = CustomerAdapter.GetCustomer(reader.GetInt32(1));
-                        item.DateCreated = reader.GetDateTime(2);
+                        item.Customer = CustomerAdapter.GetCustomer(reader.GetInt32(2));
                         item.PayMoney = reader.GetInt32(3);
                         foreach (var i in BillItemAdapter.GetBillItems(id))
                         {
@@ -69,7 +68,7 @@ namespace QuanLyNhaSach.Adapters
             {
                 int result = DataConnector.ExecuteNonQuery("insert into HoaDon " +
                     "(MaKhachHang, NgayLap, TienTra, TongTien, DaLuu) " + 
-                    string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer.ID, DateTime.Now, newBill.ReturnMoney, newBill.TotalMoney));
+                    string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer == null ? 13 : newBill.Customer.ID, DateTime.Now, newBill.ReturnMoney, newBill.TotalMoney));
                 if (result == 1)
                 {
                     var billid = GetLatestId();
@@ -111,7 +110,7 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 BillItemAdapter.UpdateOldBillItems(bill);
-                return DataConnector.ExecuteNonQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.IDBill));
+                return DataConnector.ExecuteNonQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.ID));
             }
             catch (Exception ex)
             {

@@ -10,6 +10,10 @@ namespace QuanLyNhaSach.Objects
 {
     public class Genre : Editable
     {
+        private int _id;
+        private string _name = null;
+
+        #region Constructor
         public Genre() : base(true)
         {
             _id =0;
@@ -19,20 +23,19 @@ namespace QuanLyNhaSach.Objects
         {
             _id = id;
         }
+        #endregion
 
-        private int _id;
-
+        #region Properties
         public int ID
         {
             get { return _id; }
         }
-
-        private string _name;
 
         public string Name
         {
             get { return _name; }
             set { _name = value; NotifyPropertyChanged("Name"); }
         }
+        #endregion
     }
 }

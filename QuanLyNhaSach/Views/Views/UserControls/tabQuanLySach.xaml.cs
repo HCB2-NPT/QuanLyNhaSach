@@ -144,7 +144,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 if (item.IsDeletedItem)
                     Adapters.BookAdapter.DeleteBook(item);
                 else if (item.IsCreatedItem)
-                    ;
+                    Adapters.BookAdapter.InsertNewBook(item);
                 else if (item.IsEditedItem)
                     ;
             }

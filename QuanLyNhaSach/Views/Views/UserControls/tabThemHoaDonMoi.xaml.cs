@@ -59,7 +59,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             InitializeComponent();
             DataContext = this;
 
-            var c = Customers.FirstOrDefault(x => x.ID == 13);
+            var c = Customers.FirstOrDefault(x => x.ID == Managers.DataManager.Current.PopularCustomerID);
             tb_SDTKH.SelectedItem = c;
             tb_SDTKH.Text = c.CustomerInfo;
         }
@@ -126,12 +126,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 ErrorManager.Current.BillEmpty.Call("Tồn tại ít nhất 1 mặt hàng để thanh toán!");
                 return;
             }
-            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID == 13)
+            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID == Managers.DataManager.Current.PopularCustomerID)
             {
                 ErrorManager.Current.PopularCustomer.Call("Vui lòng thanh toán đầy đủ!");
                 return;
             }
-            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID != 13)
+            if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID != Managers.DataManager.Current.PopularCustomerID)
             {
                 if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) > Managers.RuleManager.Current.Rule.MaxDebt)
                 {
@@ -171,7 +171,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
             UpdateData();
 
-            var c = Customers.FirstOrDefault(x => x.ID == 13);
+            var c = Customers.FirstOrDefault(x => x.ID == Managers.DataManager.Current.PopularCustomerID);
             tb_SDTKH.SelectedItem = c;
             tb_SDTKH.Text = c.CustomerInfo;
 
