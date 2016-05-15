@@ -92,5 +92,20 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static void UpdateOldBill(Bill bill)
+        {
+            
+            try
+            {
+                BillItemAdapter.UpdateOldBillItems(bill);
+                var reader = DataConnector.ExecuteQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.IDBill));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+        }
+
     }
 }

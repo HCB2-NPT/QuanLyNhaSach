@@ -42,7 +42,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <DockPanel Margin="0">
-                <Button x:Name="btn_Save" HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}">
+                <Button x:Name="btn_Save" HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Save_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
                 </Button>
                 <Button x:Name="btn_Refresh" Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}">
