@@ -65,7 +65,7 @@ namespace QuanLyNhaSach.Adapters
             }
         }
 
-        public static void DeleteBillItems(Bill bill)
+        public static int DeleteBillItems(Bill bill)
         {
             string query;
             if (bill.BillItems.Count <= 0)

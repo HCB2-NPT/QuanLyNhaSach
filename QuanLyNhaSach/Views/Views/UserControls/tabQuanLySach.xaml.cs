@@ -169,21 +169,13 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             {
                 System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
-                openFileDialog1.InitialDirectory = "c:\\";
                 openFileDialog1.Filter = "Image files (*.png, *jpg)|*.png; *jpg|All files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.FilterIndex = 1;
                 openFileDialog1.RestoreDirectory = true;
 
                 if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    try
-                    {
-                        tag.Image = openFileDialog1.FileName;
-                    }
-                    catch (Exception ex)
-                    {
-                        //WarningBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                    }
+                    tag.Image = openFileDialog1.FileName;
                 }
             }
         }
