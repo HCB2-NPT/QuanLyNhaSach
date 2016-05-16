@@ -15,7 +15,7 @@
             <DockPanel Margin="16,0,16,8" DockPanel.Dock="Top">
                 <Border DockPanel.Dock="Right" Width="200" BorderBrush="Black" BorderThickness="1,0,0,1">
                     <DockPanel LastChildFill="True">
-                        <TextBlock Text="Tiền nợ:" VerticalAlignment="Center" Margin="4,0"/>
+                        <TextBlock Text="Tiền nợ:" VerticalAlignment="Center" Margin="4,0" FontSize="14"/>
                         <TextBlock Text="{Binding BookCart.Customer.DebtFormat, Mode=OneWay}" FontSize="14" FontFamily="Segoe UI" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="0" Margin="4,0"/>
                     </DockPanel>
                 </Border>

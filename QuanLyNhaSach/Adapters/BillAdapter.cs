@@ -84,6 +84,7 @@ namespace QuanLyNhaSach.Adapters
                     if (newBill.ReturnMoney < 0)
                         CustomerAdapter.UpdateDebt(newBill.Customer.ID, newBill.Customer.Debt + Math.Abs(newBill.ReturnMoney));
                 }
+                return result;
             }
             catch (Exception ex)
             {

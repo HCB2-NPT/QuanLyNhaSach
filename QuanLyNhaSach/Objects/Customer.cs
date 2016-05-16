@@ -48,6 +48,8 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
+                if (string.IsNullOrEmpty(Phone))
+                    return 0;
                 int result;
                 if (int.TryParse(Phone, out result))
                     return result;
@@ -59,6 +61,8 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
+                if (string.IsNullOrEmpty(Name))
+                    return null;
                 return string.Format("{0:0000 0000 0000} - {1}", PhoneByInteger, Name);
             }
         }

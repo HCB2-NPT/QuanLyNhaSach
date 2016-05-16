@@ -44,6 +44,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        void Clear()
+        {
+            Books = Adapters.BookAdapter.GetAll();
+        }
+
         void RemoveItem(Book item)
         {
             if (item.IsCreatedItem)
@@ -66,14 +71,19 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 else
                 {
                     listbox_DSSach.ItemsSource = Books.Where(x =>
-                        x.ID.ToString().ToLower().Contains(key) ||
-                        x.Name.ToLower().Contains(key) ||
-                        x.Number.ToString().ToLower().Contains(key) ||
-                        x.Price.ToString().ToLower().Contains(key) ||
-                        x.PriceFormat.ToLower().Contains(key) ||
-                        x.AuthorsFormat.ToLower().Contains(key) ||
-                        x.GenresFormat.ToLower().Contains(key) ||
-                        (x.Image == null ? Managers.DataManager.Current.NO_IMAGE.ToLower().Contains(key) : x.Image.ToLower().Contains(key))
+                        {
+                            var data =
+                                x.ID.ToString() +
+                                (x.Name == null ? "" : x.Name.ToLower()) +
+                                x.Number.ToString() +
+                                x.Price.ToString() +
+                                x.PriceFormat +
+                                (x.AuthorsFormat == null ? "" : x.AuthorsFormat.ToLower()) +
+                                (x.GenresFormat == null ? "" : x.GenresFormat.ToLower()) +
+                                (x.IsDeletedItem ? "bị xóa" : "") +
+                                (x.Image == null ? Managers.DataManager.Current.NO_IMAGE.ToLower() : x.Image.ToLower());
+                            return data.Contains(key);
+                        }
                         ).ToObservableCollection<Book>();
                 }
             }
@@ -112,7 +122,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(tbSearch.Text))
-                Books = Adapters.BookAdapter.GetAll();
+                Clear();
             else
                 tbSearch.Text = "";
             listbox_DSSach.ItemsSource = Books;
@@ -131,7 +141,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             if (listbox_DSSach.ItemsSource != null)
             {
                 var newBook = new Book();
-                (listbox_DSSach.ItemsSource as ObservableCollection<Book>).Add(newBook);
+                Books.Add(newBook);
+                listbox_DSSach.ItemsSource = Books;
                 listbox_DSSach.SelectedItem = newBook;
                 listbox_DSSach.ScrollIntoView(listbox_DSSach.SelectedItem);
             }
@@ -139,15 +150,27 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Book item in listbox_DSSach.SelectedItems.ToList())
+            foreach (Book item in Books)
             {
-                if (item.IsDeletedItem)
-                    Adapters.BookAdapter.DeleteBook(item);
-                else if (item.IsCreatedItem)
+                if (item.IsCreatedItem && !string.IsNullOrEmpty(item.Name))
+                {
                     Adapters.BookAdapter.InsertNewBook(item);
+                }
                 else if (item.IsEditedItem)
-                    ;
+                {
+                    Adapters.BookAdapter.UpdateBook(item);
+                }
+
+                if (item.IsDeletedItem && !item.IsDeleted)
+                {
+                    Adapters.BookAdapter.DeleteBook(item);
+                }
+                else if (!item.IsDeletedItem && item.IsDeleted)
+                {
+                    Adapters.BookAdapter.RecoverBook(item);
+                }
             }
+            Clear();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -177,6 +200,60 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 {
                     tag.Image = openFileDialog1.FileName;
                 }
+            }
+        }
+
+        private void changePrice(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            var control = sender as MahApps.Metro.Controls.NumericUpDown;
+            var tag = control.Tag as Book;
+            if (tag != null)
+            {
+                tag.Price = Convert.ToInt32(control.Value);
+            }
+        }
+
+        private void changeAuthorsGenres(object sender, TextChangedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var tag = textbox.Tag as Book;
+            if (tag != null)
+            {
+                tag.IsEditedItem = true;
+            }
+        }
+
+        private void editCurrent(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var tag = btn.Tag as Book;
+            if (tag != null)
+            {
+                if (tag.ID > 0)
+                {
+                    tag.IsEditedItem = false;
+                    Adapters.BookAdapter.UpdateBook(tag);
+                }
+                else
+                {
+                    tag.IsCreatedItem = false;
+                    tag.IsEditedItem = false;
+                    Adapters.BookAdapter.InsertNewBook(tag);
+                }
+            }
+        }
+
+        private void refreshCurrent(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var tag = btn.Tag as Book;
+            if (tag != null)
+            {
+                var source = listbox_DSSach.ItemsSource as ObservableCollection<Book>;
+                var index = source.IndexOf(tag);
+                source.RemoveAt(index);
+                if (tag.ID > 0)
+                    source.Insert(index, Adapters.BookAdapter.GetBook(tag.ID));
             }
         }
     }

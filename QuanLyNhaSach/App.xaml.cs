@@ -22,6 +22,10 @@ namespace QuanLyNhaSach
                 Managers.ErrorManager.Current.CantOpenAppMoreTimes.Call();
             //update: bills
             Adapters.BillAdapter.FixedBillsOverTime();
+            new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
+            {
+                Adapters.BillAdapter.FixedBillsOverTime();
+            });
             //run app
             base.OnStartup(e);
         }

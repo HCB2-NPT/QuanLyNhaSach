@@ -62,5 +62,49 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
+        public static int Insert(string name)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("insert into TheLoai (TenTheLoai) values (N'{0}')", name));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int Delete(string name)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("delete from TheLoai where TenTheLoai = N'{0}'", name));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int Exist(string name)
+        {
+            try
+            {
+                var reader = DataConnector.ExecuteQuery(string.Format("select MaTheLoai from TheLoai where TenTheLoai = N'{0}'", name));
+                if (reader != null)
+                {
+                    if (reader.Read())
+                        return reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

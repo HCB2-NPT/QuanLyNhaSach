@@ -23,18 +23,40 @@ namespace QuanLyNhaSach.Objects
         private int _number = 0;
         private int _price = 0;
         private bool _isdeleted = false;
-        private ObservableCollection<Author> _authors = null;
-        private ObservableCollection<Genre> _genres = null;
+        private ObservableCollection<Author> _authors = new ObservableCollection<Author>();
+        private ObservableCollection<Genre> _genres = new ObservableCollection<Genre>();
+
+        void Init()
+        {
+            _authors.CollectionChanged += _authors_CollectionChanged;
+            _genres.CollectionChanged += _genres_CollectionChanged;
+        }
+
+        #region Events
+        void _genres_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            NotifyPropertyChanged("Genres");
+            UpdateGenresFormat();
+        }
+
+        void _authors_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            NotifyPropertyChanged("Authors");
+            UpdateAuthorsFormat();
+        }
+        #endregion
 
         #region Constructor
         public Book() : base(true)
         {
             _id = 0;
+            Init();
         }
 
         public Book(int id) : base()
         {
             _id = id;
+            Init();
         }
         #endregion
 
@@ -82,37 +104,28 @@ namespace QuanLyNhaSach.Objects
         public ObservableCollection<Author> Authors
         {
             get { return _authors; }
-            set
-            {
-                _authors = value;
-                NotifyPropertyChanged("Authors");
-                UpdateAuthorsFormat();
-            }
         }
 
         public ObservableCollection<Genre> Genres
         {
             get { return _genres; }
-            set
-            {
-                _genres = value;
-                NotifyPropertyChanged("Genres");
-                UpdateGenresFormat();
-            }
         }
         #endregion
 
         #region PropertiesFormat
         private void UpdateAuthorsFormat()
         {
-            string format = "";
+            _authorsFormat = "";
             foreach (var item in Authors)
             {
-                format += item.Name + ", ";
+                _authorsFormat += item.Name + ", ";
             }
-            if (format.Length > 2)
-                format = format.Remove(format.Length - 2);
-            AuthorsFormat = format;
+            if (_authorsFormat.Length >= 2)
+                _authorsFormat = _authorsFormat.Remove(_authorsFormat.Length - 2);
+            if (string.IsNullOrEmpty(_authorsFormat))
+                _authorsFormat = "<Không có tác giả rõ ràng>";
+            NotifyPropertyChanged("AuthorsFormat");
+            NotifyPropertyChanged("AuthorsShortFormat");
         }
 
         private string _authorsFormat = null;
@@ -120,15 +133,11 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                if (string.IsNullOrEmpty(_authorsFormat))
-                    return "<Không có tác giả rõ ràng>";
                 return _authorsFormat;
             }
             set
             {
                 _authorsFormat = value;
-                NotifyPropertyChanged("AuthorsFormat");
-                NotifyPropertyChanged("AuthorsShortFormat");
             }
         }
 
@@ -137,8 +146,6 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 var format = AuthorsFormat;
-                if (string.IsNullOrEmpty(format))
-                    return "<Không có tác giả rõ ràng>";
                 if (format.Length > max_length__AuthorsShortFormat)
                 {
                     format = format.Remove(max_length__AuthorsShortFormat);
@@ -150,14 +157,17 @@ namespace QuanLyNhaSach.Objects
 
         private void UpdateGenresFormat()
         {
-            string format = "";
+            _genresFormat = "";
             foreach (var item in Genres)
             {
-                format += item.Name + ", ";
+                _genresFormat += item.Name + ", ";
             }
-            if (format.Length > 2)
-                format = format.Remove(format.Length - 2);
-            GenresFormat = format;
+            if (_genresFormat.Length >= 2)
+                _genresFormat = _genresFormat.Remove(_genresFormat.Length - 2);
+            if (string.IsNullOrEmpty(_genresFormat))
+                _genresFormat = "<Không có thể loại rõ ràng>";
+            NotifyPropertyChanged("GenresFormat");
+            NotifyPropertyChanged("GenresShortFormat");
         }
 
         private string _genresFormat = null;
@@ -165,15 +175,11 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                if (string.IsNullOrEmpty(_genresFormat))
-                    return "<Không có thể loại rõ ràng>";
                 return _genresFormat;
             }
             set
             {
                 _genresFormat = value;
-                NotifyPropertyChanged("GenresFormat");
-                NotifyPropertyChanged("GenresShortFormat");
             }
         }
 
@@ -182,8 +188,6 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 var format = GenresFormat;
-                if (string.IsNullOrEmpty(format))
-                    return "<Không có thể loại rõ ràng>";
                 if (format.Length > max_length__GenresShortFormat)
                 {
                     format = format.Remove(max_length__GenresShortFormat);
@@ -197,7 +201,7 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                if (Image == null)
+                if (string.IsNullOrEmpty(Image))
                     return DataManager.Current.FOLDER_IMAGES + "\\" + DataManager.Current.NO_IMAGE;
                 if (File.Exists(Image))
                     return Image;
@@ -224,6 +228,8 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
+                if (string.IsNullOrEmpty(Name))
+                    return null;
                 return string.Format("{0:000} - {1}", ID, Name);
             }
         }

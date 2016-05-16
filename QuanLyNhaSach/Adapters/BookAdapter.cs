@@ -32,8 +32,14 @@ namespace QuanLyNhaSach.Adapters
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
-                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
-                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        foreach (var i in AuthorAdapter.GetAuthorsForBook(id))
+                        {
+                            item.Authors.Add(i);
+                        }
+                        foreach (var i in GenreAdapter.GetGenresForBook(id))
+                        {
+                            item.Genres.Add(i);
+                        }
                         item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
@@ -68,8 +74,14 @@ namespace QuanLyNhaSach.Adapters
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
                         item.IsDeleted = true;
-                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
-                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        foreach (var i in AuthorAdapter.GetAuthorsForBook(id))
+                        {
+                            item.Authors.Add(i);
+                        }
+                        foreach (var i in GenreAdapter.GetGenresForBook(id))
+                        {
+                            item.Genres.Add(i);
+                        }
                         item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
@@ -104,8 +116,14 @@ namespace QuanLyNhaSach.Adapters
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
-                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
-                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        foreach (var i in AuthorAdapter.GetAuthorsForBook(id))
+                        {
+                            item.Authors.Add(i);
+                        }
+                        foreach (var i in GenreAdapter.GetGenresForBook(id))
+                        {
+                            item.Genres.Add(i);
+                        }
                         item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
@@ -140,8 +158,14 @@ namespace QuanLyNhaSach.Adapters
                         item.Number = (int)reader.GetValueDefault(3, 0);
                         item.Price = (int)reader.GetValueDefault(4, 0);
                         item.IsDeleted = (bool)reader.GetValueDefault(5, false);
-                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
-                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        foreach (var i in AuthorAdapter.GetAuthorsForBook(id))
+                        {
+                            item.Authors.Add(i);
+                        }
+                        foreach (var i in GenreAdapter.GetGenresForBook(id))
+                        {
+                            item.Genres.Add(i);
+                        }
                         item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result.Add(item);
@@ -173,8 +197,14 @@ namespace QuanLyNhaSach.Adapters
                         item.Number = (int)reader.GetValueDefault(2, 0);
                         item.Price = (int)reader.GetValueDefault(3, 0);
                         item.IsDeleted = (bool)reader.GetValueDefault(4, false);
-                        item.Authors = AuthorAdapter.GetAuthorsForBook(id);
-                        item.Genres = GenreAdapter.GetGenresForBook(id);
+                        foreach (var i in AuthorAdapter.GetAuthorsForBook(id))
+                        {
+                            item.Authors.Add(i);
+                        }
+                        foreach (var i in GenreAdapter.GetGenresForBook(id))
+                        {
+                            item.Genres.Add(i);
+                        }
                         item.IsDeletedItem = item.IsDeleted;
                         item.EndInit();
                         result = item;
@@ -217,22 +247,175 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
+        public static int RecoverBook(Book whichBook)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("update Sach set BiXoa = 'false' where MaSach = " + whichBook.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
+
         public static int InsertNewBook(Book whichBook)
         {
-            if (whichBook.Name == null)
+            if (string.IsNullOrEmpty(whichBook.Name))
                 whichBook.Name = "";
-            if (whichBook.Number < 0)
-                whichBook.Number = 0;
             if (whichBook.Price < 0)
                 whichBook.Price = 0;
             try
             {
-                return DataConnector.ExecuteNonQuery("insert into Sach (TenSach, AnhBia, SoLuong, DonGia, BiXoa)" +
-                    string.Format(" values ('{0}', {1}, 0, {3}, 'false')", whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("'{0}'", whichBook.Image), whichBook.Price));
+                var r = DataConnector.ExecuteNonQuery("insert into Sach (TenSach, AnhBia, SoLuongTon, DonGia, BiXoa)" +
+                    string.Format(" values (N'{0}', {1}, 0, {2}, 'false')", whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price));
+                if (r == 1)
+                {
+                    var id = GetLatestId();
+                    if (id > 0)
+                    {
+                        foreach (var item in whichBook.AuthorsFormat.Split(','))
+                        {
+                            var i = item.Trim();
+                            var k = AuthorAdapter.Exist(i);
+                            if (k == -1)
+                            {
+                                AuthorAdapter.Insert(item);
+                                k = AuthorAdapter.Exist(item);
+                            }
+                            AddAuthor(id, k);
+                        }
+                        foreach (var item in whichBook.GenresFormat.Split(','))
+                        {
+                            var i = item.Trim();
+                            var k = GenreAdapter.Exist(i);
+                            if (k == -1)
+                            {
+                                GenreAdapter.Insert(item);
+                                k = GenreAdapter.Exist(item);
+                            }
+                            AddGenre(id, k);
+                        }
+                    }
+                }
+                return r;
             }
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int UpdateBook(Book whichBook)
+        {
+            if (string.IsNullOrEmpty(whichBook.Name))
+                whichBook.Name = "";
+            if (whichBook.Price < 0)
+                whichBook.Price = 0;
+            try
+            {
+                ClearAuthors(whichBook.ID);
+                ClearGenres(whichBook.ID);
+                foreach (var item in whichBook.AuthorsFormat.Split(','))
+                {
+                    var i = item.Trim();
+                    var k = AuthorAdapter.Exist(i);
+                    if (k == -1)
+                    {
+                        AuthorAdapter.Insert(item);
+                        k = AuthorAdapter.Exist(item);
+                    }
+                    AddAuthor(whichBook.ID, k);
+                }
+                foreach (var item in whichBook.GenresFormat.Split(','))
+                {
+                    var i = item.Trim();
+                    var k = GenreAdapter.Exist(i);
+                    if (k == -1)
+                    {
+                        GenreAdapter.Insert(item);
+                        k = GenreAdapter.Exist(item);
+                    }
+                    AddGenre(whichBook.ID, k);
+                }
+                return DataConnector.ExecuteNonQuery(string.Format("update Sach set TenSach = N'{0}', AnhBia = {1}, DonGia = {2}",
+                    whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int ClearAuthors(int bookid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("delete from ChiTietTacGiaSach where MaSach = " + bookid);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int ClearGenres(int bookid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("delete from ChiTietTheLoaiSach where MaSach = " + bookid);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int AddAuthor(int bookid, int authorid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("insert into ChiTietTacGiaSach (MaSach, MaTacGia) values ({0}, {1})", bookid, authorid));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int AddGenre(int bookid, int genreid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("insert into ChiTietTheLoaiSach (MaSach, MaTheLoai) values ({0}, {1})", bookid, genreid));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int GetLatestId()
+        {
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MAX(MaSach) from Sach");
+                if (reader != null)
+                {
+                    if (reader.Read())
+                        return reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
             }
             return -1;
         }

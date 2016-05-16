@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace QuanLyNhaSach
 {
     public static class CollectionExt
     {
-        public static List<object> ToList(this System.Collections.IList list)
+        public static List<object> ToList(this IList list)
         {
             var r = new List<object>();
             foreach (var item in list)

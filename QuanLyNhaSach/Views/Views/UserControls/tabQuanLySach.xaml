@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:usercontrols="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
@@ -48,7 +49,7 @@
                     <Border Background="White" Margin="8">
                         <Grid>
                             <DockPanel Margin="8">
-                                <Button Tag="{Binding}" BorderThickness="0" Width="80" Margin="0" Style="{DynamicResource Btn_SelectImage}" OpacityMask="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="selectImage">
+                                <Button Tag="{Binding}" BorderThickness="0" Width="80" Height="120" Margin="0" Style="{DynamicResource Btn_SelectImage}" OpacityMask="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="selectImage" TabIndex="4">
                                     <Image x:Name="Image" Source="{Binding ImageFormat}" Stretch="Fill"/>
                                 </Button>
                                 <Grid DockPanel.Dock="Right">
@@ -57,13 +58,13 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Visibility="{Binding IsEditedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Visibility="{Binding IsEditedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Click="editCurrent" TabIndex="5">
                                         <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Width="24" Height="24"/>
                                     </Button>
-                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="1" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Visibility="{Binding IsEditedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="1" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Visibility="{Binding IsEditedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Click="refreshCurrent" TabIndex="6">
                                         <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                                     </Button>
-                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.RowSpan="3" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Visibility="{Binding IsNotDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Click="removeItem">
+                                    <Button Tag="{Binding}" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.RowSpan="3" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Visibility="{Binding IsNotDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Click="removeItem" TabIndex="7">
                                         <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                                     </Button>
                                 </Grid>
@@ -75,12 +76,12 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBox Tag="{Binding}" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tên Sách" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus"/>
-                                        <TextBox Tag="{Binding}" Grid.Row="1" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding AuthorsFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus"/>
-                                        <TextBox Tag="{Binding}" Grid.Row="2" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Text="{Binding GenresFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Segoe UI" GotFocus="aItemGotFocus"/>
+                                        <TextBox Tag="{Binding}" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tên Sách" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus" TabIndex="0"/>
+                                        <TextBox Tag="{Binding}" Grid.Row="2" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" FontFamily="Segoe UI" Text="{Binding GenresFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" GotFocus="aItemGotFocus" TextChanged="changeAuthorsGenres" TabIndex="2"/>
+                                        <TextBox Tag="{Binding}" Grid.Row="1" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" BorderThickness="0,0,0,1" Padding="16,4,0,0" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Text="{Binding AuthorsFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Segoe UI" GotFocus="aItemGotFocus" TextChanged="changeAuthorsGenres" TabIndex="1"/>
                                         <TextBlock Foreground="#FFABADB3" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,8,0" Grid.Row="1" VerticalAlignment="Center">
                                             <TextBlock.Text>
                                                 <MultiBinding StringFormat="Số lượng: {0}">
@@ -88,17 +89,14 @@
                                                 </MultiBinding>
                                             </TextBlock.Text>
                                         </TextBlock>
-                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Grid.Column="1" Margin="0,0,8,0" Grid.Row="0">
-                                            <TextBlock.Text>
-                                                <MultiBinding StringFormat="Đơn giá: {0}">
-                                                    <Binding Path="PriceFormat"/>
-                                                </MultiBinding>
-                                            </TextBlock.Text>
-                                        </TextBlock>
+                                        <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="8,0" Grid.Row="0" LastChildFill="True">
+                                            <TextBlock Text="Đơn giá:" Margin="4,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Black" FontSize="14"/>
+                                            <MetroControls:NumericUpDown Tag="{Binding}" TextAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Value="{Binding Price, Mode=OneWay}" BorderThickness="0,0,0,1" FontSize="14" Minimum="0" FontFamily="Segoe UI" Delay="500" Interval="500" StringFormat="#,##0 vnđ" ValueChanged="changePrice" TabIndex="3"/>
+                                        </DockPanel>
                                     </Grid>
                                 </DockPanel>
                             </DockPanel>
-                            <Grid Background="#3DF75555" Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Grid Background="#3D202020" Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <Button Tag="{Binding}" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="recoverItem">
                                     <DockPanel HorizontalAlignment="Center">
                                         <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>

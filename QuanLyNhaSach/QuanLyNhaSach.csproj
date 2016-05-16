@@ -101,6 +101,7 @@
     <Compile Include="Adapters\RuleAdapter.cs" />
     <Compile Include="Assets\Extensions\CollectionExt.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
+    <Compile Include="Assets\Scripts\AutoUpdate.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
     <Compile Include="Adapters\AccountAdapter.cs" />
