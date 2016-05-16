@@ -4,8 +4,11 @@
     xmlns:y="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
     xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
     <DataTemplate x:Key="lvi_ChiTietPhieuNhapSach">
-        <DockPanel Height="100" Width="Auto">
-            <Image x:Name="Image" Width="100" Margin="4,4,0,4" Source="{Binding Image}" Stretch="Fill"/>
+        <DockPanel Height="100" Width="Auto" Background="White" Margin="2">
+            <DockPanel.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
+            </DockPanel.Effect>
+            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding ImageFormat}" Stretch="Fill" Height="100"/>
             <Button Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
             </Button>

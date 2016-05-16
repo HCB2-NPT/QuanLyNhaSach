@@ -6,13 +6,16 @@
              xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls" x:Class="QuanLyNhaSach.Views.Views.UserControls.tabKhachHang" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <DockPanel>
-        <DockPanel Margin="0" Width="300" LastChildFill="False">
+        <DockPanel Margin="0" Width="300" LastChildFill="False" Background="#FFA6A6A6">
             <DockPanel DockPanel.Dock="Top" Height="40" Background="#FFF1F1F1">
-                <Button DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,0">
+                <Button x:Name="btn_Search" DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0,0,4,0" Click="btn_Search_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
                 </Button>
-                <TextBox TextWrapping="Wrap" ToolTip="Số Điện Thoại" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Background="{x:Null}" BorderThickness="0" FontSize="14" Foreground="#FF999999"/>
+                <TextBox x:Name="tb_Search" TextWrapping="Wrap" ToolTip="Tìm kiếm" VerticalAlignment="Center" Margin="16,0,0,0"  Background="{x:Null}" BorderThickness="0" FontSize="14" Foreground="#FF999999" OpacityMask="Gray" Style="{DynamicResource TextBoxWaterMask}" PreviewTextInput="tb_SearchNumber_PreviewTextInput"/>
             </DockPanel>
             <Grid Margin="0" DockPanel.Dock="Top" Background="White">
                 <Grid Margin="0,0,0,40" Background="White">
@@ -22,31 +25,43 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Họ Tên" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Điện Thoại" Style="{DynamicResource TextBoxListViewItem}" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Địa Chỉ" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="2" Foreground="#FF999999"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email" Style="{DynamicResource TextBoxListViewItem}" Grid.Row="3" Foreground="#FF999999"/>
+                    <TextBox x:Name="tb_Name" TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Họ Tên"  Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14" Text="{Binding SelectedItem.Name, ElementName=lv_DSKhachHang,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tb_Phone"  TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Điện Thoại"  BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" FontSize="14" Text="{Binding SelectedItem.Phone, ElementName=lv_DSKhachHang,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="tb_Phone_PreviewTextInput"/>
+                    <TextBox x:Name="tb_Adress" TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Địa Chỉ"  Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14" Text="{Binding SelectedItem.Adress, ElementName=lv_DSKhachHang,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="tb_Email" TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,0" ToolTip="Email"  Grid.Row="3" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14" Text="{Binding SelectedItem.Email, ElementName=lv_DSKhachHang,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
                 <DockPanel Margin="0,160,0,0" LastChildFill="False">
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btn_Add" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btn_Add_Click">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                     </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btn_Delete" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btn_Delete_Click">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                     </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                        <Image Source="/Tiki Bookshop;component/Assets/Images/Support-64 (blue).png" Width="24" Height="24"/>
-                    </Button>
-                    <Button BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btn_Refresh" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" OpacityMask="#FFB3D6F2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btn_Refresh_Click">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                     </Button>
                 </DockPanel>
             </Grid>
+            <Button x:Name="btn_SaveChange" BorderThickness="0" DockPanel.Dock="Top" Margin="0" Style="{DynamicResource Btn_IconOnly}" Background="#FFF1F1F1" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" VerticalAlignment="Center" Click="btn_SaveChange_Click">
+                <DockPanel Margin="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
+                    <TextBlock Text="Lưu Cập Nhật" Foreground="#FF3498DB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Margin="4,0"/>
+                </DockPanel>
+            </Button>
         </DockPanel>
-        <ListView x:Name="lv_DSKhachHang" Margin="0" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}">
+        <ListView x:Name="lv_DSKhachHang" ItemsSource="{Binding ListCustomer,Mode=TwoWay}" Margin="0" BorderThickness="0" Background="Gray" BorderBrush="{x:Null}" Foreground="Black" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <UserControls:lvi_DSKhachHang Height="100" VerticalAlignment="Top"/>
+                    <Grid>
+                        <UserControls:lvi_DSKhachHang Height="100" VerticalAlignment="Top" Opacity="1"/>
+                        <Grid Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#B2FFF2F2">
+                            <Button Tag="{Binding}" x:Name="btn_Restore" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Click="btn_Restore_Click" VerticalAlignment="Stretch" OpacityMask="#7FA2BCFF" Style="{DynamicResource Btn_IconOnly}">
+                                <DockPanel>
+                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Data Backup-64 (blue).png" Width="24" Height="24"/>    
+                                </DockPanel>
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
