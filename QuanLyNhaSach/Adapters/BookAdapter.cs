@@ -340,8 +340,8 @@ namespace QuanLyNhaSach.Adapters
                     }
                     AddGenre(whichBook.ID, k);
                 }
-                return DataConnector.ExecuteNonQuery(string.Format("update Sach set TenSach = N'{0}', AnhBia = {1}, DonGia = {2}",
-                    whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price));
+                return DataConnector.ExecuteNonQuery(string.Format("update Sach set TenSach = N'{0}', AnhBia = {1}, DonGia = {2} where MaSach = {3}",
+                    whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price, whichBook.ID));
             }
             catch (Exception ex)
             {

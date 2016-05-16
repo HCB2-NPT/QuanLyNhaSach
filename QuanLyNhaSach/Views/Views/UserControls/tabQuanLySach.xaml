@@ -96,8 +96,8 @@
                                     </Grid>
                                 </DockPanel>
                             </DockPanel>
-                            <Grid Background="#3D202020" Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                <Button Tag="{Binding}" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="recoverItem">
+                            <Grid Background="#A3D1D5FF" Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Button Tag="{Binding}" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="{x:Null}" OpacityMask="White" Style="{DynamicResource Btn_IconOnly}" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="recoverItem">
                                     <DockPanel HorizontalAlignment="Center">
                                         <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                                         <TextBlock Text="Khôi phục lại!" Foreground="#FF3498DB" VerticalAlignment="Center" Margin="4,0" FontSize="14"/>
