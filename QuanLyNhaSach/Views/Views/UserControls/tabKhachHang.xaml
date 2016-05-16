@@ -56,8 +56,9 @@
                         <UserControls:lvi_DSKhachHang Height="100" VerticalAlignment="Top" Opacity="1"/>
                         <Grid Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#B2FFF2F2">
                             <Button Tag="{Binding}" x:Name="btn_Restore" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Click="btn_Restore_Click" VerticalAlignment="Stretch" OpacityMask="#7FA2BCFF" Style="{DynamicResource Btn_IconOnly}">
-                                <DockPanel>
-                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Data Backup-64 (blue).png" Width="24" Height="24"/>    
+                                <DockPanel LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Data Backup-64 (blue).png" Width="24" Height="24"/>
+                                    <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Khôi phục" VerticalAlignment="Center" Foreground="#FF3498DB" Margin="4,0" FontSize="14" FontWeight="Bold"/>
                                 </DockPanel>
                             </Button>
                         </Grid>
