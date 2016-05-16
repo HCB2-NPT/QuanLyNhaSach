@@ -63,6 +63,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     _book.Children.Add(new Binding("Thư viện") { Tag = typeof(tabQuanLySach) });
                     _book.Children.Add(new Binding("Thể loại") { Tag = typeof(tabTheLoai) });
                     _book.Children.Add(new Binding("Tác Giả") { Tag = typeof(tabTacGia) });
+                    _book.Children.Add(new Binding("Nhập Sách") { Tag = typeof(tabPhieuNhapSach) });
+
                 }
                 var _bill = new Binding();
                 {

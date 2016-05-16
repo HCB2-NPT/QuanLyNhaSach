@@ -452,6 +452,9 @@
   <ItemGroup>
     <Resource Include="Assets\Images\Bill-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Data Backup-64 %28blue%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

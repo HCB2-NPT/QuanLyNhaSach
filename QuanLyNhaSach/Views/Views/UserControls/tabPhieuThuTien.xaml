@@ -58,6 +58,22 @@
                 <Button Height="40" VerticalAlignment="Center" Width="40" HorizontalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Style="{DynamicResource Btn_IconOnly}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
+                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Right" Foreground="#FF999999">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat=" {}Số lượng con nợ: {0}">
+                            <Binding Path="NumberDebtor"/>
+                        </MultiBinding>
+                        
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Right" Foreground="#FF999999" Margin="0,12.02,0,11.98">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat=" {}Tổng tiền nợ: {0}">
+                            <Binding Path="SumDebt"/>
+                        </MultiBinding>
+
+                    </TextBlock.Text>
+                </TextBlock>
             </DockPanel>
         </Grid>
     </DockPanel>

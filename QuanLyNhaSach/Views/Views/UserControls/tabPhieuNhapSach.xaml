@@ -10,7 +10,7 @@
 	x:Name="UserControl"
 	d:DesignHeight="600" d:DesignWidth="600">
     <DockPanel>
-        <DockPanel Margin="0,4,0,0" Width="300" LastChildFill="False">
+        <DockPanel Margin="0" Width="300" LastChildFill="False" Background="#FFF1F1F1">
             <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1">
                 <DockPanel LastChildFill="False" DockPanel.Dock="Top" Margin="4">
                     <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Foreground="#FF999999"/>
@@ -18,11 +18,11 @@
                 </DockPanel>
                 <DockPanel Margin="4" DockPanel.Dock="Top">
                     <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,4" Foreground="#FF999999"/>
-                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right" Foreground="#FF999999"/>
+                    <DatePicker VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right" Foreground="#FF999999" Background="{x:Null}"/>
                 </DockPanel>
             </DockPanel>
             <DockPanel DockPanel.Dock="Top" Background="White">
-                <Grid DockPanel.Dock="Top" Margin="8,4" Height="160">
+                <Grid DockPanel.Dock="Top" Margin="0" Height="160">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -30,27 +30,27 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tên Sách" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Foreground="#FF999999"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxListViewItem}" Margin="8,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tên Sách" Margin="8,0" Padding="8,4,0,0" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Margin="8,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3"/>
+                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Margin="8,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3"/>
                     <DockPanel Margin="16,0,0,0" Grid.Row="3" LastChildFill="False" HorizontalAlignment="Left">
                         <MetroControls:NumericUpDown DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF999999"/>
                         <TextBlock Text="Số lượng" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="0,0,4,0" DockPanel.Dock="Right"/>
                     </DockPanel>
-                    <Button Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Foreground="#FF3498DB" BorderBrush="#FF3498DB" HorizontalAlignment="Right" Margin="0,0,8,0" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0">
+                    <Button Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Foreground="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,8,0" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0" Background="{x:Null}" OpacityMask="#FFB3D6F2">
                         <Image Source="/Tiki Bookshop;component/Assets/Images/Health Book-64 (blue).png" Stretch="Uniform" Margin="0"/>
                     </Button>
                 </Grid>
             </DockPanel>
         </DockPanel>
-        <DockPanel Margin="0,4,0,8">
-            <Button VerticalAlignment="Top" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2">
-                <DockPanel Background="White" Width="90">
+        <DockPanel Margin="0">
+            <Button VerticalAlignment="Top" DockPanel.Dock="Bottom" Background="White" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2">
+                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
                     <TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
                 </DockPanel>
             </Button>
-            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="{x:Null}" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}"/>
+            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}"/>
         </DockPanel>
     </DockPanel>
 </UserControl>

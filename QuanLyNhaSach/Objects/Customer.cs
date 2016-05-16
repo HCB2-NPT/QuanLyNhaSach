@@ -10,7 +10,7 @@ namespace QuanLyNhaSach.Objects
     public class Customer : Editable
     {
         #region Constants
-        private const int min_length__AdressShortFormat = 60;
+        private const int min_length__AdressShortFormat = 30;
         #endregion
 
         private int _id;

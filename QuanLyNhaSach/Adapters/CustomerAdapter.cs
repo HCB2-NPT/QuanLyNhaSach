@@ -153,5 +153,30 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static void UpdateCustomers(ObservableCollection<Customer> listcustomer)
+        {
+            foreach (Customer item in listcustomer)
+            {
+                if (item.IsCreatedItem)
+                    DataConnector.ExecuteNonQuery(string.Format("Insert into KhachHang(HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa) " +
+                                                    "values(N'{0}',0,N'{1}','{2}',N'{3}','{4}')", item.Name, item.Adress, item.Phone, item.Email,item.IsDeletedItem));
+                else if (item.IsEditedItem)
+                {
+                    DataConnector.ExecuteNonQuery(string.Format("Update KhachHang set " +
+                                                " HoTen=N'{0}'," +
+                                                "SoTienNo={1}," +
+                                                "DiaChi=N'{2}'," +
+                                                "DienThoai='{3}'," +
+                                                "Email=N'{4}'," +
+                                                "BiXoa='{5}'" +
+                                                " where MaKhachHang = {6}", item.Name, item.Debt, item.Adress, item.Phone, item.Email, item.IsDeletedItem, item.ID));
+                }
+                else if (item.IsDeleted && !item.IsDeletedItem)
+                    DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 0 where MaKhachHang=" + item.ID);
+                else if (!item.IsDeleted && item.IsDeletedItem)
+                    DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 1 where MaKhachHang=" + item.ID);
+            }
+        }
     }
 }
