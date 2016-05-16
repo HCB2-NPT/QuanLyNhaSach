@@ -74,12 +74,30 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
         #endregion
 
+        #region Custom Functions
         void UpdateData()
         {
             Customers = Adapters.CustomerAdapter.GetAll();
             Books = Adapters.BookAdapter.GetAll();
         }
 
+        void Clear()
+        {
+            BookCart.BillItems.Clear();
+            BookCart.PayMoney = 0;
+
+            UpdateData();
+
+            var c = Customers.FirstOrDefault(x => x.ID == Managers.DataManager.Current.PopularCustomerID);
+            tb_SDTKH.SelectedItem = c;
+            tb_SDTKH.Text = c.CustomerInfo;
+
+            tb_NameBook.SelectedItem = null;
+            tb_NameBook.Text = "";
+        }
+        #endregion
+
+        #region Events
         private void tb_TienKhachTra_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = "1234567890".IndexOf(e.Text) == -1;
@@ -164,24 +182,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 BookCart.BillItems.Remove(item);
         }
 
-        void Clear()
-        {
-            BookCart.BillItems.Clear();
-            BookCart.PayMoney = 0;
-
-            UpdateData();
-
-            var c = Customers.FirstOrDefault(x => x.ID == Managers.DataManager.Current.PopularCustomerID);
-            tb_SDTKH.SelectedItem = c;
-            tb_SDTKH.Text = c.CustomerInfo;
-
-            tb_NameBook.SelectedItem = null;
-            tb_NameBook.Text = "";
-        }
-
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             Clear();
         }
+        #endregion
     }
 }

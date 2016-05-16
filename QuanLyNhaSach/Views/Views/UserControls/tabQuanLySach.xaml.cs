@@ -24,26 +24,33 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     /// </summary>
     public partial class tabQuanLySach : UserControl, INotifyPropertyChanged
     {
+        #region Properties
         private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
         public ObservableCollection<Book> Books
         {
             get { return _books; }
             set { _books = value; NotifyPropertyChanged("Books"); }
         }
+        #endregion
 
+        #region Constructor
         public tabQuanLySach()
         {
             InitializeComponent();
             listbox_DSSach.ItemsSource = Books;
         }
+        #endregion
 
+        #region Implements
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
 
+        #region Custom Functions
         void Clear()
         {
             Books = Adapters.BookAdapter.GetAll();
@@ -89,7 +96,9 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             catch { }
         }
+        #endregion
 
+        #region Events
         private void aItemGotFocus(object sender, RoutedEventArgs e)
         {
             var textbox = sender as TextBox;
@@ -256,5 +265,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                     source.Insert(index, Adapters.BookAdapter.GetBook(tag.ID));
             }
         }
+        #endregion
     }
 }
