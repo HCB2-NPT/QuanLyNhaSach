@@ -30,12 +30,14 @@ namespace QuanLyNhaSach.Managers
             folder_data = folder_project + "\\Data";
             folder_images = folder_data + "\\Images";
             no_images = "no_image.png";
+            popularCustomer_id = 13;
         }
 
         private string folder_project;
         private string folder_data;
         private string folder_images;
         private string no_images;
+        private int popularCustomer_id;
 
         public string FOLDER_PROJECT { get { return folder_project; } }
 
@@ -44,5 +46,7 @@ namespace QuanLyNhaSach.Managers
         public string FOLDER_IMAGES { get { return folder_images; } }
 
         public string NO_IMAGE { get { return no_images; } }
+
+        public int PopularCustomerID { get { return popularCustomer_id; } }
     }
 }

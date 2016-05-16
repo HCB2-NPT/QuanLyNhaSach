@@ -11,7 +11,25 @@ namespace QuanLyNhaSach.Objects
     {
         public Bill Container { get; set; }
 
-        private Book _book;
+        private Book _book = null;
+        private int _number = 0;
+        private int _price = 0;
+
+        #region Constructor
+        public BillItem(Book b, int num, int price) : base()
+        {
+            _book = b;
+            _number = num;
+            _price = price;
+        }
+
+        public BillItem() : base(true)
+        {
+            _book = new Book();
+        }
+        #endregion
+
+        #region Properties
         public Book Book
         {
             get { return _book; }
@@ -21,8 +39,6 @@ namespace QuanLyNhaSach.Objects
                 NotifyPropertyChanged("Book");
             }
         }
-
-        private int _number = 0;
 
         public int Number
         {
@@ -39,10 +55,9 @@ namespace QuanLyNhaSach.Objects
 
         public int Total
         {
-            get { return Price*Number; }
+            get { return Price * Number; }
         }
 
-        private int _price = 0;
         public int Price
         {
             get { return _price; }
@@ -56,7 +71,9 @@ namespace QuanLyNhaSach.Objects
                 Container.WhenChildreUpdate();
             }
         }
+        #endregion
 
+        #region PropertiesFormat
         public string TotalFormat
         {
             get
@@ -72,17 +89,6 @@ namespace QuanLyNhaSach.Objects
                 return Price.ToString("#,##0 vnđ");
             }
         }
-
-        public BillItem(Book b, int num, int price) : base()
-        {
-            _book = b;
-            _number = num;
-            _price = price;
-        }
-
-        public BillItem() : base(true)
-        {
-            _book = new Book();
-        }
+        #endregion
     }
 }

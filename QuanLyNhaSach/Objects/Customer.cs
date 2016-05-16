@@ -9,7 +9,9 @@ namespace QuanLyNhaSach.Objects
 {
     public class Customer : Editable
     {
-        private static int min_length__AdressShortFormat = 60;
+        #region Constants
+        private const int min_length__AdressShortFormat = 60;
+        #endregion
 
         private int _id;
         private string _name = null;
@@ -19,6 +21,7 @@ namespace QuanLyNhaSach.Objects
         private string _email = null;
         private bool _isDeleted = false;
 
+        #region Constructor
         public Customer() : base(true)
         {
             _id = 0;
@@ -28,7 +31,9 @@ namespace QuanLyNhaSach.Objects
         {
             _id = id;
         }
+        #endregion
 
+        #region Properties
         public int ID { get { return _id; } }
         public string Email { get { return _email; } set { _email = value; NotifyPropertyChanged("Email"); } }
         public string Name { get { return _name; } set { _name = value; NotifyPropertyChanged("Name"); } }
@@ -36,7 +41,9 @@ namespace QuanLyNhaSach.Objects
         public string Adress { get { return _adress; } set { _adress = value; NotifyPropertyChanged("Adress"); } }
         public string Phone { get { return _phone; } set { _phone = value; NotifyPropertyChanged("Phone"); } }
         public int Debt { get { return _debt; } set { _debt = value; NotifyPropertyChanged("Debt"); NotifyPropertyChanged("DebtFormat"); } }
+        #endregion
 
+        #region PropertiesFormat
         public int PhoneByInteger
         {
             get
@@ -79,5 +86,6 @@ namespace QuanLyNhaSach.Objects
                 return Debt.ToString("#,##0 vnđ");
             }
         }
+        #endregion
     }
 }

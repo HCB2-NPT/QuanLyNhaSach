@@ -56,7 +56,7 @@ namespace QuanLyNhaSach.Adapters
                 DeleteBillItems(bill);
                 foreach (var item in bill.BillItems)
                 {
-                    DataConnector.ExecuteNonQuery(string.Format("update ChiTietHoaDon set SoLuong={0} where MaHoaDon={1} and MaSach = {2}", item.Number, bill.IDBill, item.Book.ID));
+                    DataConnector.ExecuteNonQuery(string.Format("update ChiTietHoaDon set SoLuong={0} where MaHoaDon={1} and MaSach = {2}", item.Number, bill.ID, item.Book.ID));
                 }
             }
             catch (Exception ex)
@@ -70,11 +70,11 @@ namespace QuanLyNhaSach.Adapters
             string query;
             if (bill.BillItems.Count <= 0)
             {
-                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.IDBill;
+                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.ID;
             }
             else
             {
-                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.IDBill;
+                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.ID;
                 foreach (var item in bill.BillItems)
                 {
                     query += " and  MaSach!= " + item.Book.ID;

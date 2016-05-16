@@ -10,9 +10,10 @@ namespace QuanLyNhaSach.Objects
 {
     public class AccessLevel
     {
-        public AccessLevel(int id)
+        public AccessLevel(int id, string name)
         {
             ID = id;
+            Name = name;
         }
 
         public int ID { get; set; }

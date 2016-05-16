@@ -25,10 +25,7 @@ namespace QuanLyNhaSach.Adapters
                         _accessLevels = new ObservableCollection<AccessLevel>();
                         while (reader.Read())
                         {
-                            _accessLevels.Add(new AccessLevel(reader.GetInt32(0))
-                            {
-                                Name = (string)reader.GetValueDefault(1, null)
-                            });
+                            _accessLevels.Add(new AccessLevel(reader.GetInt32(0), (string)reader.GetValueDefault(1, null)));
                         }
                     }
                 }

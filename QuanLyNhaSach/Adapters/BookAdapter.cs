@@ -216,5 +216,25 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static int InsertNewBook(Book whichBook)
+        {
+            if (whichBook.Name == null)
+                whichBook.Name = "";
+            if (whichBook.Number < 0)
+                whichBook.Number = 0;
+            if (whichBook.Price < 0)
+                whichBook.Price = 0;
+            try
+            {
+                return DataConnector.ExecuteNonQuery("insert into Sach (TenSach, AnhBia, SoLuong, DonGia, BiXoa)" +
+                    string.Format(" values ('{0}', {1}, 0, {3}, 'false')", whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("'{0}'", whichBook.Image), whichBook.Price));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

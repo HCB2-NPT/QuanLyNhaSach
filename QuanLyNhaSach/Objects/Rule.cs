@@ -10,12 +10,13 @@ namespace QuanLyNhaSach.Objects
     {
         private int _id;
         private DateTime _updateTime;
-        private int _minNumberToImport;
-        private int _minNumberWhenImport;
-        private int _maxDebt;
-        private int _minNumberInStore;
-        private bool _allowGetMoneyGreaterDebt;
+        private int _minNumberToImport = -1;
+        private int _minNumberWhenImport = -1;
+        private int _maxDebt = -1;
+        private int _minNumberInStore = -1;
+        private bool _allowGetMoneyGreaterDebt = true;
 
+        #region Constructor
         public Rule()
             : base(true)
         {
@@ -28,7 +29,9 @@ namespace QuanLyNhaSach.Objects
             _id = id;
             _updateTime = updateTime;
         }
+        #endregion
 
+        #region Properties
         public int ID
         {
             get { return _id; }
@@ -68,5 +71,6 @@ namespace QuanLyNhaSach.Objects
             get { return _allowGetMoneyGreaterDebt; }
             set { _allowGetMoneyGreaterDebt = value; NotifyPropertyChanged("AllowGetMoneyGreaterDebt"); }
         }
+        #endregion
     }
 }
