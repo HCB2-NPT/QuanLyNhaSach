@@ -125,7 +125,7 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 BillItemAdapter.DeleteBillItems(bill);
-                return DataConnector.ExecuteNonQuery("delete from HoaDon where MaHoaDon = " + bill.IDBill);
+                return DataConnector.ExecuteNonQuery("delete from HoaDon where MaHoaDon = " + bill.ID);
             }
             catch (Exception ex)
             {
