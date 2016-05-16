@@ -54,11 +54,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabQuanLyHoaDonCu()
         {
             InitializeComponent();
-            ListBill = Adapters.BillAdapter.GetOldBills();
-            lv_DSHoaDon.ItemsSource = ListBill;
-            lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
-
-
+            DataContext = this;
+            ListBill = Bus.FillData.GetOldBill();
         }
 
         private void lv_DSHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,6 +107,21 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             {
                 Bus.UpdateData.UpdateOldBill(SelectedBill);
             }
+        }
+
+        private void btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            ListBill.Remove(SelectedBill);
+            SelectedBill.BillItems.Clear();
+            lv_DSHoaDon.SelectedItem = null;
+            Bus.UpdateData.DeleteOldBillSelected(SelectedBill);
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            ListBill = Bus.FillData.GetOldBill();
+            SelectedBill = null;
+            SelectedBill = new Bill();
         }
     }
 }

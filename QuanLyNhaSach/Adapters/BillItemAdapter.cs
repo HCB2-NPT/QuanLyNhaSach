@@ -86,7 +86,8 @@ namespace QuanLyNhaSach.Adapters
             }
             catch (Exception ex)
             {
-                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+                //edit
+                //ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
             }
             return -1;
         }

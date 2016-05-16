@@ -120,5 +120,19 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
+
+        public static int DeleteBill(Bill bill)
+        {
+            try
+            {
+                BillItemAdapter.DeleteBillItems(bill);
+                return DataConnector.ExecuteNonQuery("delete from HoaDon where MaHoaDon = " + bill.IDBill);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }

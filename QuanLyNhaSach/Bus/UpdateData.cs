@@ -12,7 +12,11 @@ namespace QuanLyNhaSach.Bus
         public static void UpdateOldBill(Bill bill)
         {
             Adapters.BillAdapter.UpdateOldBill(bill); 
-            
+        }
+
+        public static void DeleteOldBillSelected(Bill bill)
+        {
+            Adapters.BillAdapter.DeleteBill(bill);
         }
     }
 }

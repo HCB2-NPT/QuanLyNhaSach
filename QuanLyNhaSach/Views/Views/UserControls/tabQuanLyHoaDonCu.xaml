@@ -45,15 +45,15 @@
                 <Button x:Name="btn_Save" HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Save_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button x:Name="btn_Refresh" Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}">
+                <Button x:Name="btn_Refresh" Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Refresh_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0,0,8,0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
+                <Button x:Name="btn_Delete" Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0,0,8,0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Click="btn_Delete_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                 </Button>
             </DockPanel>
-            <ListView x:Name="lv_DSHoaDon" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
-            <ListView x:Name="lv_ChiTietHoaDonCu" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="lv_DSHoaDon" ItemsSource="{Binding ListBill}" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
+            <ListView x:Name="lv_ChiTietHoaDonCu" ItemsSource="{Binding SelectedBill.BillItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="border" Background="White" Margin="4" BorderBrush="#FF007ACC" BorderThickness="1">
