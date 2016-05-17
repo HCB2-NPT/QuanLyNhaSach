@@ -159,26 +159,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Book item in Books)
-            {
-                if (item.IsCreatedItem && !string.IsNullOrEmpty(item.Name))
-                {
-                    Adapters.BookAdapter.InsertNewBook(item);
-                }
-                else if (item.IsEditedItem)
-                {
-                    Adapters.BookAdapter.UpdateBook(item);
-                }
-
-                if (item.IsDeletedItem && !item.IsDeleted)
-                {
-                    Adapters.BookAdapter.DeleteBook(item);
-                }
-                else if (!item.IsDeletedItem && item.IsDeleted)
-                {
-                    Adapters.BookAdapter.RecoverBook(item);
-                }
-            }
+            Bus.UpdateData.SaveChangesBooks(Books);
             Clear();
         }
 
@@ -199,15 +180,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var tag = btn.Tag as Book;
             if (tag != null)
             {
-                System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-
-                openFileDialog1.Filter = "Image files (*.png, *jpg)|*.png; *jpg|All files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
-                openFileDialog1.RestoreDirectory = true;
-
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                var dialog = Assets.Scripts.DialogHelper.CreateFileDialog("c:\\", "Image files (*.png, *jpg)|*.png; *jpg|All files (*.*)|*.*", 1);
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    tag.Image = openFileDialog1.FileName;
+                    tag.Image = dialog.FileName;
                 }
             }
         }

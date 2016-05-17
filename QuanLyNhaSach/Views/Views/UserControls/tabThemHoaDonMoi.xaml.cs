@@ -51,6 +51,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #region Binding Controlers
         private Book _book;
         public Book SelectedBook { get { return _book; } set { _book = value; NotifyPropertyChanged("SelectedBook"); } }
+
+        public bool WatermarkAutoCompleBox_NameBook { get { return string.IsNullOrEmpty(tb_NameBook.Text); } }
         #endregion
 
         #region Constructor
@@ -77,8 +79,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #region Custom Functions
         void UpdateData()
         {
-            Customers = Adapters.CustomerAdapter.GetAll();
-            Books = Adapters.BookAdapter.GetAll();
+            Customers = Adapters.CustomerAdapter.GetAll(false);
+            Books = Adapters.BookAdapter.GetAll(false);
         }
 
         void Clear()
@@ -126,8 +128,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             else
             {
-                var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value, SelectedBook.Price);
-                BookCart.BillItems.Add(buybook);
+                if (SelectedBook != null)
+                {
+                    var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value, SelectedBook.Price);
+                    BookCart.BillItems.Add(buybook);
+                }
             }
             num_SLSach.Value = 1;
         }
@@ -185,6 +190,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             Clear();
+        }
+
+        private void tb_NameBook_TextChanged(object sender, RoutedEventArgs e)
+        {
+            NotifyPropertyChanged("WatermarkAutoCompleBox_NameBook");
         }
         #endregion
     }

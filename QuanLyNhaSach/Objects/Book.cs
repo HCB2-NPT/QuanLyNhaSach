@@ -224,13 +224,15 @@ namespace QuanLyNhaSach.Objects
             }
         }
 
-        public string ID_Name
+        public string BookInfo
         {
             get
             {
                 if (string.IsNullOrEmpty(Name))
                     return null;
-                return string.Format("{0:000} - {1}", ID, Name);
+                if (string.IsNullOrEmpty(AuthorsFormat))
+                    return string.Format("{0:000} - {1}", ID, Name);
+                return string.Format("{0:000} - {1} - {2}", ID, Name, AuthorsFormat);
             }
         }
         #endregion

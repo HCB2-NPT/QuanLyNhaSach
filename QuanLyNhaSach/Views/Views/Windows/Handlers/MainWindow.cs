@@ -154,30 +154,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
             //xóa các chức năng đã mở
             mdiContainer.Children.Clear();
         }
-
-        /*
-         * Xử lý mở tab (mdi child)
-         */
-        private void OpenTab(Type type, string title, bool canDuplicate)
-        {
-            if (type != null)
-            {
-                if (!canDuplicate)
-                {
-                    var type_string = type.ToString();
-                    var first = mdiContainer.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
-                    if (first != null)
-                    {
-                        first.Focus();
-                        return;
-                    }
-                }
-                var content = (UserControl)Activator.CreateInstance(type);
-                var mdiChild = new WPF.MDI.MdiChild() { Content = content, Title = title};
-                mdiChild.Background = content.Background;
-                mdiContainer.Children.Add(mdiChild);
-            }
-        }
         #endregion
 
         #region TitleMain Events
@@ -412,7 +388,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
             var item = listboxDSChucNang.SelectedItem as Binding;
             listboxDSChucNang.SelectedItem = null;
             if (item != null)
-                OpenTab(item.Tag as Type, item.Data as string, item.Key);
+                Bus.AppHandler.OpenTab(mdiContainer, item.Tag as Type, item.Data as string, item.Key);
         }
 
         /*
@@ -453,9 +429,9 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #endregion
 
         #region Button Events
-        private void btnQuyDinhFull_Click(object sender, RoutedEventArgs e)
+        private void openQuyDinh(object sender, RoutedEventArgs e)
         {
-            OpenTab(typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
+            Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
         }
         #endregion
     }

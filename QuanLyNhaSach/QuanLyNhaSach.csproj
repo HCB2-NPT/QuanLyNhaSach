@@ -102,6 +102,7 @@
     <Compile Include="Assets\Extensions\CollectionExt.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
     <Compile Include="Assets\Scripts\AutoUpdate.cs" />
+    <Compile Include="Assets\Scripts\DialogHelper.cs" />
     <Compile Include="Assets\Scripts\EventClickOut.cs" />
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
     <Compile Include="Adapters\AccountAdapter.cs" />
@@ -454,6 +455,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Data Backup-64 %28blue%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Delete Link-64 %28blue%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

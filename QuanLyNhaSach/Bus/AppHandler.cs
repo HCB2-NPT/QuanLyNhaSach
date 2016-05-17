@@ -5,26 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using WPF.MDI;
 
 namespace QuanLyNhaSach.Bus
 {
     public class AppHandler
     {
+        #region Application
         public static void Shutdown(int exitcode = 0)
         {
             Application.Current.Shutdown(exitcode);
-        }
-
-        public static void VirtualWindowClose(Window window)
-        {
-            if (window.Visibility != Visibility.Hidden)
-                window.Visibility = Visibility.Hidden;
-        }
-
-        public static void VirtualWindowOpen(Window window)
-        {
-            if (window.Visibility != Visibility.Visible)
-                window.Visibility = Visibility.Visible;
         }
 
         public static void ProcessStart(params string[] processStartParameters)
@@ -51,5 +42,62 @@ namespace QuanLyNhaSach.Bus
                 Assets.Scripts.User32DLL.SwitchToThisWindow(procList.First().MainWindowHandle, true);
             }
         }
+
+        public static void AppCantOpenMoreTimes()
+        {
+            var processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
+            if (processes.Length > 1)
+                Managers.ErrorManager.Current.CantOpenAppMoreTimes.Call();
+        }
+
+        public static void SetupAutoUpdaters()
+        {
+            new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
+            {
+                Managers.ErrorManager.Current.Ignore = true;
+                Adapters.BillAdapter.FixedBillsOverTime();
+                Managers.ErrorManager.Current.Ignore = false;
+            });
+        }
+        #endregion
+
+        #region Window
+        public static void VirtualWindowClose(Window window)
+        {
+            if (window.Visibility != Visibility.Hidden)
+                window.Visibility = Visibility.Hidden;
+        }
+
+        public static void VirtualWindowOpen(Window window)
+        {
+            if (window.Visibility != Visibility.Visible)
+                window.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        #region Tab (Mdi Child)
+        private static int _id = 0;
+        public static void OpenTab(MdiContainer container, Type type, string title, bool canDuplicate)
+        {
+            if (type != null)
+            {
+                if (!canDuplicate)
+                {
+                    var type_string = type.ToString();
+                    var first = container.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
+                    if (first != null)
+                    {
+                        first.Focus();
+                        return;
+                    }
+                }
+                else
+                {
+                    title += string.Format(" - {0}", ++_id);
+                }
+                container.Children.Add(new WPF.MDI.MdiChild() { Content = (UserControl)Activator.CreateInstance(type), Title = title });
+            }
+        }
+        #endregion
     }
 }

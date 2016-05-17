@@ -154,16 +154,25 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
-        public static void UpdateCustomers(ObservableCollection<Customer> listcustomer)
+        public static int InsertNewCustomer(Customer item)
         {
-            foreach (Customer item in listcustomer)
+            try
             {
-                if (item.IsCreatedItem)
-                    DataConnector.ExecuteNonQuery(string.Format("Insert into KhachHang(HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa) " +
-                                                    "values(N'{0}',0,N'{1}','{2}',N'{3}','{4}')", item.Name, item.Adress, item.Phone, item.Email,item.IsDeletedItem));
-                else if (item.IsEditedItem)
-                {
-                    DataConnector.ExecuteNonQuery(string.Format("Update KhachHang set " +
+                return DataConnector.ExecuteNonQuery(string.Format("Insert into KhachHang(HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa) " +
+                                                    "values(N'{0}',0,N'{1}','{2}',N'{3}','{4}')", item.Name, item.Adress, item.Phone, item.Email, item.IsDeletedItem));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int UpdateCustomer(Customer item)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("Update KhachHang set " +
                                                 " HoTen=N'{0}'," +
                                                 "SoTienNo={1}," +
                                                 "DiaChi=N'{2}'," +
@@ -171,12 +180,38 @@ namespace QuanLyNhaSach.Adapters
                                                 "Email=N'{4}'," +
                                                 "BiXoa='{5}'" +
                                                 " where MaKhachHang = {6}", item.Name, item.Debt, item.Adress, item.Phone, item.Email, item.IsDeletedItem, item.ID));
-                }
-                else if (item.IsDeleted && !item.IsDeletedItem)
-                    DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 0 where MaKhachHang=" + item.ID);
-                else if (!item.IsDeleted && item.IsDeletedItem)
-                    DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 1 where MaKhachHang=" + item.ID);
             }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int RecoverCustomer(Customer item)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 0 where MaKhachHang=" + item.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int DeleteCustomer(Customer item)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery("Update KhachHang set BiXoa = 1 where MaKhachHang=" + item.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
         }
     }
 }

@@ -17,15 +17,9 @@ namespace QuanLyNhaSach
         protected override void OnStartup(StartupEventArgs e)
         {
             //check app: can not open more times
-            var processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
-            if (processes.Length > 1)
-                Managers.ErrorManager.Current.CantOpenAppMoreTimes.Call();
+            Bus.AppHandler.AppCantOpenMoreTimes();
             //update: bills
-            Adapters.BillAdapter.FixedBillsOverTime();
-            new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
-            {
-                Adapters.BillAdapter.FixedBillsOverTime();
-            });
+            Bus.AppHandler.SetupAutoUpdaters();
             //run app
             base.OnStartup(e);
         }

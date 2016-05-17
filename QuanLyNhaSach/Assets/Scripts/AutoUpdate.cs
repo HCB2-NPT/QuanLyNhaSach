@@ -15,7 +15,7 @@ namespace QuanLyNhaSach.Assets.Scripts
 
         public DispatcherTimer Timer { get; set; }
 
-        public AutoUpdate(TimeSpan interval, UpdateHandler updater)
+        public AutoUpdate(TimeSpan interval, UpdateHandler updater, bool runNow = true)
         {
             Updater = updater;
             Timer = new DispatcherTimer();
@@ -25,6 +25,9 @@ namespace QuanLyNhaSach.Assets.Scripts
             else
                 Timer.Interval = interval;
             Timer.Start();
+
+            if (runNow)
+                Updater(this);
         }
 
         void Timer_Tick(object sender, EventArgs e)

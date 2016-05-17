@@ -106,7 +106,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="btnQuyDinhFull_Click" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnQuyDinhFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Qui Định" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="openQuyDinh" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>
@@ -167,7 +167,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Combo Chart-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="btnQuyDinhFull_Click" Focusable="False">
+                    <Button x:Name="btnQuyDinhMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="openQuyDinh" Focusable="False">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Rules-64.png"/>
                         </Button.Background>

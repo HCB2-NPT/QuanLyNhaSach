@@ -34,15 +34,7 @@
             </DockPanel>
         </DockPanel>
     </DataTemplate>
-
-    <DataTemplate x:Key="lvi_DSTheLoai">
-        <DockPanel Background="White" Width="Auto" Height="60" Margin="2">
-            <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="4,0">
-                <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
-            </Button>
-            <TextBox Style="{DynamicResource TextBoxListViewItem}" Text="{Binding Name}" VerticalAlignment="Center" Margin="8,0,0,0" Foreground="Gray" IsReadOnly="True" IsEnabled="False"/>
-        </DockPanel>
-    </DataTemplate>
+    
     <Style x:Key="lvi_ContainerStyle" TargetType="{x:Type ListViewItem}">
         <Setter Property="Template">
             <Setter.Value>

@@ -9,13 +9,24 @@ namespace QuanLyNhaSach.Objects
 {
     public class Editable : INotifyPropertyChanged
     {
+        private string[] names = { "IsCreatedItem", 
+                                     "IsEditedItem", 
+                                     "IsDeletedItem", 
+                                     "IsNotDeletedItem", 
+                                     "Tag", 
+                                     "Switch", 
+                                     "NotSwitch" };
+
+        #region Constructor
         public Editable(bool isNew = false)
         {
             _isCreatedItem = isNew;
             _isEditedItem = false;
             _isDeletedItem = false;
         }
+        #endregion
 
+        #region Implements
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(String propertyName)
         {
@@ -27,12 +38,12 @@ namespace QuanLyNhaSach.Objects
                     IsEditedItem = true;
             }
         }
+        #endregion
 
+        #region Properties control the editting
         private bool _isCreatedItem;
         private bool _isEditedItem;
         private bool _isDeletedItem;
-
-        private string[] names = { "IsCreatedItem", "IsEditedItem", "IsDeletedItem", "IsNotDeletedItem" };
 
         public bool IsCreatedItem { get { return _isCreatedItem; } set { _isCreatedItem = value; NotifyPropertyChanged("IsCreatedItem"); } }
 
@@ -53,5 +64,52 @@ namespace QuanLyNhaSach.Objects
         {
             IsInitializingItem = false;
         }
+        #endregion
+
+        #region Custom Properties
+        private object _tag = null;
+        private bool _switch = false;
+
+        public object Tag
+        {
+            get
+            {
+                return _tag;
+            }
+            set
+            {
+                _tag = value;
+                NotifyPropertyChanged("Tag");
+            }
+        }
+
+        public bool Switch
+        {
+            get
+            {
+                return _switch;
+            }
+            set
+            {
+                _switch = value;
+                NotifyPropertyChanged("Switch");
+                NotifyPropertyChanged("NotSwitch");
+            }
+        }
+
+        public bool NotSwitch
+        {
+            get
+            {
+                return !_switch;
+            }
+            set
+            {
+                _switch = !value;
+                NotifyPropertyChanged("Switch");
+                NotifyPropertyChanged("NotSwitch");
+            }
+        }
+        #endregion
     }
 }

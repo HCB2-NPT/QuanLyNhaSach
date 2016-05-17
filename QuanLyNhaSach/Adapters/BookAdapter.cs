@@ -419,5 +419,31 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static int RemoveGenreFromBook(int bookid, int genreid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("delete from ChiTietTheLoaiSach where MaSach = {0} and MaTheLoai = {1}", bookid, genreid));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int RemoveAuthorFromBook(int bookid, int authorid)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("delete from ChiTietTacGiaSach where MaSach = {0} and MaTacGia = {1}", bookid, authorid));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
     }
 }
