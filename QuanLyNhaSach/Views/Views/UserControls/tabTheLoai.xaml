@@ -38,18 +38,15 @@
                 <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="addBookOf">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Grid>
-                    <toolkit:AutoCompleteBox x:Name="NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" ToolTip="Tìm kiếm sách" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="BookInfo" BorderBrush="{x:Null}" FontSize="14" Background="#FFF7F7F7" TextChanged="NameBookWatermark" VerticalContentAlignment="Center" VerticalAlignment="Center">
-                        <toolkit:AutoCompleteBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                    <TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </toolkit:AutoCompleteBox.ItemTemplate>
-                    </toolkit:AutoCompleteBox>
-                    <TextBlock Text="Tên sách..." Padding="12,4,0,0" FontSize="14" Foreground="Gray" Visibility="{Binding WatermarkAutoCompleBox_NameBook, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" HorizontalAlignment="Left" IsHitTestVisible="False" Cursor="IBeam"/>
-                </Grid>
+                <toolkit:AutoCompleteBox x:Name="NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" ToolTip="Tên sách..." Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="BookInfo" BorderBrush="{x:Null}" FontSize="14" Background="#FFF7F7F7" TextChanged="NameBookWatermark" VerticalContentAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource AutoCompleteBox_watermark}" OpacityMask="Gray" Width="360">
+                	<toolkit:AutoCompleteBox.ItemTemplate>
+                		<DataTemplate>
+                			<StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                				<TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
+                			</StackPanel>
+                		</DataTemplate>
+                	</toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
             </DockPanel>
             <ListView Background="#FF1E1E1E" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemsSource="{Binding BooksOfSelectedGenre}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>

@@ -53,23 +53,20 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
-                <Grid Margin="16,0">
-                    <toolkit:AutoCompleteBox x:Name="tb_NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" VerticalAlignment="Center" ToolTip="Tìm kiếm sách" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="BookInfo" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14" Background="White" TextChanged="tb_NameBook_TextChanged" VerticalContentAlignment="Center">
-                        <toolkit:AutoCompleteBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                    <TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </toolkit:AutoCompleteBox.ItemTemplate>
-                    </toolkit:AutoCompleteBox>
-                    <TextBlock Text="Tên Sách" Padding="12,4,0,0" FontSize="14" Foreground="Gray" Visibility="{Binding WatermarkAutoCompleBox_NameBook, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="IBeam" IsHitTestVisible="False"/>
-                </Grid>
-                <TextBox x:Name="tb_TheLoai" Text="{Binding SelectedBook.GenresShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
-                <TextBox x:Name="tb_TacGia" Text="{Binding SelectedBook.AuthorsShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <toolkit:AutoCompleteBox x:Name="tb_NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" VerticalAlignment="Center" ToolTip="Tên sách" Padding="12,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="BookInfo" SelectionChanged="tb_NameBook_SelectionChanged" BorderBrush="#FFABADB3" FontSize="14" Background="White" TextChanged="tb_NameBook_TextChanged" VerticalContentAlignment="Center" Style="{DynamicResource AutoCompleteBox_watermark}" OpacityMask="Gray" Margin="16,0">
+            		<toolkit:AutoCompleteBox.ItemTemplate>
+            			<DataTemplate>
+            				<StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            					<TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
+            				</StackPanel>
+            			</DataTemplate>
+            		</toolkit:AutoCompleteBox.ItemTemplate>
+            	</toolkit:AutoCompleteBox>
+                <TextBox x:Name="tb_TheLoai" Text="{Binding SelectedBook.GenresShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TacGia" Text="{Binding SelectedBook.AuthorsShortFormat, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
                 <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray" FontSize="14">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{}Tồn kho: {0}">
+                        <MultiBinding StringFormat="Tồn kho: {0}">
                             <Binding Path="SelectedBook.Number" Mode="OneWay"/>
                         </MultiBinding>
                     </TextBlock.Text>

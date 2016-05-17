@@ -134,7 +134,6 @@
 						</Storyboard>
 					</ControlTemplate.Resources>
 					<Grid x:Name="grid" Opacity="{TemplateBinding Opacity}" Background="{TemplateBinding Background}">
-						<TextBlock x:Name="watermark" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="Center" Margin="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" Opacity="1"/>
 						<TextBox x:Name="Text" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" IsTabStop="True" Margin="0" Padding="{TemplateBinding Padding}" Style="{TemplateBinding TextBoxStyle}" Background="{x:Null}"/>
 						<Border x:Name="ValidationErrorElement" BorderBrush="#FFDB000C" BorderThickness="1" CornerRadius="1" Visibility="Collapsed">
 							<Border.ToolTip>
@@ -200,14 +199,13 @@
 								</Border>
 							</Grid>
 						</Popup>
+						<TextBlock x:Name="watermark" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Margin="{TemplateBinding Padding}" Opacity="0" Text="{TemplateBinding ToolTip}" Foreground="{TemplateBinding OpacityMask}" Cursor="IBeam" IsHitTestVisible="False"/>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="grid">
-							<BeginStoryboard x:Name="hideWM_BeginStoryboard1" Storyboard="{StaticResource hideWM}"/>
-						</EventTrigger>
-						<EventTrigger RoutedEvent="UIElement.MouseUp" SourceName="grid">
-							<BeginStoryboard Storyboard="{StaticResource showWM}"/>
-						</EventTrigger>
+						<EventTrigger RoutedEvent="Controls:AutoCompleteBox.TextChanged"/>
+						<Trigger Property="Text" Value="">
+							<Setter Property="Opacity" TargetName="watermark" Value="1"/>
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
