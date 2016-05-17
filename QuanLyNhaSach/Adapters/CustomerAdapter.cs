@@ -213,5 +213,38 @@ namespace QuanLyNhaSach.Adapters
             }
             return -1;
         }
+
+        public static ObservableCollection<Customer> GetAllDebtor()
+        {
+            ObservableCollection<Customer> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery(string.Format("select MaKhachHang,HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa from KhachHang {0} where Debt >0"));
+                if (reader != null)
+                {
+                    result = new ObservableCollection<Customer>();
+                    while (reader.Read())
+                    {
+                        var item = new Customer(reader.GetInt32(0));
+                        item.BeginInit();
+                        item.Name = (string)reader.GetValueDefault(1, null);
+                        item.Debt = (int)reader.GetValueDefault(2, 0);
+                        item.Adress = (string)reader.GetValueDefault(3, null);
+                        item.Phone = (string)reader.GetValueDefault(4, null);
+                        item.Email = (string)reader.GetValueDefault(5, null);
+                        item.IsDeleted = (bool)reader.GetValueDefault(6, false);
+                        item.IsDeletedItem = item.IsDeleted;
+                        item.EndInit();
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
     }
 }
