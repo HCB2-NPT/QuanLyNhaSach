@@ -21,5 +21,10 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.CustomerAdapter.GetAll();
         }
+
+        public static ObservableCollection<Customer> GetAllDebtor()
+        {
+            return Adapters.CustomerAdapter.GetAllDebtor();
+        }
     }
 }
