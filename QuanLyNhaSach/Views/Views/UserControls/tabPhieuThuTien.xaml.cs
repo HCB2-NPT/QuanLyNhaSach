@@ -47,12 +47,19 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             set { _debtMoney = value; NotifyPropertyChanged("DebtMoney"); }
         }
 
-        private int _returnMoney = 0;
-
         public int ReturnMoney
         {
-            get { return _returnMoney; }
-            set { _returnMoney = value; NotifyPropertyChanged("ReturnMoney"); }
+            get
+            {
+                if (lv_ListDebtor.SelectedItem!=null)
+                {
+                    int rm = PayMoney - ((Customer)lv_ListDebtor.SelectedItem).Debt;
+                    if (rm != 0)
+                        return rm;
+                    return 0;
+                }
+                return 0;
+            }
         }
 
         private int _payMoney = 0;
@@ -60,7 +67,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public int PayMoney
         {
             get { return _payMoney; }
-            set { _payMoney = value; NotifyPropertyChanged("PayMoney"); }
+            set { _payMoney = value; NotifyPropertyChanged("PayMoney"); NotifyPropertyChanged("ReturnMoney"); }
         }
 
         #endregion
@@ -82,5 +89,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             DataContext = this;
             ListDebtor = Adapters.CustomerAdapter.GetAllDebtor();
 		}
+
+        private void tb_PayMoney_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890".IndexOf(e.Text) == -1;
+        }
 	}
 }

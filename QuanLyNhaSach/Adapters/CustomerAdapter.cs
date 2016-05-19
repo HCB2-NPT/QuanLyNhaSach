@@ -219,7 +219,7 @@ namespace QuanLyNhaSach.Adapters
             ObservableCollection<Customer> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery(string.Format("select MaKhachHang,HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa from KhachHang {0} where Debt >0"));
+                var reader = DataConnector.ExecuteQuery(string.Format("select MaKhachHang,HoTen,SoTienNo,DiaChi,DienThoai,Email,BiXoa from KhachHang where SoTienNo > 0"));
                 if (reader != null)
                 {
                     result = new ObservableCollection<Customer>();
