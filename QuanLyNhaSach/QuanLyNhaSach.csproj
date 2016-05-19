@@ -124,7 +124,7 @@
     <Compile Include="Objects\BillItem.cs" />
     <Compile Include="Objects\Genre.cs" />
     <Compile Include="Objects\Author.cs" />
-    <Compile Include="Objects\Binding.cs" />
+    <Compile Include="Objects\Function.cs" />
     <Compile Include="Objects\Book.cs" />
     <Compile Include="Objects\Customer.cs" />
     <Compile Include="Errors\ErrorTypes\AppErrors.cs" />

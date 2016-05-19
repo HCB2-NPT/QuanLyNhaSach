@@ -215,23 +215,39 @@
                             </Menu>
                         </mdi:MdiContainer.Menu>
                     </mdi:MdiContainer>
-                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
-                        <DockPanel LastChildFill="True" Width="200">
-                            <Border Margin="0" DockPanel.Dock="Top" Height="40">
-                                <TextBlock x:Name="functionTitle" Text="Chức Năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
+                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
+                        <Grid Width="200">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Margin="0" Height="40">
+                                <TextBlock Text="Quản lý" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
                             </Border>
-                            <ListBox x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemListBox}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged">
+                            <ListBox Grid.Row="1" x:Name="listboxDSChucNang" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemMenuFunction}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged" DockPanel.Dock="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                     </Style>
                                 </ListBox.ItemContainerStyle>
                             </ListBox>
-                        </DockPanel>
+                            <Border Grid.Row="2" Margin="0" DockPanel.Dock="Top" Height="40" Visibility="{Binding Items.Count, ConverterParameter=False, Converter={StaticResource IntZeroToVisibilityHiddenConverter}, ElementName=listboxDSChucNang2, Mode=OneWay}">
+                                <TextBlock Text="Chức năng" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="White" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" Margin="8,0,0,0"/>
+                            </Border>
+                            <ListBox Grid.Row="3" x:Name="listboxDSChucNang2" SelectionMode="Single" BorderBrush="{x:Null}" ItemTemplate="{DynamicResource ItemMenuFunction}" Margin="0" Background="{x:Null}" BorderThickness="0" ItemsSource="{Binding}" Foreground="#E5000000" SelectionChanged="listboxDSChucNang_SelectionChanged" Visibility="{Binding Items.Count, ConverterParameter=False, Converter={StaticResource IntZeroToVisibilityHiddenConverter}, ElementName=listboxDSChucNang2, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+                        </Grid>
                     </DockPanel>
                 </Grid>
             </DockPanel>
         </DockPanel>
-        <Image x:Name="resizer" HorizontalAlignment="Right" Height="12" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4" Visibility="{Binding WindowState, Converter={StaticResource WindowStateNormalToVisibilityHiddenConverter}, ElementName=window}"/>
+        <Image x:Name="resizer" HorizontalAlignment="Right" Height="12" VerticalAlignment="Bottom" Width="16" Source="/Tiki Bookshop;component/Assets/Images/resizer.png" Stretch="Fill" Opacity="0.4" Visibility="{Binding WindowState, Converter={StaticResource WindowStateNormalToVisibilityHiddenConverter}, ElementName=window}" d:IsLocked="True"/>
     </Grid>
 </Window>

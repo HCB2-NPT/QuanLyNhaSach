@@ -262,44 +262,10 @@ namespace QuanLyNhaSach.Adapters
 
         public static int InsertNewBook(Book whichBook)
         {
-            if (string.IsNullOrEmpty(whichBook.Name))
-                whichBook.Name = "";
-            if (whichBook.Price < 0)
-                whichBook.Price = 0;
             try
             {
-                var r = DataConnector.ExecuteNonQuery("insert into Sach (TenSach, AnhBia, SoLuongTon, DonGia, BiXoa)" +
+                return DataConnector.ExecuteNonQuery("insert into Sach (TenSach, AnhBia, SoLuongTon, DonGia, BiXoa)" +
                     string.Format(" values (N'{0}', {1}, 0, {2}, 'false')", whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price));
-                if (r == 1)
-                {
-                    var id = GetLatestId();
-                    if (id > 0)
-                    {
-                        foreach (var item in whichBook.AuthorsFormat.Split(','))
-                        {
-                            var i = item.Trim();
-                            var k = AuthorAdapter.Exist(i);
-                            if (k == -1)
-                            {
-                                AuthorAdapter.Insert(item);
-                                k = AuthorAdapter.Exist(item);
-                            }
-                            AddAuthor(id, k);
-                        }
-                        foreach (var item in whichBook.GenresFormat.Split(','))
-                        {
-                            var i = item.Trim();
-                            var k = GenreAdapter.Exist(i);
-                            if (k == -1)
-                            {
-                                GenreAdapter.Insert(item);
-                                k = GenreAdapter.Exist(item);
-                            }
-                            AddGenre(id, k);
-                        }
-                    }
-                }
-                return r;
             }
             catch (Exception ex)
             {
@@ -310,36 +276,8 @@ namespace QuanLyNhaSach.Adapters
 
         public static int UpdateBook(Book whichBook)
         {
-            if (string.IsNullOrEmpty(whichBook.Name))
-                whichBook.Name = "";
-            if (whichBook.Price < 0)
-                whichBook.Price = 0;
             try
             {
-                ClearAuthors(whichBook.ID);
-                ClearGenres(whichBook.ID);
-                foreach (var item in whichBook.AuthorsFormat.Split(','))
-                {
-                    var i = item.Trim();
-                    var k = AuthorAdapter.Exist(i);
-                    if (k == -1)
-                    {
-                        AuthorAdapter.Insert(item);
-                        k = AuthorAdapter.Exist(item);
-                    }
-                    AddAuthor(whichBook.ID, k);
-                }
-                foreach (var item in whichBook.GenresFormat.Split(','))
-                {
-                    var i = item.Trim();
-                    var k = GenreAdapter.Exist(i);
-                    if (k == -1)
-                    {
-                        GenreAdapter.Insert(item);
-                        k = GenreAdapter.Exist(item);
-                    }
-                    AddGenre(whichBook.ID, k);
-                }
                 return DataConnector.ExecuteNonQuery(string.Format("update Sach set TenSach = N'{0}', AnhBia = {1}, DonGia = {2} where MaSach = {3}",
                     whichBook.Name, whichBook.Image == null ? "NULL" : string.Format("N'{0}'", whichBook.Image), whichBook.Price, whichBook.ID));
             }

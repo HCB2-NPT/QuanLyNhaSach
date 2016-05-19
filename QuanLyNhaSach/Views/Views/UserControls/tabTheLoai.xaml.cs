@@ -60,10 +60,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
         #endregion
 
-        #region Binding Controlers
-        public bool ShowWatermark_NameBook { get { return string.IsNullOrEmpty(NameBook.Text); } }
-        #endregion
-
         #region Constructor
         public tabTheLoai()
         {
@@ -96,48 +92,9 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                     selected.Tag = BooksOfSelectedGenre;
                 }
             }
-        }
-
-        private void removeLink(object sender, RoutedEventArgs e)
-        {
-            var control = sender as Button;
-            var tag = control.Tag as Book;
-            if (tag != null)
+            else
             {
-                if (tag.Tag != null)
-                    BooksOfSelectedGenre.Remove(tag);
-                else
-                    tag.Switch = true;
-            }
-        }
-
-        private void recoverLink(object sender, RoutedEventArgs e)
-        {
-            var control = sender as Button;
-            var tag = control.Tag as Book;
-            if (tag != null)
-                tag.Switch = false;
-        }
-
-        private void addNewGenre(object sender, RoutedEventArgs e)
-        {
-            var g = new Genre();
-            Genres.Add(g);
-            lv_DSTheLoai.SelectedItem = g;
-            lv_DSTheLoai.ScrollIntoView(g);
-        }
-
-        private void addBookOf(object sender, RoutedEventArgs e)
-        {
-            var b = NameBook.SelectedItem as Book;
-            if (b != null)
-            {
-                var item = lv_DSTheLoai.SelectedItem as Genre;
-                if (item != null)
-                {
-                    b.Tag = 0;
-                    BooksOfSelectedGenre.Add(b);
-                }
+                BooksOfSelectedGenre = null;
             }
         }
 
@@ -146,7 +103,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             if (e.Key == Key.Enter)
             {
                 var control = sender as TextBox;
-                var key = control.Text;
+                var key = control.Text.ToLower();
                 if (!string.IsNullOrEmpty(key))
                 {
                     lv_DSTheLoai.SelectedItems.Clear();
@@ -164,15 +121,101 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             Clear();
         }
 
+        private void refresh(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
+
         void Clear()
         {
             Genres = Adapters.GenreAdapter.GetAll();
             Books = Adapters.BookAdapter.GetAll();
         }
 
-        private void refresh(object sender, RoutedEventArgs e)
+        #region GenresBoard
+        private void recoverItem(object sender, RoutedEventArgs e)
         {
-            Clear();
+            var control = sender as Button;
+            var tag = control.Tag as Genre;
+            if (tag != null)
+                tag.IsDeletedItem = false;
         }
+
+        private void deleteItem(object sender, RoutedEventArgs e)
+        {
+            var control = sender as Button;
+            var tag = control.Tag as Genre;
+            if (tag != null)
+            {
+                if (tag.IsCreatedItem)
+                    Genres.Remove(tag);
+                else
+                    tag.IsDeletedItem = true;
+            }
+        }
+
+        private void deleteSelectedGenres(object sender, RoutedEventArgs e)
+        {
+            foreach (Genre item in lv_DSTheLoai.SelectedItems.ToList())
+            {
+                if (item.IsCreatedItem)
+                    Genres.Remove(item);
+                else
+                    item.IsDeletedItem = true;
+            }
+        }
+
+        private void addNewGenre(object sender, RoutedEventArgs e)
+        {
+            var g = new Genre();
+            Genres.Add(g);
+            lv_DSTheLoai.SelectedItem = g;
+            lv_DSTheLoai.ScrollIntoView(g);
+        }
+        #endregion
+
+        #region BooksOf_Board
+        private void removeLink(object sender, RoutedEventArgs e)
+        {
+            var control = sender as Button;
+            var tag = control.Tag as Book;
+            if (tag != null)
+            {
+                if (tag.Tag != null)
+                    BooksOfSelectedGenre.Remove(tag);
+                else
+                    tag.Switch = true;
+                var item = lv_DSTheLoai.SelectedItem as Genre;
+                if (item != null)
+                    item.IsEditedItem = true;
+            }
+        }
+
+        private void recoverLink(object sender, RoutedEventArgs e)
+        {
+            var control = sender as Button;
+            var tag = control.Tag as Book;
+            if (tag != null)
+                tag.Switch = false;
+        }
+
+        private void addBookOf(object sender, RoutedEventArgs e)
+        {
+            var b = NameBook.SelectedItem as Book;
+            if (b != null)
+            {
+                var item = lv_DSTheLoai.SelectedItem as Genre;
+                if (item != null)
+                {
+                    if (!BooksOfSelectedGenre.Any(x => x.Name == b.Name))
+                    {
+                        b.Tag = "New Link";
+                        BooksOfSelectedGenre.Add(b);
+                        item.IsEditedItem = true;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

@@ -76,15 +76,28 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
-        public static int Delete(string name)
+        public static int Delete(int id)
         {
             try
             {
-                return DataConnector.ExecuteNonQuery(string.Format("delete from TacGia where TenTacGia = N'{0}'", name));
+                return DataConnector.ExecuteNonQuery(string.Format("delete from TacGia where MaTacGia = {0}", id));
             }
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int Update(Author which)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("update TacGia set TenTacGia = N'{0}' where MaTacGia = {1}", which.Name, which.ID));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
             }
             return -1;
         }
@@ -103,6 +116,19 @@ namespace QuanLyNhaSach.Adapters
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int ClearBooksOf(int id)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(string.Format("delete from ChiTietTacGiaSach where MaTacGia = {0}", id));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeDelete.Call(ex.Message);
             }
             return -1;
         }

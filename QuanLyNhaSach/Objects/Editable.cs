@@ -9,14 +9,6 @@ namespace QuanLyNhaSach.Objects
 {
     public class Editable : INotifyPropertyChanged
     {
-        private string[] names = { "IsCreatedItem", 
-                                     "IsEditedItem", 
-                                     "IsDeletedItem", 
-                                     "IsNotDeletedItem", 
-                                     "Tag", 
-                                     "Switch", 
-                                     "NotSwitch" };
-
         #region Constructor
         public Editable(bool isNew = false)
         {
@@ -32,7 +24,7 @@ namespace QuanLyNhaSach.Objects
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            if (!names.Any(x => x == propertyName))
+            if (!_pThrough.Any(x => x == propertyName))
             {
                 if (!IsInitializingItem && !IsEditedItem)
                     IsEditedItem = true;
@@ -64,6 +56,18 @@ namespace QuanLyNhaSach.Objects
         {
             IsInitializingItem = false;
         }
+        #endregion
+
+        #region Properties can through
+        private string[] _pThrough = { "IsCreatedItem", 
+                                     "IsEditedItem", 
+                                     "IsDeletedItem", 
+                                     "IsNotDeletedItem", 
+                                     "Tag", 
+                                     "Switch", 
+                                     "NotSwitch" };
+
+        public string[] PThrough { get { return _pThrough; } }
         #endregion
 
         #region Custom Properties

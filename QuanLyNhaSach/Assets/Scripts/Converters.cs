@@ -13,7 +13,26 @@ namespace QuanLyNhaSach.Assets.Scripts
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.IsNullOrEmpty((string)value) ? Visibility.Visible : Visibility.Hidden;
+            if (parameter == null)
+                return string.IsNullOrEmpty((string)value) ? Visibility.Visible : Visibility.Hidden;
+            else
+                return !string.IsNullOrEmpty((string)value) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IntZeroToVisibilityHiddenConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (parameter == null)
+                return (int)value == 0 ? Visibility.Visible : Visibility.Hidden;
+            else
+                return (int)value != 0 ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -26,7 +45,10 @@ namespace QuanLyNhaSach.Assets.Scripts
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (WindowState)value == WindowState.Maximized ? Visibility.Visible : Visibility.Hidden;
+            if (parameter == null)
+                return (WindowState)value == WindowState.Maximized ? Visibility.Visible : Visibility.Hidden;
+            else
+                return (WindowState)value != WindowState.Maximized ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -39,7 +61,10 @@ namespace QuanLyNhaSach.Assets.Scripts
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (WindowState)value == WindowState.Minimized ? Visibility.Visible : Visibility.Hidden;
+            if (parameter == null)
+                return (WindowState)value == WindowState.Minimized ? Visibility.Visible : Visibility.Hidden;
+            else
+                return (WindowState)value != WindowState.Minimized ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -52,7 +77,10 @@ namespace QuanLyNhaSach.Assets.Scripts
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (WindowState)value == WindowState.Normal ? Visibility.Visible : Visibility.Hidden;
+            if (parameter == null)
+                return (WindowState)value == WindowState.Normal ? Visibility.Visible : Visibility.Hidden;
+            else
+                return (WindowState)value != WindowState.Normal ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -61,11 +89,14 @@ namespace QuanLyNhaSach.Assets.Scripts
         }
     }
 
-    public class WindowStateMaximizedToFalseConverter : IValueConverter
+    public class WindowStateMaximizedToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !((WindowState)value == WindowState.Maximized);
+            if (parameter == null)
+                return (WindowState)value == WindowState.Maximized;
+            else
+                return !((WindowState)value == WindowState.Maximized);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -74,11 +105,14 @@ namespace QuanLyNhaSach.Assets.Scripts
         }
     }
 
-    public class WindowStateMinimizedToFalseConverter : IValueConverter
+    public class WindowStateMinimizedToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !((WindowState)value == WindowState.Minimized);
+            if (parameter == null)
+                return (WindowState)value == WindowState.Minimized;
+            else
+                return !((WindowState)value == WindowState.Minimized);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -87,50 +121,14 @@ namespace QuanLyNhaSach.Assets.Scripts
         }
     }
 
-    public class WindowStateNormalToFalseConverter : IValueConverter
+    public class WindowStateNormalToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !((WindowState)value == WindowState.Normal);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class WindowStateMaximizedToTrueConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (WindowState)value == WindowState.Maximized;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class WindowStateMinimizedToTrueConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (WindowState)value == WindowState.Minimized;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class WindowStateNormalToTrueConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (WindowState)value == WindowState.Normal;
+            if (parameter == null)
+                return (WindowState)value == WindowState.Normal;
+            else
+                return !((WindowState)value == WindowState.Normal);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

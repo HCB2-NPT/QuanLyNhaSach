@@ -7,7 +7,8 @@
     	<ResourceDictionary>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <Converters:EmptyStringToVisibilityHiddenConverter x:Key="EmptyStringToVisibilityHiddenConverter"/>
-            <Converters:WindowStateMaximizedToFalseConverter x:Key="WindowStateMaximizedToFalseConverter"/>
+            <Converters:IntZeroToVisibilityHiddenConverter x:Key="IntZeroToVisibilityHiddenConverter"/>
+            <Converters:WindowStateMaximizedToBooleanConverter x:Key="WindowStateMaximizedToBooleanConverter"/>
             <Converters:WindowStateMaximizedToVisibilityHiddenConverter x:Key="WindowStateMaximizedToVisibilityHiddenConverter"/>
             <Converters:WindowStateNormalToVisibilityHiddenConverter x:Key="WindowStateNormalToVisibilityHiddenConverter"/>
             

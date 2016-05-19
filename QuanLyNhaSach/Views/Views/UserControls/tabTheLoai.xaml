@@ -13,6 +13,9 @@
                 <Button VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="addNewGenre">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="deleteSelectedGenres">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                </Button>
                 <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="saveChanges" DockPanel.Dock="Right">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
                 </Button>
@@ -23,12 +26,22 @@
             <ListView x:Name="lv_DSTheLoai" DockPanel.Dock="Top" Background="#FFCCCCCC" BorderBrush="{x:Null}" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="0" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemsSource="{Binding Genres}" SelectionChanged="selectGenre" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel Background="White" Width="Auto" Margin="4">
-                            <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" OpacityMask="#FFB3D6F2">
-                                <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
-                            </Button>
-                            <TextBox Style="{DynamicResource TextBoxWaterMask}" Text="{Binding Name}" VerticalAlignment="Stretch" Margin="0" Foreground="#FF181818" IsReadOnly="True" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" FontSize="14"/>
-                        </DockPanel>
+                        <Grid>
+                            <DockPanel Background="White" Width="Auto" Margin="4">
+                                <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" OpacityMask="#FFB3D6F2" Click="deleteItem" Tag="{Binding}">
+                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                                </Button>
+                                <TextBox Style="{DynamicResource TextBoxWaterMask}" Text="{Binding Name}" VerticalAlignment="Stretch" Margin="0" Foreground="#FF181818" IsReadOnly="True" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" FontSize="14"/>
+                            </DockPanel>
+                            <Grid Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#CC404040">
+                                <Button HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" OpacityMask="#FF1E1E1E" Style="{StaticResource Btn_IconOnly}" Tag="{Binding}" Click="recoverItem">
+                                    <DockPanel LastChildFill="True" Margin="16,4">
+                                        <Image Width="24" Height="24" Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png"/>
+                                        <TextBlock Margin="8,0" FontSize="14" VerticalAlignment="Center" Text="Khôi phục" Foreground="#FFE6E6E6"/>
+                                    </DockPanel>
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

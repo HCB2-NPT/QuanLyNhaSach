@@ -58,32 +58,33 @@ namespace QuanLyNhaSach.Views.Views.Windows
             }
             else if (Managers.UserManager.Current.Info.AccessLevel.ID == 2)
             {
-                var _book = new Binding();
+                var _book = new Function();
                 {
-                    _book.Children.Add(new Binding("Thư viện") { Tag = typeof(tabQuanLySach) });
-                    _book.Children.Add(new Binding("Thể loại") { Tag = typeof(tabTheLoai) });
-                    _book.Children.Add(new Binding("Tác Giả") { Tag = typeof(tabTacGia) });
-                    _book.Children.Add(new Binding("Nhập Sách") { Tag = typeof(tabPhieuNhapSach) });
+                    _book.Children.Add(new Function("Thư viện") { Data = typeof(tabQuanLySach) });
+                    _book.Children.Add(new Function("Thể loại") { Data = typeof(tabTheLoai) });
+                    _book.Children.Add(new Function("Tác giả") { Data = typeof(tabTacGia) });
+                    _book.Children.Add(new Function("Phiếu nhập") { Data = typeof(tabQuanLyPhieuNhap), Tag = 0 });
+                    _book.Children.Add(new Function("Nhập sách") { Data = typeof(tabPhieuNhapSach), Tag = 0 });
 
                 }
-                var _bill = new Binding();
+                var _bill = new Function();
                 {
-                    _bill.Children.Add(new Binding("Lập Hóa Đơn") { Tag = typeof(tabThemHoaDonMoi), Key = true });
-                    _bill.Children.Add(new Binding("Hóa Đơn Cũ") { Tag = typeof(tabQuanLyHoaDonCu) });
+                    _bill.Children.Add(new Function("Lập hóa đơn") { Data = typeof(tabThemHoaDonMoi), Tag = 0, CanDuplicate = true });
+                    _bill.Children.Add(new Function("Hóa đơn cũ") { Data = typeof(tabQuanLyHoaDonCu), Tag = 0 });
                 }
-                var _customer = new Binding();
+                var _customer = new Function();
                 {
-                    _customer.Children.Add(new Binding("Khách hàng") { Tag = typeof(tabKhachHang) });
-                    _customer.Children.Add(new Binding("Đòi nợ") { Tag = typeof(tabPhieuThuTien) });
+                    _customer.Children.Add(new Function("Khách hàng") { Data = typeof(tabKhachHang) });
+                    _customer.Children.Add(new Function("Đòi nợ") { Data = typeof(tabPhieuThuTien), Tag = 0 });
                 }
-                var _report = new Binding();
+                var _report = new Function();
                 {
-                    _report.Children.Add(new Binding("Tồn Kho") { Tag = "" });
-                    _report.Children.Add(new Binding("Công nợ") { Tag = "" });
+                    _report.Children.Add(new Function("Tồn kho") { Data = "", Tag = 0 });
+                    _report.Children.Add(new Function("Công nợ") { Data = "", Tag = 0 });
                 }
-                var _account = new Binding();
+                var _account = new Function();
                 {
-                    _account.Children.Add(new Binding("Tra cứu") { Tag = "" });
+                    _account.Children.Add(new Function("Tra cứu") { Data = "", Tag = 0 });
                 }
                 ShowFunction(btnSachFull, btnSachMini, true, _book);
                 ShowFunction(btnHoaDonFull, btnHoaDonMini, true, _bill);
@@ -94,19 +95,19 @@ namespace QuanLyNhaSach.Views.Views.Windows
             }
             else if (Managers.UserManager.Current.Info.AccessLevel.ID == 1)
             {
-                var _book = new Binding();
+                var _book = new Function();
                 {
-                    _book.Children.Add(new Binding("Tra cứu") { Tag = "<Tab mà nó giữ>" });
+                    _book.Children.Add(new Function("Tra cứu") { Data = "", Tag = 0 });
                 }
-                var _bill = new Binding();
+                var _bill = new Function();
                 {
-                    _bill.Children.Add(new Binding("Lập Hóa Đơn") { Tag = typeof(tabThemHoaDonMoi), Key = true });
-                    _bill.Children.Add(new Binding("Hóa Đơn Cũ") { Tag = typeof(tabQuanLyHoaDonCu) });
+                    _bill.Children.Add(new Function("Lập hóa đơn") { Data = typeof(tabThemHoaDonMoi), Tag = 0, CanDuplicate = true });
+                    _bill.Children.Add(new Function("Hóa đơn cũ") { Data = typeof(tabQuanLyHoaDonCu), Tag = 0 });
                 }
-                var _customer = new Binding();
+                var _customer = new Function();
                 {
-                    _customer.Children.Add(new Binding("Tra cứu") { Tag = "" });
-                    _customer.Children.Add(new Binding("Đòi nợ") { Tag = "" });
+                    _customer.Children.Add(new Function("Tra cứu") { Data = "", Tag = 0 });
+                    _customer.Children.Add(new Function("Đòi nợ") { Data = typeof(tabPhieuThuTien), Tag = 0 });
                 }
                 ShowFunction(btnSachFull, btnSachMini, true, _book);
                 ShowFunction(btnHoaDonFull, btnHoaDonMini, true, _bill);
@@ -324,17 +325,27 @@ namespace QuanLyNhaSach.Views.Views.Windows
             if (DockChucNang.Width > 0)
                 (this.FindResource("CloseFunctions") as Storyboard).Begin();
         }
+        #endregion
 
+        #region Menu Functions Events
         /*
          * Sự kiện hiện danh sách chức năng khi chọn các chức năng chính bên cột menu phải
          */
         private void showFunctionList(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
-            var tag = btn.Tag as Binding;
+            var tag = btn.Tag as Function;
             if (tag != null)
             {
-                listboxDSChucNang.ItemsSource = tag.Children as ObservableCollection<Binding>;
+                listboxDSChucNang.Items.Clear();
+                listboxDSChucNang2.Items.Clear();
+                foreach (var item in tag.Children as ObservableCollection<Function>)
+                {
+                    if (item.Tag == null)
+                        listboxDSChucNang.Items.Add(item);
+                    else
+                        listboxDSChucNang2.Items.Add(item);
+                }
                 (this.FindResource("ShowFunctions") as Storyboard).Begin();
             }
             else if (DockChucNang.Width > 0)
@@ -350,10 +361,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (DockChucNang.Width > 0)
                 (this.FindResource("CloseFunctions") as Storyboard).Begin();
-            var item = listboxDSChucNang.SelectedItem as Binding;
+            var item = listboxDSChucNang.SelectedItem as Function;
             listboxDSChucNang.SelectedItem = null;
             if (item != null)
-                Bus.AppHandler.OpenTab(mdiContainer, item.Tag as Type, item.Data as string, item.Key);
+                Bus.AppHandler.OpenTab(mdiContainer, item.Data as Type, item.Title as string, item.CanDuplicate);
         }
 
         /*

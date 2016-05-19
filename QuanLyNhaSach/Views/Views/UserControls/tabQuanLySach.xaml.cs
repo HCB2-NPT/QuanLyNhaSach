@@ -214,16 +214,16 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var tag = btn.Tag as Book;
             if (tag != null)
             {
-                if (tag.ID > 0)
+                if (!tag.IsCreatedItem)
                 {
                     tag.IsEditedItem = false;
-                    Adapters.BookAdapter.UpdateBook(tag);
+                    Bus.UpdateData.UpdateBook(tag);
                 }
                 else
                 {
                     tag.IsCreatedItem = false;
                     tag.IsEditedItem = false;
-                    Adapters.BookAdapter.InsertNewBook(tag);
+                    Bus.UpdateData.InsertNewBook(tag);
                 }
             }
         }
@@ -237,7 +237,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 var source = listbox_DSSach.ItemsSource as ObservableCollection<Book>;
                 var index = source.IndexOf(tag);
                 source.RemoveAt(index);
-                if (tag.ID > 0)
+                if (!tag.IsCreatedItem)
                     source.Insert(index, Adapters.BookAdapter.GetBook(tag.ID));
             }
         }
