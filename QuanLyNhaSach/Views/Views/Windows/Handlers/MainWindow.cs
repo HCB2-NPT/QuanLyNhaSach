@@ -170,16 +170,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
          */
         private void TitleMain_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (TitleMainRightClick == null)
-            {
-                TitleMainRightClick = new TitleMainRightClick(this);
-                TitleMainRightClick.Show();
-            }
-            TitleMainRightClick._Show();
+            Bus.AppHandler.OpenWindowExt<TitleMainRightClick>(this, ref TitleMainRightClick);
             var p = Assets.Scripts.Cursor.GetCursorPosition();
             TitleMainRightClick.Left = p.X;
             TitleMainRightClick.Top = p.Y;
-            TitleMainRightClick.Focus();
         }
 
         /*
@@ -293,12 +287,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
          */
         private void showToolBox(object sender, RoutedEventArgs e)
         {
-            if (ToolBox == null)
-            {
-                ToolBox = new ToolBox();
-                ToolBox.Show();
-            }
-            Bus.AppHandler.VirtualWindowOpen(ToolBox);
+            Bus.AppHandler.OpenWindowExt<ToolBox>(this, ref ToolBox);
             var p = Assets.Scripts.Cursor.GetCursorPosition();
             ToolBox.Left = p.X;
             ToolBox.Top = p.Y;
@@ -310,13 +299,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
          */
         private void showAbout(object sender, RoutedEventArgs e)
         {
-            if (About == null)
-            {
-                About = new About();
-                About.Owner = this;
-                About.Show();
-            }
-            Bus.AppHandler.VirtualWindowOpen(About);
+            Bus.AppHandler.OpenWindowExt<About>(this, ref About);
+            var workingArea = Assets.Scripts.WpfScreen.GetScreenFrom(this).WorkingArea;
+            About.Top = workingArea.Height - Height;
+            About.Left = workingArea.Width - Width;
             About.Focus();
         }
 
@@ -357,27 +343,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #endregion
 
         #region Mdi Events
-        private void mdiResizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            var first = mdiContainer.Children.FirstOrDefault();
-            if (first != null)
-            {
-                if (first.ActualWidth == mdiContainer.InnerWidth && first.ActualHeight == mdiContainer.InnerHeight)
-                {
-                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
-                }
-                else
-                {
-                    foreach (var item in mdiContainer.Children)
-                    {
-                        item.Position = new Point(0, 0);
-                        item.Width = mdiContainer.InnerWidth;
-                        item.Height = mdiContainer.InnerHeight;
-                    }
-                }
-            }
-        }
-
         /*
          * Đóng danh sách chức năng khi chức năng được chọn và show tab chức năng được chọn
          */
@@ -406,6 +371,22 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     mdiChild.Height = mdiContainer.InnerHeight;
                     mdiChild.MaximizeBox = false;
                 };
+                mdiChild.WindowStateChanged += (s, a) =>
+                {
+                    if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
+                    {
+                        foreach (var item in mdiContainer.Children)
+                        {
+                            if (item != mdiChild)
+                                item.WindowState = System.Windows.WindowState.Minimized;
+                        }
+                    }
+                };
+                foreach (var item in mdiContainer.Children)
+                {
+                    if (item != mdiChild)
+                        item.WindowState = System.Windows.WindowState.Minimized;
+                }
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -416,15 +397,29 @@ namespace QuanLyNhaSach.Views.Views.Windows
             {
                 MdiChild child = mdiContainer.Children[i];
                 mi = new MenuItem { Header = child.Title };
-                mi.Click += (o, ev) => child.Focus();
+                mi.Click += (o, ev) =>
+                {
+                    child.Width = mdiContainer.InnerWidth;
+                    child.Height = mdiContainer.InnerHeight;
+                    child.Focus();
+                };
                 WindowsMenu.Items.Insert(i, mi);
             }
 
-            WindowsMenu.Items.Add(new Separator());
-            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
-            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
-            WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
-            mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
+            //WindowsMenu.Items.Add(new Separator());
+            //WindowsMenu.Items.Add(mi = new MenuItem { Header = "Cascade" });
+            //mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.Cascade;
+            //WindowsMenu.Items.Add(mi = new MenuItem { Header = "Vertically" });
+            //mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileVertical;
+            //WindowsMenu.Items.Add(mi = new MenuItem { Header = "Horizontally" });
+            //mi.Click += (o, ev) => mdiContainer.MdiLayout = MdiLayout.TileHorizontal;
+        }
+
+        private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var child = mdiContainer.GetTopChild();
+            child.Width = mdiContainer.InnerWidth;
+            child.Height = mdiContainer.InnerHeight;
         }
         #endregion
 

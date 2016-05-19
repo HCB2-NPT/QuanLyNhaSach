@@ -48,13 +48,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
         #endregion
 
-        #region Binding Controlers
-        private Book _book;
-        public Book SelectedBook { get { return _book; } set { _book = value; NotifyPropertyChanged("SelectedBook"); } }
-
-        public bool WatermarkAutoCompleBox_NameBook { get { return string.IsNullOrEmpty(tb_NameBook.Text); } }
-        #endregion
-
         #region Constructor
         public tabThemHoaDonMoi()
         {
@@ -111,30 +104,25 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 BookCart.Customer = e.AddedItems[0] as Customer;
         }
 
-        private void tb_NameBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0)
-                SelectedBook = e.AddedItems[0] as Book;
-        }
-
         private void btn_ThemSachVaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            var item = BookCart.BillItems.FirstOrDefault(x=>x.Book.ID == SelectedBook.ID);
-            if(item!=null)
+            var selectedBook = tb_NameBook.SelectedItem as Book;
+            if (selectedBook != null)
             {
-                item.Number += (int)num_SLSach.Value;
-                lv_ChiTietHoaDon.SelectedItem = item;
-                lv_ChiTietHoaDon.ScrollIntoView(lv_ChiTietHoaDon.SelectedItem);
-            }
-            else
-            {
-                if (SelectedBook != null)
+                var item = BookCart.BillItems.FirstOrDefault(x => x.Book.ID == selectedBook.ID);
+                if (item != null)
                 {
-                    var buybook = new BillItem(SelectedBook, (int)num_SLSach.Value, SelectedBook.Price);
-                    BookCart.BillItems.Add(buybook);
+                    item.Number += (int)num_SLSach.Value;
+                    lv_ChiTietHoaDon.SelectedItem = item;
+                    lv_ChiTietHoaDon.ScrollIntoView(lv_ChiTietHoaDon.SelectedItem);
                 }
+                else
+                {
+                        var buybook = new BillItem(selectedBook, (int)num_SLSach.Value, selectedBook.Price);
+                        BookCart.BillItems.Add(buybook);
+                }
+                num_SLSach.Value = 1;
             }
-            num_SLSach.Value = 1;
         }
 
         private void btn_InHoaDon_Click(object sender, RoutedEventArgs e)
@@ -190,11 +178,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             Clear();
-        }
-
-        private void tb_NameBook_TextChanged(object sender, RoutedEventArgs e)
-        {
-            NotifyPropertyChanged("WatermarkAutoCompleBox_NameBook");
         }
         #endregion
     }

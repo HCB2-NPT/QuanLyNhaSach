@@ -8,25 +8,16 @@ namespace QuanLyNhaSach.Views.Views.Windows
 {
     public partial class TitleMainRightClick
     {
-        #region Methods
-        public void _Show()
-        {
-            minimize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Minimized);
-            maximize.IsEnabled = !(Host.WindowState == System.Windows.WindowState.Maximized);
-            Bus.AppHandler.VirtualWindowOpen(this);
-        }
-        #endregion
-
         #region Button Events
         private void minimize_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Host.WindowState = System.Windows.WindowState.Minimized;
+            Owner.WindowState = System.Windows.WindowState.Minimized;
             Bus.AppHandler.VirtualWindowClose(this);
         }
 
         private void maximize_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Host.WindowState = System.Windows.WindowState.Maximized;
+            Owner.WindowState = System.Windows.WindowState.Maximized;
             Bus.AppHandler.VirtualWindowClose(this);
         }
         #endregion

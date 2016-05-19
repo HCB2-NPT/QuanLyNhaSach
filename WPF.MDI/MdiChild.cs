@@ -119,6 +119,9 @@ namespace WPF.MDI
 
 		#region Depedency Events
 
+        public static readonly RoutedEvent WindowStateChangedEvent =
+            EventManager.RegisterRoutedEvent("WindowStateChanged", RoutingStrategy.Bubble, typeof(RoutedEventArgs), typeof(MdiChild));
+
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiChild.ClosingEvent routed event.
 		/// </summary>
@@ -136,7 +139,6 @@ namespace WPF.MDI
 		#endregion
 
 		#region Property Accessors
-
         public int MinimizedWidth
         {
             get { return (int)GetValue(MinimizedWidthProperty); }
@@ -276,6 +278,12 @@ namespace WPF.MDI
 		#endregion
 
 		#region Event Accessors
+
+        public event RoutedEventHandler WindowStateChanged
+        {
+            add { AddHandler(WindowStateChangedEvent, value); }
+            remove { RemoveHandler(WindowStateChangedEvent, value); }
+        }
 
 		public event RoutedEventHandler Closing
 		{
@@ -1058,6 +1066,7 @@ namespace WPF.MDI
 					}
 					break;
 			}
+            mdiChild.RaiseEvent(new RoutedEventArgs(WindowStateChangedEvent));
 		}
 		
 		#endregion

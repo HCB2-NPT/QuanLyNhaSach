@@ -45,7 +45,7 @@
     <Style TargetType="{x:Type local:MdiChild}">
         <Setter Property="MinWidth" Value="300" />
         <Setter Property="MinHeight" Value="300" />
-        <Setter Property="MinimizedWidth" Value="200" />
+        <Setter Property="MinimizedWidth" Value="240" />
         <Setter Property="MinimizedHeight" Value="24" />
         <Setter Property="Background" Value="{StaticResource ChildBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
@@ -70,13 +70,13 @@
 
                                 <StackPanel Height="24" Name="ButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                                     <Button Name="MinimizeButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
-                                        <Image Width="12" Height="12" Source="{StaticResource ButtonMinimize}" />
+                                        <Image Name="btnMin_img" Width="12" Height="12" Source="{StaticResource ButtonMinimize}" />
                                     </Button>
                                     <Button Name="MaximizeButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonColorOver}" Background="{x:Null}" BorderThickness="0">
                                         <Image Name="btnMax_img" Width="12" Height="12" Source="{StaticResource ButtonMaximize}"/>
                                     </Button>
                                     <Button Name="CloseButton" Width="30" Style="{DynamicResource Mdi_WindowButtonStyle}" OpacityMask="{StaticResource TitleButtonCloseColorOver}" Background="{x:Null}" BorderThickness="0">
-                                        <Image Width="16" Height="16" Source="{StaticResource ButtonClose}" />
+                                        <Image Name="btnClo_img" Width="16" Height="16" Source="{StaticResource ButtonClose}" />
                                     </Button>
                                 </StackPanel>
 
@@ -103,6 +103,7 @@
                             <Setter Property="Resizable" Value="False" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Minimized">
+                            <Setter TargetName="btnMin_img" Property="Source" Value="{StaticResource ButtonMaximize}"/>
                             <Setter Property="Resizable" Value="True" />
                         </Trigger>
                         <Trigger Property="MaximizeBox" Value="False">

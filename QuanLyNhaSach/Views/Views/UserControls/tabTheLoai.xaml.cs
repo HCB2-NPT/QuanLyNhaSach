@@ -61,7 +61,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #endregion
 
         #region Binding Controlers
-        public bool WatermarkAutoCompleBox_NameBook { get { return string.IsNullOrEmpty(NameBook.Text); } }
+        public bool ShowWatermark_NameBook { get { return string.IsNullOrEmpty(NameBook.Text); } }
         #endregion
 
         #region Constructor
@@ -86,8 +86,15 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var selected = lv_DSTheLoai.SelectedItem as Genre;
             if (selected != null)
             {
-                BooksOfSelectedGenre = Adapters.BookAdapter.GetBooksForGenre(selected.ID);
-                selected.Tag = BooksOfSelectedGenre;
+                if (selected.Tag != null)
+                {
+                    BooksOfSelectedGenre = selected.Tag as ObservableCollection<Book>;
+                }
+                else
+                {
+                    BooksOfSelectedGenre = Adapters.BookAdapter.GetBooksForGenre(selected.ID);
+                    selected.Tag = BooksOfSelectedGenre;
+                }
             }
         }
 
@@ -96,7 +103,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var control = sender as Button;
             var tag = control.Tag as Book;
             if (tag != null)
-                tag.Switch = true;
+            {
+                if (tag.Tag != null)
+                    BooksOfSelectedGenre.Remove(tag);
+                else
+                    tag.Switch = true;
+            }
         }
 
         private void recoverLink(object sender, RoutedEventArgs e)
@@ -107,33 +119,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 tag.Switch = false;
         }
 
-        private void removeBookOf(object sender, RoutedEventArgs e)
-        {
-            var control = sender as Button;
-            var tag = control.Tag as Book;
-            if (tag != null)
-            {
-                var item = lv_DSTheLoai.SelectedItem as Genre;
-                if (item != null)
-                {
-                    if (!item.IsCreatedItem)
-                        Adapters.BookAdapter.RemoveGenreFromBook(tag.ID, item.ID);
-                    BooksOfSelectedGenre.Remove(tag);
-                }
-            }
-        }
-
         private void addNewGenre(object sender, RoutedEventArgs e)
         {
             var g = new Genre();
             Genres.Add(g);
             lv_DSTheLoai.SelectedItem = g;
             lv_DSTheLoai.ScrollIntoView(g);
-        }
-
-        private void NameBookWatermark(object sender, RoutedEventArgs e)
-        {
-            NotifyPropertyChanged("WatermarkAutoCompleBox_NameBook");
         }
 
         private void addBookOf(object sender, RoutedEventArgs e)
@@ -144,15 +135,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 var item = lv_DSTheLoai.SelectedItem as Genre;
                 if (item != null)
                 {
-                    if (!item.IsCreatedItem)
-                    {
-                        Adapters.BookAdapter.AddGenre(b.ID, item.ID);
-                        BooksOfSelectedGenre = Adapters.BookAdapter.GetBooksForGenre(item.ID);
-                    }
-                    else
-                    {
-                        BooksOfSelectedGenre.Add(b);
-                    }
+                    b.Tag = 0;
+                    BooksOfSelectedGenre.Add(b);
                 }
             }
         }
@@ -177,13 +161,18 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void saveChanges(object sender, RoutedEventArgs e)
         {
             Bus.UpdateData.SaveChangesGenres(Genres);
-            Refresh();
+            Clear();
         }
 
-        void Refresh()
+        void Clear()
         {
             Genres = Adapters.GenreAdapter.GetAll();
             Books = Adapters.BookAdapter.GetAll();
+        }
+
+        private void refresh(object sender, RoutedEventArgs e)
+        {
+            Clear();
         }
     }
 }

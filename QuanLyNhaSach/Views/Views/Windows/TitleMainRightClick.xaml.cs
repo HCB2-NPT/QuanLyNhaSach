@@ -19,17 +19,11 @@ namespace QuanLyNhaSach.Views.Views.Windows
     /// </summary>
     public partial class TitleMainRightClick : Window
     {
-        #region Properties
-        public Window Host { get; set; }
-        #endregion
-
         #region Constructor
-        public TitleMainRightClick(Window host)
+        public TitleMainRightClick()
         {
             InitializeComponent();
-			DataContext = Managers.Manager.Current;
-			Host = host;
-            _Show();
+            DataContext = this;
         }
         #endregion
     }

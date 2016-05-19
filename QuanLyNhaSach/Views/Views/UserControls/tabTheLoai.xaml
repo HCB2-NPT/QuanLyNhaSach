@@ -6,9 +6,6 @@
              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White">
-    <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    </UserControl.Resources>
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="True" Width="200">
             <TextBox TextWrapping="Wrap" ToolTip="Tìm kiếm..." Style="{DynamicResource TextBoxWaterMask}" Margin="0" VerticalContentAlignment="Center" Padding="8,0,0,0" OpacityMask="Gray" FontSize="14" BorderThickness="0" DockPanel.Dock="Top" Height="40" PreviewKeyDown="searchBoxEnterEvent"/>
@@ -16,8 +13,11 @@
                 <Button VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="addNewGenre">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="saveChanges">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="saveChanges" DockPanel.Dock="Right">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
+                </Button>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="refresh" DockPanel.Dock="Right">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                 </Button>
             </DockPanel>
             <ListView x:Name="lv_DSTheLoai" DockPanel.Dock="Top" Background="#FFCCCCCC" BorderBrush="{x:Null}" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="0" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemsSource="{Binding Genres}" SelectionChanged="selectGenre" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -38,15 +38,18 @@
                 <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="addBookOf">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Plus Math-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <toolkit:AutoCompleteBox x:Name="NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" ToolTip="Tên sách..." Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" ValueMemberPath="BookInfo" BorderBrush="{x:Null}" FontSize="14" Background="#FFF7F7F7" TextChanged="NameBookWatermark" VerticalContentAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource AutoCompleteBox_watermark}" OpacityMask="Gray" Width="360">
-                	<toolkit:AutoCompleteBox.ItemTemplate>
-                		<DataTemplate>
-                			<StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                				<TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
-                			</StackPanel>
-                		</DataTemplate>
-                	</toolkit:AutoCompleteBox.ItemTemplate>
-                </toolkit:AutoCompleteBox>
+                <Grid>
+                    <toolkit:AutoCompleteBox x:Name="NameBook" ItemsSource="{Binding Books}" FilterMode="Contains" ToolTip="Tên sách..." Padding="8,4,0,0" Foreground="Black" BorderThickness="0" ValueMemberPath="BookInfo" FontSize="14" Background="#FFF7F7F7" VerticalContentAlignment="Center" BorderBrush="{x:Null}" VerticalAlignment="Center">
+                        <toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:AutoCompleteBox.ItemTemplate>
+                    </toolkit:AutoCompleteBox>
+                    <TextBlock FontSize="14" Foreground="Gray" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Text="Tên sách" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=NameBook}"/>
+                </Grid>
             </DockPanel>
             <ListView Background="#FF1E1E1E" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" ItemsSource="{Binding BooksOfSelectedGenre}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>
@@ -74,20 +77,12 @@
                                 </DockPanel>
                             </Button>
                             <Grid Visibility="{Binding Switch, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#CC404040">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Button Name="remove" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" OpacityMask="#FF1E1E1E" Style="{StaticResource Btn_IconOnly}" Tag="{Binding}" Click="removeBookOf">
-                                        <DockPanel LastChildFill="True" Margin="16,4">
-                                            <Image Width="32" Height="32" Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png"/>
-                                            <TextBlock Margin="8,0" FontSize="14" VerticalAlignment="Center" Text="Hoàn tất" Foreground="#FFE6E6E6"/>
-                                        </DockPanel>
-                                    </Button>
-                                    <Button Name="recoverLink" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" OpacityMask="#FF1E1E1E" Style="{StaticResource Btn_IconOnly}" Tag="{Binding}" Click="recoverLink">
-                                        <DockPanel LastChildFill="True" Margin="16,4">
-                                            <Image Width="32" Height="32" Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png"/>
-                                            <TextBlock Margin="8,0" FontSize="14" VerticalAlignment="Center" Text="Khôi phục lại liên kết" Foreground="#FFE6E6E6"/>
-                                        </DockPanel>
-                                    </Button>
-                                </StackPanel>
+                                <Button Name="recoverLink" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" OpacityMask="#FF1E1E1E" Style="{StaticResource Btn_IconOnly}" Tag="{Binding}" Click="recoverLink">
+                                    <DockPanel LastChildFill="True" Margin="16,4">
+                                        <Image Width="32" Height="32" Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png"/>
+                                        <TextBlock Margin="8,0" FontSize="14" VerticalAlignment="Center" Text="Khôi phục lại liên kết" Foreground="#FFE6E6E6"/>
+                                    </DockPanel>
+                                </Button>
                             </Grid>
                         </Grid>
                         <DataTemplate.Triggers>

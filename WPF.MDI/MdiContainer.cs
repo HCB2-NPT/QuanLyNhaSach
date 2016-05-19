@@ -18,7 +18,7 @@ namespace WPF.MDI
 		/// <summary>
 		/// Offset for iniial placement of window, and for cascade mode.
 		/// </summary>
-		const int WindowOffset = 25;
+		const int WindowOffset = 24;
 
 		#endregion
 
@@ -32,6 +32,12 @@ namespace WPF.MDI
 
         public static readonly DependencyProperty CanDragOutProperty =
             DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiContainer));
+
+        public static readonly DependencyProperty MdiLayoutMaxRowProperty =
+            DependencyProperty.Register("MdiLayoutMaxRow", typeof(int), typeof(MdiContainer));
+
+        public static readonly DependencyProperty MdiLayoutMaxColProperty =
+            DependencyProperty.Register("MdiLayoutMaxCol", typeof(int), typeof(MdiContainer));
 
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiContainer.Theme dependency property.
@@ -65,6 +71,18 @@ namespace WPF.MDI
         {
             get { return (bool)GetValue(CanDragOutProperty); }
             set { SetValue(CanDragOutProperty, value); }
+        }
+
+        public int MdiLayoutMaxRow
+        {
+            get { return (int)GetValue(MdiLayoutMaxRowProperty); }
+            set { SetValue(MdiLayoutMaxRowProperty, value); }
+        }
+
+        public int MdiLayoutMaxCol
+        {
+            get { return (int)GetValue(MdiLayoutMaxColProperty); }
+            set { SetValue(MdiLayoutMaxColProperty, value); }
         }
 
 		/// <summary>
@@ -202,7 +220,11 @@ namespace WPF.MDI
 			Loaded += MdiContainer_Loaded;
 			SizeChanged += MdiContainer_SizeChanged;
 			KeyDown += new System.Windows.Input.KeyEventHandler(MdiContainer_KeyDown);
+
 			AllowWindowStateMax = true;
+            CanDragOut = true;
+            MdiLayoutMaxRow = int.MaxValue;
+            MdiLayoutMaxCol = int.MaxValue;
 		}
 
 		static void MdiContainer_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -565,48 +587,32 @@ namespace WPF.MDI
 					break;
 				case MdiLayout.TileHorizontal:
 					{
-						int cols = (int)Math.Sqrt(normalWindows.Count),
-							rows = normalWindows.Count / cols;
+                        int cols = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
+                        int rows = normalWindows.Count / cols;
 
-						List<int> col_count = new List<int>(); // windows per column
-						for (int i = 0; i < cols; i++)
-						{
-							if (normalWindows.Count % cols > cols - i - 1)
-								col_count.Add(rows + 1);
-							else
-								col_count.Add(rows);
-						}
+                        rows = Math.Min(rows, mdiContainer.MdiLayoutMaxRow);
+                        cols = (int)Math.Ceiling((double)normalWindows.Count / (double)rows);
 
-						double newWidth = mdiContainer.InnerWidth / cols,
-							newHeight = containerHeight / col_count[0],
-							offsetTop = 0,
-							offsetLeft = 0;
+                        double w = mdiContainer.InnerWidth / cols,
+                               h = mdiContainer.InnerHeight / rows;
 
-						for (int i = 0, col_index = 0, prev_count = 0; i < normalWindows.Count; i++)
-						{
-							if (i >= prev_count + col_count[col_index])
-							{
-								prev_count += col_count[col_index++];
-								offsetLeft += newWidth;
-								offsetTop = 0;
-								newHeight = containerHeight / col_count[col_index];
-							}
-
-							MdiChild mdiChild = normalWindows[i];
-							if (mdiChild.Resizable)
-							{
-								mdiChild.Width = newWidth;
-								mdiChild.Height = newHeight;
-							}
-							mdiChild.Position = new Point(offsetLeft, offsetTop);
-							offsetTop += newHeight;
-						}
+                        int count = 0;
+                        foreach (var item in normalWindows)
+                        {
+                            item.Position = new Point((int)(count % cols) * w, (int)(count / cols) * h);
+                            item.Width = w;
+                            item.Height = h;
+                            count++;
+                        }
 					}
 					break;
 				case MdiLayout.TileVertical:
                     {
-                        int rows = (int)Math.Sqrt(normalWindows.Count),
-                            cols = normalWindows.Count / rows;
+                        int rows = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
+                        int cols = normalWindows.Count / rows;
+
+                        cols = Math.Min(cols, mdiContainer.MdiLayoutMaxCol);
+                        rows = (int)Math.Ceiling((double)normalWindows.Count / (double)cols);
 
                         double w = mdiContainer.InnerWidth / cols,
                                h = mdiContainer.InnerHeight / rows;

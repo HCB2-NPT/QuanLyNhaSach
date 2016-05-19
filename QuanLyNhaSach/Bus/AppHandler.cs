@@ -73,6 +73,17 @@ namespace QuanLyNhaSach.Bus
             if (window.Visibility != Visibility.Visible)
                 window.Visibility = Visibility.Visible;
         }
+
+        public static void OpenWindowExt<T>(Window owner, ref T windowVar) where T : Window
+        {
+            if (windowVar == null)
+            {
+                windowVar = (T)Activator.CreateInstance(typeof(T));
+                windowVar.Owner = owner;
+                windowVar.Show();
+            }
+            Bus.AppHandler.VirtualWindowOpen(windowVar);
+        }
         #endregion
 
         #region Tab (Mdi Child)
@@ -95,7 +106,7 @@ namespace QuanLyNhaSach.Bus
                 {
                     title += string.Format(" - {0}", ++_id);
                 }
-                container.Children.Add(new WPF.MDI.MdiChild() { Content = (UserControl)Activator.CreateInstance(type), Title = title });
+                container.Children.Add(new WPF.MDI.MdiChild() { Content = (UserControl)Activator.CreateInstance(type), Title = title, Resizable = false });
             }
         }
         #endregion

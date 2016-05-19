@@ -32,21 +32,17 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private EventDoubleClick EventTitleMainDoubleClick { get; set; }
 
         private EventClickOut EventPanelFunctionClickOut { get; set; }
-
-        private TitleMainRightClick TitleMainRightClick { get; set; }
         #endregion
 
         #region Extensions
-        private ToolBox ToolBox { get; set; }
+        private TitleMainRightClick TitleMainRightClick;
 
-        private About About { get; set; }
+        private ToolBox ToolBox;
+
+        private About About;
         #endregion
 
         #region Binding Controlers
-        public bool ShowMaximized { get { return WindowState == System.Windows.WindowState.Normal; } }
-
-        public bool ShowRestore { get { return WindowState == System.Windows.WindowState.Maximized; } }
-
         public bool ShowMdiContainer
         {
             get
@@ -56,14 +52,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 if (mdiContainer.Children == null)
                     return false;
                 return mdiContainer.Children.Count > 0;
-            }
-        }
-
-        public bool ShowResizer
-        {
-            get
-            {
-                return WindowState == System.Windows.WindowState.Normal;
             }
         }
         #endregion
@@ -76,11 +64,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
             mdiContainer.Children.CollectionChanged += mdiContainer_ChildrenChanged;
 
             EventWindowDrag = new Assets.Scripts.WindowsDragger(this, TitleMain);
-
             EventWindowResize = new Assets.Scripts.WindowsResizer(this, resizer);
-            
             EventTitleMainDoubleClick = new Assets.Scripts.EventDoubleClick(this, TitleMain, TitleMainDoubleClick);
-            
             EventPanelFunctionClickOut = new Assets.Scripts.EventClickOut(this, DockChucNang, PanelFunctionClickOut);
             EventPanelFunctionClickOut.Without.Add(_menuFull);
             EventPanelFunctionClickOut.Without.Add(_menuMini);

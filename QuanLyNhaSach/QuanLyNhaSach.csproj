@@ -109,6 +109,7 @@
     <Compile Include="Adapters\AccountAdapter.cs" />
     <Compile Include="Adapters\CustomerAdapter.cs" />
     <Compile Include="Adapters\DataConnector.cs" />
+    <Compile Include="Assets\Scripts\Converters.cs" />
     <Compile Include="Bus\AppHandler.cs" />
     <Compile Include="Bus\CheckData.cs" />
     <Compile Include="Bus\FillData.cs" />

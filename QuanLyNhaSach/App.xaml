@@ -1,12 +1,18 @@
 ﻿<Application x:Class="QuanLyNhaSach.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:QuanLyNhaSach.Assets.Scripts"
              StartupUri="Views/Views/Windows/Login.xaml">
     <Application.Resources>
-         
     	<ResourceDictionary>
-    		<ResourceDictionary.MergedDictionaries>
-    			<ResourceDictionary Source="Views/Styles/ButtonTemplates.xaml"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <Converters:EmptyStringToVisibilityHiddenConverter x:Key="EmptyStringToVisibilityHiddenConverter"/>
+            <Converters:WindowStateMaximizedToFalseConverter x:Key="WindowStateMaximizedToFalseConverter"/>
+            <Converters:WindowStateMaximizedToVisibilityHiddenConverter x:Key="WindowStateMaximizedToVisibilityHiddenConverter"/>
+            <Converters:WindowStateNormalToVisibilityHiddenConverter x:Key="WindowStateNormalToVisibilityHiddenConverter"/>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/Styles/ButtonTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/ListBoxTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/ListViewTemplates.xaml"/>
                 <ResourceDictionary Source="Views/Styles/TextBoxTemplates.xaml"/>
