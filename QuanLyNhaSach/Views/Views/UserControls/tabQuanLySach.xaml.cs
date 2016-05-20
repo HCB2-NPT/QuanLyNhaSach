@@ -69,32 +69,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         void searchItem(string key)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(key))
-                {
-                    listbox_DSSach.ItemsSource = Books;
-                }
-                else
-                {
-                    listbox_DSSach.ItemsSource = Books.Where(x =>
-                        {
-                            var data =
-                                x.ID.ToString() +
-                                (x.Name == null ? "" : x.Name.ToLower()) +
-                                x.Number.ToString() +
-                                x.Price.ToString() +
-                                x.PriceFormat +
-                                (x.AuthorsFormat == null ? "" : x.AuthorsFormat.ToLower()) +
-                                (x.GenresFormat == null ? "" : x.GenresFormat.ToLower()) +
-                                (x.IsDeletedItem ? "bị xóa" : "") +
-                                (x.Image == null ? Managers.DataManager.Current.NO_IMAGE.ToLower() : x.Image.ToLower());
-                            return data.Contains(key);
-                        }
-                        ).ToObservableCollection<Book>();
-                }
-            }
-            catch { }
+            listbox_DSSach.ItemsSource = Bus.SearchData.SearchBook(Books, key);
         }
         #endregion
 

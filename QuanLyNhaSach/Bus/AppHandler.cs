@@ -99,6 +99,7 @@ namespace QuanLyNhaSach.Bus
                     if (first != null)
                     {
                         first.Focus();
+                        first.WindowState = WindowState.Normal;
                         return;
                     }
                 }

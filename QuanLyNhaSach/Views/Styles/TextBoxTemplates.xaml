@@ -20,7 +20,7 @@
 				<ControlTemplate TargetType="{x:Type TextBox}">
 					<Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 						<Grid>
-							<TextBlock x:Name="watermask" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="Center" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" FlowDirection="{TemplateBinding FlowDirection}" Opacity="0" Margin="4,0,0,0" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalAlignment="Left"/>
+							<TextBlock x:Name="watermask" TextWrapping="Wrap" Text="{TemplateBinding ToolTip}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}" Foreground="{TemplateBinding OpacityMask}" FlowDirection="{TemplateBinding FlowDirection}" Opacity="0" Margin="4,0,0,0" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="False" Cursor="IBeam"/>
 							<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
 						</Grid>
 					</Border>

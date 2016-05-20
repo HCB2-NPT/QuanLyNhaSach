@@ -18,23 +18,23 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     /// <summary>
     /// Interaction logic for tabTraCuuSach.xaml
     /// </summary>
-    public partial class tabTraCuuSach : UserControl
+    public partial class tabTraCuuKhachHang : UserControl
     {
-        public tabTraCuuSach()
+        public tabTraCuuKhachHang()
         {
             InitializeComponent();
-            lvResult.ItemsSource = Bus.FillData.GetAllBook();
+            lvResult.ItemsSource = Bus.FillData.GetAllCustomer();
         }
 
         private void searchBook_HotKey(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-                lvResult.ItemsSource = Bus.SearchData.SearchBook(tbSearchBox.Text.ToLower());
+                lvResult.ItemsSource = Bus.SearchData.SearchCustomer(tbSearchBox.Text.ToLower());
         }
 
         private void searchBook_Click(object sender, RoutedEventArgs e)
         {
-            lvResult.ItemsSource = Bus.SearchData.SearchBook(tbSearchBox.Text.ToLower());
+            lvResult.ItemsSource = Bus.SearchData.SearchCustomer(tbSearchBox.Text.ToLower());
         }
     }
 }

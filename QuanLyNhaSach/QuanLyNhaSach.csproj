@@ -140,6 +140,9 @@
     <Compile Include="Views\Views\UserControls\tabTacGia.xaml.cs">
       <DependentUpon>tabTacGia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabTraCuuKhachHang.xaml.cs">
+      <DependentUpon>tabTraCuuKhachHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabTraCuuSach.xaml.cs">
       <DependentUpon>tabTraCuuSach.xaml</DependentUpon>
     </Compile>
@@ -269,6 +272,10 @@
     <Page Include="Views\Views\UserControls\tabThemHoaDonMoi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabTraCuuKhachHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabTraCuuSach.xaml">
       <SubType>Designer</SubType>

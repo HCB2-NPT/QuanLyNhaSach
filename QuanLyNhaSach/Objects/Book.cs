@@ -146,6 +146,8 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 var format = AuthorsFormat;
+                if (string.IsNullOrEmpty(format))
+                    return null;
                 if (format.Length > max_length__AuthorsShortFormat)
                 {
                     format = format.Remove(max_length__AuthorsShortFormat);
@@ -188,6 +190,8 @@ namespace QuanLyNhaSach.Objects
             get
             {
                 var format = GenresFormat;
+                if (string.IsNullOrEmpty(format))
+                    return null;
                 if (format.Length > max_length__GenresShortFormat)
                 {
                     format = format.Remove(max_length__GenresShortFormat);

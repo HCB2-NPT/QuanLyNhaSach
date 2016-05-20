@@ -57,6 +57,14 @@ namespace QuanLyNhaSach.Objects
             }
         }
 
+        public string PhoneFormat
+        {
+            get
+            {
+                return string.Format("(+84) {0:# ##0}", PhoneByInteger);
+            }
+        }
+
         public string CustomerInfo
         {
             get
