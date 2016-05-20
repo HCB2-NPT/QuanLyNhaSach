@@ -23,5 +23,11 @@ namespace QuanLyNhaSach.Bus
         {
             BillAdapter.InsertNewBill(newBill);
         }
+
+        public static void NewPayDebtMoney(PayDebtMoney pdm)
+        {
+            PayDebtMoneyAdapter.InsertPayDebt(pdm);
+            CustomerAdapter.UpdateDebt(pdm.Customer.ID, pdm.Customer.Debt);
+        }
     }
 }

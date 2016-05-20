@@ -1,5 +1,6 @@
 ﻿using QuanLyNhaSach.Objects;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -22,7 +23,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 	public partial class tabPhieuThuTien : UserControl,INotifyPropertyChanged
     {
         #region Properties
-        //Dang lam
         private ObservableCollection<Customer> _listDebtor = new ObservableCollection<Customer>();
         public ObservableCollection<Customer> ListDebtor
         {
@@ -30,13 +30,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             set { _listDebtor = value; NotifyPropertyChanged("ListDebtor"); }
         }
 
-
-        private Customer _selectedCustomer = new Customer();
-
-        public Customer SelectedCustomer
+        private string _editText;
+        public string EditText
         {
-            get { return _selectedCustomer; }
-            set { _selectedCustomer = value; NotifyPropertyChanged("SelectedCustomer"); }
+            get { return _editText; }
+            set { _editText = value; NotifyPropertyChanged("EditText"); }
         }
 
         private PayDebtMoney _debtMoney = new PayDebtMoney();
@@ -54,11 +52,30 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 if (lv_ListDebtor.SelectedItem!=null)
                 {
                     int rm = PayMoney - ((Customer)lv_ListDebtor.SelectedItem).Debt;
-                    if (rm != 0)
+                    if (rm >= 0)
+                    {
+                        tb_NameHoanTien.Foreground = Brushes.Green;
+                        tb_DebtMoney.Foreground = Brushes.Green;
+                        EditText = "Tiền thối: ";
                         return rm;
-                    return 0;
+                    }
+                    tb_NameHoanTien.Foreground = Brushes.Red;
+                    tb_DebtMoney.Foreground = Brushes.Red;
+                    EditText = "Còn nợ: ";
+                    return Math.Abs(rm);
                 }
+                EditText = "Còn nợ: ";
+                tb_NameHoanTien.Foreground = Brushes.Black;
+                tb_DebtMoney.Foreground = Brushes.Black;
                 return 0;
+            }
+        }
+
+        public string ReturnMoneyFormat
+        {
+            get
+            {
+                return ReturnMoney.ToString("#,##0 vnđ");
             }
         }
 
@@ -67,7 +84,20 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public int PayMoney
         {
             get { return _payMoney; }
-            set { _payMoney = value; NotifyPropertyChanged("PayMoney"); NotifyPropertyChanged("ReturnMoney"); }
+            set { _payMoney = value; NotifyPropertyChanged("PayMoney"); NotifyPropertyChanged("ReturnMoney"); NotifyPropertyChanged("ReturnMoneyFormat"); }
+        }
+
+        public object CustomerTransfer
+        {
+            set 
+            {
+                var val = ListDebtor.FirstOrDefault(x => x.ID == (int)value);
+                lv_ListDebtor.SelectedItem = val;
+                if (val != null)
+                {
+                    lv_ListDebtor.ScrollIntoView(val);
+                }
+            }
         }
 
         #endregion
@@ -93,6 +123,45 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void tb_PayMoney_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = "1234567890".IndexOf(e.Text) == -1;
+        }
+
+        private void tb_Search_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = tb_Search.SelectedItem as Customer;
+            if (item != null)
+            {
+                lv_ListDebtor.SelectedItem = item;
+                lv_ListDebtor.ScrollIntoView(item);
+            }
+        }
+
+        private void btn_Inphieuthu_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_ListDebtor.SelectedItem!=null && PayMoney>0)
+            {
+                int rm = PayMoney - ((Customer)lv_ListDebtor.SelectedItem).Debt;
+
+                PayDebtMoney pdm = new PayDebtMoney();
+                pdm.Customer = lv_ListDebtor.SelectedItem as Customer;
+                pdm.DateCreate = DateTime.Now;
+                pdm.IDManager = Managers.Manager.Current.User.Info.ID;
+                pdm.MoneyRecieved = PayMoney;
+                if (rm >= 0)
+                {
+                    pdm.MoneyRecieved = pdm.Customer.Debt;
+                    pdm.Customer.Debt = 0;
+                }
+                else
+                {
+                    pdm.MoneyRecieved = PayMoney;
+                    pdm.Customer.Debt = Math.Abs(rm);
+                }
+                Bus.InsertData.NewPayDebtMoney(pdm);
+            }
+
+            ListDebtor = Adapters.CustomerAdapter.GetAllDebtor();
+            NotifyPropertyChanged("ReturnMoney");
+            tb_PayMoney.Text = "0";
         }
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhaSach.Objects
 {
-    class PayDebtMoney
+    public class PayDebtMoney
     {
         #region Properties
         private int _iDPayDebt;

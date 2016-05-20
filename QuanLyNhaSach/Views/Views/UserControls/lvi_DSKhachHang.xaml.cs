@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyNhaSach.Objects;
+using QuanLyNhaSach.Views.Views.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +27,22 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void QuickPayDebtMoney(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("test");
+            var control = sender as Button;
+            var tag = control.Tag as Customer;
+            if (tag != null)
+            {
+                if (tag.Debt > 0)
+                {
+                    var uc = (tabPhieuThuTien)Bus.AppHandler.OpenTab(Tag as WPF.MDI.MdiContainer, typeof(tabPhieuThuTien), "Đòi nợ", false);
+                    uc.CustomerTransfer = tag.ID;
+                }
+                else
+                {
+                    WarningBox.Show("Thông báo", "Không tồn tại nợ", "Khách hàng <" + tag.Name + "> không thiếu nợ!");
+                }
+            }
         }
     }
 }
