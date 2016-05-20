@@ -146,6 +146,9 @@
     <Compile Include="Views\Views\UserControls\tabTraCuuSach.xaml.cs">
       <DependentUpon>tabTraCuuSach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabTraCuuTaiKhoan.xaml.cs">
+      <DependentUpon>tabTraCuuTaiKhoan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\Windows\Handlers\About.cs" />
     <Compile Include="Views\Views\Windows\Handlers\MainWindow.cs" />
     <Compile Include="Views\Views\UserControls\ListViewItemChiTietHD.xaml.cs">
@@ -278,6 +281,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabTraCuuSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabTraCuuTaiKhoan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -97,11 +97,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
             {
                 var _book = new Function();
                 {
-<<<<<<< HEAD
-                    _book.Children.Add(new Function("Tra cứu") { Data = typeof(tabTraCuuSach), Tag = 0 });
-=======
                     _book.Children.Add(new Function("Tra cứu sách") { Data = "", Tag = 0 });
->>>>>>> 9f7bfef08343c03241eb0a3e60e3f22599a40fb1
                 }
                 var _bill = new Function();
                 {
@@ -110,11 +106,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 }
                 var _customer = new Function();
                 {
-<<<<<<< HEAD
-                    _customer.Children.Add(new Function("Tra cứu") { Data = typeof(tabTraCuuKhachHang), Tag = 0 });
-=======
                     _customer.Children.Add(new Function("Tra cứu khách hàng") { Data = "", Tag = 0 });
->>>>>>> 9f7bfef08343c03241eb0a3e60e3f22599a40fb1
                     _customer.Children.Add(new Function("Đòi nợ") { Data = typeof(tabPhieuThuTien), Tag = 0 });
                 }
                 ShowFunction(btnSachFull, btnSachMini, true, _book);
