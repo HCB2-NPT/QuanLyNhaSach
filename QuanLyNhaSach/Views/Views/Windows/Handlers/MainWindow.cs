@@ -357,14 +357,19 @@ namespace QuanLyNhaSach.Views.Views.Windows
         /*
          * Đóng danh sách chức năng khi chức năng được chọn và show tab chức năng được chọn
          */
-        private void listboxDSChucNang_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void selectFunction(object sender, SelectionChangedEventArgs e)
         {
             if (DockChucNang.Width > 0)
                 (this.FindResource("CloseFunctions") as Storyboard).Begin();
-            var item = listboxDSChucNang.SelectedItem as Function;
-            listboxDSChucNang.SelectedItem = null;
-            if (item != null)
-                Bus.AppHandler.OpenTab(mdiContainer, item.Data as Type, item.Title as string, item.CanDuplicate);
+
+            var control = sender as ListBox;
+            if (control != null)
+            {
+                var item = control.SelectedItem as Function;
+                control.SelectedItem = null;
+                if (item != null)
+                    Bus.AppHandler.OpenTab(mdiContainer, item.Data as Type, item.Title, item.CanDuplicate);
+            }
         }
 
         /*

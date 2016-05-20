@@ -9,7 +9,7 @@ namespace QuanLyNhaSach.Objects
 {
     public class Function
     {
-        public object Title { get; set; }
+        public string Title { get; set; }
 
         public object Data { get; set; }
 
@@ -19,7 +19,7 @@ namespace QuanLyNhaSach.Objects
 
         public ObservableCollection<Function> Children { get; private set; }
 
-        public Function(object title = null)
+        public Function(string title = null)
         {
             Title = title;
             Data = null;
