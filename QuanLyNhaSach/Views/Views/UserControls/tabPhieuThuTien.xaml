@@ -3,19 +3,28 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
+	 xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:local="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
 	mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabPhieuThuTien"
 	x:Name="UserControl"
-	d:DesignHeight="600" d:DesignWidth="600" Background="White">
+	d:DesignHeight="600" d:DesignWidth="600" Background="#FFF1F1F1">
     <DockPanel Margin="0">
-        <DockPanel Margin="0" DockPanel.Dock="Top" Height="48" Background="#FFF1F1F1">
-            <Button x:Name="btn_Search" Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" OpacityMask="#FFB3D6F2">
-                <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
-            <TextBox x:Name="tb_Search" TextWrapping="Wrap" ToolTip="Tìm kiếm khách hàng" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0" Foreground="#FFCCCCCC" Background="{x:Null}" OpacityMask="Gray"/>
+        <DockPanel Margin="0" DockPanel.Dock="Top" Height="40" Background="#FFF1F1F1">
+            <Grid>
+                <toolkit:AutoCompleteBox x:Name="tb_Search" ItemsSource="{Binding ListDebtor}" FilterMode="Contains" ValueMemberPath="CustomerInfo" Padding="8,4,0,0" Foreground="Black" BorderThickness="0" FontSize="14" Background="#FFF1F1F1" VerticalContentAlignment="Center" BorderBrush="{x:Null}" VerticalAlignment="Center" SelectionChanged="tb_Search_SelectionChanged">
+                    <toolkit:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <TextBlock Text="{Binding CustomerInfo, Mode=OneWay}" Foreground="Black"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:AutoCompleteBox.ItemTemplate>
+                </toolkit:AutoCompleteBox>
+                <TextBlock FontSize="14" Foreground="Gray" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Text="Tìm kiếm khách hàng theo số điện thoại" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=tb_Search}"/>
+            </Grid>
         </DockPanel>
-        <Grid Background="White" DockPanel.Dock="Bottom" Height="200">
+        <Grid DockPanel.Dock="Bottom" Height="200" Margin="0,16,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -26,17 +35,17 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Name, ElementName=lv_ListDebtor}"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Phone, ElementName=lv_ListDebtor}" PreviewTextInput="tb_PayMoney_PreviewTextInput"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Adress, ElementName=lv_ListDebtor}"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Grid.Row="3" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Email, ElementName=lv_ListDebtor}"/>
-            <TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
-            <TextBlock x:Name="tb_TotalMoney" Text="{Binding SelectedItem.Debt, ElementName=lv_ListDebtor}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Name, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Phone, ElementName=lv_ListDebtor}" PreviewTextInput="tb_PayMoney_PreviewTextInput" IsReadOnly="True" FontSize="14"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Adress, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Grid.Row="3" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Email, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
+            <TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999" FontSize="14"/>
+            <TextBlock x:Name="tb_TotalMoney" Text="{Binding SelectedItem.DebtFormat, ElementName=lv_ListDebtor}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="#FF999999" d:IsHidden="True" FontSize="14" FontWeight="Bold"/>
             <TextBlock Text="Tiền trả : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="4,0" Foreground="#FF999999"/>
-            <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Width="80" Margin="4,0,2,0" Foreground="#FF999999" Padding="0,0,-4,0" PreviewTextInput="tb_PayMoney_PreviewTextInput" BorderThickness="0,0,0,1"/>
-            <TextBlock Text="Còn lại : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
-            <TextBlock x:Name="tb_DebtMoney" Text="{Binding ReturnMoney,Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
-            <Button x:Name="btn_Inphieuthu" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,8,4" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="3" Grid.Column="1" Width="96" Height="40">
+            <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Width="80" Margin="0,0,8,0" Foreground="#FF999999" Padding="0,0,-4,0" PreviewTextInput="tb_PayMoney_PreviewTextInput" BorderThickness="0,0,0,1" Background="{x:Null}"/>
+            <TextBlock x:Name="tb_NameHoanTien" Text="{Binding EditText}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
+            <TextBlock x:Name="tb_DebtMoney" Text="{Binding ReturnMoneyFormat,Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="0,0,8,0" Foreground="#FF999999" FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="btn_Inphieuthu" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,8,4" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="3" Grid.Column="1" Width="96" Height="40" Click="btn_Inphieuthu_Click" Padding="0">
                 <DockPanel Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="0" Width="24" Height="24"/>
                     <TextBlock Text="In phiếu thu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
@@ -51,37 +60,57 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListView x:Name="lv_ListDebtor" Grid.Row="1" BorderThickness="0" Foreground="#FF999999" BorderBrush="{x:Null}" Background="Gray" ItemsSource="{Binding ListDebtor}">
+            <ListView x:Name="lv_ListDebtor" Grid.Row="1" BorderThickness="0" Foreground="#FF999999" BorderBrush="{x:Null}" Background="Gray" ItemsSource="{Binding ListDebtor}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <local:lvi_DSKhachHang Height="100" VerticalAlignment="Top"/>
+                        <Border BorderThickness="2" BorderBrush="{Binding BorderBrush, ElementName=userControl , Mode=TwoWay}" Margin="4" Width="Auto">
+                            <Grid Height="Auto" Margin="0" Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" FontSize="14">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Họ tên: {0}">
+                                            <Binding Path="Name"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="1" FontSize="14">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Điện Thoại: {0}">
+                                            <Binding Path="Phone"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="2" FontSize="14">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Địa Chỉ: {0}">
+                                            <Binding Path="AdressShortFormat"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="3" FontSize="14">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Email: {0}">
+                                            <Binding Path="Email"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock Foreground="#FF999999" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,4,4" Grid.Row="3" FontSize="14" FontWeight="Bold">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}Nợ: {0}">
+                                            <Binding Path="DebtFormat"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <DockPanel LastChildFill="False">
-                <Button x:Name="btn_Delete" Height="40" VerticalAlignment="Center" Width="40" HorizontalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
-                <Button x:Name="btn_Save" Height="40" VerticalAlignment="Center" Width="40" HorizontalAlignment="Center" Margin="8,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Style="{DynamicResource Btn_IconOnly}">
-                    <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
-                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Right" Foreground="#FF999999">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat=" {}Số lượng con nợ: {0}">
-                            <Binding Path="NumberDebtor"/>
-                        </MultiBinding>
-
-                    </TextBlock.Text>
-                </TextBlock>
-                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Right" Foreground="#FF999999" Margin="0,12.02,0,11.98">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat=" {}Tổng tiền nợ: {0}">
-                            <Binding Path="SumDebt"/>
-                        </MultiBinding>
-
-                    </TextBlock.Text>
-                </TextBlock>
-            </DockPanel>
         </Grid>
 
     </DockPanel>

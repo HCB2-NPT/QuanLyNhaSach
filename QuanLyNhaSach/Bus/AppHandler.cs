@@ -88,7 +88,7 @@ namespace QuanLyNhaSach.Bus
 
         #region Tab (Mdi Child)
         private static int _id = 0;
-        public static void OpenTab(MdiContainer container, Type type, string title, bool canDuplicate)
+        public static UserControl OpenTab(MdiContainer container, Type type, string title, bool canDuplicate)
         {
             if (type != null)
             {
@@ -99,15 +99,19 @@ namespace QuanLyNhaSach.Bus
                     if (first != null)
                     {
                         first.Focus();
-                        return;
+                        return null;
                     }
                 }
                 else
                 {
                     title += string.Format(" - {0}", ++_id);
                 }
-                container.Children.Add(new WPF.MDI.MdiChild() { Content = (UserControl)Activator.CreateInstance(type), Title = title, Resizable = false });
+                var content = (UserControl)Activator.CreateInstance(type);
+                content.Tag = container;
+                container.Children.Add(new WPF.MDI.MdiChild() { Content = content, Title = title, Resizable = false });
+                return content;
             }
+            return null;
         }
         #endregion
     }
