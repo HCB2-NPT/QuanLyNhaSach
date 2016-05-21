@@ -34,7 +34,7 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 		
-        public static int InsertNewBillItems(int billid, BillItem item)
+        public static int InsertNewBillItem(int billid, BillItem item)
         {
             try
             {
@@ -49,40 +49,24 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
-        public static void UpdateOldBillItems(Bill bill)
+        public static int UpdateBillItem(int billid, BillItem item)
         {
             try
             {
-                DeleteBillItems(bill);
-                foreach (var item in bill.BillItems)
-                {
-                    DataConnector.ExecuteNonQuery(string.Format("update ChiTietHoaDon set SoLuong={0} where MaHoaDon={1} and MaSach = {2}", item.Number, bill.ID, item.Book.ID));
-                }
+               return DataConnector.ExecuteNonQuery(string.Format("update ChiTietHoaDon set SoLuong={0} where MaHoaDon={1} and MaSach = {2}", item.Number, billid, item.Book.ID));
             }
             catch (Exception ex)
             {
                 ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
             }
+            return -1;
         }
 
-        public static int DeleteBillItems(Bill bill)
+        public static int ClearBillItems(int billid)
         {
-            string query;
-            if (bill.BillItems.Count <= 0)
-            {
-                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.ID;
-            }
-            else
-            {
-                query = "delete from ChiTietHoaDon where MaHoaDon = " + bill.ID;
-                foreach (var item in bill.BillItems)
-                {
-                    query += " and  MaSach!= " + item.Book.ID;
-                }
-            }
             try
             {
-                return DataConnector.ExecuteNonQuery(query);
+                return DataConnector.ExecuteNonQuery(string.Format("delete from ChiTietHoaDon where MaHoaDon = {0}", billid));
             }
             catch (Exception ex)
             {

@@ -112,8 +112,10 @@
     <Compile Include="Assets\Scripts\Converters.cs" />
     <Compile Include="Bus\AppHandler.cs" />
     <Compile Include="Bus\CheckData.cs" />
+    <Compile Include="Bus\DeleteData.cs" />
     <Compile Include="Bus\FillData.cs" />
     <Compile Include="Bus\InsertData.cs" />
+    <Compile Include="Bus\SaveChanges.cs" />
     <Compile Include="Bus\SearchData.cs" />
     <Compile Include="Bus\UpdateData.cs" />
     <Compile Include="Managers\RuleManager.cs" />

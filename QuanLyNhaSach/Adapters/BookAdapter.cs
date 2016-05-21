@@ -219,6 +219,24 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
+        public static int GetNumber(int bookid)
+        {
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select SoLuongTon from Sach where MaSach = " + bookid);
+                if (reader != null)
+                {
+                    if (reader.Read())
+                        return reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call(ex.Message);
+            }
+            return -1;
+        }
+
         public static int UpdateNumber(int bookid, int newValue)
         {
             try

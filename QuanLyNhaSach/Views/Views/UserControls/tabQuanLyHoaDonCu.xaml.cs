@@ -114,7 +114,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             ListBill.Remove(SelectedBill);
             SelectedBill.BillItems.Clear();
             lv_DSHoaDon.SelectedItem = null;
-            Bus.UpdateData.DeleteOldBillSelected(SelectedBill);
+            Bus.DeleteData.DeleteOldBill(SelectedBill);
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)

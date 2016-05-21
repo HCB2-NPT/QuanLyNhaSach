@@ -66,25 +66,9 @@ namespace QuanLyNhaSach.Adapters
         {
             try
             {
-                int result = DataConnector.ExecuteNonQuery("insert into HoaDon " +
+                return DataConnector.ExecuteNonQuery("insert into HoaDon " +
                     "(MaKhachHang, NgayLap, TienTra, TongTien, DaLuu) " + 
                     string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer == null ? 13 : newBill.Customer.ID, DateTime.Now, newBill.ReturnMoney, newBill.TotalMoney));
-                if (result == 1)
-                {
-                    var billid = GetLatestId();
-                    if (billid > 0)
-                    {
-                        foreach (var item in newBill.BillItems)
-                        {
-                            BillItemAdapter.InsertNewBillItems(billid, item);
-                            BookAdapter.UpdateNumber(item.Book.ID, item.Book.Number - item.Number);
-                        }
-                    }
-
-                    if (newBill.ReturnMoney < 0)
-                        CustomerAdapter.UpdateDebt(newBill.Customer.ID, newBill.Customer.Debt + Math.Abs(newBill.ReturnMoney));
-                }
-                return result;
             }
             catch (Exception ex)
             {
@@ -110,7 +94,6 @@ namespace QuanLyNhaSach.Adapters
         {
             try
             {
-                BillItemAdapter.UpdateOldBillItems(bill);
                 return DataConnector.ExecuteNonQuery(string.Format("update HoaDon set TienTra={0},TongTien={1} where MaHoaDon={2} and DaLuu=0",bill.PayMoney,bill.TotalMoney,bill.ID));
             }
             catch (Exception ex)
@@ -121,12 +104,11 @@ namespace QuanLyNhaSach.Adapters
         }
 
 
-        public static int DeleteBill(Bill bill)
+        public static int DeleteBill(int id)
         {
             try
             {
-                BillItemAdapter.DeleteBillItems(bill);
-                return DataConnector.ExecuteNonQuery("delete from HoaDon where MaHoaDon = " + bill.ID);
+                return DataConnector.ExecuteNonQuery("delete from HoaDon where MaHoaDon = " + id);
             }
             catch (Exception ex)
             {

@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btn_saveRules_Click(object sender, RoutedEventArgs e)
         {
-            Bus.InsertData.SaveNewRules(Managers.RuleManager.Current.Rule);
+            Bus.SaveChanges.SaveNewRules(Managers.RuleManager.Current.Rule);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)

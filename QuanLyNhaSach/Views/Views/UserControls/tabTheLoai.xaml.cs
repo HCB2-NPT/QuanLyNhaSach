@@ -117,7 +117,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void saveChanges(object sender, RoutedEventArgs e)
         {
-            Bus.UpdateData.SaveChangesGenres(Genres);
+            Bus.SaveChanges.SaveChangesGenres(Genres);
             Clear();
         }
 

@@ -134,7 +134,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Bus.UpdateData.SaveChangesBooks(Books);
+            Bus.SaveChanges.SaveChangesBooks(Books);
             Clear();
         }
 
@@ -198,7 +198,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 {
                     tag.IsCreatedItem = false;
                     tag.IsEditedItem = false;
-                    Bus.UpdateData.InsertNewBook(tag);
+                    Bus.InsertData.InsertNewBook(tag);
                 }
             }
         }

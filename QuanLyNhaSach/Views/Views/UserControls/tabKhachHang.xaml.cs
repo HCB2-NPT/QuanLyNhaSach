@@ -101,7 +101,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void btn_SaveChange_Click(object sender, RoutedEventArgs e)
         {
-            Bus.UpdateData.SaveChangesCustomers(ListCustomer);
+            Bus.SaveChanges.SaveChangesCustomers(ListCustomer);
         }
 
         private void tb_Phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
