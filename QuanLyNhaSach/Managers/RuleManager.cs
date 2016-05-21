@@ -32,7 +32,14 @@ namespace QuanLyNhaSach.Managers
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Rule Rule { get; set; }
+
+        private Rule _rule;
+
+        public Rule Rule
+        {
+            get { return _rule; }
+            set { _rule = value; NotifyPropertyChanged("Rule"); }
+        }
 
         private RuleManager()
         {
