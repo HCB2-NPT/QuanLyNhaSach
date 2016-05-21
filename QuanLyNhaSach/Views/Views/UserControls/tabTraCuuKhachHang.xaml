@@ -21,7 +21,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Padding="8" Width="330" Height="200">
+                        <Border Padding="8" Width="340" Height="200">
                             <Grid Background="#66166B8F">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -67,7 +67,7 @@
                                     </TextBlock>
                                 </Grid>
                                 <Grid Background="#A3A0A0A0" Visibility="{Binding IsDeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <TextBlock Text="Khàng hàng bị xóa!" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Khàng hàng đã bị xóa!" FontSize="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Border>

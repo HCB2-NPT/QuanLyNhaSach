@@ -63,15 +63,15 @@ namespace QuanLyNhaSach.Bus
                 try
                 {
                     return list.Where(x =>
-                        {
-                            var data =
-                                x.ID.ToString() +
-                                x.Name.ToLower() +
-                                x.Phone.ToLower() +
-                                (x.Adress == null ? "" : x.Adress.ToLower()) +
-                                (x.Email == null ? "" : x.Email.ToLower());
-                            return data.Contains(key);
-                        }
+                    {
+                        var data =
+                            x.ID.ToString() +
+                            x.Name.ToLower() +
+                            x.Phone.ToLower() +
+                            (x.Adress == null ? "" : x.Adress.ToLower()) +
+                            (x.Email == null ? "" : x.Email.ToLower());
+                        return data.Contains(key);
+                    }
                         ).ToObservableCollection<Customer>();
                 }
                 catch { }
@@ -82,6 +82,37 @@ namespace QuanLyNhaSach.Bus
         public static ObservableCollection<Customer> SearchCustomer(string key)
         {
             return SearchCustomer(Adapters.CustomerAdapter.GetAll(), key);
+        }
+
+        public static ObservableCollection<Account> SearchAccount(ObservableCollection<Account> list, string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return list;
+            }
+            else
+            {
+                try
+                {
+                    return list.Where(x =>
+                        {
+                            var data =
+                                x.ID.ToString() +
+                                x.Name.ToLower() +
+                                x.Email.ToLower() +
+                                x.AccessLevel.Name.ToLower();
+                            return data.Contains(key);
+                        }
+                        ).ToObservableCollection<Account>();
+                }
+                catch { }
+            }
+            return null;
+        }
+
+        public static ObservableCollection<Account> SearchAccount(string key)
+        {
+            return SearchAccount(Adapters.AccountAdapter.GetAll(true), key);
         }
     }
 }

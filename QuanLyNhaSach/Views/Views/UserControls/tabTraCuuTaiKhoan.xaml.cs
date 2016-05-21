@@ -23,18 +23,18 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabTraCuuTaiKhoan()
         {
             InitializeComponent();
-            lvResult.ItemsSource = Bus.FillData.GetAllCustomer();
+            lvResult.ItemsSource = Bus.FillData.GetAllAccount();
         }
 
         private void searchBook_HotKey(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-                lvResult.ItemsSource = Bus.SearchData.SearchCustomer(tbSearchBox.Text.ToLower());
+                lvResult.ItemsSource = Bus.SearchData.SearchAccount(tbSearchBox.Text.ToLower());
         }
 
         private void searchBook_Click(object sender, RoutedEventArgs e)
         {
-            lvResult.ItemsSource = Bus.SearchData.SearchCustomer(tbSearchBox.Text.ToLower());
+            lvResult.ItemsSource = Bus.SearchData.SearchAccount(tbSearchBox.Text.ToLower());
         }
     }
 }
