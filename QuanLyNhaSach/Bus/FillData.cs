@@ -31,5 +31,10 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.BookAdapter.GetAll();
         }
+
+        public static ObservableCollection<Account> GetAllAccount()
+        {
+            return Adapters.AccountAdapter.GetAll(true);
+        }
     }
 }

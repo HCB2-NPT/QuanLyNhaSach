@@ -198,7 +198,7 @@
                             <Menu Width="{Binding ActualWidth, ElementName=mdiContainer, Mode=OneWay}">
                                 <Menu.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <DockPanel HorizontalAlignment="Stretch"/>
+                                        <DockPanel HorizontalAlignment="Stretch" LastChildFill="False"/>
                                     </ItemsPanelTemplate>
                                 </Menu.ItemsPanel>
                                 <MenuItem Header="+">
@@ -209,13 +209,13 @@
                                 <MenuItem Header="Giao diện">
                                     <MenuItem Header="Luna" x:Name="Luna" ToolTip="Blue Windows XP theme" Click="Luna_Click" />
                                     <MenuItem Header="Aero" x:Name="Aero" ToolTip="Windows Vista/7 theme"  Click="Aero_Click" />
-                                    <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" />
+                                    <MenuItem Header="Metro" x:Name="Metro" ToolTip="Windows 8 and 10 theme" Click="Metro_Click" IsChecked="True"/>
                                 </MenuItem>
                                 <MenuItem Header="Cửa sổ" x:Name="WindowsMenu" x:FieldModifier="private"/>
                             </Menu>
                         </mdi:MdiContainer.Menu>
                     </mdi:MdiContainer>
-                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left">
+                    <DockPanel x:Name="DockChucNang" Background="#FF1664A7" Width="0" HorizontalAlignment="Left" d:IsLocked="True">
                         <Grid Width="200">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
