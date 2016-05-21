@@ -1,5 +1,6 @@
 ﻿using QuanLyNhaSach.Objects;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -28,6 +29,15 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             set { _listBook = value; }
         }
 
+        private ObservableCollection<AddedBook> _listAddedBook = new ObservableCollection<AddedBook>();
+
+        public ObservableCollection<AddedBook> ListAddedBook
+        {
+            get { return _listAddedBook; }
+            set { _listAddedBook = value; NotifyPropertyChanged("ListAddedBook"); }
+        }
+
+
         #region Emplements
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,7 +65,30 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                     Book = selectedbook,
                     Number = (int)num_UpDown.Value
                 };
-                lv_PhieuNhapSach.Items.Add(ab);
+                var item = ListAddedBook.FirstOrDefault(x => x.Book.ID == ab.Book.ID);
+                if (item != null)
+                    item.Number += (int)num_UpDown.Value;
+                else
+                    ListAddedBook.Add(ab);
+            }
+            else
+            {
+                var item = ListBook.FirstOrDefault(x => x.Name == tb_BookName.Text);
+                AddedBook ab = new AddedBook();
+                if (item != null)
+                {
+                    ab.Book = item;
+                    ab.Number = (int)num_UpDown.Value;   
+                }
+                else
+                {
+                    ab.Book = new Book();
+                    ab.Book.Name = tb_BookName.Text;
+                    ab.Book.AuthorsFormat = tb_Authors.Text;
+                    ab.Book.GenresFormat = tb_Genres.Text;
+                    ab.Number = (int)num_UpDown.Value;
+                }
+                ListAddedBook.Add(ab);
             }
         }
 	}

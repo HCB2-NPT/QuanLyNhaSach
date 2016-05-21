@@ -26,21 +26,21 @@
                     </Grid.RowDefinitions>
 
                     <Grid>
-                        <toolkit:AutoCompleteBox x:Name="tb_BookName" ItemsSource="{Binding ListDebtor}" FilterMode="Contains" ValueMemberPath="CustomerInfo" Padding="8,4,0,0" Foreground="Black" BorderThickness="0,0,0,1" FontSize="14" Background="White" VerticalContentAlignment="Center" BorderBrush="#FFABADB3" VerticalAlignment="Center" Margin="8,0">
+                        <toolkit:AutoCompleteBox x:Name="tb_BookName" ItemsSource="{Binding ListBook}" FilterMode="Contains" ValueMemberPath="Name" Padding="8,4,0,0" Foreground="#FFABADB3" BorderThickness="0,0,0,1" FontSize="14" Background="White" VerticalContentAlignment="Center" BorderBrush="#FFABADB3" VerticalAlignment="Center" Margin="8,0">
                             <toolkit:AutoCompleteBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                        <TextBlock Text="{Binding CustomerInfo, Mode=OneWay}" Foreground="Black"/>
+                                        <TextBlock Text="{Binding BookInfo, Mode=OneWay}" Foreground="Black"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
                         <TextBlock FontSize="14" Foreground="#FFABADB3" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,4,0,0" Text="Tên sách" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=tb_BookName}"/>
                     </Grid>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Margin="8,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3" Text="{Binding SelectedItem.GenresFormat, ElementName=tb_BookName,Mode=OneWay}"/>
-                    <TextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Margin="8,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3" Text="{Binding SelectedItem.AuthorsFormat, ElementName=tb_BookName,Mode=OneWay}"/>
+                    <TextBox x:Name="tb_Genres" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể Loại" Margin="8,0" Padding="8,4,0,0" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3" Text="{Binding SelectedItem.GenresFormat, ElementName=tb_BookName,Mode=OneWay}"/>
+                    <TextBox x:Name="tb_Authors" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác Giả" Margin="8,0" Padding="8,4,0,0" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#FFA3A3A3" Text="{Binding SelectedItem.AuthorsFormat, ElementName=tb_BookName,Mode=OneWay}"/>
                     <DockPanel Margin="16,0,0,0" Grid.Row="3" LastChildFill="False" HorizontalAlignment="Left">
-                        <MetroControls:NumericUpDown x:Name="num_UpDown" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF999999" Minimum="{Binding Rule.MinNumberWhenImport}" BorderThickness="0,0,0,1"/>
+                        <MetroControls:NumericUpDown x:Name="num_UpDown" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF999999" Value="{Binding Rule.MinNumberWhenImport,Mode=OneWay}" Minimum="{Binding Rule.MinNumberWhenImport,Mode=OneWay}" BorderThickness="0,0,0,1"/>
                         <TextBlock Text="Số lượng: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="0,0,4,0" DockPanel.Dock="Right"/>
                     </DockPanel>
                     <Button x:Name="btn_Add" Grid.Row="3" VerticalAlignment="Center" Height="40" Width="40" Foreground="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,8,0" Style="{DynamicResource Btn_IconOnly}" BorderThickness="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Click="btn_Add_Click">
@@ -56,7 +56,41 @@
                     <TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
                 </DockPanel>
             </Button>
-            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}"/>
+            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemsSource="{Binding ListAddedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Height="100" Width="Auto" Background="White" Margin="2">
+                            <DockPanel.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
+                            </DockPanel.Effect>
+                            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
+                            <Button Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0">
+                                <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                            </Button>
+                            <DockPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Book.Name}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tên sách" FontFamily="Segoe UI Light" Foreground="#FF9B9B9B"/>
+                                    <TextBlock Text="{Binding Book.AuthorsShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tác giả" FontFamily="Segoe UI Light" Grid.Row="1" Foreground="#FF9B9B9B"/>
+                                    <TextBlock Text="{Binding Book.GenresShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Thể loại" FontFamily="Segoe UI Light" Grid.Row="2" Background="{x:Null}" Foreground="#FF9B9B9B"/>
+                                    <DockPanel Grid.Column="1" LastChildFill="False" Margin="0,0,4,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <MetroControls:NumericUpDown HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Minimum="{Binding Minimum, ElementName=num_UpDown}" Width="100" Value="{Binding Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderBrush="#FF9B9B9B" BorderThickness="0,0,0,1"/>
+                                        <TextBlock Text="Số lượng: " HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FF9B9B9B"/>
+                                    </DockPanel>
+                                </Grid>
+                            </DockPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </DockPanel>
     </DockPanel>
 </UserControl>
