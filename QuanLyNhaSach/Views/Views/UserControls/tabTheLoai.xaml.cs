@@ -24,7 +24,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     public partial class tabTheLoai : UserControl, INotifyPropertyChanged
     {
         #region Properties
-        private ObservableCollection<Genre> _genres = Adapters.GenreAdapter.GetAll();
+        private ObservableCollection<Genre> _genres = Bus.FillData.GetAllGenre();
         public ObservableCollection<Genre> Genres
         {
             get
@@ -128,8 +128,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         void Clear()
         {
-            Genres = Adapters.GenreAdapter.GetAll();
-            Books = Adapters.BookAdapter.GetAll();
+            Genres = Bus.FillData.GetAllGenre();
+            Books = Bus.FillData.GetAllBook();
         }
 
         #region GenresBoard

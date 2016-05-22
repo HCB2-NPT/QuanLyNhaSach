@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     public partial class tabQuanLySach : UserControl, INotifyPropertyChanged
     {
         #region Properties
-        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
+        private ObservableCollection<Book> _books = Bus.FillData.GetAllBook();
         public ObservableCollection<Book> Books
         {
             get { return _books; }

@@ -36,5 +36,15 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.AccountAdapter.GetAll(true);
         }
+
+        public static ObservableCollection<Genre> GetAllGenre()
+        {
+            return Adapters.GenreAdapter.GetAll();
+        }
+
+        public static ObservableCollection<Author> GetAllAuthor()
+        {
+            return Adapters.AuthorAdapter.GetAll();
+        }
     }
 }

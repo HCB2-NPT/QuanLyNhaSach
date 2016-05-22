@@ -24,7 +24,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     public partial class tabTacGia : UserControl, INotifyPropertyChanged
     {
         #region Properties
-        private ObservableCollection<Author> _authors = Adapters.AuthorAdapter.GetAll();
+        private ObservableCollection<Author> _authors = Bus.FillData.GetAllAuthor();
         public ObservableCollection<Author> Authors
         {
             get
@@ -128,8 +128,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         void Clear()
         {
-            Authors = Adapters.AuthorAdapter.GetAll();
-            Books = Adapters.BookAdapter.GetAll();
+            Authors = Bus.FillData.GetAllAuthor();
+            Books = Bus.FillData.GetAllBook();
         }
 
         #region AuthorsBoard
