@@ -105,5 +105,38 @@ namespace QuanLyNhaSach.Managers
                     false);
             }
         }
+
+        public Error BookCantInsert
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi số lượng!",
+                    "Số lượng trong kho còn nhiều , không thể nhập.",
+                    false);
+            }
+        }
+
+        public Error WrongDateTime
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi thông số!",
+                    "Ngày nhập kho phải tính từ hôm nay trở đi.",
+                    false);
+            }
+        }
+
+        public Error InfoIsNull
+        {
+            get
+            {
+                return new Error(
+                    "Lỗi thông số!",
+                    "Dữ liệu không tồn tại hoặc trống.",
+                    false);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,28 @@ namespace QuanLyNhaSach.Bus
                             Adapters.BookAdapter.AddGenre(id, k);
                         }
                     }
+                }
+            }
+        }
+
+        public static void InsertNewAddedBook(ManagerListAddedBook mlab)
+        {
+            Adapters.ManagerListAddedBookAdapter.InsertNewManagerListAddedBook(mlab);
+            var IDmanager = Adapters.ManagerListAddedBookAdapter.GetLatestId();
+            foreach (var item in mlab.ListAddedBook)
+            {
+                if (item.Book.IsCreatedItem)
+                {
+                    Bus.InsertData.InsertNewBook(item.Book);
+                    var id = Adapters.BookAdapter.GetLatestId();
+                    if (id > 0)
+                    {
+                        Adapters.AddedBookAdapter.InsertAddedBookItem(IDmanager, id, item);
+                    }
+                }
+                else
+                {
+                    Adapters.AddedBookAdapter.InsertAddedBookItem(IDmanager, item.Book.ID, item);
                 }
             }
         }

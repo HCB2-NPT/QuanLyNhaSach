@@ -99,6 +99,7 @@
     <Compile Include="Adapters\BillAdapter.cs" />
     <Compile Include="Adapters\GenreAdapter.cs" />
     <Compile Include="Adapters\AddedBookAdapter.cs" />
+    <Compile Include="Adapters\ManagerListAddedBookAdapter.cs" />
     <Compile Include="Adapters\PayDebtMoneyAdapter.cs" />
     <Compile Include="Adapters\RuleAdapter.cs" />
     <Compile Include="Assets\Extensions\CollectionExt.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Errors\ErrorTypes\LoginErrors.cs" />
     <Compile Include="Errors\ErrorTypes\QueryErrors.cs" />
     <Compile Include="Objects\AddedBook.cs" />
+    <Compile Include="Objects\ManagerListAddedBook.cs" />
     <Compile Include="Objects\PayDebtMoney.cs" />
     <Compile Include="Objects\Rule.cs" />
     <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">

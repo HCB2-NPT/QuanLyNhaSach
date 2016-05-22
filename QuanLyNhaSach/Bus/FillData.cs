@@ -45,6 +45,12 @@ namespace QuanLyNhaSach.Bus
         public static ObservableCollection<Author> GetAllAuthor()
         {
             return Adapters.AuthorAdapter.GetAll();
+		}
+		
+        public static ObservableCollection<AddedBook> GetAllAddedBook()
+        {
+            //return Adapters.AddedBookAdapter.GetAllAddedBook();
+            return null;
         }
     }
 }

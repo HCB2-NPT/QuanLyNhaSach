@@ -3,7 +3,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
+	xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:UserControls="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
 	mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyPhieuNhap"
 	x:Name="UserControl"
@@ -11,24 +12,54 @@
 
     <DockPanel>
 
-        <DockPanel Margin="8,4" DockPanel.Dock="Top" Height="48" Background="White">
+        <DockPanel Margin="0" DockPanel.Dock="Top" Height="48" Background="#FFF1F1F1">
             <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Style="{DynamicResource TextBoxListViewItem}" Foreground="#FF999999"/>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0" Background="{x:Null}" FontSize="14"/>
         </DockPanel>
-        <DockPanel DockPanel.Dock="Top" Height="120" Margin="8,4" Background="White">
-            <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}" Foreground="#FF999999" BorderBrush="#FF999999"/>
-        </DockPanel>
+        <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}" Foreground="#FF999999" BorderBrush="#FF999999" Background="#FF888888" Margin="0" DockPanel.Dock="Top" Height="150"/>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0,0,16,8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" DockPanel.Dock="Bottom">
             <DockPanel Background="White">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
                 <TextBlock Text="Lưu thay đổi" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
             </DockPanel>
         </Button>
-        <DockPanel Margin="8" Background="White" DockPanel.Dock="Top">
-            <ListView DockPanel.Dock="Top" ItemTemplate="{DynamicResource lvi_ChiTietPhieuNhapSach}" Margin="0" BorderBrush="#FF999999" Foreground="#FF999999"/>
-        </DockPanel>
+        <ListView DockPanel.Dock="Top" BorderBrush="{x:Null}" Foreground="#FF999999" BorderThickness="0" Margin="0" Background="#FFF1F1F1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Height="100" Width="Auto" Background="White" Margin="2">
+                        <DockPanel.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
+                        </DockPanel.Effect>
+                        <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
+                        <Button x:Name="btn_delete" Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Tag="{Binding}">
+                            <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                        </Button>
+                        <DockPanel>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Book.Name}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tên sách" FontFamily="Segoe UI Light" Foreground="#FF9B9B9B"/>
+                                <TextBlock Text="{Binding Book.AuthorsShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tác giả" FontFamily="Segoe UI Light" Grid.Row="1" Foreground="#FF9B9B9B"/>
+                                <TextBlock Text="{Binding Book.GenresShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Thể loại" FontFamily="Segoe UI Light" Grid.Row="2" Background="{x:Null}" Foreground="#FF9B9B9B"/>
+                                <DockPanel Grid.Column="1" LastChildFill="False" Margin="0,0,4,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <MetroControls:NumericUpDown HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Minimum="{Binding Minimum, ElementName=num_UpDown}" Width="100" Value="{Binding Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderBrush="#FF9B9B9B" BorderThickness="0,0,0,1"/>
+                                    <TextBlock Text="Số lượng: " HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FF9B9B9B"/>
+                                </DockPanel>
+                            </Grid>
+                        </DockPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </DockPanel>
 
 </UserControl>

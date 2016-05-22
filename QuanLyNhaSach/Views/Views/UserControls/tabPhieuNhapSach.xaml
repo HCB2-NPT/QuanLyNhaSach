@@ -50,13 +50,13 @@
             </DockPanel>
         </DockPanel>
         <DockPanel Margin="0">
-            <Button VerticalAlignment="Top" DockPanel.Dock="Bottom" Background="White" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2">
+            <Button x:Name="btn_Done" VerticalAlignment="Top" DockPanel.Dock="Bottom" Background="White" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Click="btn_Done_Click">
                 <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>
                     <TextBlock Text="Hoàn Tất" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
                 </DockPanel>
             </Button>
-            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemsSource="{Binding ListAddedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemsSource="{Binding ListAddedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" IsHitTestVisible="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Height="100" Width="Auto" Background="White" Margin="2">
@@ -64,7 +64,7 @@
                                 <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
                             </DockPanel.Effect>
                             <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
-                            <Button Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0">
+                            <Button x:Name="btn_delete" Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Click="Button_Click" Tag="{Binding}">
                                 <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                             </Button>
                             <DockPanel>
