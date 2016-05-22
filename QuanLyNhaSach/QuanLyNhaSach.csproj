@@ -54,6 +54,12 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="CodeReason.Reports">
+      <HintPath>..\dll\CodeReason.Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeReason.Reports.Charts.Visifire">
+      <HintPath>..\dll\CodeReason.Reports.Charts.Visifire.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA147\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -87,6 +93,9 @@
     <Reference Include="WPFToolkit">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="WPFVisifire.Charts">
+      <HintPath>..\dll\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -110,7 +119,7 @@
     <Compile Include="Adapters\AccessLevelAdapter.cs" />
     <Compile Include="Adapters\AccountAdapter.cs" />
     <Compile Include="Adapters\CustomerAdapter.cs" />
-    <Compile Include="Adapters\DataConnector.cs" />
+    <Compile Include="Adapters\~DataConnector.cs" />
     <Compile Include="Assets\Scripts\Converters.cs" />
     <Compile Include="Bus\AppHandler.cs" />
     <Compile Include="Bus\CheckData.cs" />
@@ -140,6 +149,12 @@
     <Compile Include="Objects\ManagerListAddedBook.cs" />
     <Compile Include="Objects\PayDebtMoney.cs" />
     <Compile Include="Objects\Rule.cs" />
+    <Compile Include="Views\Views\UserControls\tabBaoCaoCongNo.xaml.cs">
+      <DependentUpon>tabBaoCaoCongNo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Views\UserControls\tabBaoCaoTonKho.xaml.cs">
+      <DependentUpon>tabBaoCaoTonKho.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">
       <DependentUpon>tabQuyDinh.xaml</DependentUpon>
     </Compile>
@@ -241,6 +256,14 @@
     <Page Include="Views\Views\UserControls\lvi_DSKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabBaoCaoCongNo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabBaoCaoTonKho.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
