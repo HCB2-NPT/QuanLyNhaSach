@@ -114,5 +114,10 @@ namespace QuanLyNhaSach.Bus
         {
             return SearchAccount(Adapters.AccountAdapter.GetAll(true), key);
         }
+
+        public static Book GetBookById(int id)
+        {
+            return Adapters.BookAdapter.GetBook(id);
+        }
     }
 }

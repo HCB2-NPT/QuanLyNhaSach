@@ -117,7 +117,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 		{
 			this.InitializeComponent();
             DataContext = this;
-            ListDebtor = Adapters.CustomerAdapter.GetAllDebtor();
+            ListDebtor = Bus.FillData.GetAllDebtor();
 		}
 
         private void tb_PayMoney_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -159,7 +159,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 Bus.InsertData.NewPayDebtMoney(pdm);
             }
 
-            ListDebtor = Adapters.CustomerAdapter.GetAllDebtor();
+            ListDebtor = Bus.FillData.GetAllDebtor();
             NotifyPropertyChanged("ReturnMoney");
             tb_PayMoney.Text = "0";
         }

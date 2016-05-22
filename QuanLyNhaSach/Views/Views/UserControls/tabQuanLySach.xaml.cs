@@ -53,7 +53,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #region Custom Functions
         void Clear()
         {
-            Books = Adapters.BookAdapter.GetAll();
+            Books = Bus.FillData.GetAllBook();
         }
 
         void RemoveItem(Book item)
@@ -213,7 +213,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 var index = source.IndexOf(tag);
                 source.RemoveAt(index);
                 if (!tag.IsCreatedItem)
-                    source.Insert(index, Adapters.BookAdapter.GetBook(tag.ID));
+                    source.Insert(index, Bus.SearchData.GetBookById(tag.ID));
             }
         }
         #endregion

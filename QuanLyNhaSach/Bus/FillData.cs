@@ -52,5 +52,25 @@ namespace QuanLyNhaSach.Bus
             //return Adapters.AddedBookAdapter.GetAllAddedBook();
             return null;
         }
+
+        public static ObservableCollection<Book> GetAllBookNotDeleted()
+        {
+            return Adapters.BookAdapter.GetAll(false);
+        }
+
+        public static ObservableCollection<Customer> GetAllCustomerNotDeleted()
+        {
+            return Adapters.CustomerAdapter.GetAll(false);
+        }
+
+        public static ObservableCollection<Book> GetBooksOfGenre(int id)
+        {
+            return Adapters.BookAdapter.GetBooksForGenre(id);
+        }
+
+        public static ObservableCollection<Book> GetBooksOfAuthor(int id)
+        {
+            return Adapters.BookAdapter.GetBooksForAuthor(id);
+        }
     }
 }

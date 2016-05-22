@@ -52,7 +52,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
         }
 
-        private ObservableCollection<Book> _books = Adapters.BookAdapter.GetAll();
+        private ObservableCollection<Book> _books = Bus.FillData.GetAllBook();
         public ObservableCollection<Book> Books
         {
             get { return _books; }
@@ -88,7 +88,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 }
                 else
                 {
-                    BooksOfSelectedGenre = Adapters.BookAdapter.GetBooksForGenre(selected.ID);
+                    BooksOfSelectedGenre = Bus.FillData.GetBooksOfGenre(selected.ID);
                     selected.Tag = BooksOfSelectedGenre;
                 }
             }
