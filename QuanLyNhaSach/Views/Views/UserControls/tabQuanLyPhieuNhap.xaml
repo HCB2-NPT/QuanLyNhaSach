@@ -18,7 +18,7 @@
             </Button>
             <TextBox TextWrapping="Wrap" ToolTip="Mã Phiếu Nhập" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0" Background="{x:Null}" FontSize="14"/>
         </DockPanel>
-        <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}" Foreground="#FF999999" BorderBrush="#FF999999" Background="#FF888888" Margin="0" DockPanel.Dock="Top" Height="150"/>
+        <ListView BorderThickness="0,1,0,0" ItemTemplate="{DynamicResource lvi_DSPhieuNhap}" Foreground="#FF999999" BorderBrush="#FF999999" Background="#FF888888" Margin="0" DockPanel.Dock="Top" Height="150" ItemsSource="{Binding ListMLAB}"/>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0,0,16,8" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" DockPanel.Dock="Bottom">
             <DockPanel Background="White">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="4" Width="24" Height="24"/>

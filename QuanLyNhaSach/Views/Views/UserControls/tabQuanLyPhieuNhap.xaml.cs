@@ -1,6 +1,7 @@
 ﻿using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
@@ -22,12 +23,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     {
         #region Properties
 
-        ManagerListAddedBook _mLAB = new ManagerListAddedBook();
+        ObservableCollection<ManagerListAddedBook> _listMLAB = Bus.FillData.GetAllManagerListAddedBook();
 
-        public ManagerListAddedBook MLAB
+        public ObservableCollection<ManagerListAddedBook> ListMLAB
         {
-            get { return _mLAB; }
-            set { _mLAB = value; NotifyPropertyChanged("MLAB"); }
+            get { return _listMLAB; }
+            set { _listMLAB = value; NotifyPropertyChanged("ListMLAB"); }
         }
 
         #endregion
@@ -48,7 +49,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 		{
 			this.InitializeComponent();
             DataContext = this;
-            MLAB.ListAddedBook = Bus.FillData.GetAllAddedBook();
         }
         #endregion
     }
