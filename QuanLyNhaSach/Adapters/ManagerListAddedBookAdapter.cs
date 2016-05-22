@@ -2,6 +2,7 @@
 using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,35 @@ namespace QuanLyNhaSach.Adapters
                 ErrorManager.Current.DataCantBeRead.Call(ex.Message);
             }
             return -1;
+        }
+
+        public static ObservableCollection<ManagerListAddedBook> GetAllManagerListAddedBook()
+        {
+            ObservableCollection<ManagerListAddedBook> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaPhieuNhap,NgayNhapKho,NgayTaoPhieu,MaTaiKhoan from PhieuNhap");
+                if (reader != null)
+                {
+                    result = new ObservableCollection<ManagerListAddedBook>();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        var item = new ManagerListAddedBook(id);
+                        item.BeginInit();
+                        item.DateCreate = reader.GetDateTime(1);
+                        item.DateAddIntoStorage = reader.GetDateTime(2);
+                        item.IDManager = (int)reader.GetValueDefault(3, 0);
+                        item.EndInit();
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
         }
     }
 }

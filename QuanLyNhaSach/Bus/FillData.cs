@@ -72,5 +72,10 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.BookAdapter.GetBooksForAuthor(id);
         }
+
+        public static ObservableCollection<ManagerListAddedBook> GetAllManagerListAddedBook()
+        {
+            return Adapters.ManagerListAddedBookAdapter.GetAllManagerListAddedBook();
+        }
     }
 }
