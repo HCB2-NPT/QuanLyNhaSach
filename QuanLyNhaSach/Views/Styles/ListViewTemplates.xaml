@@ -102,7 +102,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="lvi_DSPhieuNhap">
-        <DockPanel Height="Auto" Width="Auto">
+        <DockPanel Height="Auto" Width="Auto" Background="White" Margin="1">
             <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFABADB3" Margin="4,0" Width="60"/>
             <Grid Height="Auto" Width="Auto" DockPanel.Dock="Right">
                 <Grid.RowDefinitions>
@@ -117,7 +117,7 @@
                 </Button>
 
             </Grid>
-            <DockPanel Margin="0" Background="#FFF1F1F1" VerticalAlignment="Stretch" Width="Auto">
+            <DockPanel Margin="0" Background="{x:Null}" VerticalAlignment="Stretch" Width="Auto">
                 <Grid DockPanel.Dock="Top" Margin="4" Height="Auto">
                     <Grid.RowDefinitions>
                         <RowDefinition/>

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QuanLyNhaSach.Managers;
 
 namespace QuanLyNhaSach.Views.Views.UserControls
 {
@@ -21,7 +22,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 	/// Interaction logic for tabPhieuNhapSach.xaml
 	/// </summary>
 	public partial class tabPhieuNhapSach : UserControl,INotifyPropertyChanged
-	{
+    {
+        #region Properties
         private ObservableCollection<Book> _listBook = Bus.FillData.GetAllBook();
         public ObservableCollection<Book> ListBook
         {
@@ -36,7 +38,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             get { return _listAddedBook; }
             set { _listAddedBook = value; NotifyPropertyChanged("ListAddedBook"); }
         }
-
+        #endregion
 
         #region Emplements
 
@@ -48,15 +50,24 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
 
         #endregion
-		public tabPhieuNhapSach()
+
+        #region Constructor
+        public tabPhieuNhapSach()
 		{
 			this.InitializeComponent();
             num_UpDown.DataContext = Managers.RuleManager.Current;
             DataContext = this;
 		}
+        #endregion
 
+        #region Events
         private void btn_Add_Click(object sender, RoutedEventArgs e)
         {
+            if (tb_BookName.Text=="")
+            {
+                ErrorManager.Current.InfoIsNull.Call("Tên sách không được để trống!");
+                return;
+            }
             var selectedbook = tb_BookName.SelectedItem as Book;
             if (selectedbook != null)
             {
@@ -91,5 +102,52 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 ListAddedBook.Add(ab);
             }
         }
-	}
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ListAddedBook.Remove(((sender as Button).Tag as AddedBook));
+        }
+
+        private void btn_Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (lv_PhieuNhapSach.Items.Count>0)
+            {
+                if (dt_DateInclude.SelectedDate == null || dt_DateInclude.SelectedDate.Value.Date<DateTime.Now.Date )
+                {
+                    ErrorManager.Current.WrongDateTime.Call("Vui lòng chọn lại ngày nhập kho được tính từ hôm nay trở về sau!");
+                    return;
+                }
+
+                string erroritems = "";
+                foreach (var item in ListAddedBook)
+                {
+                    if (item.Book.Number > Managers.RuleManager.Current.Rule.MinNumberToImport)
+                    {
+                        erroritems += item.Book.Name + ", ";
+                        lv_PhieuNhapSach.SelectedItems.Add(item);
+                    }
+                }
+                if (erroritems != "")
+                {
+                    erroritems = erroritems.TrimEnd(',', ' ');
+                    ErrorManager.Current.BookCantInsert.Call(erroritems + " còn nhiều, không được nhập thêm. Vui lòng gỡ bỏ chúng khỏi phiếu!");
+                    return;
+                }
+                else
+                {
+                    ManagerListAddedBook mlab = new ManagerListAddedBook();
+                    mlab.ListAddedBook = ListAddedBook;
+                    mlab.DateAddIntoStorage = dt_DateInclude.SelectedDate.Value;
+                    mlab.IDManager = Manager.Current.User.Info.ID;
+                    Bus.InsertData.InsertNewAddedBook(mlab);
+                    ListAddedBook = new ObservableCollection<AddedBook>();
+                    tb_BookName.Text = "";
+                    tb_Genres.Text = "";
+                    tb_Authors.Text = "";
+                    tb_BookName.SelectedItem = null;
+                }    
+            }
+        }
+        #endregion
+    }
 }
