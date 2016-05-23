@@ -525,8 +525,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)Data" "$(TargetDir)Data\" /Y /E
-xcopy /y "$(ProjectDir)dll\*.dll" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)Data" "$(TargetDir)Data\" /Y /E</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
