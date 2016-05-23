@@ -120,14 +120,15 @@ namespace QuanLyNhaSach.Bus
             return Adapters.BookAdapter.GetBook(id);
         }
 
-        public static ObservableCollection<Customer> GetDebtor(int month, int year, bool K = true)
+        public static ObservableCollection<Customer> GetDebtorReportData(int month, int year, bool K = true)
         {
             var exist = Adapters.ReportAdapter.GetDebtorReportData(month, year);
             if (exist == null)
             {
-                var customers = Adapters.CustomerAdapter.GetAll();
+                var customers = Adapters.CustomerAdapter.GetAll(false);
                 var bills = Adapters.BillAdapter.GetOldBillsOfDebtors();
-                if (customers != null && bills != null)
+                var pays = Adapters.PayDebtMoneyAdapter.GetAllPays();
+                if (customers != null && bills != null && pays != null)
                 {
                     var time = new DateTime(year, month, DateTime.DaysInMonth(year, month));
                     foreach (var c in customers)
@@ -136,18 +137,24 @@ namespace QuanLyNhaSach.Bus
                     }
                     foreach (var b in bills)
                     {
-                        if (b.PayMoney < 0)
+                        if (DateTime.Compare(time, b.DateCreated) >= 0)
                         {
-                            var k = DateTime.Compare(time, b.DateCreated);
-                            if (k == 0 || k > 0)
-                            {
-                                var c = customers.FirstOrDefault(x => x.ID == b.Customer.ID);
-                                if (c != null)
-                                    c.Debt += Math.Abs(b.PayMoney);
-                            }
+                            var c = customers.FirstOrDefault(x => x.ID == b.Customer.ID);
+                            if (c != null)
+                                c.Debt += Math.Abs(b.PayMoney);
                         }
                     }
-                    var result = customers.Where(x => x.Debt > 0).ToObservableCollection<Customer>();
+                    var debtors = customers.Where(x => x.Debt > 0);
+                    foreach (var p in pays)
+                    {
+                        if (DateTime.Compare(time, p.DateCreated) >= 0)
+                        {
+                            var c = debtors.FirstOrDefault(x => x.ID == p.Customer.ID);
+                            if (c != null)
+                                c.Debt -= Math.Abs(p.PayMoney);
+                        }
+                    }
+                    var result = debtors.Where(x => x.Debt > 0).ToObservableCollection<Customer>();
                     //=====
                     if (K)
                     {
@@ -157,7 +164,7 @@ namespace QuanLyNhaSach.Bus
                             year--;
                             month = 12;
                         }
-                        var olds = GetDebtor(month, year, false);
+                        var olds = GetDebtorReportData(month, year, false);
 
                         foreach (var c in result)
                         {
@@ -170,6 +177,34 @@ namespace QuanLyNhaSach.Bus
                     }
                     //=====
                     return result;
+                }
+                return null;
+            }
+            else
+            {
+                return exist;
+            }
+        }
+
+        public static ObservableCollection<Book> GetNumberReportData(int month, int year, bool K = true)
+        {
+            var exist = Adapters.ReportAdapter.GetNumberReportData(month, year);
+            if (exist == null)
+            {
+                var time = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+                var books = Adapters.BookAdapter.GetAll(false);
+                var bis = Adapters.BillItemAdapter.GetAllAfterDate(time);
+                if (books != null && bis != null)
+                {
+                    foreach (var item in bis)
+                    {
+                        var b = books.FirstOrDefault(x => x.ID == item.Book.ID);
+                        if (b != null)
+                        {
+                            b.Number += item.Number;
+                        }
+                    }
+                    return books;
                 }
                 return null;
             }

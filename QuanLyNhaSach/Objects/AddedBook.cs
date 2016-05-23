@@ -29,6 +29,7 @@ namespace QuanLyNhaSach.Objects
             get { return _number; }
             set { _number = value; NotifyPropertyChanged("Number"); }
         }
+
         #region Constructors
 
         public AddedBook():base(true)
@@ -41,6 +42,5 @@ namespace QuanLyNhaSach.Objects
             _iD = id;
         }
         #endregion
-        
     }
 }

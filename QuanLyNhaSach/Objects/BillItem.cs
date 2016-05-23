@@ -49,7 +49,8 @@ namespace QuanLyNhaSach.Objects
                 NotifyPropertyChanged("Number");
                 NotifyPropertyChanged("Total");
                 NotifyPropertyChanged("TotalFormat");
-                Container.WhenChildreUpdate();
+                if (Container != null)
+                    Container.WhenChildreUpdate();
             }
         }
 
@@ -68,7 +69,8 @@ namespace QuanLyNhaSach.Objects
                 NotifyPropertyChanged("PriceFormat");
                 NotifyPropertyChanged("Total");
                 NotifyPropertyChanged("TotalFormat");
-                Container.WhenChildreUpdate();
+                if (Container != null)
+                    Container.WhenChildreUpdate();
             }
         }
         #endregion

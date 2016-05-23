@@ -11,6 +11,52 @@ namespace QuanLyNhaSach.Adapters
 {
     public class BillItemAdapter
     {
+        public static ObservableCollection<BillItem> GetAll()
+        {
+            ObservableCollection<BillItem> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaSach, SoLuong, DonGia from ChiTietHoaDon");
+                if (reader != null)
+                {
+                    result = new ObservableCollection<BillItem>();
+                    while (reader.Read())
+                    {
+                        var item = new BillItem(BookAdapter.GetBook(reader.GetInt32(0)), reader.GetInt32(1), reader.GetInt32(2));
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
+        public static ObservableCollection<BillItem> GetAllAfterDate(DateTime date)
+        {
+            ObservableCollection<BillItem> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery(string.Format("select ct.MaSach, ct.SoLuong, ct.DonGia from ChiTietHoaDon ct, HoaDon hd where ct.MaHoaDon = hd.MaHoaDon and DATEDIFF(day, '{0}', hd.NgayLap) > 0", date));
+                if (reader != null)
+                {
+                    result = new ObservableCollection<BillItem>();
+                    while (reader.Read())
+                    {
+                        var item = new BillItem(BookAdapter.GetBook(reader.GetInt32(0)), reader.GetInt32(1), reader.GetInt32(2));
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
         public static ObservableCollection<BillItem> GetBillItems(int billid)
         {
             ObservableCollection<BillItem> result = null;

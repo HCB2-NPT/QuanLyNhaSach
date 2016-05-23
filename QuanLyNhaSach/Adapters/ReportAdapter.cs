@@ -29,6 +29,24 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
+        public static int ExistNumberReport(int month, int year)
+        {
+            try
+            {
+                var reader = DataConnector.ExecuteQuery(string.Format("select MaBaoCao from BaoCaoTon where Thang = {0} and Nam = {1}", month, year));
+                if (reader != null)
+                {
+                    while (reader.Read())
+                        return reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return -1;
+        }
+
         public static ObservableCollection<Customer> GetDebtorReportData(int month, int year)
         {
             ObservableCollection<Customer> result = null;
@@ -66,6 +84,20 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
+        public static ObservableCollection<Book> GetNumberReportData(int month, int year)
+        {
+            ObservableCollection<Book> result = null;
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
         public static int InsertNewDebtorReport(ObservableCollection<Customer> data, int month, int year)
         {
             try
@@ -83,7 +115,29 @@ namespace QuanLyNhaSach.Adapters
             }
             catch (Exception ex)
             {
-                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
+            }
+            return -1;
+        }
+
+        public static int InsertNewNumberReport(ObservableCollection<Book> data, int month, int year)
+        {
+            try
+            {
+                var result = DataConnector.ExecuteNonQuery(string.Format("insert into BaoCaoTon (Thang, Nam) values ({0}, {1})", month, year));
+                if (result == 1)
+                {
+                    var id = ExistNumberReport(month, year);
+                    foreach (var c in data)
+                    {
+                        //DataConnector.ExecuteNonQuery(string.Format("insert into ChiTietBaoCaoTon (MaBaoCao, MaKhachHang, SoLuongTonDau, SoLuongTonCuoi) values ({0}, {1}, {2}, {3})", id, c.ID, c.Tag, c.Number));
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeInsert.Call(ex.Message);
             }
             return -1;
         }

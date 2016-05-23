@@ -184,7 +184,7 @@ namespace QuanLyNhaSach.Bus
 
         public static void SaveChangeManagerListAddedBook(ManagerListAddedBook mlab)
         {
-            Adapters.ManagerListAddedBookAdapter.UpdateMLAB(mlab);
+            Adapters.ManagerListAddedBookAdapter.Update(mlab);
         }
     }
 }

@@ -52,10 +52,32 @@ namespace QuanLyNhaSach.Bus
 
         public static void SetupAutoUpdaters()
         {
+            //update: bills
             new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
             {
                 Managers.ErrorManager.Current.Ignore = true;
                 Adapters.BillAdapter.FixedBillsOverTime();
+                Managers.ErrorManager.Current.Ignore = false;
+            });
+
+            //update: addedbooks
+            new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
+            {
+                Managers.ErrorManager.Current.Ignore = true;
+                var adds = Adapters.ManagerListAddedBookAdapter.GetAll();
+                var now = DateTime.Now;
+                foreach (var c in adds)
+                {
+                    if (DateTime.Compare(now, c.DateAddIntoStorage) >= 0)
+                    {
+                        foreach (var b in c.ListAddedBook)
+                        {
+                            Adapters.BookAdapter.UpdateNumber(b.Book.ID, Adapters.BookAdapter.GetNumber(b.Book.ID) + b.Number);
+                            Adapters.AddedBookAdapter.DeleteAddedBook(b);
+                        }
+                        Adapters.ManagerListAddedBookAdapter.Delete(c);
+                    }
+                }
                 Managers.ErrorManager.Current.Ignore = false;
             });
         }

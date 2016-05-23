@@ -8,7 +8,7 @@
     <Grid>
         <DockPanel LastChildFill="True">
             <DockPanel LastChildFill="True" Background="#FF135995" DockPanel.Dock="Top" Height="40">
-                <Button x:Name="btnRefresh" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="WhiteSmoke" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Width="40" Click="reportBack" Visibility="{Binding Visibility, ElementName=reportContainer}">
+                <Button x:Name="btnRefresh" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="#FF212451" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Width="40" Click="reportBack" Visibility="{Binding Visibility, ElementName=reportContainer}">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                 </Button>
                 <DockPanel DockPanel.Dock="Right" Width="160" Margin="8,0">

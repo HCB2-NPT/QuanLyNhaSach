@@ -25,14 +25,14 @@ namespace QuanLyNhaSach.Objects
         }
         private DateTime _dateCreate;
 
-        public DateTime DateCreate
+        public DateTime DateCreated
         {
             get { return _dateCreate; }
             set { _dateCreate = value; }
         }
         private int _moneyRecieved;
 
-        public int MoneyRecieved
+        public int PayMoney
         {
             get { return _moneyRecieved; }
             set { _moneyRecieved = value; }
@@ -45,7 +45,5 @@ namespace QuanLyNhaSach.Objects
             set { _iDManager = value; }
         }
         #endregion
-
-
     }
 }

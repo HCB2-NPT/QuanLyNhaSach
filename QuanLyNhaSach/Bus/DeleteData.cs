@@ -21,7 +21,7 @@ namespace QuanLyNhaSach.Bus
         public static void DeleteManagerListAddedBook(ManagerListAddedBook mlab)
         {
             if (mlab.ListAddedBook.Count <= 0)
-                Adapters.ManagerListAddedBookAdapter.DeleteManagerListAddedBook(mlab);
+                Adapters.ManagerListAddedBookAdapter.Delete(mlab);
             else
             {
                 foreach (AddedBook item in mlab.ListAddedBook)
@@ -29,7 +29,7 @@ namespace QuanLyNhaSach.Bus
                     item.IsDeletedItem = true;
                     Bus.SaveChanges.SaveChangesListAddedBook(mlab);
                 }
-                Adapters.ManagerListAddedBookAdapter.DeleteManagerListAddedBook(mlab);
+                Adapters.ManagerListAddedBookAdapter.Delete(mlab);
             }
         }
     }

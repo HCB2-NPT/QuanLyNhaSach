@@ -95,7 +95,7 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                return Debt.ToString("#,###,##0 vnđ");
+                return Debt.ToString("#,##0 vnđ");
             }
         }
         #endregion

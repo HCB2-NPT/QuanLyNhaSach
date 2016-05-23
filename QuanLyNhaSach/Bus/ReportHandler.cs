@@ -48,5 +48,38 @@ namespace QuanLyNhaSach.Bus
                 WarningBox.Show("Thông báo...", "Xãy ra sự cố!", "Có vấn đề khi lập báo cáo với dữ liệu được tra!", false, ex.Message);
             }
         }
+
+        public static void CreateNumberReport(DocumentViewer documentViewer, ObservableCollection<Book> Data)
+        {
+            try
+            {
+                ReportDocument reportDocument = new ReportDocument();
+
+                StreamReader reader = new StreamReader(new FileStream(@"..\..\Assets\ReportTemplates\DebtorReport\DebtorReport.xaml", FileMode.Open, FileAccess.Read));
+                reportDocument.XamlData = reader.ReadToEnd();
+                reportDocument.XamlImagePath = System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\Assets\ReportTemplates\DebtorReport\");
+                reader.Close();
+
+                ReportData data = new ReportData();
+
+                DataTable table = new DataTable("DebtorReport");
+                table.Columns.Add("ID", typeof(string));
+                table.Columns.Add("Name", typeof(string));
+                table.Columns.Add("Debt", typeof(string));
+                table.Columns.Add("Phone", typeof(string));
+                foreach (var item in Data)
+                {
+                    table.Rows.Add(new object[] { item.ID, item.Name, string.Format("Tháng này: {0}\nTháng trước: {1:#,###,##0} vnđ", item.DebtFormat, item.Tag), item.PhoneFormat });
+                }
+                data.DataTables.Add(table);
+
+                XpsDocument xps = reportDocument.CreateXpsDocument(data);
+                documentViewer.Document = xps.GetFixedDocumentSequence();
+            }
+            catch (Exception ex)
+            {
+                WarningBox.Show("Thông báo...", "Xãy ra sự cố!", "Có vấn đề khi lập báo cáo với dữ liệu được tra!", false, ex.Message);
+            }
+        }
     }
 }

@@ -4,8 +4,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
-            
+        <DockPanel LastChildFill="True">
+            <DockPanel LastChildFill="True" Background="#FF135995" DockPanel.Dock="Top" Height="40">
+                <Button x:Name="btnRefresh" Foreground="{x:Null}" FontFamily="Segoe UI" BorderBrush="{x:Null}" BorderThickness="0" Height="40" Margin="0" Background="#FF212451" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Width="40" Click="reportBack" Visibility="{Binding Visibility, ElementName=reportContainer}">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
+                </Button>
+                <DockPanel DockPanel.Dock="Right" Width="160" Margin="8,0">
+                    <TextBlock Text="Năm:" FontSize="14" VerticalAlignment="Center" Foreground="White" Padding="8,0"/>
+                    <TextBox x:Name="year" FontSize="14" VerticalAlignment="Center" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource TextBoxWaterMask}" ToolTip="Chọn năm..." OpacityMask="#FFB9B9B9" PreviewTextInput="TextBox_NumberOnly" Height="20"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Right" Width="160" Margin="8,0">
+                    <TextBlock Text="Tháng:" FontSize="14" VerticalAlignment="Center" Foreground="White" Padding="8,0"/>
+                    <ComboBox x:Name="month" VerticalAlignment="Center" BorderThickness="0" BorderBrush="{x:Null}" MinHeight="0" Height="20">
+                        <ComboBoxItem Content="Tháng 1" Tag="1"/>
+                        <ComboBoxItem Content="Tháng 2" Tag="2"/>
+                        <ComboBoxItem Content="Tháng 3" Tag="3"/>
+                        <ComboBoxItem Content="Tháng 4" Tag="4"/>
+                        <ComboBoxItem Content="Tháng 5" Tag="5"/>
+                        <ComboBoxItem Content="Tháng 6" Tag="6"/>
+                        <ComboBoxItem Content="Tháng 7" Tag="7"/>
+                        <ComboBoxItem Content="Tháng 8" Tag="8"/>
+                        <ComboBoxItem Content="Tháng 9" Tag="9"/>
+                        <ComboBoxItem Content="Tháng 10" Tag="10"/>
+                        <ComboBoxItem Content="Tháng 11" Tag="11"/>
+                        <ComboBoxItem Content="Tháng 12" Tag="12"/>
+                    </ComboBox>
+                </DockPanel>
+                <TextBlock Text="Báo cáo tồn kho theo tháng" FontSize="14" VerticalAlignment="Center" Padding="8,0,0,0" Foreground="White"/>
+            </DockPanel>
+            <Grid>
+                <DockPanel LastChildFill="True">
+                    <Button DockPanel.Dock="Top" Height="40" Background="#FF3674A8" Style="{StaticResource Btn_IconOnly}" BorderThickness="0" BorderBrush="{x:Null}" OpacityMask="#FF71AADA" Click="getData">
+                        <TextBlock Text="Tra thông tin..." FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button Name="btnReport" DockPanel.Dock="Bottom" Height="40" Background="#FF3674A8" Style="{StaticResource Btn_IconOnly}" BorderThickness="0" BorderBrush="{x:Null}" OpacityMask="#FF71AADA" Click="preview" Visibility="Collapsed">
+                        <TextBlock Text="Lập báo cáo..." FontSize="16" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                    <DataGrid Name="dataGrid" ItemsSource="{Binding Data}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Số lượng tồn" FontSize="14">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding StringFormat="{}Tồn: {0}&#x0a;Bán trong tháng: {1}">
+                                        <Binding Path="Number"/>
+                                        <Binding Path="Tag"/>
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Thông tin sách" FontSize="14" Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding StringFormat="{}Tên sách: {0}&#x0a;Tác giả: {1}&#x0a;Thể loại: {2}">
+                                        <Binding Path="Name"/>
+                                        <Binding Path="AuthorsShortFormat"/>
+                                        <Binding Path="GenresShortFormat"/>
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+                <Grid Name="reportContainer" Visibility="Hidden">
+                    <DocumentViewer Name="documentViewer"/>
+                </Grid>
+            </Grid>
+        </DockPanel>
     </Grid>
 </UserControl>

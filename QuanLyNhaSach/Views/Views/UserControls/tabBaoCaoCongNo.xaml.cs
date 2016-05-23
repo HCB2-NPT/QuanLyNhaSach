@@ -63,7 +63,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 {
                     if (Year < DateTime.Now.Year || (Year == DateTime.Now.Year && Month < DateTime.Now.Month))
                     {
-                        Data = Bus.SearchData.GetDebtor(Month, Year);
+                        Data = Bus.SearchData.GetDebtorReportData(Month, Year);
                         btnReport.Visibility = System.Windows.Visibility.Visible;
                     }
                     else

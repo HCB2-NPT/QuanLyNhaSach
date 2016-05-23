@@ -75,7 +75,7 @@ namespace QuanLyNhaSach.Bus
 
         public static ObservableCollection<ManagerListAddedBook> GetAllManagerListAddedBook()
         {
-            return Adapters.ManagerListAddedBookAdapter.GetAllManagerListAddedBook();
+            return Adapters.ManagerListAddedBookAdapter.GetAll();
         }
 
         public static ObservableCollection<AddedBook> GetAllListAddedBook(int id)

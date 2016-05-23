@@ -106,7 +106,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void dt_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DatePicker dp = sender as DatePicker;
-            if (dp.SelectedDate < (dp.Tag as ManagerListAddedBook).DateCreate)
+            if (dp.SelectedDate < (dp.Tag as ManagerListAddedBook).DateCreated)
             {
                 ErrorManager.Current.WrongDateTime.Call("Ngày nhập kho phải tính từ ngày lập phiếu trở đi!");
                 (sender as DatePicker).SelectedDate = BackupDate;

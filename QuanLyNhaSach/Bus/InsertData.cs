@@ -82,7 +82,7 @@ namespace QuanLyNhaSach.Bus
 
         public static void InsertNewAddedBook(ManagerListAddedBook mlab)
         {
-            Adapters.ManagerListAddedBookAdapter.InsertNewManagerListAddedBook(mlab);
+            Adapters.ManagerListAddedBookAdapter.Insert(mlab);
             var IDmanager = Adapters.ManagerListAddedBookAdapter.GetLatestId();
             foreach (var item in mlab.ListAddedBook)
             {

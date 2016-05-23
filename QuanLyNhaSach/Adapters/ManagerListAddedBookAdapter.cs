@@ -11,7 +11,7 @@ namespace QuanLyNhaSach.Adapters
 {
     public class ManagerListAddedBookAdapter
     {
-        public static int InsertNewManagerListAddedBook(ManagerListAddedBook mlab)
+        public static int Insert(ManagerListAddedBook mlab)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace QuanLyNhaSach.Adapters
             return -1;
         }
 
-        public static ObservableCollection<ManagerListAddedBook> GetAllManagerListAddedBook()
+        public static ObservableCollection<ManagerListAddedBook> GetAll()
         {
             ObservableCollection<ManagerListAddedBook> result = null;
             try
@@ -56,7 +56,7 @@ namespace QuanLyNhaSach.Adapters
                         var id = reader.GetInt32(0);
                         var item = new ManagerListAddedBook(id);
                         item.BeginInit();
-                        item.DateCreate = reader.GetDateTime(1);
+                        item.DateCreated = reader.GetDateTime(1);
                         item.DateAddIntoStorage = reader.GetDateTime(2);
                         item.IDManager = (int)reader.GetValueDefault(3, 0);
                         item.EndInit();
@@ -71,7 +71,7 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static void DeleteManagerListAddedBook(ManagerListAddedBook mlab)
+        public static void Delete(ManagerListAddedBook mlab)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace QuanLyNhaSach.Adapters
             }
         }
 
-        public static void UpdateMLAB(ManagerListAddedBook mlab)
+        public static void Update(ManagerListAddedBook mlab)
         {
             try
             {

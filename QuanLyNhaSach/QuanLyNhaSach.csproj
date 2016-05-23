@@ -238,6 +238,10 @@
     <Compile Include="Views\Views\Windows\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="Assets\ReportTemplates\NumberReport\NumberReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Assets\ReportTemplates\DebtorReport\DebtorReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

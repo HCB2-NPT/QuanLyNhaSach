@@ -18,7 +18,7 @@ namespace QuanLyNhaSach
         {
             //check app: can not open more times
             Bus.AppHandler.AppCantOpenMoreTimes();
-            //update: bills
+            //auto update
             Bus.AppHandler.SetupAutoUpdaters();
             //run app
             base.OnStartup(e);

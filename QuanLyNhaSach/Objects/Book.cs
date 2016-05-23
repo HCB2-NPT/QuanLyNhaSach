@@ -232,9 +232,9 @@ namespace QuanLyNhaSach.Objects
             {
                 if (string.IsNullOrEmpty(Name))
                     return null;
-                if (string.IsNullOrEmpty(AuthorsFormat))
+                if (string.IsNullOrEmpty(AuthorsShortFormat))
                     return string.Format("{0:000} - {1}", ID, Name);
-                return string.Format("{0:000} - {1} - {2}", ID, Name, AuthorsFormat);
+                return string.Format("{0:000} - {1} - {2}", ID, Name, AuthorsShortFormat);
             }
         }
         #endregion

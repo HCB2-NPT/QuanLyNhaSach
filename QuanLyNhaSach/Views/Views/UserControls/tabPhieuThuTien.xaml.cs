@@ -143,17 +143,17 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
                 PayDebtMoney pdm = new PayDebtMoney();
                 pdm.Customer = lv_ListDebtor.SelectedItem as Customer;
-                pdm.DateCreate = DateTime.Now;
+                pdm.DateCreated = DateTime.Now;
                 pdm.IDManager = Managers.Manager.Current.User.Info.ID;
-                pdm.MoneyRecieved = PayMoney;
+                pdm.PayMoney = PayMoney;
                 if (rm >= 0)
                 {
-                    pdm.MoneyRecieved = pdm.Customer.Debt;
+                    pdm.PayMoney = pdm.Customer.Debt;
                     pdm.Customer.Debt = 0;
                 }
                 else
                 {
-                    pdm.MoneyRecieved = PayMoney;
+                    pdm.PayMoney = PayMoney;
                     pdm.Customer.Debt = Math.Abs(rm);
                 }
                 Bus.InsertData.NewPayDebtMoney(pdm);
