@@ -34,7 +34,7 @@
             </DockPanel>
         </DockPanel>
     </DataTemplate>
-    
+
     <Style x:Key="lvi_ContainerStyle" TargetType="{x:Type ListViewItem}">
         <Setter Property="Template">
             <Setter.Value>
@@ -102,17 +102,17 @@
     </DataTemplate>
 
     <DataTemplate x:Key="lvi_DSPhieuNhap">
-        <DockPanel Height="Auto" Width="Auto" Background="White" Margin="1">
-            <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFABADB3" Margin="4,0" Width="60"/>
+        <DockPanel Height="Auto" Width="Auto" Background="#FFF1F1F1" Margin="2">
+            <TextBlock TextAlignment="Center" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFABADB3" Margin="4,0" Width="30" FontSize="14" FontWeight="Bold"/>
             <Grid Height="Auto" Width="Auto" DockPanel.Dock="Right">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0">
+                <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
-                <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Grid.Row="1">
+                <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" Grid.Row="1" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
 
@@ -127,10 +127,10 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.RowSpan="1"/>
-                    <DatePicker Text="{Binding DateCreate,Mode=TwoWay}" VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Column="1"/>
-                    <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.Row="1"/>
-                    <DatePicker Text="{Binding DateAddIntoStorage,Mode=TwoWay}"  VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.RowSpan="1" FontSize="14" FontWeight="Bold"/>
+                    <DatePicker Text="{Binding DateCreate,Mode=TwoWay}" VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Column="1" Background="Transparent"/>
+                    <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
+                    <DatePicker Text="{Binding DateAddIntoStorage,Mode=TwoWay}"  VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1"/>
                 </Grid>
             </DockPanel>
         </DockPanel>

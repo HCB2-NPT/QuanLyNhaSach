@@ -63,5 +63,33 @@ namespace QuanLyNhaSach.Adapters
         //    //}
         //    //return result;
         //}
+
+        public static ObservableCollection<AddedBook> GetAllListAddedBook(int id)
+        {
+            ObservableCollection<AddedBook> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaPhieuNhap,MaSach,SoLuong from ChiTietPhieuNhap where MaPhieuNhap = " + id);
+                if (reader != null)
+                {
+                    result = new ObservableCollection<AddedBook>();
+                    while (reader.Read())
+                    {
+                        var ID = reader.GetInt32(0);
+                        var item = new AddedBook(ID);
+                        item.BeginInit();
+                        item.Book = BookAdapter.GetBook(reader.GetInt32(1));
+                        item.Number = reader.GetInt32(2);
+                        item.EndInit();
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
     }
 }
