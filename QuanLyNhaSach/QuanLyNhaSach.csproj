@@ -70,6 +70,7 @@
     </Reference>
     <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -117,6 +118,7 @@
     <Compile Include="Adapters\AddedBookAdapter.cs" />
     <Compile Include="Adapters\ManagerListAddedBookAdapter.cs" />
     <Compile Include="Adapters\PayDebtMoneyAdapter.cs" />
+    <Compile Include="Adapters\ReportAdapter.cs" />
     <Compile Include="Adapters\RuleAdapter.cs" />
     <Compile Include="Assets\Extensions\CollectionExt.cs" />
     <Compile Include="Assets\Extensions\SqlDataReaderExt.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Bus\DeleteData.cs" />
     <Compile Include="Bus\FillData.cs" />
     <Compile Include="Bus\InsertData.cs" />
+    <Compile Include="Bus\ReportHandler.cs" />
     <Compile Include="Bus\SaveChanges.cs" />
     <Compile Include="Bus\SearchData.cs" />
     <Compile Include="Bus\UpdateData.cs" />
@@ -235,6 +238,10 @@
     <Compile Include="Views\Views\Windows\WarningBox.xaml.cs">
       <DependentUpon>WarningBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="Assets\ReportTemplates\DebtorReport\DebtorReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

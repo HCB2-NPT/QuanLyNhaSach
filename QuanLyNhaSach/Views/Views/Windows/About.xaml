@@ -1,8 +1,8 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         x:Name="window" x:Class="QuanLyNhaSach.Views.Views.Windows.About"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
         Height="180" Width="560">
     <Window.Resources>

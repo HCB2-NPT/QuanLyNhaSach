@@ -44,6 +44,39 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
+        public static ObservableCollection<Bill> GetOldBillsOfDebtors()
+        {
+            ObservableCollection<Bill> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaHoaDon, NgayLap, MaKhachHang, TienTra from HoaDon where TienTra < 0");
+                if (reader != null)
+                {
+                    result = new ObservableCollection<Bill>();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        var item = new Bill(id, reader.GetDateTime(1));
+                        item.BeginInit();
+                        item.Customer = CustomerAdapter.GetCustomer(reader.GetInt32(2));
+                        item.PayMoney = reader.GetInt32(3);
+                        foreach (var i in BillItemAdapter.GetBillItems(id))
+                        {
+                            item.BillItems.Add(i);
+                        }
+                        item.EndInit();
+
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
         public static int GetLatestId()
         {
             try

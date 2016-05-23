@@ -119,5 +119,64 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.BookAdapter.GetBook(id);
         }
+
+        public static ObservableCollection<Customer> GetDebtor(int month, int year, bool K = true)
+        {
+            var exist = Adapters.ReportAdapter.GetDebtorReportData(month, year);
+            if (exist == null)
+            {
+                var customers = Adapters.CustomerAdapter.GetAll();
+                var bills = Adapters.BillAdapter.GetOldBillsOfDebtors();
+                if (customers != null && bills != null)
+                {
+                    var time = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+                    foreach (var c in customers)
+                    {
+                        c.Debt = 0;
+                    }
+                    foreach (var b in bills)
+                    {
+                        if (b.PayMoney < 0)
+                        {
+                            var k = DateTime.Compare(time, b.DateCreated);
+                            if (k == 0 || k > 0)
+                            {
+                                var c = customers.FirstOrDefault(x => x.ID == b.Customer.ID);
+                                if (c != null)
+                                    c.Debt += Math.Abs(b.PayMoney);
+                            }
+                        }
+                    }
+                    var result = customers.Where(x => x.Debt > 0).ToObservableCollection<Customer>();
+                    //=====
+                    if (K)
+                    {
+                        month--;
+                        if (month <= 0)
+                        {
+                            year--;
+                            month = 12;
+                        }
+                        var olds = GetDebtor(month, year, false);
+
+                        foreach (var c in result)
+                        {
+                            var k = olds.FirstOrDefault(x => x.ID == c.ID);
+                            if (k != null)
+                                c.Tag = k.Debt;
+                            else
+                                c.Tag = 0;
+                        }
+                    }
+                    //=====
+                    return result;
+                }
+                return null;
+            }
+            else
+            {
+                return exist;
+            }
+        }
     }
 }

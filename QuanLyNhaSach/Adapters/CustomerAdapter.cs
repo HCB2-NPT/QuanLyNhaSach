@@ -245,6 +245,5 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
-
     }
 }

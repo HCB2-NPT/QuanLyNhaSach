@@ -26,17 +26,17 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (isShow)
             {
-                controlFull.Height = 40;
+                //controlFull.Height = 40;
                 controlFull.Visibility = System.Windows.Visibility.Visible;
-                controlMini.Height = 40;
+                //controlMini.Height = 40;
                 controlMini.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                controlFull.Height = 0;
-                controlFull.Visibility = System.Windows.Visibility.Hidden;
-                controlMini.Height = 0;
-                controlMini.Visibility = System.Windows.Visibility.Hidden;
+                //controlFull.Height = 0;
+                controlFull.Visibility = System.Windows.Visibility.Collapsed;
+                //controlMini.Height = 0;
+                controlMini.Visibility = System.Windows.Visibility.Collapsed;
             }
             controlFull.Tag = tag;
             controlMini.Tag = tag;

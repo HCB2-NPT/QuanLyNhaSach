@@ -61,7 +61,7 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                return string.Format("(+84) {0:# ##0}", PhoneByInteger);
+                return string.Format("(+84) {0:0000 0000 000}", PhoneByInteger);
             }
         }
 
@@ -95,7 +95,7 @@ namespace QuanLyNhaSach.Objects
         {
             get
             {
-                return Debt.ToString("#,##0 vnđ");
+                return Debt.ToString("#,###,##0 vnđ");
             }
         }
         #endregion

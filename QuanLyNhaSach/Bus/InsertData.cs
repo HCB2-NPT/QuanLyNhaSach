@@ -101,5 +101,11 @@ namespace QuanLyNhaSach.Bus
                 }
             }
         }
+
+        public static void InsertNewDebtorReport(ObservableCollection<Customer> data, int month, int year)
+        {
+            if (Adapters.ReportAdapter.ExistDebtorReport(month, year) == -1)
+                Adapters.ReportAdapter.InsertNewDebtorReport(data, month, year);
+        }
     }
 }
