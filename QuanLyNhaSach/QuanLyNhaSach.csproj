@@ -58,11 +58,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CodeReason.Reports">
-      <HintPath>..\dll\CodeReason.Reports.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>dll\CodeReason.Reports.dll</HintPath>
     </Reference>
     <Reference Include="CodeReason.Reports.Charts.Visifire">
-      <HintPath>..\dll\CodeReason.Reports.Charts.Visifire.dll</HintPath>
+      <HintPath>dll\CodeReason.Reports.Charts.Visifire.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA147\lib\net40\MahApps.Metro.dll</HintPath>
@@ -99,7 +98,7 @@
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
     </Reference>
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\dll\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>dll\WPFVisifire.Charts.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -523,7 +522,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)Data" "$(TargetDir)Data\" /Y /E</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)Data" "$(TargetDir)Data\" /Y /E
+xcopy /y "$(ProjectDir)dll\*.dll" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

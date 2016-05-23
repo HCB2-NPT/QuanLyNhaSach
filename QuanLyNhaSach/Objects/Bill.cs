@@ -17,6 +17,22 @@ namespace QuanLyNhaSach.Objects
         private int _totalMoney = 0;
         private ObservableCollection<BillItem> _billItems = new ObservableCollection<BillItem>();
 
+        private void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                foreach (BillItem item in e.NewItems)
+                {
+                    item.Container = this;
+                }
+            }
+
+            NotifyPropertyChanged("TotalMoney");
+            NotifyPropertyChanged("TotalMoneyFormat");
+            NotifyPropertyChanged("ReturnMoney");
+            NotifyPropertyChanged("ReturnMoneyFormat");
+        }
+        
         private void Init()
         {
             _billItems.CollectionChanged += _listbook_CollectionChanged;
@@ -43,24 +59,6 @@ namespace QuanLyNhaSach.Objects
             _id = id;
             _dateCreate = dateCreated;
             Init();
-        }
-        #endregion
-
-        #region Events
-        private void _listbook_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
-            {
-                foreach (BillItem item in e.NewItems)
-                {
-                    item.Container = this;
-                }
-            }
-
-            NotifyPropertyChanged("TotalMoney");
-            NotifyPropertyChanged("TotalMoneyFormat");
-            NotifyPropertyChanged("ReturnMoney");
-            NotifyPropertyChanged("ReturnMoneyFormat");
         }
         #endregion
 

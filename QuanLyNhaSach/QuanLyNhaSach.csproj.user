@@ -4,7 +4,8 @@
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>C:\Users\19101994\Documents\Do An NM CNPM\QuanLyNhaSach\dll\</ReferencePath>
+    <ReferencePath>
+    </ReferencePath>
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />

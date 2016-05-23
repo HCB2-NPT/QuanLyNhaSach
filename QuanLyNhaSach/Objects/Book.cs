@@ -35,13 +35,11 @@ namespace QuanLyNhaSach.Objects
         #region Events
         void _genres_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            NotifyPropertyChanged("Genres");
             UpdateGenresFormat();
         }
 
         void _authors_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            NotifyPropertyChanged("Authors");
             UpdateAuthorsFormat();
         }
         #endregion
