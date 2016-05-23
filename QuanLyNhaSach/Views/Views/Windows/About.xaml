@@ -74,7 +74,7 @@
                         <TextBlock Text=" ~ MahApps.Metro and WPF Toolkit" Grid.Row="1" Margin="0" ToolTip="http://mahapps.com/" Grid.ColumnSpan="2"/>
                         <TextBlock Text=" ~ WPF.MDI" Grid.Row="2" Margin="0" ToolTip="https://wpfmdi.codeplex.com/" Grid.ColumnSpan="2"/>
                         <TextBlock Text=" ~ NUnit and NUnit Adapter" Grid.Row="3" Margin="0" ToolTip="From NuGet" Grid.ColumnSpan="2"/>
-                        <TextBlock Text=" ~ Report Library ...finding" Grid.Row="4" Margin="0" ToolTip="..." Grid.ColumnSpan="2"/>
+                        <TextBlock Text=" ~ WPF Reporting Engine" Grid.Row="4" Margin="0" ToolTip="http://wpfreports.codeplex.com/" Grid.ColumnSpan="2"/>
 
                         <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0" ToolTip="1542243"/>
                         <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0" ToolTip="1542255"/>

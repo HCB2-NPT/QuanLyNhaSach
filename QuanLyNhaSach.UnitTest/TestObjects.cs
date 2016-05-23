@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace QuanLyNhaSach.UnitTest
 {
     [TestFixture]
-    public class Test_Objects
+    public class TestObjects
     {
         [Test]
         [Category("HighLevel Objects")]
@@ -62,44 +62,16 @@ namespace QuanLyNhaSach.UnitTest
 
         [Test]
         [Category("LowLevel Objects")]
-        public void NewAccount()
+        public void Account()
         {
-            var o = new Account()
-            {
-                Name = "tester",
-                Password = "test",
-                Email = "123@abc.com",
-                AccessLevel = null
-            };
-            Assert.AreEqual(o.ID, 0);
-            Assert.AreEqual(o.Name, "tester");
-            Assert.AreEqual(o.Password, "test");
-            Assert.AreEqual(o.Email, "123@abc.com");
-            Assert.AreEqual(o.AccessLevel, null);
+            Account o;
 
+            o = new Account();
+            Assert.AreEqual(o.ID, 0);
             Assert.AreEqual(o.IsCreatedItem, true);
 
-            o.Name = "tester2";
-            Assert.AreEqual(o.IsEditedItem, true);
-        }
-
-        [Test]
-        [Category("LowLevel Objects")]
-        public void AvailableAccount()
-        {
-            var o = new Account(1)
-            {
-                Name = "tester",
-                Password = "test",
-                Email = "123@abc.com",
-                AccessLevel = null
-            };
+            o = new Account(1);
             Assert.AreEqual(o.ID, 1);
-            Assert.AreEqual(o.Name, "tester");
-            Assert.AreEqual(o.Password, "test");
-            Assert.AreEqual(o.Email, "123@abc.com");
-            Assert.AreEqual(o.AccessLevel, null);
-
             Assert.AreEqual(o.IsCreatedItem, false);
 
             o.Name = "tester2";
@@ -108,32 +80,16 @@ namespace QuanLyNhaSach.UnitTest
 
         [Test]
         [Category("LowLevel Objects")]
-        public void NewAuthor()
+        public void Author()
         {
-            var o = new Author()
-            {
-                Name = "test"
-            };
-            Assert.AreEqual(o.ID, 0);
-            Assert.AreEqual(o.Name, "test");
+            Author o;
 
+            o = new Author();
+            Assert.AreEqual(o.ID, 0);
             Assert.AreEqual(o.IsCreatedItem, true);
 
-            o.Name = "tester2";
-            Assert.AreEqual(o.IsEditedItem, true);
-        }
-
-        [Test]
-        [Category("LowLevel Objects")]
-        public void AvailableAuthor()
-        {
-            var o = new Author(1)
-            {
-                Name = "test"
-            };
+            o = new Author(1);
             Assert.AreEqual(o.ID, 1);
-            Assert.AreEqual(o.Name, "test");
-
             Assert.AreEqual(o.IsCreatedItem, false);
 
             o.Name = "tester2";
@@ -142,32 +98,16 @@ namespace QuanLyNhaSach.UnitTest
 
         [Test]
         [Category("LowLevel Objects")]
-        public void NewGenre()
+        public void Genre()
         {
-            var o = new Genre()
-            {
-                Name = "test"
-            };
-            Assert.AreEqual(o.ID, 0);
-            Assert.AreEqual(o.Name, "test");
+            Genre o;
 
+            o = new Genre();
+            Assert.AreEqual(o.ID, 0);
             Assert.AreEqual(o.IsCreatedItem, true);
 
-            o.Name = "tester2";
-            Assert.AreEqual(o.IsEditedItem, true);
-        }
-
-        [Test]
-        [Category("LowLevel Objects")]
-        public void AvailableGenre()
-        {
-            var o = new Genre(1)
-            {
-                Name = "test"
-            };
+            o = new Genre(1);
             Assert.AreEqual(o.ID, 1);
-            Assert.AreEqual(o.Name, "test");
-
             Assert.AreEqual(o.IsCreatedItem, false);
 
             o.Name = "tester2";

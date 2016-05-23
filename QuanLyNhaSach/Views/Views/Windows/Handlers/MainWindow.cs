@@ -79,8 +79,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 }
                 var _report = new Function();
                 {
-                    _report.Children.Add(new Function("Tồn kho") { Data = "", Tag = 0 });
-                    _report.Children.Add(new Function("Công nợ") { Data = "", Tag = 0 });
+                    _report.Children.Add(new Function("Tồn kho") { Data = typeof(tabBaoCaoTonKho), Tag = 0 });
+                    _report.Children.Add(new Function("Công nợ") { Data = typeof(tabBaoCaoCongNo), Tag = 0 });
                 }
                 var _account = new Function();
                 {
@@ -302,8 +302,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             Bus.AppHandler.OpenWindowExt<About>(this, ref About);
             var workingArea = Assets.Scripts.WpfScreen.GetScreenFrom(this).WorkingArea;
-            About.Top = workingArea.Height - Height;
-            About.Left = workingArea.Width - Width;
+            About.Top = workingArea.Height - About.ActualHeight;
+            About.Left = workingArea.Width - About.ActualWidth;
             About.Focus();
         }
 
