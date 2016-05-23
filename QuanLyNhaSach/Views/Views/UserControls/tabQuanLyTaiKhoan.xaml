@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyTaiKhoan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:usercontrols="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600" Background="#FFF2F2F2">
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<Border BorderThickness="0,0,0,2" BorderBrush="#FFE0E0E0">
+				<DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF2F2F2">
+					<Button DockPanel.Dock="Right" Width="40" Height="40" OpacityMask="#FFC9DFF2" Margin="0">
+						<Image Source="/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
+					</Button>
+					<TextBox ToolTip="Tìm kiếm" DockPanel.Dock="Right" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0,0,0,1" Background="{x:Null}"/>
+				</DockPanel>
+			</Border>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0" VerticalAlignment="Top" Height="400">
+			<TextBlock DockPanel.Dock="Top" FontSize="16" FontWeight="Bold" Foreground="#FF212121" Margin="16,16,16,0">DANH SÁCH TÀI KHOẢN</TextBlock>
+		</DockPanel>
+	</DockPanel>
+</UserControl>

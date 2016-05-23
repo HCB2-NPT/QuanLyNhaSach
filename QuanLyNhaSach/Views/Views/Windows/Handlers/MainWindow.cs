@@ -49,10 +49,17 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
             {
+                var _account = new Function();
+                {
+                    _account.Children.Add(new Function("Quản lý Tài Khoản") { Data = typeof(tabQuanLyTaiKhoan) });
+                    //_account.Children.Add(new Function("Tạo Tài Khoản") { Data = typeof(tabQuanLyTaiKhoan) });
+                    //_account.Children.Add(new Function("Khôi phục mật khẩu") { Data = typeof(tabQuanLyTaiKhoan) });
+                }
+
                 ShowFunction(btnSachFull, btnSachMini, false);
                 ShowFunction(btnHoaDonFull, btnHoaDonMini, false);
                 ShowFunction(btnKhachHangFull, btnKhachHangMini, false);
-                ShowFunction(btnTaiKhoanFull, btnTaiKhoanMini, true);
+                ShowFunction(btnTaiKhoanFull, btnTaiKhoanMini, true, _account);
                 ShowFunction(btnBaoCaoFull, btnBaoCaoMini, false);
                 ShowFunction(btnQuyDinhFull, btnQuyDinhMini, false);
             }

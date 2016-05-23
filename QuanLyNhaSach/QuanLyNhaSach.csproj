@@ -162,6 +162,9 @@
     <Compile Include="Views\Views\UserControls\tabBaoCaoTonKho.xaml.cs">
       <DependentUpon>tabBaoCaoTonKho.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabQuanLyTaiKhoan.xaml.cs">
+      <DependentUpon>tabQuanLyTaiKhoan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">
       <DependentUpon>tabQuyDinh.xaml</DependentUpon>
     </Compile>
@@ -295,6 +298,10 @@
     <Page Include="Views\Views\UserControls\tabQuanLySach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabQuanLyTaiKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabQuyDinh.xaml">
       <SubType>Designer</SubType>
