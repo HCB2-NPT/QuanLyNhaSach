@@ -169,5 +169,22 @@ namespace QuanLyNhaSach.Bus
                 }
             }
         }
+
+        public static void SaveChangesListAddedBook(ManagerListAddedBook SelectedMLAB)
+        {
+            foreach (var item in SelectedMLAB.ListAddedBook)
+            {
+                if (item.IsEditedItem)
+                    Adapters.AddedBookAdapter.UpdateAddedBook(item);
+                if (item.IsDeletedItem)
+                    Adapters.AddedBookAdapter.DeleteAddedBook(item);
+            }
+            
+        }
+
+        public static void SaveChangeManagerListAddedBook(ManagerListAddedBook mlab)
+        {
+            Adapters.ManagerListAddedBookAdapter.UpdateMLAB(mlab);
+        }
     }
 }

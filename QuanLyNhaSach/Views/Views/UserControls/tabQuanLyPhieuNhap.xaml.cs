@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
+using QuanLyNhaSach.Managers;
 
 namespace QuanLyNhaSach.Views.Views.UserControls
 {
@@ -22,6 +24,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 	public partial class tabQuanLyPhieuNhap : UserControl,INotifyPropertyChanged
     {
         #region Properties
+
+        private DateTime BackupDate = new DateTime();
 
         ObservableCollection<ManagerListAddedBook> _listMLAB = Bus.FillData.GetAllManagerListAddedBook();
         public ObservableCollection<ManagerListAddedBook> ListMLAB
@@ -82,7 +86,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 SelectedMLAB = lv_ListPN.SelectedItem as ManagerListAddedBook;
                 SelectedMLAB.ListAddedBook = new ObservableCollection<AddedBook>();
                 SelectedMLAB.ListAddedBook = Bus.FillData.GetAllListAddedBook(SelectedMLAB.ID);
-                NotifyPropertyChanged("SelectedMLAB");
+                //NotifyPropertyChanged("SelectedMLAB");
             }
             
         }
@@ -95,19 +99,71 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 ManagerListAddedBook mlab = btn.Tag as ManagerListAddedBook;
                 ListMLAB.Remove(mlab);
                 NotifyPropertyChanged("ListMLAB");
+                Bus.DeleteData.DeleteManagerListAddedBook(mlab);
             }
         }
 
         private void dt_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show("1");
-            MessageBox.Show((sender as DatePicker).SelectedDate.Value.ToString());
+            DatePicker dp = sender as DatePicker;
+            if (dp.SelectedDate < (dp.Tag as ManagerListAddedBook).DateCreate)
+            {
+                ErrorManager.Current.WrongDateTime.Call("Ngày nhập kho phải tính từ ngày lập phiếu trở đi!");
+                (sender as DatePicker).SelectedDate = BackupDate;
+            }
+            
         }
 
         private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("2");
+            BackupDate = (sender as DatePicker).SelectedDate.Value;
         }
+
+        private void btn_DeleteBook(object sender, RoutedEventArgs e)
+        {
+            ((sender as Button).Tag as AddedBook).IsDeletedItem = true;
+            NotifyPropertyChanged("SelectedMLAB");
+        }
+
+        private void btn_SaveChangeItem(object sender, RoutedEventArgs e)
+        {
+            if (SelectedMLAB!=null)
+            {
+                Bus.SaveChanges.SaveChangesListAddedBook(SelectedMLAB);
+                SelectedMLAB.ListAddedBook = Bus.FillData.GetAllListAddedBook(SelectedMLAB.ID);
+            }
+        }
+
+        private void btn_Restore_Click(object sender, RoutedEventArgs e)
+        {
+            ((sender as Button).Tag as AddedBook).IsDeletedItem = false;
+        }
+
+        private void btn_SaveDate(object sender, RoutedEventArgs e)
+        {
+
+            Bus.SaveChanges.SaveChangeManagerListAddedBook((sender as Button).Tag as ManagerListAddedBook);
+        }
+
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (tb_Search.Text!="")
+            {
+                ManagerListAddedBook mlab = ListMLAB.FirstOrDefault(x => x.ID.ToString() == tb_Search.Text.ToString());
+                if (mlab == null)
+                {
+                    ErrorManager.Current.InfoIsNull.Call("Không tìm được phiếu có mã cần tìm!");
+                    tb_Search.Text = "";
+                }
+                else
+                {
+                    lv_ListPN.SelectedItem = mlab;
+                    lv_ListPN.ScrollIntoView(mlab);
+                }
+            }
+        }
+
+       
 
 
     }

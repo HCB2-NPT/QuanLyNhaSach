@@ -70,5 +70,29 @@ namespace QuanLyNhaSach.Adapters
             }
             return result;
         }
+
+        public static void DeleteManagerListAddedBook(ManagerListAddedBook mlab)
+        {
+            try
+            {
+                DataConnector.ExecuteNonQuery("delete from PhieuNhap where MaPhieuNhap=" + mlab.ID);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+        }
+
+        public static void UpdateMLAB(ManagerListAddedBook mlab)
+        {
+            try
+            {
+                DataConnector.ExecuteNonQuery(string.Format("update PhieuNhap set NgayNhapKho='{0}' where MaPhieuNhap={1}",mlab.DateAddIntoStorage,mlab.ID));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+        }
     }
 }
