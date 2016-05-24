@@ -26,16 +26,12 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (isShow)
             {
-                //controlFull.Height = 40;
                 controlFull.Visibility = System.Windows.Visibility.Visible;
-                //controlMini.Height = 40;
                 controlMini.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                //controlFull.Height = 0;
                 controlFull.Visibility = System.Windows.Visibility.Collapsed;
-                //controlMini.Height = 0;
                 controlMini.Visibility = System.Windows.Visibility.Collapsed;
             }
             controlFull.Tag = tag;
@@ -49,17 +45,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
             {
-                var _account = new Function();
-                {
-                    _account.Children.Add(new Function("Quản lý Tài Khoản") { Data = typeof(tabQuanLyTaiKhoan) });
-                    //_account.Children.Add(new Function("Tạo Tài Khoản") { Data = typeof(tabQuanLyTaiKhoan) });
-                    //_account.Children.Add(new Function("Khôi phục mật khẩu") { Data = typeof(tabQuanLyTaiKhoan) });
-                }
-
                 ShowFunction(btnSachFull, btnSachMini, false);
                 ShowFunction(btnHoaDonFull, btnHoaDonMini, false);
                 ShowFunction(btnKhachHangFull, btnKhachHangMini, false);
-                ShowFunction(btnTaiKhoanFull, btnTaiKhoanMini, true, _account);
+                ShowFunction(btnTaiKhoanFull, btnTaiKhoanMini, true);
                 ShowFunction(btnBaoCaoFull, btnBaoCaoMini, false);
                 ShowFunction(btnQuyDinhFull, btnQuyDinhMini, false);
             }
@@ -450,6 +439,11 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void openQuyDinh(object sender, RoutedEventArgs e)
         {
             Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
+        }
+
+        private void openTaiKhoan(object sender, RoutedEventArgs e)
+        {
+            Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tải khoản", false);
         }
         #endregion
     }
