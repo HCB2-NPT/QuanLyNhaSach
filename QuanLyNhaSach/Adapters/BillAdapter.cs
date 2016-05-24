@@ -101,7 +101,7 @@ namespace QuanLyNhaSach.Adapters
             {
                 return DataConnector.ExecuteNonQuery("insert into HoaDon " +
                     "(MaKhachHang, NgayLap, TienTra, TongTien, DaLuu) " + 
-                    string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer == null ? 13 : newBill.Customer.ID, DateTime.Now, newBill.ReturnMoney, newBill.TotalMoney));
+                    string.Format("values ({0}, '{1}', {2}, {3}, 'false')", newBill.Customer == null ? 13 : newBill.Customer.ID, DateTime.Now, newBill.PayMoney, newBill.TotalMoney));
             }
             catch (Exception ex)
             {

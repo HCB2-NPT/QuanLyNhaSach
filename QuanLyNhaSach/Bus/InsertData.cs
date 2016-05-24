@@ -19,6 +19,8 @@ namespace QuanLyNhaSach.Bus
 
         public static void InsertNewBill(Bill newBill)
         {
+            if (newBill.ReturnMoney >= 0)
+                newBill.PayMoney = newBill.TotalMoney;
             var k = Adapters.BillAdapter.InsertNewBill(newBill);
             if (k == 1)
             {
