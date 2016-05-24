@@ -10,11 +10,11 @@
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <Border BorderThickness="0,0,0,2" BorderBrush="#FFE0E0E0">
-                <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF2F2F2">
-                    <Button DockPanel.Dock="Right" Width="40" Height="40" OpacityMask="#FFC9DFF2" Margin="0">
-                        <Image Source="/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
+                <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF4F4F4">
+                    <Button x:Name="btnSearch" DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" Width="40" Height="40" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Margin="0" Click="Button_Click_Search">
+                        <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
                     </Button>
-                    <TextBox ToolTip="Tìm kiếm" DockPanel.Dock="Right" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0,0,0,1" Background="{x:Null}"/>
+                    <TextBox x:Name="txtSearch" Style="{DynamicResource TextBoxWaterMask}" ToolTip="Tìm kiếm" DockPanel.Dock="Right" Background="{x:Null}" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" OpacityMask="#FFBBBBBB" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0" PreviewKeyDown="txt_autocomplete"/>
                 </DockPanel>
             </Border>
         </DockPanel>
