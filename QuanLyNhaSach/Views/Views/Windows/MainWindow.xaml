@@ -74,7 +74,7 @@
                 </Button>
             </DockPanel>
             <DockPanel>
-                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000" d:IsLocked="True">
+                <DockPanel x:Name="_menuFull" Width="200" Background="#66000000">
                     <Button x:Name="_btnMenuFull"  Width="40" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -95,7 +95,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Business Contact-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="showFunctionList" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
+                    <Button x:Name="btnTaiKhoanFull" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="Tài Khoản" Style="{DynamicResource BtnChucNang}" Foreground="White" Click="openTaiKhoan" Focusable="False" FontSize="16" FontFamily="Segoe UI Light">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Contacts-64.png"/>
                         </Button.Background>
@@ -135,7 +135,7 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
-                <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False" d:IsLocked="True">
+                <DockPanel x:Name="_menuMini" Width="0" Background="#66000000" LastChildFill="False">
                     <Button x:Name="_btnMenuMini" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Height="40" Padding="1" BorderBrush="{x:Null}" Style="{DynamicResource BtnChucNang}" Focusable="False">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Menu-64.png"/>
@@ -156,7 +156,7 @@
                             <ImageBrush ImageSource="../../../Assets/Images/Business Contact-64.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnTaiKhoanMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="showFunctionList" Focusable="False">
+                    <Button x:Name="btnTaiKhoanMini" VerticalAlignment="Top" Height="40" DockPanel.Dock="Top" BorderBrush="{x:Null}" Content="" Style="{DynamicResource BtnChucNang}" Foreground="White" FontSize="18.667" Click="openTaiKhoan" Focusable="False">
                         <Button.Background>
                             <ImageBrush ImageSource="../../../Assets/Images/Contacts-64.png"/>
                         </Button.Background>

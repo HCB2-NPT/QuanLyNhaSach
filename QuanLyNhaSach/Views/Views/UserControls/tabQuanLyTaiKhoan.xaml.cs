@@ -33,25 +33,56 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #endregion
 
         #region Constructor
+
         public tabQuanLyTaiKhoan()
         {
             InitializeComponent();
             dgAccounts.ItemsSource = Accounts;
         }
+
         #endregion
 
         #region Implements
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
+
+        #region Handlers
+
+        void searchItem(string key)
+        {
+            dgAccounts.ItemsSource = Bus.SearchData.SearchAccount(Accounts, key);
+        }
+
+        #endregion
+
+        #region Events
 
         private void Button_Click_ShowDetails(object sender, RoutedEventArgs e)
         {
+            object accountID = ((Button)sender).CommandParameter;
 
+            var uc = (tabCapNhatTaiKhoan)Bus.AppHandler.OpenTab(Tag as WPF.MDI.MdiContainer, typeof(tabCapNhatTaiKhoan), "Cập nhật tài khoản", false);
+            uc.Account = accountID.ToString();
         }
+
+        private void Button_Click_Search(object sender, RoutedEventArgs e)
+        {
+            searchItem(txtSearch.Text.ToLower());
+        }
+
+        private void txt_autocomplete(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                searchItem(txtSearch.Text.ToLower());
+        }
+
+        #endregion
     }
 }
