@@ -21,13 +21,13 @@
 			</Grid.RowDefinitions>
 
 			<TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,24.866,0,0" TextWrapping="Wrap" Text="Họ tên" VerticalAlignment="Top" Width="146"/>
-			<TextBox HorizontalAlignment="Left" Height="0" Margin="16,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Name}" />
+			<TextBox Name="txtFullname" HorizontalAlignment="Left" Height="0" Margin="16,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Name}" />
 			<TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,24.866,0,0" TextWrapping="Wrap" Text="Phân quyền" VerticalAlignment="Top" Width="146" Grid.Row="2"/>
             <ComboBox Foreground="#FF212121" HorizontalAlignment="Left" Height="18" Margin="16,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="328" Name="listRoles" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Account.AccessLevel.ID}"/>
-			<CheckBox Content="Reset mật khẩu" HorizontalAlignment="Left" Height="18.291" Margin="16,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="171" />
-			<CheckBox Content="Khóa tài khoản" HorizontalAlignment="Left" Height="18.291" Margin="16,10.001,0,0" Grid.Row="5" VerticalAlignment="Top" Width="171"/>
-			<Button Content="CẬP NHẬT TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="184,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="160" Cursor="Hand" FontFamily="Segoe UI" />
-			<Button Content="TRỞ VỀ" HorizontalAlignment="Left" Height="32" Margin="82,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" Width="80" FontSize="14" Cursor="Hand" FontFamily="Segoe UI" />
+			<CheckBox Name="IsResetPassword" Content="Reset mật khẩu" HorizontalAlignment="Left" Height="18.291" Margin="16,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="171" />
+			<CheckBox Name="IsClockedAccount" Content="Khóa tài khoản" HorizontalAlignment="Left" Height="18.291" Margin="16,10.001,0,0" Grid.Row="5" VerticalAlignment="Top" Width="171" IsChecked="{Binding Account.IsDeleted}"/>
+			<Button Content="CẬP NHẬT TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="184,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="160" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Update" />
+			<Button Content="TRỞ VỀ" HorizontalAlignment="Left" Height="32" Margin="82,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" Width="80" FontSize="14" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Close" />
 		</Grid>
 	</DockPanel>
 </UserControl>

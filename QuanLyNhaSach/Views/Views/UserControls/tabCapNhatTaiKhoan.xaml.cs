@@ -59,5 +59,27 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
 
         #endregion
+
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void Button_Click_Update(object sender, RoutedEventArgs e)
+        {
+            bool flag = true;
+
+            if (IsResetPassword.IsChecked == true)
+            {
+                flag = Bus.UpdateData.ResetPassword(_account);
+            }
+
+            flag = Bus.UpdateData.UpdateAccount(_account);
+
+            if (flag)
+                MessageBox.Show("Cập nhật tài khoản thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Cập nhật tài khoản thất bại", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
