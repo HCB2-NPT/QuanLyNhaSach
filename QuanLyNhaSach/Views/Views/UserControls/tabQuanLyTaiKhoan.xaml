@@ -7,19 +7,41 @@
              xmlns:usercontrols="clr-namespace:QuanLyNhaSach.Views.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="#FFF2F2F2">
-	<DockPanel>
-		<DockPanel DockPanel.Dock="Top">
-			<Border BorderThickness="0,0,0,2" BorderBrush="#FFE0E0E0">
-				<DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF2F2F2">
-					<Button DockPanel.Dock="Right" Width="40" Height="40" OpacityMask="#FFC9DFF2" Margin="0">
-						<Image Source="/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
-					</Button>
-					<TextBox ToolTip="Tìm kiếm" DockPanel.Dock="Right" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0,0,0,1" Background="{x:Null}"/>
-				</DockPanel>
-			</Border>
-		</DockPanel>
-		<DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0" VerticalAlignment="Top" Height="400">
-			<TextBlock DockPanel.Dock="Top" FontSize="16" FontWeight="Bold" Foreground="#FF212121" Margin="16,16,16,0">DANH SÁCH TÀI KHOẢN</TextBlock>
-		</DockPanel>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Border BorderThickness="0,0,0,2" BorderBrush="#FFE0E0E0">
+                <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0" Height="40" Background="#FFF2F2F2">
+                    <Button DockPanel.Dock="Right" Width="40" Height="40" OpacityMask="#FFC9DFF2" Margin="0">
+                        <Image Source="/Assets/Images/Search-64.png" Margin="0" Width="24" Height="24"/>
+                    </Button>
+                    <TextBox ToolTip="Tìm kiếm" DockPanel.Dock="Right" Margin="0" Foreground="#FF999999" VerticalContentAlignment="Center" Padding="16,0,0,0" FontSize="16" BorderBrush="{x:Null}" BorderThickness="0,0,0,1" Background="{x:Null}"/>
+                </DockPanel>
+            </Border>
+        </DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="204*" />
+                <RowDefinition Height="49*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" FontSize="21.333" Margin="16, 16, 16, 8" FontWeight="SemiBold">Danh Sách Tài Khoản</TextBlock>
+            <DataGrid GridLinesVisibility="All" BorderThickness="1" BorderBrush="#FF212121" Grid.Row="1" Name="dgAccounts" Margin="16, 8, 16, 16" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeColumns="False" CanUserAddRows="False" CanUserSortColumns="False" ItemsSource="{Binding}" Grid.RowSpan="2">
+                <DataGrid.Columns>                    
+                    <DataGridTextColumn Header="Mã Số" Binding="{Binding ID}" />
+                    <DataGridTextColumn Header="Họ Tên" Width="*" SortDirection="Ascending" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Phân Quyền" Binding="{Binding AccessLevel.Name}" />
+                    
+                    <DataGridTemplateColumn Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Cursor="Hand" Margin="8, 4, 8, 4" Click="Button_Click_ShowDetails" CommandParameter="{Binding ID}">Chi Tiết</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+			</DataGrid>
+		</Grid>
 	</DockPanel>
 </UserControl>

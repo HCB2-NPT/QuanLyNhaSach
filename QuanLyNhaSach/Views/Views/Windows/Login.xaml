@@ -33,7 +33,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="16"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="tbEmail" Grid.Column="1" Height="23" Margin="40,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="13.333" BorderThickness="0,0,0,1" Padding="4,4,0,0" ToolTip="email@tenmien.com" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Grid.Row="3"/>
+                <TextBox x:Name="tbEmail" Grid.Column="1" Height="23" Margin="38,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="13.333" BorderThickness="0,0,0,1" Padding="4,4,0,0" ToolTip="email@tenmien.com" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#FFAEAEAE" Grid.Row="3"/>
                 <PasswordBox x:Name="pbMK" Margin="40,0,0,0" Style="{DynamicResource WaterMask}" ToolTip="**********" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" OpacityMask="#FFAEAEAE" BorderThickness="0,0,0,1" Padding="4,4,0,0" PasswordChanged="pbMK_PasswordChanged"/>
                 <Button x:Name="btnLogin" Grid.ColumnSpan="3" Cursor="Hand" Margin="0" Grid.Row="7" Padding="0" BorderThickness="0" Click="btnLogin_Click" FontWeight="Bold" FontFamily="Segoe UI" Background="#FF135895" OpacityMask="#FFCADFF0" BorderBrush="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Normal" Foreground="#FFF2F2F2" Margin="0" Text="ĐĂNG NHẬP"/>

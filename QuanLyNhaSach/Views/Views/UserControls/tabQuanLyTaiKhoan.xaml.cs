@@ -1,5 +1,7 @@
-﻿using System;
+﻿using QuanLyNhaSach.Objects;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,23 @@ namespace QuanLyNhaSach.Views.Views.UserControls
     /// </summary>
     public partial class tabQuanLyTaiKhoan : UserControl, INotifyPropertyChanged
     {
+        #region Properties
+        private ObservableCollection<Account> _accounts = Bus.FillData.GetAllAccount();
+
+        public ObservableCollection<Account> Accounts
+        {
+            get { return _accounts; }
+            set { _accounts = value; NotifyPropertyChanged("Accounts"); }
+        }
+        #endregion
+
+        #region Constructor
         public tabQuanLyTaiKhoan()
         {
             InitializeComponent();
+            dgAccounts.ItemsSource = Accounts;
         }
+        #endregion
 
         #region Implements
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,5 +48,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        private void Button_Click_ShowDetails(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
