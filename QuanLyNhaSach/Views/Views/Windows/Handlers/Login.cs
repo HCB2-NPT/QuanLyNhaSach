@@ -87,7 +87,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void pbMK_PasswordChanged(object sender, System.Windows.RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(Password))
-                pbMK.ToolTip = "B********p";
+                pbMK.ToolTip = "Mật Khẩu";
             else
                 pbMK.ToolTip = null;
         }

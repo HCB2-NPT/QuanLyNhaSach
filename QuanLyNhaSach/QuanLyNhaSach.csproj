@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -165,6 +165,9 @@
     <Compile Include="Views\Views\UserControls\tabBaoCaoTonKho.xaml.cs">
       <DependentUpon>tabBaoCaoTonKho.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabQuanLyTaiKhoan.xaml.cs">
+      <DependentUpon>tabQuanLyTaiKhoan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabQuyDinh.xaml.cs">
       <DependentUpon>tabQuyDinh.xaml</DependentUpon>
     </Compile>
@@ -306,6 +309,10 @@
     <Page Include="Views\Views\UserControls\tabQuanLySach.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabQuanLyTaiKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabQuyDinh.xaml">
       <SubType>Designer</SubType>
@@ -529,6 +536,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Delete Link-64 %28blue%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\password.png" />
+    <Resource Include="Assets\Images\username.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
