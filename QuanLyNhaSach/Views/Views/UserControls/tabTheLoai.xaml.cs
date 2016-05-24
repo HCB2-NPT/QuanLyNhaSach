@@ -217,5 +217,18 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
         }
         #endregion
+
+        private void aItemGotFocus(object sender, RoutedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var tag = textbox.Tag as Genre;
+            if (tag != null)
+            {
+                if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                    lv_DSTheLoai.SelectedItems.Add(tag);
+                else
+                    lv_DSTheLoai.SelectedItem = tag;
+            }
+        }
     }
 }

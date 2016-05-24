@@ -15,7 +15,7 @@ namespace QuanLyNhaSach.Adapters
         {
             try
             {
-                DataConnector.ExecuteNonQuery(string.Format("insert into PhieuNhap(NgayNhapKho,NgayTaoPhieu,MaTaiKhoan) values('{0}','{1}',{2})", DateTime.Now, mlab.DateAddIntoStorage, mlab.IDManager));
+                DataConnector.ExecuteNonQuery(string.Format("insert into PhieuNhap(NgayNhapKho,NgayTaoPhieu,MaTaiKhoan) values('{0}','{1}',{2})", mlab.DateAddIntoStorage, DateTime.Now, mlab.IDManager));
             }
             catch (Exception ex)
             {

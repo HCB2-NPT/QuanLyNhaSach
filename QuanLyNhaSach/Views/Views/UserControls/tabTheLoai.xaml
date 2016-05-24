@@ -31,7 +31,7 @@
                                 <Button Style="{DynamicResource Btn_IconOnly}" Width="40" Height="40" DockPanel.Dock="Right" Margin="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" OpacityMask="#FFB3D6F2" Click="deleteItem" Tag="{Binding}">
                                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                                 </Button>
-                                <TextBox Style="{DynamicResource TextBoxWaterMask}" Text="{Binding Name}" VerticalAlignment="Stretch" Margin="0" Foreground="#FF181818" IsReadOnly="True" IsEnabled="False" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" FontSize="14"/>
+                                <TextBox Style="{DynamicResource TextBoxWaterMask}" Text="{Binding Name}" VerticalAlignment="Stretch" Margin="0" Foreground="#FF181818" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" FontSize="14" GotFocus="aItemGotFocus" Tag="{Binding}"/>
                             </DockPanel>
                             <Grid Visibility="{Binding IsDeletedItem, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#CC404040">
                                 <Button HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" OpacityMask="#FF1E1E1E" Style="{StaticResource Btn_IconOnly}" Tag="{Binding}" Click="recoverItem">

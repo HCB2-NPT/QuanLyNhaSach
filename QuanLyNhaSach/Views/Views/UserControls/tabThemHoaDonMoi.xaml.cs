@@ -98,6 +98,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             e.Handled = "1234567890".IndexOf(e.Text) == -1;
         }
 
+        private void tb_TienKhachTra_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_TienKhachTra.Text))
+                BookCart.PayMoney = 0;
+        }
+
         private void tb_SDTKH_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -144,7 +150,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             if (BookCart.ReturnMoney < 0 && BookCart.Customer.ID != Managers.DataManager.Current.PopularCustomerID)
             {
-                if (Math.Abs(BookCart.ReturnMoney + BookCart.Customer.Debt) > Managers.RuleManager.Current.Rule.MaxDebt)
+                if (Math.Abs(BookCart.ReturnMoney) + BookCart.Customer.Debt > Managers.RuleManager.Current.Rule.MaxDebt)
                 {
                     ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + BookCart.Customer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
                     return;
@@ -161,7 +167,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
             if (lv_ChiTietHoaDon.SelectedItems.Count > 0)
                 return;
-            Bus.InsertData.NewBill(BookCart);
+            Bus.InsertData.InsertNewBill(BookCart);
             Clear();
         }
 

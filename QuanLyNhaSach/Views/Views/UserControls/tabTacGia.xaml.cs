@@ -79,7 +79,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void selectAuthor(object sender, SelectionChangedEventArgs e)
         {
-            var selected = lv_DSTheLoai.SelectedItem as Author;
+            var selected = lv_DSTacGia.SelectedItem as Author;
             if (selected != null)
             {
                 if (selected.Tag != null)
@@ -106,10 +106,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 var key = control.Text.ToLower();
                 if (!string.IsNullOrEmpty(key))
                 {
-                    lv_DSTheLoai.SelectedItems.Clear();
+                    lv_DSTacGia.SelectedItems.Clear();
                     foreach (var item in Authors.Where(x => x.Name.ToLower().Contains(key)))
                     {
-                        lv_DSTheLoai.SelectedItems.Add(item);
+                        lv_DSTacGia.SelectedItems.Add(item);
                     }
                 }
             }
@@ -156,7 +156,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void deleteSelectedAuthors(object sender, RoutedEventArgs e)
         {
-            foreach (Author item in lv_DSTheLoai.SelectedItems.ToList())
+            foreach (Author item in lv_DSTacGia.SelectedItems.ToList())
             {
                 if (item.IsCreatedItem)
                     Authors.Remove(item);
@@ -169,8 +169,8 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             var g = new Author();
             Authors.Add(g);
-            lv_DSTheLoai.SelectedItem = g;
-            lv_DSTheLoai.ScrollIntoView(g);
+            lv_DSTacGia.SelectedItem = g;
+            lv_DSTacGia.ScrollIntoView(g);
         }
         #endregion
 
@@ -185,7 +185,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                     BooksOfSelectedAuthor.Remove(tag);
                 else
                     tag.Switch = true;
-                var item = lv_DSTheLoai.SelectedItem as Author;
+                var item = lv_DSTacGia.SelectedItem as Author;
                 if (item != null)
                     item.IsEditedItem = true;
             }
@@ -204,7 +204,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             var b = NameBook.SelectedItem as Book;
             if (b != null)
             {
-                var item = lv_DSTheLoai.SelectedItem as Author;
+                var item = lv_DSTacGia.SelectedItem as Author;
                 if (item != null)
                 {
                     if (!BooksOfSelectedAuthor.Any(x => x.Name == b.Name))
@@ -217,5 +217,18 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             }
         }
         #endregion
+
+        private void aItemGotFocus(object sender, RoutedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var tag = textbox.Tag as Author;
+            if (tag != null)
+            {
+                if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                    lv_DSTacGia.SelectedItems.Add(tag);
+                else
+                    lv_DSTacGia.SelectedItem = tag;
+            }
+        }
     }
 }

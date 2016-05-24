@@ -142,8 +142,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                     Bus.InsertData.InsertNewAddedBook(mlab);
                     ListAddedBook = new ObservableCollection<AddedBook>();
                     tb_BookName.Text = "";
-                    tb_Genres.Text = "";
-                    tb_Authors.Text = "";
                     tb_BookName.SelectedItem = null;
                 }    
             }

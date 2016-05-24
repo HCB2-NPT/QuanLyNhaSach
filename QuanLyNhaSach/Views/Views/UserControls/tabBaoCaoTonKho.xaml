@@ -47,7 +47,7 @@
                             <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding ID}"/>
                             <DataGridTextColumn Header="Số lượng tồn" FontSize="14">
                                 <DataGridTextColumn.Binding>
-                                    <MultiBinding StringFormat="{}Tồn: {0}&#x0a;Bán trong tháng: {1}">
+                                    <MultiBinding StringFormat="{}Tháng này: {0}&#x0a;Tháng trước: {1}">
                                         <Binding Path="Number"/>
                                         <Binding Path="Tag"/>
                                     </MultiBinding>

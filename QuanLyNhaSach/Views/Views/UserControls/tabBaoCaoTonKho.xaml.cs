@@ -56,7 +56,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void getData(object sender, RoutedEventArgs e)
         {
-            return; /////////////////////////////////
             var c = month.SelectedItem as ComboBoxItem;
             if (c != null)
             {
@@ -80,7 +79,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             reportContainer.Visibility = System.Windows.Visibility.Visible;
             Bus.ReportHandler.CreateNumberReport(documentViewer, Data);
-            //Bus.InsertData.InsertNewDebtorReport(Data, Month, Year);
+            Bus.InsertData.InsertNewNumberReport(Data, Month, Year);
         }
 
         private void reportBack(object sender, RoutedEventArgs e)

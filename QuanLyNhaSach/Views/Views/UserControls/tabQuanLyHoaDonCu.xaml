@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
-        <DockPanel Margin="0" DockPanel.Dock="Top" Background="White">
-            <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="4" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
+        <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1" Height="40">
+            <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="0" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" VerticalAlignment="Center" Margin="0" Style="{DynamicResource TextBoxWaterMask}" Foreground="#FF999999" BorderThickness="0,0,0,1"/>
+            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" Margin="0" Style="{DynamicResource TextBoxWaterMask}" Foreground="#FF999999" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" OpacityMask="#FF999999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </DockPanel>
         <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="0">
             <Grid DataContext="{Binding SelectedBill,Mode=TwoWay}">

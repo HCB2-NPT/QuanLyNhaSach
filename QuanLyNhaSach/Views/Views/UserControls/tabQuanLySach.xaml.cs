@@ -191,14 +191,14 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             {
                 if (!tag.IsCreatedItem)
                 {
-                    tag.IsEditedItem = false;
                     Bus.UpdateData.UpdateBook(tag);
+                    tag.IsEditedItem = false;
                 }
                 else
                 {
+                    Bus.InsertData.InsertNewBook(tag);
                     tag.IsCreatedItem = false;
                     tag.IsEditedItem = false;
-                    Bus.InsertData.InsertNewBook(tag);
                 }
             }
         }

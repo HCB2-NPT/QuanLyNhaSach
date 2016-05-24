@@ -137,7 +137,7 @@
     </DataTemplate>
     <DataTemplate x:Key="lvi_HoaDonCu">
         <DockPanel Background="White" Height="30" Margin="2" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding IDBill}" Margin="4,0" Width="20"/>
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding ID}" Margin="4,0" Width="20"/>
             <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,0" DockPanel.Dock="Right">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Khách trả: {0}">

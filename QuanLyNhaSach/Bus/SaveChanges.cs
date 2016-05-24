@@ -86,7 +86,8 @@ namespace QuanLyNhaSach.Bus
                         {
                             foreach (var b in books)
                             {
-                                Adapters.BookAdapter.AddGenre(b.ID, item.ID);
+                                if (!b.Switch)
+                                    Adapters.BookAdapter.AddGenre(b.ID, item.ID);
                             }
                         }
                         Adapters.GenreAdapter.Update(item);
@@ -135,7 +136,8 @@ namespace QuanLyNhaSach.Bus
                         {
                             foreach (var b in books)
                             {
-                                Adapters.BookAdapter.AddAuthor(b.ID, item.ID);
+                                if (!b.Switch)
+                                    Adapters.BookAdapter.AddAuthor(b.ID, item.ID);
                             }
                         }
                         Adapters.AuthorAdapter.Update(item);

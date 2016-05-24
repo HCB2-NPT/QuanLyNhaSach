@@ -29,6 +29,8 @@ namespace QuanLyNhaSach.Bus
 
                 ReportData data = new ReportData();
 
+                data.ReportDocumentValues.Add("PrintDate", DateTime.Now);
+
                 DataTable table = new DataTable("DebtorReport");
                 table.Columns.Add("ID", typeof(string));
                 table.Columns.Add("Name", typeof(string));
@@ -55,21 +57,23 @@ namespace QuanLyNhaSach.Bus
             {
                 ReportDocument reportDocument = new ReportDocument();
 
-                StreamReader reader = new StreamReader(new FileStream(@"..\..\Assets\ReportTemplates\DebtorReport\DebtorReport.xaml", FileMode.Open, FileAccess.Read));
+                StreamReader reader = new StreamReader(new FileStream(@"..\..\Assets\ReportTemplates\NumberReport\NumberReport.xaml", FileMode.Open, FileAccess.Read));
                 reportDocument.XamlData = reader.ReadToEnd();
-                reportDocument.XamlImagePath = System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\Assets\ReportTemplates\DebtorReport\");
+                reportDocument.XamlImagePath = Path.Combine(Environment.CurrentDirectory, @"..\..\Assets\ReportTemplates\NumberReport\");
                 reader.Close();
 
                 ReportData data = new ReportData();
 
-                DataTable table = new DataTable("DebtorReport");
-                table.Columns.Add("ID", typeof(string));
-                table.Columns.Add("Name", typeof(string));
-                table.Columns.Add("Debt", typeof(string));
-                table.Columns.Add("Phone", typeof(string));
+                data.ReportDocumentValues.Add("PrintDate", DateTime.Now);
+
+                DataTable table = new DataTable("NumberReport");
+                table.Columns.Add("Id", typeof(string));
+                table.Columns.Add("ItemInfo", typeof(string));
+                table.Columns.Add("IDCode", typeof(string));
+                table.Columns.Add("Number", typeof(string));
                 foreach (var item in Data)
                 {
-                    table.Rows.Add(new object[] { item.ID, item.Name, string.Format("Tháng này: {0}\nTháng trước: {1:#,###,##0} vnđ", item.DebtFormat, item.Tag), item.PhoneFormat });
+                    table.Rows.Add(new object[] { item.ID, string.Format("Tên sách: {0}\nTác giả: {1}\nThể loại: {2}", item.Name, item.AuthorsShortFormat, item.GenresShortFormat), string.Format("9001{0:00000000}", item.ID), string.Format("Tháng này: {0} quyển\nTháng trước: {1} quyển", item.Number, item.Tag) });
                 }
                 data.DataTables.Add(table);
 

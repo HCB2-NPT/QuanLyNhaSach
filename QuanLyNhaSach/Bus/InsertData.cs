@@ -11,11 +11,6 @@ namespace QuanLyNhaSach.Bus
 {
     public class InsertData
     {
-        public static void NewBill(Bill newBill)
-        {
-            BillAdapter.InsertNewBill(newBill);
-        }
-
         public static void NewPayDebtMoney(PayDebtMoney pdm)
         {
             PayDebtMoneyAdapter.InsertPayDebt(pdm);
@@ -106,6 +101,12 @@ namespace QuanLyNhaSach.Bus
         {
             if (Adapters.ReportAdapter.ExistDebtorReport(month, year) == -1)
                 Adapters.ReportAdapter.InsertNewDebtorReport(data, month, year);
+        }
+
+        public static void InsertNewNumberReport(ObservableCollection<Book> data, int month, int year)
+        {
+            if (Adapters.ReportAdapter.ExistNumberReport(month, year) == -1)
+                Adapters.ReportAdapter.InsertNewNumberReport(data, month, year);
         }
     }
 }

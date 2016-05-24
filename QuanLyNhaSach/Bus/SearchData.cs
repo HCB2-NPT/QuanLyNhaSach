@@ -204,6 +204,27 @@ namespace QuanLyNhaSach.Bus
                             b.Number += item.Number;
                         }
                     }
+                    //=====
+                    if (K)
+                    {
+                        month--;
+                        if (month <= 0)
+                        {
+                            year--;
+                            month = 12;
+                        }
+                        var olds = GetNumberReportData(month, year, false);
+
+                        foreach (var c in books)
+                        {
+                            var k = olds.FirstOrDefault(x => x.ID == c.ID);
+                            if (k != null)
+                                c.Tag = k.Number;
+                            else
+                                c.Tag = 0;
+                        }
+                    }
+                    //=====
                     return books;
                 }
                 return null;

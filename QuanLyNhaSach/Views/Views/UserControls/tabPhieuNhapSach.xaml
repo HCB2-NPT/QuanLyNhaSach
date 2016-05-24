@@ -59,35 +59,37 @@
             <ListView x:Name="lv_PhieuNhapSach" DockPanel.Dock="Top" BorderThickness="0" Foreground="{x:Null}" Background="#FF9B9B9B" ItemsSource="{Binding ListAddedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" IsHitTestVisible="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel Height="100" Width="Auto" Background="White" Margin="2">
-                            <DockPanel.Effect>
-                                <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
-                            </DockPanel.Effect>
-                            <Image x:Name="Image" Width="80" Margin="0" Source="{Binding Book.ImageFormat}" Stretch="Fill" Height="100"/>
-                            <Button x:Name="btn_delete" Width="40" Height="40" DockPanel.Dock="Right" Margin="8,0" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Click="Button_Click" Tag="{Binding}">
-                                <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
-                            </Button>
-                            <DockPanel>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Book.Name}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tên sách" FontFamily="Segoe UI Light" Foreground="#FF9B9B9B"/>
-                                    <TextBlock Text="{Binding Book.AuthorsShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Tác giả" FontFamily="Segoe UI Light" Grid.Row="1" Foreground="#FF9B9B9B"/>
-                                    <TextBlock Text="{Binding Book.GenresShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="12" Padding="16,4,0,0" ToolTip="Thể loại" FontFamily="Segoe UI Light" Grid.Row="2" Background="{x:Null}" Foreground="#FF9B9B9B"/>
-                                    <DockPanel Grid.Column="1" LastChildFill="False" Margin="0,0,4,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <MetroControls:NumericUpDown HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Minimum="{Binding Minimum, ElementName=num_UpDown}" Width="100" Value="{Binding Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderBrush="#FF9B9B9B" BorderThickness="0,0,0,1"/>
-                                        <TextBlock Text="Số lượng: " HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FF9B9B9B"/>
-                                    </DockPanel>
-                                </Grid>
+                        <Border>
+                            <DockPanel Background="White" Margin="4">
+                                <DockPanel.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="300" Opacity="0.5"/>
+                                </DockPanel.Effect>
+                                <Image x:Name="Image" Width="80" Height="120" Margin="0" Source="{Binding Book.ImageFormat}" Stretch="Fill"/>
+                                <Button x:Name="btn_delete" Width="40" Height="40" DockPanel.Dock="Right" Style="{DynamicResource Btn_IconOnly}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" BorderThickness="0" Click="Button_Click" Tag="{Binding}" VerticalAlignment="Bottom">
+                                    <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
+                                </Button>
+                                <DockPanel>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Book.Name}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Padding="16,4,0,0" ToolTip="Tên sách" FontFamily="Segoe UI" Foreground="#FF9B9B9B"/>
+                                        <TextBlock Text="{Binding Book.AuthorsShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Padding="16,4,0,0" ToolTip="{Binding Book.AuthorsFormat}" FontFamily="Segoe UI" Grid.Row="1" Foreground="#FF9B9B9B"/>
+                                        <TextBlock Text="{Binding Book.GenresShortFormat}" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Padding="16,4,0,0" ToolTip="{Binding Book.GenresFormat}" FontFamily="Segoe UI" Grid.Row="2" Background="{x:Null}" Foreground="#FF9B9B9B"/>
+                                        <DockPanel Grid.Column="1" LastChildFill="False" Margin="0,0,4,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <MetroControls:NumericUpDown HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FFABADB3" Minimum="{Binding Minimum, ElementName=num_UpDown}" Width="100" Value="{Binding Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderBrush="#FF9B9B9B" BorderThickness="0,0,0,1" FontSize="14"/>
+                                            <TextBlock Text="Số lượng: " HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#FF9B9B9B" FontSize="14"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </DockPanel>
                             </DockPanel>
-                        </DockPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

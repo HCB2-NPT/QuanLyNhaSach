@@ -89,7 +89,30 @@ namespace QuanLyNhaSach.Adapters
             ObservableCollection<Book> result = null;
             try
             {
-                
+                var reader = DataConnector.ExecuteQuery(string.Format("select MaBaoCao from BaoCaoTon where Thang = {0} and Nam = {1}", month, year));
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        result = new ObservableCollection<Book>();
+
+                        var r = DataConnector.ExecuteQuery(string.Format("select MaSach, SoLuongTonDau, SoLuongTonCuoi from ChiTietBaoCaoTon where MaBaoCao = {0}", id));
+                        if (r != null)
+                        {
+                            while (r.Read())
+                            {
+                                var c = Adapters.BookAdapter.GetBook(r.GetInt32(0));
+                                c.BeginInit();
+                                c.Number = (int)r.GetValueDefault(2, 0);
+                                c.Tag = (int)r.GetValueDefault(1, 0);
+                                c.EndInit();
+                                result.Add(c);
+                            }
+                        }
+                        break;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -130,7 +153,7 @@ namespace QuanLyNhaSach.Adapters
                     var id = ExistNumberReport(month, year);
                     foreach (var c in data)
                     {
-                        //DataConnector.ExecuteNonQuery(string.Format("insert into ChiTietBaoCaoTon (MaBaoCao, MaKhachHang, SoLuongTonDau, SoLuongTonCuoi) values ({0}, {1}, {2}, {3})", id, c.ID, c.Tag, c.Number));
+                        DataConnector.ExecuteNonQuery(string.Format("insert into ChiTietBaoCaoTon (MaBaoCao, MaSach, SoLuongTonDau, SoLuongTonCuoi) values ({0}, {1}, {2}, {3})", id, c.ID, c.Tag, c.Number));
                     }
                 }
                 return result;
