@@ -21,13 +21,16 @@ namespace WPF.MDI
 		#region Dependency Properties
 
         public static readonly DependencyProperty MinimizedWidthProperty =
-            DependencyProperty.Register("MinimizedWidth", typeof(int), typeof(MdiChild));
+            DependencyProperty.Register("MinimizedWidth", typeof(int), typeof(MdiChild),
+            new UIPropertyMetadata(200));
 
         public static readonly DependencyProperty MinimizedHeightProperty =
-            DependencyProperty.Register("MinimizedHeight", typeof(int), typeof(MdiChild));
+            DependencyProperty.Register("MinimizedHeight", typeof(int), typeof(MdiChild),
+            new UIPropertyMetadata(32));
 
         public static readonly DependencyProperty CanDragOutProperty =
-            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiChild));
+            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiChild),
+            new UIPropertyMetadata(true));
 
 		/// <summary>
 		/// Identifies the WPF.MDI.MdiChild.ContentProperty dependency property.
@@ -737,7 +740,7 @@ namespace WPF.MDI
 		/// <param name="e">The <see cref="System.Windows.Controls.Primitives.DragDeltaEventArgs"/> instance containing the event data.</param>
 		private void dragThumb_DragDelta(object sender, DragDeltaEventArgs e)
 		{
-			if (WindowState == WindowState.Maximized)
+			if (WindowState == WindowState.Maximized || WindowState == WindowState.Minimized)
 				return;
 
 			double newLeft = Position.X + e.HorizontalChange,

@@ -137,23 +137,29 @@
     </DataTemplate>
     <DataTemplate x:Key="lvi_HoaDonCu">
         <DockPanel Background="White" Height="30" Margin="2" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding ID}" Margin="4,0" Width="20"/>
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,0" DockPanel.Dock="Right">
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="8,0">
                 <TextBlock.Text>
-                    <MultiBinding StringFormat="Khách trả: {0}">
-                        <Binding Path="PayMoney" Mode="TwoWay"/>
+                    <MultiBinding StringFormat="{}{0:0000}">
+                        <Binding Path="ID"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,0" DockPanel.Dock="Right">
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="8,0" DockPanel.Dock="Right">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Khách trả: {0}">
+                        <Binding Path="PayMoney"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="8,0" DockPanel.Dock="Right">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Tổng tiền: {0}">
                         <Binding Path="TotalMoney"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding DateCreate}" Margin="4,0" DockPanel.Dock="Right" Width="Auto"/>
-            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Customer.Name}" Width="Auto" Margin="0"/>
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding DateCreated}" Margin="8,0" DockPanel.Dock="Right" Width="Auto"/>
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Customer.Name}"/>
         </DockPanel>
     </DataTemplate>
 

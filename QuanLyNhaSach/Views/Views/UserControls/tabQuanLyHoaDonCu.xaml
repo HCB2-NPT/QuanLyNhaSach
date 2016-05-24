@@ -25,13 +25,14 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Column="1"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
-                <TextBlock x:Name="text_HoanTien" Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF404040" Margin="4,0,0,0" Grid.Column="1" FontSize="14"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF404040" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1" FontSize="14"/>
+                <TextBlock x:Name="text_HoanTien" Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF404040" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1" FontWeight="Bold" FontSize="14"/>
 
-                <TextBlock x:Name="tblock_TotalMoney" Text="{Binding TotalMoney,Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Column="1"/>
-                <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay}"  Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF999999" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FF999999" PreviewTextInput="tb_PayMoney_PreviewTextInput" TextChanged="tb_PayMoney_TextChanged"/>
-                <TextBlock x:Name="tblock_ReturnMoney" Text="{Binding ReturnMoney,Mode=OneWay}"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock x:Name="tblock_TotalMoney" Text="{Binding TotalMoneyFormat,Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF404040" Margin="4,0,8,0" Grid.Column="1" FontSize="14"/>
+                <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,32,0" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF53A5CB" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FF53A5CB" PreviewTextInput="tb_PayMoney_PreviewTextInput" TextChanged="tb_PayMoney_TextChanged" FontSize="14" FontFamily="Segoe UI"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="vnđ" HorizontalAlignment="Right" Foreground="#FF53A5CB" VerticalAlignment="Center" Margin="0,0,4,0" FontSize="14"/>
+                <TextBlock x:Name="tblock_ReturnMoney" Text="{Binding ReturnMoney_AbsAndFormat,Mode=OneWay}"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF404040" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
             </Grid>
         </DockPanel>
         <Grid Margin="0" Background="White">
@@ -52,7 +53,7 @@
                 </Button>
             </DockPanel>
             <ListView x:Name="lv_DSHoaDon" ItemsSource="{Binding ListBill}" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
-            <ListView x:Name="lv_ChiTietHoaDonCu" ItemsSource="{Binding SelectedBill.BillItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView x:Name="lv_ChiTietHoaDonCu" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="border" Background="White" Margin="4" BorderBrush="#FF007ACC" BorderThickness="1">

@@ -40,6 +40,15 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             set { _selectedBill = value; NotifyPropertyChanged("SelectedBill"); }
         }
 
+        public string ReturnMoney_AbsAndFormat
+        {
+            get
+            {
+                if (SelectedBill == null)
+                    return null;
+                return string.Format("{0:#,##0} vnđ", Math.Abs(SelectedBill.ReturnMoney));
+            }
+        }
 
         #endregion
 
@@ -65,16 +74,14 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 if (e.AddedItems.Count > 0)
                 {
                     SelectedBill = e.AddedItems[0] as Bill;
+                    SelectedBill.Tag = Math.Min(SelectedBill.PayMoney - SelectedBill.TotalMoney, 0);
 
                     tblock_TotalMoney.DataContext = SelectedBill;
-                    tblock_ReturnMoney.DataContext = SelectedBill;
+                    tblock_ReturnMoney.DataContext = this;
                     tb_PayMoney.DataContext = SelectedBill;
 
                     lv_ChiTietHoaDonCu.ItemsSource = SelectedBill.BillItems;
-                    
                 }
-                    
-                  
         }
 
         private void removeItem(object sender, RoutedEventArgs e)
@@ -94,14 +101,25 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void tb_PayMoney_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(tb_PayMoney.Text))
+            if (SelectedBill != null)
             {
-                tb_PayMoney.Text = "0";
-                return;
-            }
-            if (SelectedBill!=null)
-            {
-                SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
+                if (string.IsNullOrEmpty(tb_PayMoney.Text))
+                    SelectedBill.PayMoney = 0;
+
+                if (SelectedBill.ReturnMoney < 0)
+                {
+                    text_HoanTien.Text = "Nợ :";
+                    text_HoanTien.Foreground = Brushes.Red;
+                    tblock_ReturnMoney.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    text_HoanTien.Text = "Hoàn tiền :";
+                    text_HoanTien.Foreground = Brushes.Blue;
+                    tblock_ReturnMoney.Foreground = Brushes.Blue;
+                }
+
+                NotifyPropertyChanged("ReturnMoney_AbsAndFormat");
             }
         }
 
@@ -128,6 +146,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
                 ListBill = Bus.FillData.GetOldBill();
                 SelectedBill = null;
+                lv_ChiTietHoaDonCu.ItemsSource = null;
             }
         }
 

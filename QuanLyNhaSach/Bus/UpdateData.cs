@@ -30,6 +30,14 @@ namespace QuanLyNhaSach.Bus
                     if (currentNumber != -1)
                         Adapters.BookAdapter.UpdateNumber(item.Book.ID, currentNumber - item.Number);
                 }
+
+                int k = Convert.ToInt32(bill.Tag);
+                if (k < 0)
+                {
+                    bill.Customer.Debt += k;
+                    Adapters.CustomerAdapter.UpdateDebt(bill.Customer.ID, bill.Customer.Debt);
+                }
+
                 if (bill.Customer.Debt + Math.Abs(bill.PayMoney - bill.TotalMoney)<=Managers.RuleManager.Current.Rule.MaxDebt)
                     if (bill.PayMoney < bill.TotalMoney)
                         Adapters.CustomerAdapter.UpdateDebt(bill.Customer.ID, bill.Customer.Debt + Math.Abs(bill.PayMoney - bill.TotalMoney));   

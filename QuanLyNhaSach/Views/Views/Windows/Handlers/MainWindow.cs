@@ -378,27 +378,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
                 mdiChild.Loaded += (s, a) =>
                 {
-                    mdiChild.Position = new Point(0, 0);
-                    mdiChild.Width = mdiContainer.InnerWidth;
-                    mdiChild.Height = mdiContainer.InnerHeight;
                     mdiChild.MaximizeBox = false;
                 };
                 mdiChild.WindowStateChanged += (s, a) =>
                 {
-                    if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
-                    {
-                        foreach (var item in mdiContainer.Children)
-                        {
-                            if (item != mdiChild)
-                                item.WindowState = System.Windows.WindowState.Minimized;
-                        }
-                    }
+                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
                 };
-                foreach (var item in mdiContainer.Children)
-                {
-                    if (item != mdiChild)
-                        item.WindowState = System.Windows.WindowState.Minimized;
-                }
+                mdiContainer.MdiLayout = MdiLayout.TileVertical;
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -411,9 +397,9 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 mi = new MenuItem { Header = child.Title };
                 mi.Click += (o, ev) =>
                 {
-                    child.Width = mdiContainer.InnerWidth;
-                    child.Height = mdiContainer.InnerHeight;
+                    child.WindowState = System.Windows.WindowState.Normal;
                     child.Focus();
+                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
                 };
                 WindowsMenu.Items.Insert(i, mi);
             }
@@ -429,21 +415,23 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var child = mdiContainer.GetTopChild();
-            child.Width = mdiContainer.InnerWidth;
-            child.Height = mdiContainer.InnerHeight;
+            mdiContainer.MdiLayout = MdiLayout.TileVertical;
         }
         #endregion
 
         #region Button Events
         private void openQuyDinh(object sender, RoutedEventArgs e)
         {
-            Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
+            if (Managers.UserManager.Current.Info.AccessLevel.ID == 2)
+                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
         }
 
         private void openTaiKhoan(object sender, RoutedEventArgs e)
         {
-            Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tải khoản", false);
+            if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tải khoản", false);
+            else
+                showFunctionList(sender, e);
         }
         #endregion
     }

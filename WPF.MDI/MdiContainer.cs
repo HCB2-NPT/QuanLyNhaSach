@@ -31,7 +31,8 @@ namespace WPF.MDI
 		#region Dependency Properties
 
         public static readonly DependencyProperty CanDragOutProperty =
-            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiContainer));
+            DependencyProperty.Register("CanDragOut", typeof(bool), typeof(MdiContainer),
+            new UIPropertyMetadata(true, new PropertyChangedCallback(CanDragOutPropertyChanged)));
 
         public static readonly DependencyProperty MdiLayoutMaxRowProperty =
             DependencyProperty.Register("MdiLayoutMaxRow", typeof(int), typeof(MdiContainer));
@@ -65,7 +66,7 @@ namespace WPF.MDI
 
 		#endregion
 
-		#region Property Accessors
+        #region Property Accessors
 
         public bool CanDragOut
         {
@@ -147,6 +148,8 @@ namespace WPF.MDI
 		/// <value>The child elements.</value>
 		public ObservableCollection<MdiChild> Children { get; set; }
 
+        private ScrollViewer _scrollViewer;
+
 		private Canvas _windowCanvas;
 
 		/// <summary>
@@ -202,14 +205,14 @@ namespace WPF.MDI
 			_topPanel.Children.Add(new UIElement());
 			gr.Children.Add(_topPanel);
 
-			ScrollViewer sv = new ScrollViewer
+            _scrollViewer = new ScrollViewer
 			{
 				Content = _windowCanvas = new Canvas(),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
 				VerticalScrollBarVisibility = ScrollBarVisibility.Auto
 			};
-			gr.Children.Add(sv);
-			Grid.SetRow(sv, 1);
+            gr.Children.Add(_scrollViewer);
+            Grid.SetRow(_scrollViewer, 1);
 			Content = gr;
 
 			if (Environment.OSVersion.Version.Major > 5)
@@ -469,6 +472,21 @@ namespace WPF.MDI
 
 		#region Dependency Property Events
 
+        private static void CanDragOutPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            MdiContainer mdiContainer = (MdiContainer)sender;
+            if ((bool)e.NewValue)
+            {
+                mdiContainer._scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+                mdiContainer._scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            }
+            else
+            {
+                mdiContainer._scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                mdiContainer._scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            }
+        }
+
 		/// <summary>
 		/// Dependency property event once the theme value has changed.
 		/// </summary>
@@ -586,7 +604,17 @@ namespace WPF.MDI
 					}
 					break;
 				case MdiLayout.TileHorizontal:
-					{
+                    {
+                        List<double> _hk = new List<double>();
+                        foreach (var item in minimizedWindows)
+                        {
+                            if (!_hk.Contains(item.Position.Y))
+                                _hk.Add(item.Position.Y);
+                        }
+                        double _h = 0;
+                        if (minimizedWindows.Count > 0)
+                            _h = _hk.Count * minimizedWindows[0].MinimizedHeight;
+
                         int cols = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
                         int rows = normalWindows.Count / cols;
 
@@ -594,7 +622,7 @@ namespace WPF.MDI
                         cols = (int)Math.Ceiling((double)normalWindows.Count / (double)rows);
 
                         double w = mdiContainer.InnerWidth / cols,
-                               h = mdiContainer.InnerHeight / rows;
+                               h = (mdiContainer.InnerHeight - _h) / rows;
 
                         int count = 0;
                         foreach (var item in normalWindows)
@@ -608,6 +636,16 @@ namespace WPF.MDI
 					break;
 				case MdiLayout.TileVertical:
                     {
+                        List<double> _hk = new List<double>();
+                        foreach (var item in minimizedWindows)
+                        {
+                            if (!_hk.Contains(item.Position.Y))
+                                _hk.Add(item.Position.Y);
+                        }
+                        double _h = 0;
+                        if (minimizedWindows.Count > 0)
+                            _h = _hk.Count * minimizedWindows[0].MinimizedHeight;
+
                         int rows = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
                         int cols = normalWindows.Count / rows;
 
@@ -615,7 +653,7 @@ namespace WPF.MDI
                         rows = (int)Math.Ceiling((double)normalWindows.Count / (double)cols);
 
                         double w = mdiContainer.InnerWidth / cols,
-                               h = mdiContainer.InnerHeight / rows;
+                               h = (mdiContainer.InnerHeight - _h) / rows;
 
                         int count = 0;
                         foreach (var item in normalWindows)
