@@ -39,7 +39,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private PayDebtMoney _debtMoney = new PayDebtMoney();
 
-        internal PayDebtMoney DebtMoney
+        public PayDebtMoney DebtMoney
         {
             get { return _debtMoney; }
             set { _debtMoney = value; NotifyPropertyChanged("DebtMoney"); }
@@ -162,6 +162,26 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             ListDebtor = Bus.FillData.GetAllDebtor();
             NotifyPropertyChanged("ReturnMoney");
             tb_PayMoney.Text = "0";
+        }
+
+        private void tb_PayMoney_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_PayMoney.Text))
+            {
+                tb_PayMoney.Text = "0";
+                return;
+            }
+        }
+
+        private void lv_ListDebtor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lv_ListDebtor.SelectedItem !=null)
+            {
+                NotifyPropertyChanged("PayMoney");
+                NotifyPropertyChanged("ReturnMoney");
+                NotifyPropertyChanged("ReturnMoneyFormat");
+            }
+
         }
 	}
 }

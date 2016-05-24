@@ -102,16 +102,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             if (SelectedBill!=null)
             {
                 SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
-                //if (SelectedBill.ReturnMoney < 0)
-                //{
-                //    tblock_ReturnMoney.Foreground = Brushes.Red;
-                //    text_HoanTien.Foreground = Brushes.Red;
-                //}
-                //else
-                //{
-                //    tblock_ReturnMoney.Foreground = Brushes.Green;
-                //    text_HoanTien.Foreground = Brushes.Green;
-                //}
             }
         }
 
