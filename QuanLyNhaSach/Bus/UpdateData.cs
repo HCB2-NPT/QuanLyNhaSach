@@ -14,6 +14,14 @@ namespace QuanLyNhaSach.Bus
         {
             if (bill.ID > 0)
             {
+                Bill b = (Adapters.BillAdapter.GetOldBills().FirstOrDefault(x => x.ID == bill.ID)) as Bill;
+                if (b!=null)
+                {
+                    foreach (var item in b.BillItems)
+                    {
+                        Adapters.BookAdapter.UpdateNumber(item.Book.ID, item.Book.Number + item.Number);
+                    }
+                }
                 Adapters.BillItemAdapter.ClearBillItems(bill.ID);
                 foreach (var item in bill.BillItems)
                 {
@@ -22,7 +30,12 @@ namespace QuanLyNhaSach.Bus
                     if (currentNumber != -1)
                         Adapters.BookAdapter.UpdateNumber(item.Book.ID, currentNumber - item.Number);
                 }
+                if (bill.Customer.Debt + Math.Abs(bill.PayMoney - bill.TotalMoney)<=Managers.RuleManager.Current.Rule.MaxDebt)
+                    if (bill.PayMoney < bill.TotalMoney)
+                        Adapters.CustomerAdapter.UpdateDebt(bill.Customer.ID, bill.Customer.Debt + Math.Abs(bill.PayMoney - bill.TotalMoney));   
+                
                 Adapters.BillAdapter.UpdateOldBill(bill); 
+
             }
         }
 

@@ -9,12 +9,12 @@
              d:DesignHeight="600" d:DesignWidth="600" Background="White" Foreground="{x:Null}">
     <DockPanel>
         <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FFF1F1F1" Height="40">
-            <Button Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="0" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}">
+            <Button x:Name="btn_Search" Height="40" VerticalAlignment="Center" Width="40" DockPanel.Dock="Right" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" HorizontalAlignment="Center" Margin="0" OpacityMask="#FFB3D6F2" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Click="btn_Search_Click" d:IsHidden="True">
                 <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
             </Button>
-            <TextBox TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" Margin="0" Style="{DynamicResource TextBoxWaterMask}" Foreground="#FF999999" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" OpacityMask="#FF999999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="tb_Search" TextWrapping="Wrap" ToolTip="Mã Hóa Đơn" Margin="0" Style="{DynamicResource TextBoxWaterMask}" Foreground="#FF999999" BorderThickness="0" VerticalContentAlignment="Center" Padding="8,0,0,0" OpacityMask="#FF999999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </DockPanel>
-        <DockPanel Height="96" DockPanel.Dock="Bottom" Background="White" Margin="0">
+        <DockPanel Height="96" DockPanel.Dock="Bottom" Background="#FFF1F1F1" Margin="0">
             <Grid DataContext="{Binding SelectedBill,Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -25,14 +25,13 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Column="1"/>
-                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
-                <TextBlock Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="Tổng Hóa Đơn : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Column="1"/>
+                <TextBlock Text="Thanh Toán : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock x:Name="text_HoanTien" Text="Hoàn Tiền : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,0,0" Grid.Row="2" Grid.Column="1"/>
 
                 <TextBlock x:Name="tblock_TotalMoney" Text="{Binding TotalMoney,Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Column="1"/>
                 <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay}"  Grid.Row="1" Width="100" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF999999" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FF999999" PreviewTextInput="tb_PayMoney_PreviewTextInput" TextChanged="tb_PayMoney_TextChanged"/>
-                <TextBlock x:Name="tblock_ReturnMoney" Text="{Binding ReturnMoney,Mode=OneWay}"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FF999999" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
-
+                <TextBlock x:Name="tblock_ReturnMoney" Text="{Binding ReturnMoney,Mode=OneWay}"  HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Gray" Margin="4,0,8,0" Grid.Row="2" Grid.Column="1"/>
             </Grid>
         </DockPanel>
         <Grid Margin="0" Background="White">
@@ -42,18 +41,18 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <DockPanel Margin="0">
-                <Button x:Name="btn_Save" HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="4,0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Save_Click">
+                <Button x:Name="btn_Save" HorizontalAlignment="Left" Foreground="{x:Null}" FontFamily="Segoe UI Light" FontWeight="Bold" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Height="40" Margin="0" Background="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Save_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Save-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button x:Name="btn_Refresh" Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="4,0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Refresh_Click">
+                <Button x:Name="btn_Refresh" Height="40" HorizontalAlignment="Left" BorderBrush="{x:Null}" BorderThickness="0" Width="40" Margin="0" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Style="{DynamicResource Btn_IconOnly}" Click="btn_Refresh_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
                 </Button>
-                <Button x:Name="btn_Delete" Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0,0,8,0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Click="btn_Delete_Click">
+                <Button x:Name="btn_Delete" Height="40" HorizontalAlignment="Right"  BorderBrush="{x:Null}" Width="40" Margin="0" BorderThickness="0" OpacityMask="#FFB3D6F2" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource Btn_IconOnly}" Click="btn_Delete_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Delete-64 (blue).png" Width="24" Height="24"/>
                 </Button>
             </DockPanel>
-            <ListView x:Name="lv_DSHoaDon" ItemsSource="{Binding ListBill}" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
-            <ListView x:Name="lv_ChiTietHoaDonCu" ItemsSource="{Binding SelectedBill.BillItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="lv_DSHoaDon" ItemsSource="{Binding ListBill}" Margin="0" Grid.Row="1" Height="150" ItemTemplate="{DynamicResource lvi_HoaDonCu}" Background="#FFF1F1F1" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" BorderThickness="0" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" SelectionChanged="lv_DSHoaDon_SelectionChanged"/>
+            <ListView x:Name="lv_ChiTietHoaDonCu" ItemsSource="{Binding SelectedBill.BillItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" Grid.Row="2" Background="Gray" BorderBrush="{x:Null}" Foreground="{x:Null}" ItemContainerStyle="{DynamicResource lvi_ContainerStyle}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="border" Background="White" Margin="4" BorderBrush="#FF007ACC" BorderThickness="1">

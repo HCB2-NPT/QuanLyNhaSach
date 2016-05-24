@@ -13,6 +13,13 @@ namespace QuanLyNhaSach.Bus
         {
             if (bill.ID > 0)
             {
+                foreach (var item in bill.BillItems)
+                {
+                    if (item.Number>0)
+                    {
+                        Adapters.BookAdapter.UpdateNumber(item.Book.ID, item.Book.Number + item.Number);
+                    }
+                }
                 Adapters.BillItemAdapter.ClearBillItems(bill.ID);
                 Adapters.BillAdapter.DeleteBill(bill.ID);
             }

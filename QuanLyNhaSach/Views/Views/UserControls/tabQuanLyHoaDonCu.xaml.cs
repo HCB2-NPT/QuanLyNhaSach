@@ -1,4 +1,5 @@
-﻿using QuanLyNhaSach.Objects;
+﻿using QuanLyNhaSach.Managers;
+using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -98,23 +99,56 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 tb_PayMoney.Text = "0";
                 return;
             }
-            SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
+            if (SelectedBill!=null)
+            {
+                SelectedBill.PayMoney = int.Parse(tb_PayMoney.Text);
+                //if (SelectedBill.ReturnMoney < 0)
+                //{
+                //    tblock_ReturnMoney.Foreground = Brushes.Red;
+                //    text_HoanTien.Foreground = Brushes.Red;
+                //}
+                //else
+                //{
+                //    tblock_ReturnMoney.Foreground = Brushes.Green;
+                //    text_HoanTien.Foreground = Brushes.Green;
+                //}
+            }
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedBill!=null)
             {
+                if (SelectedBill.ReturnMoney<0 && SelectedBill.Customer.ID==13)
+                {
+                    ErrorManager.Current.PopularCustomer.Call("Vui lòng thanh toán đầy đủ!");
+                    return;
+                }
+                if (SelectedBill.ReturnMoney<0)
+                {
+                    if (Math.Abs(SelectedBill.ReturnMoney)+SelectedBill.Customer.Debt > RuleManager.Current.Rule.MaxDebt)
+                    {
+                         ErrorManager.Current.LimitMaxDebtMoney.Call("Khách hàng " + SelectedBill.Customer.Name + " sau khi mua sẽ nợ nhiều hơn " + RuleManager.Current.Rule.MaxDebt + " nên không thể hoàn tất thanh toán!");
+                        return;
+                    }
+                }
+                else
+                    SelectedBill.PayMoney = SelectedBill.TotalMoney;
                 Bus.UpdateData.UpdateOldBill(SelectedBill);
+
+                ListBill = Bus.FillData.GetOldBill();
+                SelectedBill = null;
             }
         }
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
+            Bus.DeleteData.DeleteOldBill(SelectedBill);
             ListBill.Remove(SelectedBill);
             SelectedBill.BillItems.Clear();
             lv_DSHoaDon.SelectedItem = null;
-            Bus.DeleteData.DeleteOldBill(SelectedBill);
+            ListBill = Bus.FillData.GetOldBill();
+            
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
@@ -122,6 +156,25 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             ListBill = Bus.FillData.GetOldBill();
             SelectedBill = null;
             SelectedBill = new Bill();
+        }
+
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tb_Search.Text))
+            {
+                var item = ListBill.FirstOrDefault(x => x.ID.ToString() == tb_Search.Text);
+                tb_Search.Text = "";
+                if (item==null)
+                {
+                    ErrorManager.Current.InfoIsNull.Call("Không tìm thấy hóa đơn tương ứng.");
+                    return;
+                }
+                else
+                {
+                    lv_DSHoaDon.SelectedItem = item;
+                    lv_DSHoaDon.ScrollIntoView(item);
+                }
+            }
         }
     }
 }
