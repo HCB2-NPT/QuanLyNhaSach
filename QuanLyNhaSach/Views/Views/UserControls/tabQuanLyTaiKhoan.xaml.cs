@@ -69,7 +69,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             object accountID = ((Button)sender).CommandParameter;
 
             var uc = (tabCapNhatTaiKhoan)Bus.AppHandler.OpenTab(Tag as WPF.MDI.MdiContainer, typeof(tabCapNhatTaiKhoan), "Cập nhật tài khoản", false);
-            uc.Account = accountID.ToString();
+            uc.Account = (Account)_accounts.Where(a => a.ID == (int)accountID).First();
         }
 
         private void Button_Click_Search(object sender, RoutedEventArgs e)
