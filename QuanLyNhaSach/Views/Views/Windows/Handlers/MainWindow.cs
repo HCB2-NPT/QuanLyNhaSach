@@ -175,7 +175,8 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Bus.AppHandler.Shutdown();
+            if (!_logout)
+                Bus.AppHandler.Shutdown();
         }
         #endregion
 
@@ -234,11 +235,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
         /*
          * Sự kiện đăng xuất
          */
+        private bool _logout = false;
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            Close();
             Managers.Manager.Current.User.Logout();
             Bus.AppHandler.VirtualWindowOpen(Owner);
+            _logout = true;
+            Close();
         }
         #endregion
 
@@ -371,10 +374,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
                 var top = mdiContainer.GetTopChild();
-                top.WindowState = System.Windows.WindowState.Normal;
-                top.Position = new Point(0, 0);
-                top.Width = mdiContainer.InnerWidth;
-                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                if (top != null)
+                {
+                    top.WindowState = System.Windows.WindowState.Normal;
+                    top.Position = new Point(0, 0);
+                    top.Width = mdiContainer.InnerWidth;
+                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                }
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -408,11 +414,14 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var top = mdiContainer.GetTopChild();
-            if (top.WindowState == System.Windows.WindowState.Normal)
+            if (top != null)
             {
-                top.Position = new Point(0, 0);
-                top.Width = mdiContainer.InnerWidth;
-                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                if (top.WindowState == System.Windows.WindowState.Normal)
+                {
+                    top.Position = new Point(0, 0);
+                    top.Width = mdiContainer.InnerWidth;
+                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                }
             }
         }
         #endregion
