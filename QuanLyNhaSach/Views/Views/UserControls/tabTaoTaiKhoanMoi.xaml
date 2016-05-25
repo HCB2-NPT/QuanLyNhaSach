@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="QuanLyNhaSach.Views.Views.UserControls.tabTaoTaiKhoanMoi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="256" d:DesignWidth="360">
+    <DockPanel Width="360" Height="256" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,24.866,0,0" TextWrapping="Wrap" Text="Họ tên" VerticalAlignment="Top" Width="146"/>
+            <TextBox Name="txtFullname" HorizontalAlignment="Left" Height="0" Margin="16,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Name}" />
+            <TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,24.866,0,0" TextWrapping="Wrap" Text="Phân quyền" VerticalAlignment="Top" Width="146" Grid.Row="2"/>
+            <ComboBox Foreground="#FF212121" HorizontalAlignment="Left" Height="18" Margin="16,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="328" Name="listRoles" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Account.AccessLevel.ID}"/>
+            <Button Content="TẠO TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="184,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="160" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Create" />
+            <Button Content="TRỞ VỀ" HorizontalAlignment="Left" Height="32" Margin="82,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" Width="80" FontSize="14" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Close" />
+        </Grid>
+    </DockPanel>
+</UserControl>

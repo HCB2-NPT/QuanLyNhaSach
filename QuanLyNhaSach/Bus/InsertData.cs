@@ -113,6 +113,12 @@ namespace QuanLyNhaSach.Bus
 
         public static bool InsertNewAccount(Account account)
         {
+            if (account.Email != null && account.Name != null)
+            {
+                if (Adapters.AccountAdapter.InsertAccount(account) > 0)
+                    return true;
+            }
+
             return false;
         }
     }

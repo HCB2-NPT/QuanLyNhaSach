@@ -179,5 +179,22 @@ namespace QuanLyNhaSach.Adapters
 
             return -1;
         }
+
+        public static int InsertAccount(Account account)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(
+                    String.Format("INSERT INTO TaiKhoan VALUES(N'{0}', '{1}', N'{2}', {3}, 0)",
+                        account.Email, account.Email, account.Name, account.AccessLevel.ID
+                    ));
+            }
+            catch (Exception exception)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call("Có lỗi xảy ra khi tạo tài khoản mới");
+            }
+
+            return -1;
+        }
     }
 }
