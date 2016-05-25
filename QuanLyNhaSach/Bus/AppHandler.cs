@@ -64,7 +64,7 @@ namespace QuanLyNhaSach.Bus
             new Assets.Scripts.AutoUpdate(new TimeSpan(0, 10, 0), u =>
             {
                 Managers.ErrorManager.Current.Ignore = true;
-                var adds = Adapters.ManagerListAddedBookAdapter.GetAll();
+                var adds = Adapters.ManagerListAddedBookAdapter.GetWaitForImport();
                 var now = DateTime.Now;
                 foreach (var c in adds)
                 {
@@ -75,7 +75,7 @@ namespace QuanLyNhaSach.Bus
                             Adapters.BookAdapter.UpdateNumber(b.Book.ID, Adapters.BookAdapter.GetNumber(b.Book.ID) + b.Number);
                             Adapters.AddedBookAdapter.DeleteAddedBook(b);
                         }
-                        Adapters.ManagerListAddedBookAdapter.Delete(c);
+                        Adapters.ManagerListAddedBookAdapter.UpdateIsImported(c);
                     }
                 }
                 Managers.ErrorManager.Current.Ignore = false;
