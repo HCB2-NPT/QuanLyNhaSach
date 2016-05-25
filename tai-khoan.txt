@@ -1,0 +1,19 @@
+Role: Nhan Vien
+Email: NhanVien1@gmail.com
+Pass: NhanVien1
+
+Role: Nhan Vien
+Email: NhanVien2@gmail.com
+Pass: NhanVien2
+
+Role: Nhan Vien
+Email: NhanVien3@gmail.com
+Pass: NhanVien3
+
+Role: Quan Ly
+Email: QuanLy@gmail.com
+Pass: QuanLy
+
+Role: Quan Tri Vien
+Email: QuanTri@gmail.com
+Pass: quantrivien
