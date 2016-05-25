@@ -41,7 +41,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         /*
          * Xử lý sau khi login
          */
-        private void HandleAfterLogin()
+        public void HandleAfterLogin()
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
             {
@@ -126,30 +126,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
             NotifyPropertyChanged("ShowMaximized");
             NotifyPropertyChanged("ShowRestore");
             NotifyPropertyChanged("ShowResizer");
-        }
-
-        /*
-         * Đóng (ảo) MainWindow khi đăng xuất
-         */
-        private void VirtualWindowClose()
-        {
-            //thu nhỏ window lại
-            if (WindowState != System.Windows.WindowState.Normal)
-                MinimizeAndMaximize();
-            //đóng ds chức năng nếu có mở
-            if (DockChucNang.Width > 0)
-                (this.FindResource("CloseFunctions") as Storyboard).Begin();
-            //mở thanh menu rộng ra như ban đầu
-            (this.FindResource("MenuMiniToFull") as Storyboard).Begin();
-            //đóng các window con
-            if (TitleMainRightClick != null)
-                TitleMainRightClick.Visibility = System.Windows.Visibility.Hidden;
-            if (ToolBox != null)
-                ToolBox.Visibility = System.Windows.Visibility.Hidden;
-            if (About != null)
-                About.Visibility = System.Windows.Visibility.Hidden;
-            //xóa các chức năng đã mở
-            mdiContainer.Children.Clear();
         }
         #endregion
 
@@ -260,21 +236,9 @@ namespace QuanLyNhaSach.Views.Views.Windows
          */
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            VirtualWindowClose();
-            Bus.AppHandler.VirtualWindowClose(this);
+            Close();
             Managers.Manager.Current.User.Logout();
             Bus.AppHandler.VirtualWindowOpen(Owner);
-        }
-
-        /*
-         * chạy ngay khi đăng nhập vào
-         */
-        private void window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var oldValue = (bool)e.OldValue;
-            var newValue = (bool)e.NewValue;
-            if (!oldValue && newValue)
-                HandleAfterLogin();
         }
         #endregion
 
@@ -378,30 +342,62 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
                 mdiChild.Loaded += (s, a) =>
                 {
-                    mdiChild.Position = new Point(0, 0);
-                    mdiChild.Width = mdiContainer.InnerWidth;
-                    mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
-                    mdiChild.MaximizeBox = false;
-                };
-                mdiChild.WindowStateChanged += (s, a) =>
-                {
-                    if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
+                    if (Managers.UserManager.Current.Info.AccessLevel.ID != 3)
                     {
-                        foreach (var item in mdiContainer.Children)
-                        {
-                            if (item != mdiChild)
-                                item.WindowState = System.Windows.WindowState.Minimized;
-                        }
-
                         mdiChild.Position = new Point(0, 0);
                         mdiChild.Width = mdiContainer.InnerWidth;
                         mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     }
+                    mdiChild.MaximizeBox = false;
                 };
-                foreach (var item in mdiContainer.Children)
+                mdiChild.WindowStateChanged += (s, a) =>
                 {
-                    if (item != mdiChild)
-                        item.WindowState = System.Windows.WindowState.Minimized;
+                    if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                    {
+                        mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                    }
+                    else
+                    {
+                        if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
+                        {
+                            foreach (var item in mdiContainer.Children)
+                            {
+                                if (item != mdiChild)
+                                    item.WindowState = System.Windows.WindowState.Minimized;
+                            }
+
+                            mdiChild.Position = new Point(0, 0);
+                            mdiChild.Width = mdiContainer.InnerWidth;
+                            mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                        }
+                    }
+                };
+                if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                {
+                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                }
+                else
+                {
+                    foreach (var item in mdiContainer.Children)
+                    {
+                        if (item != mdiChild)
+                            item.WindowState = System.Windows.WindowState.Minimized;
+                    }
+                }
+            }
+            else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                {
+                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                }
+                else
+                {
+                    var top = mdiContainer.GetTopChild();
+                    top.WindowState = System.Windows.WindowState.Normal;
+                    top.Position = new Point(0, 0);
+                    top.Width = mdiContainer.InnerWidth;
+                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                 }
             }
 
@@ -420,7 +416,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     child.Width = mdiContainer.InnerWidth;
                     child.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     child.Focus();
-                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                    if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                    {
+                        mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                    }
                 };
                 WindowsMenu.Items.Insert(i, mi);
             }
@@ -436,12 +435,19 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var top = mdiContainer.GetTopChild();
-            if (top.WindowState == System.Windows.WindowState.Normal)
+            if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
             {
-                top.Position = new Point(0, 0);
-                top.Width = mdiContainer.InnerWidth;
-                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                mdiContainer.MdiLayout = MdiLayout.TileVertical;
+            }
+            else
+            {
+                var top = mdiContainer.GetTopChild();
+                if (top.WindowState == System.Windows.WindowState.Normal)
+                {
+                    top.Position = new Point(0, 0);
+                    top.Width = mdiContainer.InnerWidth;
+                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                }
             }
         }
         #endregion
@@ -456,7 +462,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void openTaiKhoan(object sender, RoutedEventArgs e)
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
-                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tải khoản", false);
+                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tài khoản", false);
             else
                 showFunctionList(sender, e);
         }

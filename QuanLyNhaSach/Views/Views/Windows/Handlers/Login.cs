@@ -23,14 +23,10 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 LoginWarningTimes = 0;
                 Username = "";
                 Password = "";
-                if (MainWindow == null)
-                {
-                    MainWindow = new MainWindow();
-                    MainWindow.Owner = this;
-                    MainWindow.Show();
-                }
-                else
-                    Bus.AppHandler.VirtualWindowOpen(MainWindow);
+                var MainWindow = new MainWindow();
+                MainWindow.Owner = this;
+                MainWindow.Show();
+                MainWindow.HandleAfterLogin();
             }
             else if (!Managers.Manager.Current.Error.Ignore)
             {

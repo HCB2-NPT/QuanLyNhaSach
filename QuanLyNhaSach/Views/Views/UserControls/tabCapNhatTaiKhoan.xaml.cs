@@ -63,6 +63,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             ((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer).Children.Remove(Tag as WPF.MDI.MdiChild);
+            Bus.AppHandler.SelectTab((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer, "Quản lý tài khoản");
         }
 
         private void Button_Click_Update(object sender, RoutedEventArgs e)

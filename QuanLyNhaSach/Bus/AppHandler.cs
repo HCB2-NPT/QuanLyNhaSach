@@ -142,7 +142,14 @@ namespace QuanLyNhaSach.Bus
             return null;
         }
 
-        
+        public static void SelectTab(MdiContainer container, string title)
+        {
+            var child = container.Children.FirstOrDefault(x => x.Title == title);
+            if (child != null)
+            {
+                child.WindowState = WindowState.Normal;
+            }
+        }
         #endregion
     }
 }

@@ -27,8 +27,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
         public string Password { get { return pbMK.Password; } set { pbMK.Password = value; } }
         #endregion
 
-        public MainWindow MainWindow { get; private set; }
-
         #region Binding Controlers
         private Assets.Scripts.WindowsDragger Dragger { get; set; }
 

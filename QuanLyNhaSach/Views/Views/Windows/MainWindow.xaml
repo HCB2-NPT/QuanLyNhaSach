@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="QuanLyNhaSach.Views.Views.Windows.MainWindow"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         Height="600" Width="900" x:Name="window"
-        MinHeight="600" MinWidth="900" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../../../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed" IsVisibleChanged="window_IsVisibleChanged">
+        MinHeight="600" MinWidth="900" WindowStartupLocation="CenterScreen" BorderBrush="#FF005EAA" BorderThickness="1" Background="White" Icon="../../../Assets/Images/Literature Filled-100.png" ResizeMode="CanMinimize" WindowStyle="None" Closed="Window_Closed">
     <Window.Resources>
         <Storyboard x:Key="MenuFullToMini">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="_menuMini">

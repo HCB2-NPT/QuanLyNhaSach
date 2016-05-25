@@ -46,7 +46,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Nhà sách Tiki" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
                 <TextBlock HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" Text="Made by team NPT" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
-                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="www.null.com" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" Foreground="#FF636363"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="http://hcb2-npt.github.io/" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" Foreground="#FF636363"/>
                 <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderThickness="0,1,1,0" Padding="4,2">
                     <Border.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
