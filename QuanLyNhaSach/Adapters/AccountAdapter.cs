@@ -121,6 +121,8 @@ namespace QuanLyNhaSach.Adapters
             result = null;
             try
             {
+                password = crypto.encodeMD5(crypto.encodeSHA1(password));
+
                 var reader = DataConnector.ExecuteQuery(
                     string.Format(@"select tk.mataikhoan, tk.email, tk.matkhau, tk.hoten, tk.maphanquyen, tk.bixoa " +
                     "from taikhoan tk " +
