@@ -20,7 +20,7 @@
             <TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,21.866,0,0" TextWrapping="Wrap" Text="Họ tên" VerticalAlignment="Top" Width="146" Grid.RowSpan="2"/>
             <TextBox Name="txtFullname" HorizontalAlignment="Left" Height="0" Margin="16,8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Name}" />
 			<TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,23.621,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="146" Grid.Row="2" Grid.RowSpan="2" />
-            <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="0" Margin="16,10.571,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Name}" />
+            <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="0" Margin="16,10.571,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" Text="{Binding Account.Email}" />
             <TextBlock Foreground="#FF212121" FontWeight="Bold" HorizontalAlignment="Left" Height="18" Margin="16,23.621,0,0" TextWrapping="Wrap" Text="Phân quyền" VerticalAlignment="Top" Width="146" Grid.Row="4" Grid.RowSpan="2"/>
             <ComboBox Foreground="#FF212121" HorizontalAlignment="Left" Height="18" Margin="16,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="328" Name="listRoles" DisplayMemberPath="Name" SelectedValuePath="1" SelectedValue="{Binding Account.AccessLevel.ID}"/>
             <Button Content="TẠO TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="184,8.758,0,-3.615" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="160" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Create" />
