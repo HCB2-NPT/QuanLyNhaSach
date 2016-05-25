@@ -342,63 +342,39 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
                 mdiChild.Loaded += (s, a) =>
                 {
-                    if (Managers.UserManager.Current.Info.AccessLevel.ID != 3)
-                    {
-                        mdiChild.Position = new Point(0, 0);
-                        mdiChild.Width = mdiContainer.InnerWidth;
-                        mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
-                    }
+                    mdiChild.Position = new Point(0, 0);
+                    mdiChild.Width = mdiContainer.InnerWidth;
+                    mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     mdiChild.MaximizeBox = false;
                 };
                 mdiChild.WindowStateChanged += (s, a) =>
                 {
-                    if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                    if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
                     {
-                        mdiContainer.MdiLayout = MdiLayout.TileVertical;
-                    }
-                    else
-                    {
-                        if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
+                        foreach (var item in mdiContainer.Children)
                         {
-                            foreach (var item in mdiContainer.Children)
-                            {
-                                if (item != mdiChild)
-                                    item.WindowState = System.Windows.WindowState.Minimized;
-                            }
-
-                            mdiChild.Position = new Point(0, 0);
-                            mdiChild.Width = mdiContainer.InnerWidth;
-                            mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                            if (item != mdiChild)
+                                item.WindowState = System.Windows.WindowState.Minimized;
                         }
+
+                        mdiChild.Position = new Point(0, 0);
+                        mdiChild.Width = mdiContainer.InnerWidth;
+                        mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     }
                 };
-                if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+                foreach (var item in mdiContainer.Children)
                 {
-                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
-                }
-                else
-                {
-                    foreach (var item in mdiContainer.Children)
-                    {
-                        if (item != mdiChild)
-                            item.WindowState = System.Windows.WindowState.Minimized;
-                    }
+                    if (item != mdiChild)
+                        item.WindowState = System.Windows.WindowState.Minimized;
                 }
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
-                {
-                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
-                }
-                else
-                {
-                    var top = mdiContainer.GetTopChild();
-                    top.WindowState = System.Windows.WindowState.Normal;
-                    top.Position = new Point(0, 0);
-                    top.Width = mdiContainer.InnerWidth;
-                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
-                }
+                var top = mdiContainer.GetTopChild();
+                top.WindowState = System.Windows.WindowState.Normal;
+                top.Position = new Point(0, 0);
+                top.Width = mdiContainer.InnerWidth;
+                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -416,10 +392,6 @@ namespace QuanLyNhaSach.Views.Views.Windows
                     child.Width = mdiContainer.InnerWidth;
                     child.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     child.Focus();
-                    if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
-                    {
-                        mdiContainer.MdiLayout = MdiLayout.TileVertical;
-                    }
                 };
                 WindowsMenu.Items.Insert(i, mi);
             }
@@ -435,19 +407,12 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
+            var top = mdiContainer.GetTopChild();
+            if (top.WindowState == System.Windows.WindowState.Normal)
             {
-                mdiContainer.MdiLayout = MdiLayout.TileVertical;
-            }
-            else
-            {
-                var top = mdiContainer.GetTopChild();
-                if (top.WindowState == System.Windows.WindowState.Normal)
-                {
-                    top.Position = new Point(0, 0);
-                    top.Width = mdiContainer.InnerWidth;
-                    top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
-                }
+                top.Position = new Point(0, 0);
+                top.Width = mdiContainer.InnerWidth;
+                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
             }
         }
         #endregion
