@@ -71,6 +71,35 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
+        public static ObservableCollection<ManagerListAddedBook> GetImported()
+        {
+            ObservableCollection<ManagerListAddedBook> result = null;
+            try
+            {
+                var reader = DataConnector.ExecuteQuery("select MaPhieuNhap,NgayNhapKho,NgayTaoPhieu,MaTaiKhoan from PhieuNhap where DaNhap = 'true'");
+                if (reader != null)
+                {
+                    result = new ObservableCollection<ManagerListAddedBook>();
+                    while (reader.Read())
+                    {
+                        var id = reader.GetInt32(0);
+                        var item = new ManagerListAddedBook(id);
+                        item.BeginInit();
+                        item.DateCreated = reader.GetDateTime(1);
+                        item.DateAddIntoStorage = reader.GetDateTime(2);
+                        item.IDManager = (int)reader.GetValueDefault(3, 0);
+                        item.EndInit();
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.Current.DataCantBeRead.Call(ex.Message);
+            }
+            return result;
+        }
+
         public static ObservableCollection<ManagerListAddedBook> GetWaitForImport()
         {
             ObservableCollection<ManagerListAddedBook> result = null;

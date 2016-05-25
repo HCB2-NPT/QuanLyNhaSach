@@ -85,9 +85,9 @@
             </Table.Resources>
 
             <Table.Columns>
-                <TableColumn Width="0.4*" />
-                <TableColumn Width="1.8*" />
-                <TableColumn Width="0.7*" />
+                <TableColumn Width="0.3*" />
+                <TableColumn Width="2*" />
+                <TableColumn Width="0.6*" />
                 <TableColumn Width="0.8*" />
             </Table.Columns>
             <TableRowGroup Style="{StaticResource headerFooterRowStyle}">

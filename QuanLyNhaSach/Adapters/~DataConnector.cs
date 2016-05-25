@@ -50,6 +50,8 @@ namespace QuanLyNhaSach.Adapters
             try
             {
                 var command = new SqlCommand(query, (new DataConnector()).Connection);
+                command.CommandTimeout = 60;
+                command.CommandType = System.Data.CommandType.Text;
                 var result = command.ExecuteNonQuery();
                 return result;
             }

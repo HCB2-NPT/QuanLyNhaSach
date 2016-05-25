@@ -192,16 +192,39 @@ namespace QuanLyNhaSach.Bus
             if (exist == null)
             {
                 var time = new DateTime(year, month, DateTime.DaysInMonth(year, month));
-                var books = Adapters.BookAdapter.GetAll(false);
-                var bis = Adapters.BillItemAdapter.GetAllAfterDate(time);
+                var books = new ObservableCollection<Book>();
+                var bis = Adapters.BillItemAdapter.GetAllBeforeDate(time);
+                var adds = Adapters.ManagerListAddedBookAdapter.GetImported();
                 if (books != null && bis != null)
                 {
+                    foreach (var item in adds)
+                    {
+                        if (DateTime.Compare(time, item.DateAddIntoStorage) >= 0)
+                        {
+                            foreach (var item2 in Adapters.AddedBookAdapter.GetAllListAddedBook(item.ID))
+                            {
+                                if (item2.Book != null)
+                                {
+                                    var k = books.FirstOrDefault(x => x.ID == item2.Book.ID);
+                                    if (k == null)
+                                    {
+                                        books.Add(item2.Book);
+                                        item2.Book.Number = item2.Number;
+                                    }
+                                    else
+                                    {
+                                        k.Number += item2.Number;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     foreach (var item in bis)
                     {
                         var b = books.FirstOrDefault(x => x.ID == item.Book.ID);
                         if (b != null)
                         {
-                            b.Number += item.Number;
+                            b.Number -= item.Number;
                         }
                     }
                     //=====

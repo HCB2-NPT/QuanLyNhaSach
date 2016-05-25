@@ -34,12 +34,12 @@ namespace QuanLyNhaSach.Adapters
             return result;
         }
 
-        public static ObservableCollection<BillItem> GetAllAfterDate(DateTime date)
+        public static ObservableCollection<BillItem> GetAllBeforeDate(DateTime date)
         {
             ObservableCollection<BillItem> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery(string.Format("select ct.MaSach, ct.SoLuong, ct.DonGia from ChiTietHoaDon ct, HoaDon hd where ct.MaHoaDon = hd.MaHoaDon and DATEDIFF(day, '{0}', hd.NgayLap) > 0", date));
+                var reader = DataConnector.ExecuteQuery(string.Format("select ct.MaSach, ct.SoLuong, ct.DonGia from ChiTietHoaDon ct, HoaDon hd where ct.MaHoaDon = hd.MaHoaDon and DATEDIFF(day, '{0}', hd.NgayLap) <= 0", date));
                 if (reader != null)
                 {
                     result = new ObservableCollection<BillItem>();

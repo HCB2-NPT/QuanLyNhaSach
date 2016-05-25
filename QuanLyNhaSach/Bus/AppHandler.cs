@@ -66,16 +66,18 @@ namespace QuanLyNhaSach.Bus
                 Managers.ErrorManager.Current.Ignore = true;
                 var adds = Adapters.ManagerListAddedBookAdapter.GetWaitForImport();
                 var now = DateTime.Now;
-                foreach (var c in adds)
+                if (adds != null)
                 {
-                    if (DateTime.Compare(now, c.DateAddIntoStorage) >= 0)
+                    foreach (var c in adds)
                     {
-                        foreach (var b in c.ListAddedBook)
+                        if (DateTime.Compare(now, c.DateAddIntoStorage) >= 0)
                         {
-                            Adapters.BookAdapter.UpdateNumber(b.Book.ID, Adapters.BookAdapter.GetNumber(b.Book.ID) + b.Number);
-                            Adapters.AddedBookAdapter.DeleteAddedBook(b);
+                            foreach (var b in Adapters.AddedBookAdapter.GetAllListAddedBook(c.ID))
+                            {
+                                Adapters.BookAdapter.UpdateNumber(b.Book.ID, Adapters.BookAdapter.GetNumber(b.Book.ID) + b.Number);
+                            }
+                            Adapters.ManagerListAddedBookAdapter.UpdateIsImported(c);
                         }
-                        Adapters.ManagerListAddedBookAdapter.UpdateIsImported(c);
                     }
                 }
                 Managers.ErrorManager.Current.Ignore = false;
