@@ -67,9 +67,23 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         private void Button_Click_ShowDetails(object sender, RoutedEventArgs e)
         {
             object accountID = ((Button)sender).CommandParameter;
+            Account account = (Account)_accounts.Where(a => a.ID == (int)accountID).FirstOrDefault();
+
+            if (account.AccessLevel.ID == 3)
+            {
+                MessageBox.Show("Tải khoản Quản Trị mặc định không được cập nhật", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                return;
+            }
 
             var uc = (tabCapNhatTaiKhoan)Bus.AppHandler.OpenTab(Tag as WPF.MDI.MdiContainer, typeof(tabCapNhatTaiKhoan), "Cập nhật tài khoản", false);
-            uc.Account = (Account)_accounts.Where(a => a.ID == (int)accountID).First();
+            uc.Account = account;
+        }
+
+        private void Button_Click_Create(object sender, RoutedEventArgs e)
+        {
+            object accountID = ((Button)sender).CommandParameter;
+
+            var uc = (tabTaoTaiKhoanMoi)Bus.AppHandler.OpenTab(Tag as WPF.MDI.MdiContainer, typeof(tabTaoTaiKhoanMoi), "Tạo tài khoản mới", false);
         }
 
         private void Button_Click_Search(object sender, RoutedEventArgs e)
