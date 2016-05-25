@@ -131,13 +131,18 @@ namespace QuanLyNhaSach.Bus
                 {
                     title += string.Format(" - {0}", ++_id);
                 }
+                var child = new WPF.MDI.MdiChild() { Title = title, Resizable = false };
                 var content = (UserControl)Activator.CreateInstance(type);
-                content.Tag = container;
-                container.Children.Add(new WPF.MDI.MdiChild() { Content = content, Title = title, Resizable = false });
+                content.Tag = child;
+                child.Tag = container;
+                child.Content = content;
+                container.Children.Add(child);
                 return content;
             }
             return null;
         }
+
+        
         #endregion
     }
 }

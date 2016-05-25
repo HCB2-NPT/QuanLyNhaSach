@@ -49,7 +49,7 @@ namespace QuanLyNhaSach.Adapters
             ObservableCollection<Bill> result = null;
             try
             {
-                var reader = DataConnector.ExecuteQuery("select MaHoaDon, NgayLap, MaKhachHang, TienTra from HoaDon where TienTra < 0");
+                var reader = DataConnector.ExecuteQuery("select MaHoaDon, NgayLap, MaKhachHang, TienTra from HoaDon where TienTra < TongTien");
                 if (reader != null)
                 {
                     result = new ObservableCollection<Bill>();

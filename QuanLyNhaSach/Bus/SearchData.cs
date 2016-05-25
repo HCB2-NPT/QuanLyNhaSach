@@ -141,7 +141,7 @@ namespace QuanLyNhaSach.Bus
                         {
                             var c = customers.FirstOrDefault(x => x.ID == b.Customer.ID);
                             if (c != null)
-                                c.Debt += Math.Abs(b.PayMoney);
+                                c.Debt += Math.Abs(b.PayMoney - b.TotalMoney);
                         }
                     }
                     var debtors = customers.Where(x => x.Debt > 0);

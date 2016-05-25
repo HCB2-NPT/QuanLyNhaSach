@@ -62,7 +62,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            // TODO
+            ((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer).Children.Remove(Tag as WPF.MDI.MdiChild);
         }
 
         private void Button_Click_Update(object sender, RoutedEventArgs e)
