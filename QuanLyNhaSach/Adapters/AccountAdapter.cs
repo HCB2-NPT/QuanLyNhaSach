@@ -1,4 +1,5 @@
-﻿using QuanLyNhaSach.Managers;
+﻿using QuanLyNhaSach.Assets.Extensions;
+using QuanLyNhaSach.Managers;
 using QuanLyNhaSach.Objects;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace QuanLyNhaSach.Adapters
 {
     public class AccountAdapter
     {
+        private static Security crypto = new Security();
+
         public static ObservableCollection<Account> GetAll(bool findDeletedToo = false)
         {
             ObservableCollection<Account> result = null;
@@ -167,9 +170,12 @@ namespace QuanLyNhaSach.Adapters
         {
             try
             {
+                string password = account.Email.Split('@')[0];
+                password = crypto.encodeMD5(crypto.encodeSHA1(password));
+
                 return DataConnector.ExecuteNonQuery(
                     String.Format("UPDATE TaiKhoan SET MatKhau = '{0}' WHERE MaTaiKhoan = {1}",
-                        account.Email, account.ID
+                        password, account.ID
                     ));
             }
             catch (Exception exception)
@@ -184,9 +190,12 @@ namespace QuanLyNhaSach.Adapters
         {
             try
             {
+                string password = account.Email.Split('@')[0];
+                password = crypto.encodeMD5(crypto.encodeSHA1(password));
+
                 return DataConnector.ExecuteNonQuery(
                     String.Format("INSERT INTO TaiKhoan VALUES(N'{0}', '{1}', N'{2}', {3}, 0)",
-                        account.Email, account.Email, account.Name, account.AccessLevel.ID
+                        account.Email, password, account.Name, account.AccessLevel.ID
                     ));
             }
             catch (Exception exception)
