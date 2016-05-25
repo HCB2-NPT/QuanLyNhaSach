@@ -25,14 +25,15 @@
                 <RowDefinition Height="49*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" FontSize="21.333" Margin="16, 16, 16, 8" FontWeight="SemiBold">Danh Sách Tài Khoản</TextBlock>
+            <TextBlock Grid.Row="0" FontSize="21.333" Margin="16, 16, 16, 8" FontWeight="SemiBold"><Run Text="Danh Sách Tài Khoản"/></TextBlock>
+            <Button Content="Tạo Tài Khoản Mới" Padding="8, 4" Cursor="Hand" FontSize="14" Background="#FFFFEB3B" Height="4" Width="170" Grid.RowSpan="1" HorizontalAlignment="Right" Margin="0,13.686,16,13.686" Click="Button_Click_Create"/>
             <DataGrid GridLinesVisibility="All" BorderThickness="1" BorderBrush="#FF212121" Grid.Row="1" Name="dgAccounts" Margin="16, 8, 16, 16" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeColumns="False" CanUserAddRows="False" CanUserSortColumns="False" ItemsSource="{Binding}" Grid.RowSpan="2">
                 <DataGrid.Columns>                    
                     <DataGridTextColumn Header="Mã Số" Binding="{Binding ID}" />
                     <DataGridTextColumn Header="Họ Tên" Width="*" SortDirection="Ascending" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Phân Quyền" Binding="{Binding AccessLevel.Name}" />
-                    
+
                     <DataGridTemplateColumn Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

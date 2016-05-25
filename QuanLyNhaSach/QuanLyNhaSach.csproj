@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{704AE2FD-A7D2-4C64-A81B-4E3FC025A8E0}</ProjectGuid>
@@ -178,6 +178,9 @@
     <Compile Include="Views\Views\UserControls\tabTacGia.xaml.cs">
       <DependentUpon>tabTacGia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Views\UserControls\tabTaoTaiKhoanMoi.xaml.cs">
+      <DependentUpon>tabTaoTaiKhoanMoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views\UserControls\tabTraCuuKhachHang.xaml.cs">
       <DependentUpon>tabTraCuuKhachHang.xaml</DependentUpon>
     </Compile>
@@ -327,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Views\UserControls\tabTacGia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Views\UserControls\tabTaoTaiKhoanMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

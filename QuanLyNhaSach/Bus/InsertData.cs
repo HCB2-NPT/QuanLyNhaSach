@@ -110,5 +110,10 @@ namespace QuanLyNhaSach.Bus
             if (Adapters.ReportAdapter.ExistNumberReport(month, year) == -1)
                 Adapters.ReportAdapter.InsertNewNumberReport(data, month, year);
         }
+
+        public static bool InsertNewAccount(Account account)
+        {
+            return false;
+        }
     }
 }
