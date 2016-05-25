@@ -82,5 +82,10 @@ namespace QuanLyNhaSach.Bus
         {
             return Adapters.AddedBookAdapter.GetAllListAddedBook(id);
         }
+
+        public static ObservableCollection<AccessLevel> GetAllRoles()
+        {
+            return Adapters.AccessLevelAdapter.GetAll();
+        }
     }
 }

@@ -146,5 +146,38 @@ namespace QuanLyNhaSach.Adapters
             }
             return result != null;
         }
+
+        public static int UpdateAccount(Account account)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(
+                    String.Format("UPDATE TaiKhoan SET HoTen = N'{0}', MaPhanQuyen = {1}, BiXoa = '{2}' WHERE MaTaiKhoan = {3}",
+                        account.Name, account.AccessLevel.ID, account.IsDeleted, account.ID
+                    ));
+            } catch (Exception exception)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call("Có lỗi xảy ra khi cập nhật tài khoản");
+            }
+
+            return -1;
+        }
+
+        public static int ResetPassword(Account account)
+        {
+            try
+            {
+                return DataConnector.ExecuteNonQuery(
+                    String.Format("UPDATE TaiKhoan SET MatKhau = '{0}' WHERE MaTaiKhoan = {1}",
+                        account.Email, account.ID
+                    ));
+            }
+            catch (Exception exception)
+            {
+                ErrorManager.Current.DataCantBeUpdate.Call("Có lỗi xảy ra khi reset mật khẩu");
+            }
+
+            return -1;
+        }
     }
 }

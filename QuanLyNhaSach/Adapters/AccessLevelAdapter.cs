@@ -19,7 +19,7 @@ namespace QuanLyNhaSach.Adapters
             {
                 try
                 {
-                    var reader = DataConnector.ExecuteQuery(@"select maphanquyen, tenphanquyen from phanquyen");
+                    var reader = DataConnector.ExecuteQuery(@"SELECT MaPhanQuyen, TenPhanQuyen FROM PhanQuyen");
                     if (reader != null)
                     {
                         _accessLevels = new ObservableCollection<AccessLevel>();

@@ -79,5 +79,27 @@ namespace QuanLyNhaSach.Bus
                 Adapters.BookAdapter.UpdateBook(whichBook);
             }
         }
+
+        public static bool UpdateAccount(Account account)
+        {
+            if (account.IsDeleted == false)
+            {
+                if (Adapters.AccountAdapter.UpdateAccount(account) > 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool ResetPassword(Account account)
+        {
+            if (account.IsDeleted == false)
+            {
+                if (Adapters.AccountAdapter.ResetPassword(account) > 0)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
