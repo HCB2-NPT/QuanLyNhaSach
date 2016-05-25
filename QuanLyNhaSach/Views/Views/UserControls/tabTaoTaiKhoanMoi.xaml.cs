@@ -48,7 +48,6 @@ namespace QuanLyNhaSach.Views.Views.UserControls
 
         private void Button_Click_Create(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
