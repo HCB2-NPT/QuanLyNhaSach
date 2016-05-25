@@ -26,7 +26,7 @@
             <ComboBox Foreground="#FF212121" HorizontalAlignment="Left" Height="18" Margin="16,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="328" Name="listRoles" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Account.AccessLevel.ID}"/>
 			<CheckBox Name="IsResetPassword" Content="Reset mật khẩu" HorizontalAlignment="Left" Height="18.291" Margin="16,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="171" />
 			<CheckBox Name="IsClockedAccount" Content="Khóa tài khoản" HorizontalAlignment="Left" Height="18.291" Margin="16,10.001,0,0" Grid.Row="5" VerticalAlignment="Top" Width="171" IsChecked="{Binding Account.IsDeleted}"/>
-			<Button Content="CẬP NHẬT TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="184,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="160" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Update" />
+			<Button Content="CẬP NHẬT TÀI KHOẢN" HorizontalAlignment="Left" Height="32" Margin="174,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" FontSize="14" Width="170" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Update" />
 			<Button Content="TRỞ VỀ" HorizontalAlignment="Left" Height="32" Margin="82,8.758,0,0" Grid.Row="6" VerticalAlignment="Top" Width="80" FontSize="14" Cursor="Hand" FontFamily="Segoe UI" Click="Button_Click_Close" />
 		</Grid>
 	</DockPanel>
