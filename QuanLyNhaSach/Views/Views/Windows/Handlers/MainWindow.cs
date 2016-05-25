@@ -378,13 +378,31 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 MdiChild mdiChild = mdiContainer.Children[e.NewStartingIndex];
                 mdiChild.Loaded += (s, a) =>
                 {
+                    mdiChild.Position = new Point(0, 0);
+                    mdiChild.Width = mdiContainer.InnerWidth;
+                    mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     mdiChild.MaximizeBox = false;
                 };
                 mdiChild.WindowStateChanged += (s, a) =>
                 {
-                    mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                    if (mdiChild.WindowState != System.Windows.WindowState.Minimized)
+                    {
+                        foreach (var item in mdiContainer.Children)
+                        {
+                            if (item != mdiChild)
+                                item.WindowState = System.Windows.WindowState.Minimized;
+                        }
+
+                        mdiChild.Position = new Point(0, 0);
+                        mdiChild.Width = mdiContainer.InnerWidth;
+                        mdiChild.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+                    }
                 };
-                mdiContainer.MdiLayout = MdiLayout.TileVertical;
+                foreach (var item in mdiContainer.Children)
+                {
+                    if (item != mdiChild)
+                        item.WindowState = System.Windows.WindowState.Minimized;
+                }
             }
 
             NotifyPropertyChanged("ShowMdiContainer");
@@ -398,6 +416,9 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 mi.Click += (o, ev) =>
                 {
                     child.WindowState = System.Windows.WindowState.Normal;
+                    child.Position = new Point(0, 0);
+                    child.Width = mdiContainer.InnerWidth;
+                    child.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
                     child.Focus();
                     mdiContainer.MdiLayout = MdiLayout.TileVertical;
                 };
@@ -415,7 +436,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
 
         private void mdiContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            mdiContainer.MdiLayout = MdiLayout.TileVertical;
+            var top = mdiContainer.GetTopChild();
+            if (top.WindowState == System.Windows.WindowState.Normal)
+            {
+                top.Position = new Point(0, 0);
+                top.Width = mdiContainer.InnerWidth;
+                top.Height = mdiContainer.InnerHeight - mdiContainer.MinimizedAreaHeight;
+            }
         }
         #endregion
 

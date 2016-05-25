@@ -68,6 +68,31 @@ namespace WPF.MDI
 
         #region Property Accessors
 
+        public double MinimizedAreaHeight
+        {
+            get
+            {
+                List<MdiChild> minimizedWindows = new List<MdiChild>();
+                foreach (var mdiChild in Children)
+                    if (mdiChild.WindowState == WindowState.Minimized)
+                            minimizedWindows.Add(mdiChild);
+
+                double _h = 0;
+                if (minimizedWindows.Count > 0)
+                {
+                    List<double> _hk = new List<double>();
+                    foreach (var item in minimizedWindows)
+                    {
+                        if (!_hk.Contains(item.Position.Y))
+                            _hk.Add(item.Position.Y);
+                    }
+                    _h = _hk.Count * minimizedWindows[0].MinimizedHeight;
+                }
+
+                return _h;
+            }
+        }
+
         public bool CanDragOut
         {
             get { return (bool)GetValue(CanDragOutProperty); }
@@ -605,15 +630,7 @@ namespace WPF.MDI
 					break;
 				case MdiLayout.TileHorizontal:
                     {
-                        List<double> _hk = new List<double>();
-                        foreach (var item in minimizedWindows)
-                        {
-                            if (!_hk.Contains(item.Position.Y))
-                                _hk.Add(item.Position.Y);
-                        }
-                        double _h = 0;
-                        if (minimizedWindows.Count > 0)
-                            _h = _hk.Count * minimizedWindows[0].MinimizedHeight;
+                        var _h = mdiContainer.MinimizedAreaHeight;
 
                         int cols = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
                         int rows = normalWindows.Count / cols;
@@ -621,30 +638,30 @@ namespace WPF.MDI
                         rows = Math.Min(rows, mdiContainer.MdiLayoutMaxRow);
                         cols = (int)Math.Ceiling((double)normalWindows.Count / (double)rows);
 
-                        double w = mdiContainer.InnerWidth / cols,
-                               h = (mdiContainer.InnerHeight - _h) / rows;
+                        double w = Math.Max(mdiContainer.InnerWidth / cols, 0);
+                        double h = Math.Max((mdiContainer.InnerHeight - _h) / rows, 0);
 
                         int count = 0;
                         foreach (var item in normalWindows)
                         {
                             item.Position = new Point((int)(count % cols) * w, (int)(count / cols) * h);
-                            item.Width = w;
-                            item.Height = h;
+                            if (w == 0 && h == 0)
+                            {
+                                item.Width = item.MinimizedWidth;
+                                item.Height = item.MinimizedHeight;
+                            }
+                            else
+                            {
+                                item.Width = w;
+                                item.Height = h;
+                            }
                             count++;
                         }
 					}
 					break;
 				case MdiLayout.TileVertical:
                     {
-                        List<double> _hk = new List<double>();
-                        foreach (var item in minimizedWindows)
-                        {
-                            if (!_hk.Contains(item.Position.Y))
-                                _hk.Add(item.Position.Y);
-                        }
-                        double _h = 0;
-                        if (minimizedWindows.Count > 0)
-                            _h = _hk.Count * minimizedWindows[0].MinimizedHeight;
+                        var _h = mdiContainer.MinimizedAreaHeight;
 
                         int rows = Math.Max((int)Math.Sqrt(normalWindows.Count), 1);
                         int cols = normalWindows.Count / rows;
@@ -652,15 +669,23 @@ namespace WPF.MDI
                         cols = Math.Min(cols, mdiContainer.MdiLayoutMaxCol);
                         rows = (int)Math.Ceiling((double)normalWindows.Count / (double)cols);
 
-                        double w = mdiContainer.InnerWidth / cols,
-                               h = (mdiContainer.InnerHeight - _h) / rows;
+                        double w = Math.Max(mdiContainer.InnerWidth / cols, 0);
+                        double h = Math.Max((mdiContainer.InnerHeight - _h) / rows, 0);
 
                         int count = 0;
                         foreach (var item in normalWindows)
                         {
                             item.Position = new Point((int)(count % cols) * w, (int)(count / cols) * h);
-                            item.Width = w;
-                            item.Height = h;
+                            if (w == 0 && h == 0)
+                            {
+                                item.Width = item.MinimizedWidth;
+                                item.Height = item.MinimizedHeight;
+                            }
+                            else
+                            {
+                                item.Width = w;
+                                item.Height = h;
+                            }
                             count++;
                         }
                     }

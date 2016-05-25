@@ -193,7 +193,7 @@
                     </Button>
                 </DockPanel>
                 <Grid x:Name="grid">
-                    <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=window}" Background="{x:Null}" Theme="Metro" SizeChanged="mdiContainer_SizeChanged">
+                    <mdi:MdiContainer x:Name="mdiContainer" CanDragOut="False" Visibility="{Binding ShowMdiContainer, ElementName=window}" Background="{x:Null}" Theme="Metro" SizeChanged="mdiContainer_SizeChanged">
                         <mdi:MdiContainer.Menu>
                             <Menu Width="{Binding ActualWidth, ElementName=mdiContainer, Mode=OneWay}">
                                 <Menu.ItemsPanel>

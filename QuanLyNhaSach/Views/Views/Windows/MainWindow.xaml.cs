@@ -43,15 +43,17 @@ namespace QuanLyNhaSach.Views.Views.Windows
         #endregion
 
         #region Binding Controlers
-        public bool ShowMdiContainer
+        public Visibility ShowMdiContainer
         {
             get
             {
                 if (mdiContainer == null)
-                    return false;
+                    return Visibility.Collapsed;
                 if (mdiContainer.Children == null)
-                    return false;
-                return mdiContainer.Children.Count > 0;
+                    return Visibility.Collapsed;
+                if (mdiContainer.Children.Count > 0)
+                    return Visibility.Visible;
+                return Visibility.Collapsed;
             }
         }
         #endregion
