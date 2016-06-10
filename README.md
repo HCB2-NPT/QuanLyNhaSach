@@ -4,6 +4,7 @@
 - Giáo viên lý thuyết: Ths.Trần Văn Quý
 - Đồ án cuối kỳ môn: Nhập Môn Công Nghệ Phần Mềm
 - Nền tảng: C# - WPF - SQL Server
+- Chi tiết: [http://hcb2-npt.github.io/do-an/quan-ly-nha-sach/](http://hcb2-npt.github.io/do-an/quan-ly-nha-sach/)
 
 ## Chức năng
 * Quản lý phiếu nhập sách
