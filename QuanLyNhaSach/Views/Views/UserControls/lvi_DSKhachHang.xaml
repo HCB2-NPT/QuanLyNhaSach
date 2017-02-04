@@ -13,28 +13,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" FontSize="14">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" FontSize="14">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Họ tên: {0}">
                         <Binding Path="Name"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="1" FontSize="14">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="1" FontSize="14">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Điện Thoại: {0}">
                         <Binding Path="Phone"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="2" FontSize="14">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="2" FontSize="14">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Địa Chỉ: {0}">
                         <Binding Path="AdressShortFormat"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock Foreground="#FF999999" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="3" FontSize="14">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Grid.Row="3" FontSize="14">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="Email: {0}">
                         <Binding Path="Email"/>

@@ -109,47 +109,5 @@ namespace QuanLyNhaSach.Bus
             Bus.AppHandler.VirtualWindowOpen(windowVar);
         }
         #endregion
-
-        #region Tab (Mdi Child)
-        private static int _id = 0;
-        public static UserControl OpenTab(MdiContainer container, Type type, string title, bool canDuplicate)
-        {
-            if (type != null)
-            {
-                if (!canDuplicate)
-                {
-                    var type_string = type.ToString();
-                    var first = container.Children.FirstOrDefault(o => o.Content.GetType().ToString() == type_string);
-                    if (first != null)
-                    {
-                        first.Focus();
-                        first.WindowState = WindowState.Normal;
-                        return null;
-                    }
-                }
-                else
-                {
-                    title += string.Format(" - {0}", ++_id);
-                }
-                var child = new WPF.MDI.MdiChild() { Title = title, Resizable = false };
-                var content = (UserControl)Activator.CreateInstance(type);
-                content.Tag = child;
-                child.Tag = container;
-                child.Content = content;
-                container.Children.Add(child);
-                return content;
-            }
-            return null;
-        }
-
-        public static void SelectTab(MdiContainer container, string title)
-        {
-            var child = container.Children.FirstOrDefault(x => x.Title == title);
-            if (child != null)
-            {
-                child.WindowState = WindowState.Normal;
-            }
-        }
-        #endregion
     }
 }

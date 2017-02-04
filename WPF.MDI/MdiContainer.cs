@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
@@ -711,5 +712,49 @@ namespace WPF.MDI
 			#endregion
 		}
 		#endregion
-	}
+
+        #region Added Methods
+        public UIElement AddMDIChild(Type type, string title, bool isUnique = false, params object[] args)
+        {
+            if (type != null)
+            {
+                if (isUnique)
+                {
+                    UIElement c;
+                    if ((c = SelectMDIChild(type)) != null)
+                        return c;
+                }
+                var child = new WPF.MDI.MdiChild() { Title = title };
+                var content = (UserControl)Activator.CreateInstance(type, args);
+                content.Tag = child;
+                child.Content = content;
+                Children.Add(child);
+                return content;
+            }
+            return null;
+        }
+
+        public UIElement SelectMDIChild(string title)
+        {
+            var child = Children.FirstOrDefault(x => x.Title.Equals(title));
+            if (child == null)
+                return null;
+            child.Focus();
+            if (child.WindowState == WindowState.Minimized)
+                child.WindowState = WindowState.Normal;
+            return child.Content;
+        }
+
+        public UIElement SelectMDIChild(Type type)
+        {
+            var child = Children.FirstOrDefault(x => x.Content.GetType().Equals(type));
+            if (child == null)
+                return null;
+            child.Focus();
+            if (child.WindowState == WindowState.Minimized)
+                child.WindowState = WindowState.Normal;
+            return child.Content;
+        }
+        #endregion
+    }
 }

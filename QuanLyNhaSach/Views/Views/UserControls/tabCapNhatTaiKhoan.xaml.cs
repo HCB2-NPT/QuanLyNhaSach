@@ -58,12 +58,21 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             listRoles.ItemsSource = Bus.FillData.GetAllRoles().Where(role => role.ID != 3);
         }
 
+        public tabCapNhatTaiKhoan(Account acc)
+        {
+            InitializeComponent();
+            DataContext = this;
+            Account = acc;
+            listRoles.ItemsSource = Bus.FillData.GetAllRoles().Where(role => role.ID != 3);
+        }
+
         #endregion
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            ((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer).Children.Remove(Tag as WPF.MDI.MdiChild);
-            Bus.AppHandler.SelectTab((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer, "Quản lý tài khoản");
+            var child = Tag as WPF.MDI.MdiChild;
+            child.Container.Children.Remove(child);
+            child.Container.SelectMDIChild("Quản lý tài khoản");
         }
 
         private void Button_Click_Update(object sender, RoutedEventArgs e)

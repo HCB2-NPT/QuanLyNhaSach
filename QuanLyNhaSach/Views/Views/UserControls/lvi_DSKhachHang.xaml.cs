@@ -35,8 +35,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             {
                 if (tag.Debt > 0)
                 {
-                    var uc = (tabPhieuThuTien)Bus.AppHandler.OpenTab((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer, typeof(tabPhieuThuTien), "Đòi nợ", false);
-                    uc.CustomerTransfer = tag.ID;
+                    (this.Tag as WPF.MDI.MdiChild).Container.AddMDIChild(typeof(tabPhieuThuTien), "Đòi nợ", false, tag.ID);
                 }
                 else
                 {

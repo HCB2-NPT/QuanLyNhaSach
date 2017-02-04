@@ -431,6 +431,7 @@
     <None Include="Assets\Images\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Project Diagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -556,6 +557,9 @@
   <ItemGroup>
     <Resource Include="Assets\Images\password.png" />
     <Resource Include="Assets\Images\username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\no_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

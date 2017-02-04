@@ -11,7 +11,7 @@
 	x:Name="UserControl"
 	d:DesignHeight="600" d:DesignWidth="600">
     <DockPanel>
-        <DockPanel Margin="0" Width="300" LastChildFill="False" Background="#FFF1F1F1">
+        <DockPanel Margin="0" Width="300" LastChildFill="True" Background="#FFF1F1F1">
             <DockPanel Margin="0" DockPanel.Dock="Top" Background="#FF266EB8" Height="40">
                 <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="14" Margin="8,0,0,0"/>
                 <DatePicker x:Name="dt_DateInclude" VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" DockPanel.Dock="Right" Foreground="White" Background="#FF4B4B4B" FontSize="14" BorderBrush="White" Margin="0,0,8,0" BorderThickness="0,0,0,1" FontFamily="Segoe UI"/>
@@ -24,7 +24,6 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-
                     <Grid>
                         <toolkit:AutoCompleteBox x:Name="tb_BookName" ItemsSource="{Binding ListBook}" FilterMode="Contains" ValueMemberPath="Name" Padding="8,4,0,0" Foreground="#FFABADB3" BorderThickness="0,0,0,1" FontSize="14" Background="White" VerticalContentAlignment="Center" BorderBrush="#FFABADB3" VerticalAlignment="Center" Margin="8,0">
                             <toolkit:AutoCompleteBox.ItemTemplate>
@@ -48,6 +47,7 @@
                     </Button>
                 </Grid>
             </DockPanel>
+            <Image Source="{Binding SelectedItem.ImageFormat, ElementName=tb_BookName,Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </DockPanel>
         <DockPanel Margin="0">
             <Button x:Name="btn_Done" VerticalAlignment="Top" DockPanel.Dock="Bottom" Background="White" BorderThickness="0" BorderBrush="{x:Null}" Foreground="Black" Margin="0" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFC9DFF2" Click="btn_Done_Click">

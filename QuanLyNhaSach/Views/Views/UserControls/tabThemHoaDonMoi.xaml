@@ -62,8 +62,8 @@
                     </toolkit:AutoCompleteBox>
                     <TextBlock FontSize="14" Foreground="Gray" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Text="Tên sách" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=tb_NameBook}"/>
                 </Grid>
-                <TextBox x:Name="tb_TheLoai" Text="{Binding SelectedItem.GenresShortFormat, Mode=OneWay, ElementName=tb_NameBook}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
-                <TextBox x:Name="tb_TacGia" Text="{Binding SelectedItem.AuthorsShortFormat, Mode=OneWay, ElementName=tb_NameBook}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TheLoai" IsEnabled="False" Text="{Binding SelectedItem.GenresShortFormat, Mode=OneWay, ElementName=tb_NameBook}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Thể loại" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="1" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
+                <TextBox x:Name="tb_TacGia" IsEnabled="False" Text="{Binding SelectedItem.AuthorsShortFormat, Mode=OneWay, ElementName=tb_NameBook}" TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Tác giả" Style="{DynamicResource TextBoxWaterMask}" Margin="16,0" Padding="8,4,0,0" Grid.Row="2" Foreground="Black" OpacityMask="Gray" BorderThickness="0,0,0,1" FontSize="14"/>
                 <TextBlock x:Name="tb_SoLuongTon" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="Gray" FontSize="14">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="Tồn kho: {0}">

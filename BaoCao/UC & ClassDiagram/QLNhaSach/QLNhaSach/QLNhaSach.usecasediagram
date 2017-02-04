@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="da7cb4ad-eb28-479d-ab1f-ebbe32ae3ba0" name="QLNhaSach" linkedPackageId="526b6f01-5929-46bd-accf-87b3283f3183" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="3c62ce41-8fc1-4c0f-b9d2-a28e021a59b1" name="Nhân viên" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d8de3dcd-cc88-40a4-8d22-2a56c7da5df6" />
+        <generalsInternal>
+          <generalization Id="8795da44-d66b-4f33-b43e-20d15fb7b7c1" isSubstitutable="false">
+            <actorMoniker Id="158205e9-6fba-4ed5-9e13-73765c37d86e" LastKnownName="Người Dùng" />
+            <elementDefinition Id="a939290d-7405-4602-8830-68d6c8a31afa" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="b6fc48c1-e83c-4467-acd2-3633f2b8c556" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Tra cứu khách hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="413bfbc4-b2f0-4f2d-8899-d52ac22b97ff" LastKnownName="Tra cứu khách hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8dce777-adce-49c7-96da-4aa297846987" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1a0e3112-7395-43a8-ac7a-a4c2f825dfcd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8882d64f-e38e-4ff2-bf6d-83fcd25eeb36" name="Tra cứu khách hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b06b4884-0764-42a6-9d7f-2b211b486c5a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b7d47935-89c7-4fa8-88cc-96b5085d3213" />
+          </association>
+          <association Id="276fb9a4-d384-4e89-b933-17a2a5ac2145" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Quản lý hóa đơn cũ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5ff84a00-6fdb-46dc-a8e4-0d3ccb7d5043" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0ba5178d-1208-4ea1-a514-60386b1b1a4b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="177f8402-2dd5-4ac1-9495-7dc90caab7c1" name="Quản lý hóa đơn cũ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0b4bee8f-e2ed-458f-a972-c377f01500f4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1fa2ff8f-0d25-4646-a485-9abf44ba87ea" />
+          </association>
+          <association Id="f835efa4-d6e0-4445-9563-0f11c3126fed" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Lập hóa đơn" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5a0cdec9-1156-4289-add2-3b23429f26fe" LastKnownName="Lập hóa đơn" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="92bdfaeb-f1c3-4340-b7bb-735c8797bcc2" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8e7e707b-d775-4cd4-b967-833ab4c2abba" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="41898cfa-e29e-41e8-883a-13e9c3b3680f" name="Lập hóa đơn" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1629e492-0428-44d0-9d11-304dd7688b10" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7893e9b8-0a4f-42be-bb36-a173600542ab" />
+          </association>
+          <association Id="e83ae620-970f-49e4-9e00-605e009fae92" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Đòi nợ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d18cc70b-e5d3-44c1-b1c3-1f1e840caa7d" LastKnownName="Trả nợ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e38ac409-72e1-4db5-bf67-62eec54d6a9d" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="191a2017-4c4c-40e1-930e-3713c65c04f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b2225926-fe76-4bb5-8ad0-8ad320323b21" name="Đòi nợ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6a68145b-2263-4f49-9775-9958491970c0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="41ccfdb8-0a6c-46af-bce2-7fce519695ed" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1f630b72-d1d1-40c5-9729-890a40b8be59" name="Quản Lý" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="abbcc852-b634-48a4-91cc-1474b8e0571c" />
+        <generalsInternal>
+          <generalization Id="6d0e7a29-0062-4632-9d99-d8656be4f3f0" isSubstitutable="false">
+            <actorMoniker Id="158205e9-6fba-4ed5-9e13-73765c37d86e" LastKnownName="Người Dùng" />
+            <elementDefinition Id="af04a9f1-3b15-43ac-a537-901dfea06113" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="03613b2a-49b2-49bc-8b2e-ac90ca907e71" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Lập hóa đơn" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5a0cdec9-1156-4289-add2-3b23429f26fe" LastKnownName="Lập hóa đơn" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="07e1b8e2-dae2-42ab-a689-cbd39a721a0a" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0194fe4e-0f29-41d7-aa6c-b45206d580d0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="295c448d-30c6-4f4c-a227-aacff8ba680b" name="Lập hóa đơn" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3996f0fc-afa1-4ede-82d3-a65cc58a7447" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ddef8c90-b29a-4ec5-89f1-7c8e2934e570" />
+          </association>
+          <association Id="3e3358c4-9e8f-4663-a833-02b596c46653" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Quản lý hóa đơn cũ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="79362fd9-2374-467b-8f14-871621fbfb51" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="01dc56cf-27cf-4ed0-847d-ef3e0b0cdaab" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a21e453f-c35e-42f2-98a9-3d1add8a6373" name="Quản lý hóa đơn cũ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a0016578-2092-425f-b7bc-12f8e487fa5d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="752e2158-800b-4907-b445-adeef150291b" />
+          </association>
+          <association Id="91a39860-74f9-420c-8535-8190899059e9" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Thêm/Xóa/Sửa thông tin thể loại sách" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="909c021c-f298-440f-9bda-c2c5878d8444" LastKnownName="Quản lý thể loại sách" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6686182d-e228-486c-9e2b-117c522800b0" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5c59a053-f787-40e7-8a01-46e95590ee10" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0cda5450-2f2d-4e2b-8751-e26a0993305a" name="Thêm/Xóa/Sửa thông tin thể loại sách" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ff65ffc9-f77e-4927-acb2-81621e705376" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b01064c2-2c98-4696-9528-c841f5b40241" />
+          </association>
+          <association Id="8c8587c7-d9f4-4503-a0cc-9f66b403759c" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Thêm/Xóa/Sửa thông tin tác giả" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" LastKnownName="Quản lý tác giả" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="53cac91f-ce59-42fc-b4d4-790092ce1f1a" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4a2dbb61-2d07-4f52-91e3-43cfdb5d39af" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d0171588-89e5-4246-b04f-28ad5588c673" name="Thêm/Xóa/Sửa thông tin tác giả" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4f3905c5-029a-492d-a1ee-7417b7f7522e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7b3f24c9-72ed-4511-b974-3c744424b63b" />
+          </association>
+          <association Id="005a1ae0-c0b6-4b86-b1c2-e6334008c156" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Thêm/Xóa/Sửa thông tin sách" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="772ed42c-7c05-4438-92d4-a660d6ffe133" LastKnownName="Quản lý sách" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fd58a6c0-1f96-4d11-8263-bd6ef45770bf" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f86cedd0-285d-451d-ab3f-4accbc270ccf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="62b57781-46bb-4b84-af92-9ba011c17850" name="Thêm/Xóa/Sửa thông tin sách" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8f40278b-0937-4efc-a0d8-906deabec093" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="78634d35-6406-435c-a077-c67f06f5698b" />
+          </association>
+          <association Id="6884b818-cc4a-4ce6-ae87-d9915c954166" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Cập nhật quy định" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e76e6118-5bdc-4357-80ff-ff5a91158d02" LastKnownName="Cập nhật quy định" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="eb26cfb4-4064-4706-aa93-92df57b96f5a" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3945e378-8865-46cd-a147-add7bee8c042" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4deea194-8a70-4951-9904-855065d21837" name="Cập nhật quy định" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9a5843d5-03e3-404a-b579-778470d3c475" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="06cf7a69-2986-41b6-a437-bffb82b7bdcf" />
+          </association>
+          <association Id="2be418e4-b20b-42e5-8073-c943ad9e99c2" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Báo cáo tồn kho" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="893af71b-ab97-4b7a-b809-d795af15a9b9" LastKnownName="Báo cáo tồn kho" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1e53f03d-32f4-41b4-ab09-3d16cc690301" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d15ba7c6-6819-4c24-8ae8-11e0ed06d6ae" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7a02fed1-76fa-440a-811e-fcc1c9f63378" name="Báo cáo tồn kho" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fd6c4e1e-90c3-40a5-8819-3beec134c10e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="530fdd95-dc8c-4287-aebd-5907661fde1b" />
+          </association>
+          <association Id="199f7366-13a9-4d4d-a3d7-fb31c484e02a" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Báo cáo công nợ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="cbcd068a-62b5-4829-9afa-8f62c25bb8e4" LastKnownName="Báo cáo công nợ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ac5d9808-526a-43f0-88ee-39b196aa8584" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="65b7432c-94ca-40d3-bfef-92ada2c10a0a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c1a587d4-c529-4446-88a3-e59dde9a91b3" name="Báo cáo công nợ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="46f88fae-3e66-4e24-ae60-d61288ea1811" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="560fd2a2-c875-422a-8e53-15a78df362d9" />
+          </association>
+          <association Id="2f74b392-85e1-4235-ac4c-525900880321" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Tra cứu tài khoản" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c1c5c6df-2281-4842-af73-b7686486ea00" LastKnownName="Tra cứu tài khoản" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="79ad57bf-1f54-4017-b056-aa2c9cdf07cc" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6b1c4758-2101-4a3c-8a28-f2063582a225" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="500cade1-a1e2-4437-a8fb-546516885424" name="Tra cứu tài khoản" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="62d32167-1587-42d4-b11c-b1027945cbf7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6a2d1e2f-a5d6-4f5e-9e20-3781965cd94c" />
+          </association>
+          <association Id="83816d29-eca7-4d9d-8c2e-9e45c7bc3715" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Đòi nợ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d18cc70b-e5d3-44c1-b1c3-1f1e840caa7d" LastKnownName="Trả nợ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ac8a4e73-5b77-49dc-b807-54b284db6c96" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="227d5933-8533-4ad5-8b45-2a3f15835096" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9ecc457b-e5c9-42fe-b466-383405a65f57" name="Đòi nợ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7d6682e5-46fb-42ec-b10d-63e86a1fce9d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2316241a-4679-40ab-a522-939c7a158a0e" />
+          </association>
+          <association Id="2edadb01-f3e7-4dbe-8e98-22ec5adf3373" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Thêm/Xóa/Sửa khách hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4beee00c-7938-4bb5-b3c8-86b3e84340d8" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="67fe6d2b-77a0-4b09-8cea-0fa55156e6b3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d61c36c6-abe1-4b38-88d0-a4106305c18e" name="Thêm/Xóa/Sửa khách hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e8d23a18-2ad3-44e7-8f5c-b252e1f9acc8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2844708e-1672-418f-a339-734126797c0a" />
+          </association>
+          <association Id="6ca338da-b20a-4653-aa40-ca65680302f4" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Quản lý nhập sách" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e760fd1b-46d0-49c8-bfd5-2c6d2b3e1243" LastKnownName="Quản lý nhập sách" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5b99daa8-c6bb-4336-a5e4-06a59d30b165" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5ab76f1c-7b1a-42c6-bc84-a8067c86e897" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2188804d-2ea2-47c8-982b-e1f4849facfe" name="Quản lý nhập sách" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="aea00c17-3c8a-4068-ad0f-2d4467edd306" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="243d6687-992b-4a9f-99dd-3e3a275607cf" />
+          </association>
+          <association Id="d8f2b93c-7dc5-49d9-be58-53bd3c85ddb5" isDerived="false" sourceEndRoleName="Quản Lý" targetEndRoleName="Nhập sách" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8dd9a7a2-9bf1-4f28-9d10-dd88953b89a5" LastKnownName="Nhập sách" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="08c0f31d-381f-4401-9d23-dc7be5d6dd9b" name="Quản Lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6df5dcc2-52fe-441d-b071-996e83605f73" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="aceb9cde-31f3-4459-aefa-ce4b67eec637" name="Nhập sách" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6fe59d35-817a-492b-bfce-2740f04b7688" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="736178e8-dbbd-4dac-818f-7a563feefb7c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="09ab41fe-b5da-4174-8142-2bcc50f5f148" name="Quản Trị" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1263e310-bd6c-46a4-931d-87bdbee0f629" />
+        <generalsInternal>
+          <generalization Id="70c27aeb-00a9-4665-91fb-9937a11d4468" isSubstitutable="false">
+            <actorMoniker Id="158205e9-6fba-4ed5-9e13-73765c37d86e" LastKnownName="Người Dùng" />
+            <elementDefinition Id="14a49ea0-00bc-429b-a9ba-aea954010da1" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="3ad732db-c327-4b8a-ae71-64dfbe8ee7b9" isDerived="false" sourceEndRoleName="Quản Trị" targetEndRoleName="Quản lý tài khoản" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e8dd67e7-c2a4-4ab7-8984-002ef8971192" LastKnownName="Quản lý người dùng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="564d1497-4758-46c1-b7a8-ae2c72e2d95e" name="Quản Trị" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="89aba869-b2a2-4f2e-a080-1f2363e14d38" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="668f974e-71b1-40a0-bb5f-81c46b3598bd" name="Quản lý tài khoản" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d95330d7-7950-48b9-a281-95bfbc1d5868" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="addcdb2c-f6cc-46b7-b799-6308130f2274" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="158205e9-6fba-4ed5-9e13-73765c37d86e" name="Người Dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7b73fc66-58ce-4ab4-8994-2734c4e2b5a2" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="413bfbc4-b2f0-4f2d-8899-d52ac22b97ff" name="Tra cứu khách hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0f98367b-028c-4944-9126-82d7ea3813ee" />
+        <extendedCases>
+          <extend Id="2a16965a-c095-448b-a9cb-18feb1e87581">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <elementDefinition Id="e5b6b2b5-c481-445b-940f-fb6724f1735c" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e8dd67e7-c2a4-4ab7-8984-002ef8971192" name="Quản lý người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1bc18693-04a6-4d02-94d7-04ec13a18d59" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4fe4cc3c-7a73-44d3-80e8-e3dbd0767791" name="Tra cứu sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea2eec2f-99f0-4ac4-9319-a238595df8ef" />
+        <extendedCases>
+          <extend Id="e198e33d-2866-4dfc-9b65-4b9b6eb2ad86">
+            <useCaseMoniker Id="772ed42c-7c05-4438-92d4-a660d6ffe133" LastKnownName="Quản lý sách" />
+            <elementDefinition Id="7c06a82a-09a7-4216-8af6-d27968a28c90" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d18cc70b-e5d3-44c1-b1c3-1f1e840caa7d" name="Trả nợ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cc83064c-9fe7-49cf-8a45-f4f95ff5e0a2" />
+        <extendedCases>
+          <extend Id="5c25497f-1a1f-4486-a364-9139a77b40a7">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <elementDefinition Id="b8e04377-059d-47cf-aba8-26426b947019" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5a0cdec9-1156-4289-add2-3b23429f26fe" name="Lập hóa đơn" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ca2379b2-6191-459d-b41d-324a19472e0b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" name="Quản lý đơn cũ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="569cb1b6-77f2-492f-89ab-2f690060bc1c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="772ed42c-7c05-4438-92d4-a660d6ffe133" name="Quản lý sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d90e55ac-6f5c-4021-b839-c2f2fdbb5b9c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" name="Quản lý tác giả" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f70acec3-664c-4bf4-9933-464faae57d7f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="909c021c-f298-440f-9bda-c2c5878d8444" name="Quản lý thể loại sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aa6f7716-1c84-4c83-a27a-50af864709cd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1ca1621f-3ea4-4446-9b56-0bbe86599b84" name="Tra cứu phiếu nhập" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0ee77d0f-f788-4f53-8478-4c8a6db1986c" />
+        <extendedCases>
+          <extend Id="2591d66f-abfc-4a30-81c8-b86f01b1bff6">
+            <useCaseMoniker Id="e760fd1b-46d0-49c8-bfd5-2c6d2b3e1243" LastKnownName="Quản lý nhập sách" />
+            <elementDefinition Id="4fe7f1f6-4d80-479f-bb8c-aac3132864ee" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8dd9a7a2-9bf1-4f28-9d10-dd88953b89a5" name="Nhập sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="302006c0-e35c-489d-be42-7e24108151f7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c1c5c6df-2281-4842-af73-b7686486ea00" name="Tra cứu tài khoản" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f424dd67-4e0a-4839-82f8-0583db6ae544" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="893af71b-ab97-4b7a-b809-d795af15a9b9" name="Báo cáo tồn kho" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b0f28eba-458a-4fd5-b653-8a9e181e2e76" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="cbcd068a-62b5-4829-9afa-8f62c25bb8e4" name="Báo cáo công nợ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ac381cd-4ffc-41a6-9d36-cfe37ffb7064" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e76e6118-5bdc-4357-80ff-ff5a91158d02" name="Cập nhật quy định" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="92baf28f-2096-4b71-8d8e-cbf05130f56c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" name="Quản lý khách hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3a62e038-1391-4295-b5c4-01d4e602cb9b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f17fe94e-932a-4a77-a9de-e55d2d0aecb0" name="Thêm khách hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="af6334c1-463d-43d2-a542-701c95c73dec" />
+        <extendedCases>
+          <extend Id="12f23350-dec1-430d-b4b8-80af9c6b2125">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <elementDefinition Id="48d511b5-90ab-47a3-aa8c-c2d0fceafaec" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5b9de030-fbb4-4a4a-ab5e-5247bee93a59" name="Xóa khách hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f82762d5-fd26-4a1c-84c8-4903c331400b" />
+        <extendedCases>
+          <extend Id="ef5a17c8-2709-464b-a7e0-16e826a7ebfe">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <elementDefinition Id="7e0c2a8c-ae76-4257-b274-18fdf659d97e" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="40557bd6-b8f4-4185-8c05-43baa2c51b49">
+            <useCaseMoniker Id="413bfbc4-b2f0-4f2d-8899-d52ac22b97ff" LastKnownName="Tra cứu khách hàng" />
+            <elementDefinition Id="dcb2b6d2-d6c9-45bd-a86f-810932b1c0b9" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="344d480c-3383-4fae-a773-a0950af39cf9" name="Cập nhật khách hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="75d6a229-4179-4e55-a180-ecd01df9fe6d" />
+        <extendedCases>
+          <extend Id="72bf4a8c-c2d4-47ca-978e-2640c8f86a71">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <elementDefinition Id="e12d5d96-6f2a-4e8d-822f-e0b35c3aafd3" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="991bca41-f0cf-41ee-a542-bdb280e0fbc1">
+            <useCaseMoniker Id="413bfbc4-b2f0-4f2d-8899-d52ac22b97ff" LastKnownName="Tra cứu khách hàng" />
+            <elementDefinition Id="3de69db8-e107-4cbc-b005-39509547e190" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6c759421-b1a5-4848-a0eb-0a6de111ee5f" name="Cập nhật tác giả" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b2a3c308-dbf1-43f0-a0c2-8dfe390d9698" />
+        <extendedCases>
+          <extend Id="9f51dde1-7c6d-479b-91ad-23be57ce3c00">
+            <useCaseMoniker Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" LastKnownName="Quản lý tác giả" />
+            <elementDefinition Id="9080690a-9dc1-453e-8b78-c1dcc9da7675" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="c3e2ed0b-4073-4495-8ddf-a5df95dee44c">
+            <useCaseMoniker Id="366c6c30-d30c-46f0-aea9-38934f4c10e4" LastKnownName="Tìm kiếm tác giả" />
+            <elementDefinition Id="5b10a2be-a9b9-4ea4-b3f9-1b1b19af2fd2" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9d230239-7d39-44d5-bd71-f86aa1c56103" name="Thêm tác giả" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="de142aff-3cef-4484-bfd8-245a908c58e4" />
+        <extendedCases>
+          <extend Id="2cad8576-5f68-4568-ac83-180ca7f2f7fc">
+            <useCaseMoniker Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" LastKnownName="Quản lý tác giả" />
+            <elementDefinition Id="a6bf2629-cc4d-4890-ad98-621996fff807" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="366c6c30-d30c-46f0-aea9-38934f4c10e4" name="Tìm kiếm tác giả" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="38b34e9c-62ee-4c7f-851f-28bb9f8b0c02" />
+        <extendedCases>
+          <extend Id="411b1e5b-0642-44d7-935d-b10dca93d935">
+            <useCaseMoniker Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" LastKnownName="Quản lý tác giả" />
+            <elementDefinition Id="2ed5f184-9768-4523-98b6-c1dbd9bc95e1" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="154b1bce-9573-4a3d-8842-bf35079035d7" name="Thêm thể loại" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0cbec077-0e3d-422a-abde-dab1e7801a93" />
+        <extendedCases>
+          <extend Id="f235c68c-f034-4b45-b352-92be4c43fdf9">
+            <useCaseMoniker Id="909c021c-f298-440f-9bda-c2c5878d8444" LastKnownName="Quản lý thể loại sách" />
+            <elementDefinition Id="012a6f8a-fde5-4027-a44c-58baf7325025" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8c5f54a1-aa6a-43ce-b979-597c0589d85c" name="Tìm kiếm thể loại" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6c8b7f4a-3904-4b7a-8378-69875eeecc0c" />
+        <extendedCases>
+          <extend Id="6c471e6b-1010-4542-9a96-706b5f53d1bb">
+            <useCaseMoniker Id="909c021c-f298-440f-9bda-c2c5878d8444" LastKnownName="Quản lý thể loại sách" />
+            <elementDefinition Id="dd1181e8-4881-4ac2-ac11-a6877be37348" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="34dbb459-ac7a-4445-acd6-ffad1bcf6d16" name="Cập nhật thể loại" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c4167586-1893-4af9-a1e3-e005962a8889" />
+        <extendedCases>
+          <extend Id="d19f4b82-f35c-4a15-88d7-43602456b3b1">
+            <useCaseMoniker Id="909c021c-f298-440f-9bda-c2c5878d8444" LastKnownName="Quản lý thể loại sách" />
+            <elementDefinition Id="1a7f8b09-ad8e-4344-86d5-0b9d74cabd8a" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="82fb770e-d1ff-4115-88fb-328d331448ac">
+            <useCaseMoniker Id="8c5f54a1-aa6a-43ce-b979-597c0589d85c" LastKnownName="Tìm kiếm thể loại" />
+            <elementDefinition Id="044994f7-0dc2-41ed-aa10-d4394509fb1d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0aed1c9f-47e1-4b5c-96ef-b1a0a5fba52f" name="Thêm đầu sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c33f45f9-cf81-457c-a6c1-3bb81df86a50" />
+        <extendedCases>
+          <extend Id="74e3587f-4390-4fe6-b7b5-0a1ef8511c8b">
+            <useCaseMoniker Id="772ed42c-7c05-4438-92d4-a660d6ffe133" LastKnownName="Quản lý sách" />
+            <elementDefinition Id="e05b4db1-42f0-4b14-ae16-702c89cd1085" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="962278b0-e4d5-4cc1-ba41-b1669837a5c4" name="Cập nhật thông tin sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9aa4e2a-1b30-49fb-aaad-cfdba1766801" />
+        <extendedCases>
+          <extend Id="4258e700-9f23-4bae-887b-53e8effc0e85">
+            <useCaseMoniker Id="772ed42c-7c05-4438-92d4-a660d6ffe133" LastKnownName="Quản lý sách" />
+            <elementDefinition Id="eb921446-59e5-47c4-a8de-c40701f1ca85" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="19bf359d-ddfe-4ed4-8c99-ec1ff3bc3ae9">
+            <useCaseMoniker Id="4fe4cc3c-7a73-44d3-80e8-e3dbd0767791" LastKnownName="Tra cứu sách" />
+            <elementDefinition Id="bf51fdfb-a959-4cfc-9968-96179bfc876f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="216e0571-fee5-47db-aba7-bb09f524017c" name="Xóa tác giả" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0cca0c0a-6d48-400b-8496-8a1e6f97ca85" />
+        <extendedCases>
+          <extend Id="3b16dd4e-7ea7-40a9-a502-596ccaf58716">
+            <useCaseMoniker Id="35d7e499-ae3d-4e90-b004-8a109ab46ecf" LastKnownName="Quản lý tác giả" />
+            <elementDefinition Id="e23381a3-5fc2-46cd-b99b-cb00f669aa12" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="eb942e58-ecca-4624-9219-6df23a662895">
+            <useCaseMoniker Id="366c6c30-d30c-46f0-aea9-38934f4c10e4" LastKnownName="Tìm kiếm tác giả" />
+            <elementDefinition Id="ca679197-4ee3-4da5-bbab-cc81985b95d6" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5a622ff8-37b2-4ddd-a7cc-744bfe285c41" name="Xóa thể loại" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0603627f-c6cb-4f0a-80d6-dad56f7507fe" />
+        <extendedCases>
+          <extend Id="ccdf366b-7457-4487-8a3c-dea10f4ff6bc">
+            <useCaseMoniker Id="909c021c-f298-440f-9bda-c2c5878d8444" LastKnownName="Quản lý thể loại sách" />
+            <elementDefinition Id="79f6770a-5986-443b-923f-afca8e449765" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="eb136675-f398-4c2a-9f40-1327a436640c">
+            <useCaseMoniker Id="8c5f54a1-aa6a-43ce-b979-597c0589d85c" LastKnownName="Tìm kiếm thể loại" />
+            <elementDefinition Id="f1172e00-6d94-41c6-a07a-9f8e96c417fe" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2a83ddad-9bf7-4efa-bada-b1049dc5a2cb" name="Xóa sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="52fecc5d-d785-4b69-91d3-95988e5d439e" />
+        <extendedCases>
+          <extend Id="b3125334-e56c-448d-9372-6c5dd950de6d">
+            <useCaseMoniker Id="772ed42c-7c05-4438-92d4-a660d6ffe133" LastKnownName="Quản lý sách" />
+            <elementDefinition Id="e0af78fd-84c1-45a9-9352-f9a2242e7dbd" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="c8df9cc7-f2ca-456d-b69d-32d02c3a1742">
+            <useCaseMoniker Id="4fe4cc3c-7a73-44d3-80e8-e3dbd0767791" LastKnownName="Tra cứu sách" />
+            <elementDefinition Id="1545be34-0e1c-4615-8723-e1b7a0ea8aa3" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6c2c58a8-9349-4ee5-83a7-14cd5a72b4a5" name="Xóa phiếu nhập" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4597c9ad-68db-460d-8600-9d716dcc1512" />
+        <extendedCases>
+          <extend Id="141f72c7-a43c-446c-970f-abf0cbcbcda9">
+            <useCaseMoniker Id="e760fd1b-46d0-49c8-bfd5-2c6d2b3e1243" LastKnownName="Quản lý nhập sách" />
+            <elementDefinition Id="62d9dd8a-933a-40ea-8217-d7b066f9c715" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="0b503504-515d-49e3-9a30-8c4e254c4cdc">
+            <useCaseMoniker Id="1ca1621f-3ea4-4446-9b56-0bbe86599b84" LastKnownName="Tra cứu phiếu nhập" />
+            <elementDefinition Id="195a8063-a5dc-42aa-b92a-83dd09ce4c2b" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e760fd1b-46d0-49c8-bfd5-2c6d2b3e1243" name="Quản lý nhập sách" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="50f5c1e6-2a12-4979-b0fe-97d4157d01b4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7021105a-fbf1-449a-a7da-e71b390bbe6a" name="Tra cứu người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="46685e4f-5cba-4d4c-8c43-e7a37bd09044" />
+        <extendedCases>
+          <extend Id="ddeeb5ae-45e8-474d-b029-89276fa7d249">
+            <useCaseMoniker Id="e8dd67e7-c2a4-4ab7-8984-002ef8971192" LastKnownName="Quản lý người dùng" />
+            <elementDefinition Id="8e3e00d1-596c-4762-8182-8d5576b55291" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="686b714a-cb5b-4721-beeb-6614fe449661" name="Thêm người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="26c03e92-95f7-4847-ba83-0cfd71d8f573" />
+        <extendedCases>
+          <extend Id="4b5e2bac-66de-4465-89ef-716fe310a507">
+            <useCaseMoniker Id="e8dd67e7-c2a4-4ab7-8984-002ef8971192" LastKnownName="Quản lý người dùng" />
+            <elementDefinition Id="6f3dc448-8b50-406c-acd5-e93cc612f39d" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bbb837e7-632c-4f90-8eec-b1a4c96c5c05" name="Cập nhật người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bd30f3fb-9417-4836-a2f2-3021e8ecaa48" />
+        <extendedCases>
+          <extend Id="35b329de-3bd2-4b7f-9f65-42b621b06787">
+            <useCaseMoniker Id="e8dd67e7-c2a4-4ab7-8984-002ef8971192" LastKnownName="Quản lý người dùng" />
+            <elementDefinition Id="2542593c-0bf5-4f28-80e4-a95ba956cb55" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="59bbd64d-af9c-4749-8967-e84a8d2109cf">
+            <useCaseMoniker Id="7021105a-fbf1-449a-a7da-e71b390bbe6a" LastKnownName="Tra cứu người dùng" />
+            <elementDefinition Id="1a833f66-0174-4924-84cf-966d59775bde" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3c036561-d923-4fa3-97ad-8d70c568676d" name="Xóa người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7d8340e7-4adf-4726-9861-eade7d200e25" />
+        <extendedCases>
+          <extend Id="7469e3fd-6fd0-4d84-bb1b-9c8a3d4d0ff4">
+            <useCaseMoniker Id="bbb837e7-632c-4f90-8eec-b1a4c96c5c05" LastKnownName="Cập nhật người dùng" />
+            <elementDefinition Id="1b504310-ba7a-41c3-a6b1-7397a7e73d61" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e95ed325-3d07-4129-93e7-bbe98825f9a7" name="Reset mật khẩu" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="27d3ef3a-c9bf-4fd6-8e29-966e20df81ae" />
+        <extendedCases>
+          <extend Id="525240d3-7b87-4703-aba0-70d0ab3d06b6">
+            <useCaseMoniker Id="bbb837e7-632c-4f90-8eec-b1a4c96c5c05" LastKnownName="Cập nhật người dùng" />
+            <elementDefinition Id="03c1ebee-2160-4c44-8602-90dad4e11c88" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="aece81fa-debb-4a79-9b3c-f274f2ff8204" name="Cập nhật phiếu nhập" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d1a3527f-7cb4-486f-8dd8-f1aa24c6a556" />
+        <extendedCases>
+          <extend Id="b57b7e29-6039-4453-b8b6-eccc755377fc">
+            <useCaseMoniker Id="e760fd1b-46d0-49c8-bfd5-2c6d2b3e1243" LastKnownName="Quản lý nhập sách" />
+            <elementDefinition Id="02d95378-d127-4e67-a412-57b6d731bec9" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="a7f7eec4-9548-4cd1-9d67-94c88ffc011b">
+            <useCaseMoniker Id="1ca1621f-3ea4-4446-9b56-0bbe86599b84" LastKnownName="Tra cứu phiếu nhập" />
+            <elementDefinition Id="abc67322-52f8-413d-8338-33d8e1e20e15" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8ac4e405-9157-4ec9-8a3b-8c06f263c210" name="Tra cứu hóa đơn cũ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f26b7a10-4bf1-415a-8297-1431677303f9" />
+        <extendedCases>
+          <extend Id="0bebce6b-d323-467f-9d7c-6665f241e1ee">
+            <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
+            <elementDefinition Id="35ada142-6f84-4c0b-add7-883c953a85ba" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="77c5e67c-a4f7-44a5-8fbf-b7b0ed8c08a7" name="Cập nhật hóa đơn cũ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ba36312a-0b0b-47de-b326-6921ea2335cc" />
+        <extendedCases>
+          <extend Id="fbe27fe9-c4c1-4e87-afd7-fe87eb0c31aa">
+            <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
+            <elementDefinition Id="1bdcc976-f192-4d6f-8d6a-8c5cd681c340" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="7426b6b2-dfb7-41f7-abed-0e5e964e01ce">
+            <useCaseMoniker Id="8ac4e405-9157-4ec9-8a3b-8c06f263c210" LastKnownName="Tra cứu hóa đơn cũ" />
+            <elementDefinition Id="5890c1f7-dc77-420f-858a-4f6db46b52d5" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a93cb17d-a323-4a97-843b-2097f1237c01" name="Xóa hóa đơn cũ" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d5db8d2b-4ea3-4082-8ff3-ae699b9aaf4a" />
+        <extendedCases>
+          <extend Id="cbfa6a81-d03b-4143-bc83-f488dca4f2f3">
+            <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
+            <elementDefinition Id="a64afcb2-0800-4494-af67-7313842868b2" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="dddb8720-3f2a-4b20-a6a0-b05871466410">
+            <useCaseMoniker Id="8ac4e405-9157-4ec9-8a3b-8c06f263c210" LastKnownName="Tra cứu hóa đơn cũ" />
+            <elementDefinition Id="dad08be0-9000-4ef5-92f2-6c193d372d95" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="526b6f01-5929-46bd-accf-87b3283f3183" name="QLNhaSach">
+    <elementDefinition Id="2e3025ce-f699-4332-bc82-d16db555a802" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0ef71db2-5655-4852-ba95-ef7b165e0013">
+        <profileInstance Id="699f22a9-ae08-4eda-886e-c44d94fd55b3" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4212089d-1406-40cb-ac79-46a4b6c9603d">
+        <profileInstance Id="d06ff172-2078-4b30-9d70-3a3db4395822" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

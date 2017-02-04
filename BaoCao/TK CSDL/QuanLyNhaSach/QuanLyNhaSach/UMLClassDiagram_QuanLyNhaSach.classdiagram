@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="0013599b-1a15-4afe-b755-f49944796b0f" name="UMLClassDiagram_QuanLyNhaSach" linkedPackageId="1b0510a0-9420-4464-b187-67efcd8f25a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="9ff8fc90-accf-446e-82ed-e5da8ef3c5ce">
+      <profileInstance Id="c672fed2-dfc2-47a4-8058-096ca859dda8" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="dc998c64-dfb4-4a22-80e5-27f0d9db9e6c">
+      <profileInstance Id="eb5c1b5e-a2f5-4877-8d51-67d457e7a979" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3302489d-9b20-4cd4-a6da-7fa3e8791f8f" name="QuyDinh" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3440dd31-4a02-47cf-a4fd-ff3c59761f2a" />
+        <ownedAttributesInternal>
+          <property Id="c5faf7eb-a23c-4bf5-b120-2f7ca5db7182" name="MaQuyDinh" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e274f491-f5f7-452e-ac72-1f65b3aee3a0" />
+          </property>
+          <property Id="6fd7dacf-f157-4816-be97-c97df449f277" name="NgayCapNhat" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e49965de-cb36-4a19-8e7e-a3d561dd62ad" />
+          </property>
+          <property Id="7302609a-67af-4f3a-bbb5-7bb3f16b44b3" name="SoLuongSachTonToiThieuDeNhap" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="04a3fb77-871e-4404-838c-bb7def96ca5b" />
+          </property>
+          <property Id="581f1107-f831-4bd6-90d4-c91c13980504" name="SoLuongSachTonToiThieuSauKhiBan" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4767f48d-a372-4452-8836-3e255573380e" />
+          </property>
+          <property Id="f86b0ea3-cb36-4b95-9092-cc9e058ae645" name="DuocThuVuotSoTienKhachHangDangNo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d46d918c-cf8b-403c-9d7d-4de51bc45290" />
+          </property>
+          <property Id="8f58fac1-2792-4f8a-8192-54374ca4aa8f" name="TienNoToiDa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c0361035-4d4e-4726-98a4-dc5aff122c0c" />
+          </property>
+          <property Id="5c51e800-62e9-427b-865a-7f8db373acbf" name="SoLuongSachNhapToiThieu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4cdbbe49-ed64-44dd-8271-46bbf2aebfd1" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5ff38bc7-07b8-4bf2-932f-bf22cd062e0e" name="ChiTietBaoCaoTon" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e55f5289-1847-45ae-911b-bf25d6ab39bf" />
+        <targetEnds>
+          <association Id="44e54c1e-10c9-4035-bda4-f8f7a3ecd961" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="74be62f8-9ff5-4f3c-a63c-5dfdc68d31b1" LastKnownName="BaoCaoTon" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6cef9812-2724-4b6e-933a-02586fc19961" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="6555694d-eb1e-437c-b65b-1abbe9740ed3" name="Lower">
+                      <elementDefinition Id="35ba229d-413e-42e3-bf67-6985821a9da3" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="baa7ca1d-fb83-44ab-a6a8-343e059991b4" name="Upper">
+                      <elementDefinition Id="cfdca6ba-d314-41f1-bb17-3d35094f2c6b" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="6aa77c3a-e6f0-4d8e-b4bb-d8fbf42323e7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c908e14e-13e7-4797-8136-492d9b31f6cd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="b4f703bd-cd9f-4e35-bee6-e7c31914ff04" name="Lower">
+                      <elementDefinition Id="5e2e8d2b-7d53-40f5-8978-42eb139a4468" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="73ff4b56-2ea6-4614-a21a-19d95c7b7751" name="Upper">
+                      <elementDefinition Id="f571dad5-8e40-458b-bc4f-5ffcd6fac157" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="165cba30-2614-4800-928a-618590f9b671" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c5c405ed-452c-4830-a96b-e0187be915c8" />
+          </association>
+          <association Id="ee04fa43-e139-4420-b261-bc8ec6ee255a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d09ca788-9797-4838-b06f-0e71726d4132" LastKnownName="Sach" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c59d4a67-07a4-48c1-a9f1-b0ca899cc257" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="853af69c-687e-4dc6-be48-5c8e9dcab8f0" name="Lower">
+                      <elementDefinition Id="af716479-b1ba-4430-ba33-f12298376036" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="1c5d37ee-d89b-4b2e-b90a-35dc611d4a04" name="Upper">
+                      <elementDefinition Id="12d56081-16dd-48f7-ae94-dacc28f91328" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="bca5c358-eab3-4fc2-886f-908b6c4ad35a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="97ccd98e-7b19-4a36-922b-bb29e526dca0" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="8e17962b-49a6-4583-bfa5-fe92bb8e74e9" name="Lower">
+                      <elementDefinition Id="252962b6-3d52-4c5a-b5e0-c33c988d8535" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="cf70d367-47b4-4925-889a-626cf45e6baa" name="Upper">
+                      <elementDefinition Id="d6210ab0-5868-487e-8aae-015ab00fa9c9" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="ae652bb3-2c6e-4abb-ae5c-d4a3de915da8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="87a10a92-ad27-4bdc-837a-1fcaa140b9e2" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="b03e6688-39d7-4381-b3eb-f037ea6c225f" name="MaBaoCao" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="015bf05e-56fa-496a-b3fa-25e9363af0d3" />
+          </property>
+          <property Id="d5965d3f-aa1a-4aca-96ac-6b6927019f95" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="de96d064-a35e-4443-bc0f-63b9d47cee5c" />
+          </property>
+          <property Id="73a38de5-2c01-4e60-9899-f59800916096" name="SoLuongTonDau" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="062bec12-387a-479a-9732-ec185fc9c57a" />
+          </property>
+          <property Id="f7497a3b-a25e-4fe7-b631-9dc0b8f2fb8f" name="SoLuongTonCuoi" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="522c7a92-d18b-4e64-bf1a-5a9f7ee249e2" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="74be62f8-9ff5-4f3c-a63c-5dfdc68d31b1" name="BaoCaoTon" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="246648b0-27e7-43f4-b94f-c3f7aa10fef7" />
+        <ownedAttributesInternal>
+          <property Id="2f21cd16-7b98-4c86-a879-9951a9b36160" name="MaBaoCao" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="da525a6c-7451-4e60-bbc1-9c41f7ab9793" />
+          </property>
+          <property Id="55b19eec-281f-40c5-8344-8970cde37c30" name="Thang" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f7e9b3a0-5e34-4c9c-b5c1-65c20961c9bd" />
+          </property>
+          <property Id="5264f48a-9dcf-4c37-9bc2-b87151981521" name="Nam" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c387c50f-1c8a-43b8-bf8a-79dc2c64b914" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d82f93bf-cc36-430a-b11d-5c6304f4f670" name="HoaDon" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0bd5f8d2-0d0b-4158-8c02-9f6f6b0a0011" />
+        <targetEnds>
+          <association Id="73c472c5-fa71-4258-98f1-eb001254684a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a028ce27-6132-4ac4-a8c1-1ea29be78f66" LastKnownName="KhachHang" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="163517e1-b488-4e2b-a19b-c8df83a2a03b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="a69686f1-1ddf-4d0c-b90f-658edc1df129" name="Lower">
+                      <elementDefinition Id="fe897c06-9a17-4fda-a19f-e73aab2ad823" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="e1b08eb7-5c9c-4805-8f31-e8d88996d3e3" name="Upper">
+                      <elementDefinition Id="d992d780-5b33-4b3c-8e3b-2fa772e39da9" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="3890aba1-d74c-41dd-a67d-ccf78709af2f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fba7a93e-35eb-46bc-93f9-c0dd2de172c9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="fd6bbd1e-7207-44e3-bed9-fdb54590294d" name="Lower">
+                      <elementDefinition Id="bc41e6cf-4e34-42c8-8099-a854bc8adb6a" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="c7569e62-b81b-4e11-8c49-68df86803ab1" name="Upper">
+                      <elementDefinition Id="635567a0-9a35-4498-b2f3-d8f5091dec20" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="3b8bb306-b823-4a88-9e6f-6f3f5bb03a5f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c6af3eec-0d37-435a-8dad-281f486b9964" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="d9a088fb-bb08-49c3-a9ad-a4e63c6f4fc5" name="MaHoaDon" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bcec79e7-632c-4129-a13b-37909caab07a" />
+          </property>
+          <property Id="f272e17c-4321-479b-8440-74c0a3ae56e6" name="MaKhachHang" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="baa506b8-326e-4eb8-b0fa-6b8e990cb575" />
+          </property>
+          <property Id="cb89cc9f-d3db-4d4b-8e03-3f6f771a48d3" name="NgayLap" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b571a6b5-5542-464a-923f-8293caea19be" />
+          </property>
+          <property Id="412db327-85fb-4bce-8a2c-a632e1bfed41" name="TienTra" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="03c5daf8-1f7e-4aad-853f-bd20f86d135e" />
+          </property>
+          <property Id="33fa0186-58f2-40cb-8e25-f8069804f7c8" name="TongTien" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="aa6d3419-e54a-4676-860e-40bb5cae5c34" />
+          </property>
+          <property Id="c5c6946a-7a87-421a-9c32-e8ea2efa79e7" name="DaLuu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="34133034-a687-4a84-9ee3-9c416559c567" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="df845786-36ee-4fd7-8771-1da5e0ce78ed" name="ChiTietHoaDon" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b9b57d0c-0c38-449a-858c-8a3df2d8f199" />
+        <targetEnds>
+          <association Id="7c5d6a15-e835-4463-b1bc-295d0ca70594" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d82f93bf-cc36-430a-b11d-5c6304f4f670" LastKnownName="HoaDon" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="81972a41-4292-4941-851c-bcaf3bef19a5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="a769c539-7c7a-42ea-948a-8efa77db2f18" name="Lower">
+                      <elementDefinition Id="5aab3b5d-8f0e-4daf-b3c8-4a8090ea2a50" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="636510a9-7287-4280-930e-005b9d5da6d7" name="Upper">
+                      <elementDefinition Id="03a9097b-c477-4b5d-91f6-144446b19010" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5ae16ea4-463c-4fd8-a794-5e965468d523" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="80e8b887-d193-4194-ae86-1142017bf32b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="42516f9b-8e6c-4a50-9254-d27b361aaea9" name="Lower">
+                      <elementDefinition Id="4fa8d083-d855-4a03-b336-f896bc95e96b" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="29c2bf4d-e32a-4968-9c0c-0e754e5da2e5" name="Upper">
+                      <elementDefinition Id="96bfa8cf-8781-42ab-8f80-704bc0d22466" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="64298eb8-051a-4266-a8b9-66eca7aa3bf2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="51d0c933-5bec-4741-bcdd-b170e823f4fb" />
+          </association>
+          <association Id="51ae4f21-4a2a-443c-bd90-f2d849965064" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d09ca788-9797-4838-b06f-0e71726d4132" LastKnownName="Sach" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c3648333-15e0-45d0-9163-4a8cc2f309ea" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="d71894e2-2306-49a5-88d3-79316e43b92d" name="Lower">
+                      <elementDefinition Id="2f7dd572-9a34-47dd-9dbf-3b157472c667" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="0190534c-f82b-4499-ab90-a4ddd5897950" name="Upper">
+                      <elementDefinition Id="5063f70a-f188-48fa-9781-2a47d2f70477" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="a963a7c7-a156-4207-8f6c-c19c2602b161" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="de145b15-ae6b-4adc-ae7d-f4ad601d5cb8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="5cce46ee-0b96-4f7c-b222-94ce68baa811" name="Lower">
+                      <elementDefinition Id="3e467cdc-d73c-4913-b844-8488a4b689da" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="ec9a6462-924d-482b-ac80-e716c0f2917f" name="Upper">
+                      <elementDefinition Id="69d7a161-52ec-4d79-8b16-0ee766da29a7" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="32d05e62-1ee3-4c7b-a100-7813f6f23fac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c672cbdf-8e03-4533-af0b-e3c9106a8fff" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="7408609b-9168-4491-9657-0c3f55bc1cd2" name="MaHoaDon" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="28000163-a09a-4c3b-a2d1-e72331a81d99" />
+          </property>
+          <property Id="80087b57-42ca-4440-8034-7a77ba2e4be3" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="37e45f3a-5679-4729-be70-e2411742d38a" />
+          </property>
+          <property Id="90f740c6-a760-4034-903b-02e2b263a78d" name="SoLuong" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d71ad2f1-e048-4931-a710-50523ee89d4f" />
+          </property>
+          <property Id="f11ec031-22fa-49ef-81b0-e2e07a212910" name="DonGia" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="78fd08a2-5752-4aed-9d4f-9dab7d869bfd" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a028ce27-6132-4ac4-a8c1-1ea29be78f66" name="KhachHang" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2179ee71-3333-44f0-8934-1b692a2ff67d" />
+        <ownedAttributesInternal>
+          <property Id="9bd67b0c-f138-4ad4-a423-734bd27c8a25" name="HoTen" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="63118689-4628-4655-a70d-d00031c91101" />
+          </property>
+          <property Id="0e48c978-1ba0-4c4c-b025-28e2f2ac3ee2" name="MaKhachHang" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e961e54f-628c-42bc-8836-728432802681" />
+          </property>
+          <property Id="21374579-ddc7-4ff4-a7e2-6a013b63a10e" name="SoTienNo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1dbe21df-4485-4159-a7b9-adf0211e9bf4" />
+          </property>
+          <property Id="8e57d985-f8e3-4c02-9402-ef87ec004922" name="DiaChi" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="776d9c88-863d-4568-b465-2516eb593c44" />
+          </property>
+          <property Id="4af400ea-e8ba-49b8-bdb2-4ef5f2b9cac4" name="DienThoai" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="619bd1c3-58da-4b1e-9cc9-6178a44a9c3b" />
+          </property>
+          <property Id="8e3f2814-2de9-4b28-ad83-580b68e6e1ac" name="Email" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="081b825a-9f43-4c79-b106-14d60b43fd2d" />
+          </property>
+          <property Id="ce826f4a-a94b-44f8-987e-a1ed27ee4cc7" name="BiXoa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fe81dcf2-28ac-4a19-ae32-cb5d9734423d" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0860f836-1edf-48dd-9439-d61f989059f9" name="ChiTietBaoCaoCongNo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="abf93c31-0ef5-494b-ad2f-a4bb5a8eed40" />
+        <targetEnds>
+          <association Id="593a932b-be94-484d-a5c7-2976cbd1b82a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="143c32f8-ff8e-4f81-99b2-791464bcd107" LastKnownName="BaoCaoCongNo" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7b1373fe-313f-4ec3-9d33-20f7f1538243" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="919cf2e9-aa5d-4d6e-931a-a26c32b405c0" name="Lower">
+                      <elementDefinition Id="2a926be0-92b6-4027-81f7-1aba98576e51" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="6b1f8d0e-a177-4e5d-80dc-3cd234416ac9" name="Upper">
+                      <elementDefinition Id="69d1ee6b-8a42-46e5-8359-7dc621c0cc5e" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b1474f9e-1bb5-4271-b594-b95b2f1aafc7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fa356d3a-7719-46fc-9344-2bf525a6f3ed" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="eae7a0be-414c-4918-8d28-aa4f7d353278" name="Lower">
+                      <elementDefinition Id="7289119a-943a-4147-b48e-cebb212c7baa" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="1e0f809c-cde9-4a7c-b780-3f3e4eee1859" name="Upper">
+                      <elementDefinition Id="277ebf7a-2502-4295-810f-78d4777493a0" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="fb0e18a9-efc2-4f7f-aeeb-55260fcd7de9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7b06fa6c-67c4-4fba-af88-eb105f401db6" />
+          </association>
+          <association Id="a2bbe5a3-f096-42c0-b2ab-3723fcf5417c" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a028ce27-6132-4ac4-a8c1-1ea29be78f66" LastKnownName="KhachHang" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0cb01c00-9b91-4d0a-8b95-e29087ece485" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="11d35e66-1398-42c8-a1d3-99b7d182f91f" name="Lower">
+                      <elementDefinition Id="55537481-ec5d-47e0-9764-96ba82000321" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a631ee69-e511-4fc2-a6af-65635e2dc948" name="Upper">
+                      <elementDefinition Id="24e0951c-9e25-4403-aa86-4f4642524b89" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="9ea9dc37-7753-4872-bf4c-ebafd1c59e0f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6f2e9f80-6d70-45ce-b4b1-bf718676c749" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="5fd10f99-f214-4d6e-9b03-d97efae88600" name="Lower">
+                      <elementDefinition Id="434aae93-9d9a-45d1-8e3d-aac9a9aef137" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="31c7d027-9337-4675-a8d2-aa28ec4a772e" name="Upper">
+                      <elementDefinition Id="f23cefc6-3184-43ba-808c-3d5584490f49" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="01d349b6-b5cf-48f6-91af-bdde1e9ea5f1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa239d2c-9ba8-428f-8a63-781acc2370e2" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="331bb68f-d8fe-40ae-9f1f-4a5adee47698" name="MaBaoCao" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e4cb17b8-443c-472c-ae29-1cc84a3bbc54" />
+          </property>
+          <property Id="33ab1243-b83a-4df8-ad9a-03da110ef06e" name="MaKhachHang" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="09b064bc-30ca-45fc-a0c3-2fc08b4d50e1" />
+          </property>
+          <property Id="e990d1ed-22d1-470c-b611-98876f824ba5" name="SoTienNoDau" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9e7dbb78-2d78-45f7-a731-58d846e2e664" />
+          </property>
+          <property Id="adf27682-5e18-499d-9a6d-683f0793c57a" name="SoTienNoCuoi" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="31835629-3a66-4dbd-8c3a-f22ed309cc56" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="efe46292-27e7-4faf-8c74-5b92c03e6f24" name="PhieuThuTien" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4b9fe6d0-ed61-4e40-a251-d8a0f419f7c2" />
+        <targetEnds>
+          <association Id="007674d6-069f-438f-a7fc-95ffa041cc9c" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a028ce27-6132-4ac4-a8c1-1ea29be78f66" LastKnownName="KhachHang" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ec4cbc6d-2fc0-4700-b729-d26783d8eede" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="10a93247-18a9-4939-9ee8-5f0b181d4b3a" name="Lower">
+                      <elementDefinition Id="c2acae76-a47e-4553-a609-988ab5a9de76" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="834ad703-e8e4-4329-b3f3-2e035fdba649" name="Upper">
+                      <elementDefinition Id="bb8ea4e6-8658-406d-a9c9-bbd78f120642" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="6758eea6-7966-4c86-983a-b615861fd65d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4d9da5a1-b9a3-496f-87f3-c5abfe942418" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="0b1b912c-99c7-44c2-9385-e5580fd12079" name="Lower">
+                      <elementDefinition Id="2eb0e908-ea9d-4cc6-901e-707b51e9c138" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="0fcd5ac2-4dba-49bd-b492-5f216d72f245" name="Upper">
+                      <elementDefinition Id="40c825fb-cdb0-410b-af71-bea7330f8a0a" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="cd2f7421-b36b-487d-8bcc-7229ceb11b3a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d51f5e73-0535-448a-9710-fa0ae465f35b" />
+          </association>
+          <association Id="51b6cb8d-94b9-4483-bf90-3a1fbe2ec4b8" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="5c4f4f5c-09e4-40e3-be0d-b96076b08e44" LastKnownName="TaiKhoan" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3ea7edc5-cbc4-48bd-bf0b-6c6b5cdbf9fa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="c571f9c9-1474-4815-b97b-63b519ae4edb" name="Lower">
+                      <elementDefinition Id="be455924-d418-4b84-95a4-e29bbc52c518" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="059d067c-de37-4922-b378-41622325902f" name="Upper">
+                      <elementDefinition Id="bf35c83f-2221-4a02-b402-f894cc513fa3" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="8bcbf2c4-2a02-441d-8bf1-56a8482a8bc7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6eb1d50d-0840-42f9-8419-96ed26b58d2a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="70f58fd5-31dd-480b-aa3c-ced6ba160c58" name="Lower">
+                      <elementDefinition Id="55275644-6916-4f85-919d-3faa9ceb6360" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="f19b4161-6d70-4410-8685-71049a0baada" name="Upper">
+                      <elementDefinition Id="4eeaafd3-9987-43ad-b107-102db4dd0a3b" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="aee5b5a6-dd9d-455d-99c4-6ea0a214a8aa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8e600d36-ca1a-4dd1-b3a0-be0011cb67e0" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="40222dff-7049-42ec-abd5-e64714e82d17" name="MaPhieuThu" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6d8f3646-c652-4733-b810-27339d8fe50c" />
+          </property>
+          <property Id="d8810ebd-6d0b-4f9a-bd8b-8302388b0d5f" name="MaKhachHang" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dbd7d574-3402-49bb-ae1c-d16029313d6d" />
+          </property>
+          <property Id="d258f81f-1326-4ead-a002-430ef1450590" name="NgayThu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="751b9b59-c8e3-4360-b1c6-4e8dabf3a08f" />
+          </property>
+          <property Id="1bb64e49-7fed-42f7-8c35-001aaa959c65" name="SoTienThu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d0c52a7f-2d3b-4d90-973c-07f540031965" />
+          </property>
+          <property Id="9c61f99e-52bc-44ec-9d40-38d61a9f896e" name="MaTaiKhoan" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3eb0eb13-7bee-406e-9c6c-303d73bdce57" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="143c32f8-ff8e-4f81-99b2-791464bcd107" name="BaoCaoCongNo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b28ac0f2-b133-40bd-bcf3-03c5e754b4b2" />
+        <ownedAttributesInternal>
+          <property Id="359c850a-3b6d-405c-9866-5cf37f901022" name="MaBaoCao" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0e5d8318-24c2-406d-b178-bd83c7872567" />
+          </property>
+          <property Id="41f1f23f-687b-4637-8e10-33d1579dac5d" name="Thang" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f0dbcb11-d0c4-488e-b12e-322706968410" />
+          </property>
+          <property Id="c35941dd-6951-4a89-856c-aa0ac2550bcc" name="Nam" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="86f44e42-57a1-491c-9c33-11769da49f56" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5c4f4f5c-09e4-40e3-be0d-b96076b08e44" name="TaiKhoan" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="536cd890-fd3c-415f-b04e-62c665373d20" />
+        <targetEnds>
+          <association Id="299b6b97-7d75-48c2-8b35-181c3a950b36" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="cb3ed57f-376c-4b63-ba0e-cdf7fe4bf378" LastKnownName="PhanQuyen" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bdb783a3-58e3-452c-a403-a07eb63215a1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="f56d49f0-f168-4c80-9fd2-c616b6e11003" name="Lower">
+                      <elementDefinition Id="954faab2-e293-4aef-919d-42ecc77aab7d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="f8c5edec-b2a3-4274-8796-23f997cbae7c" name="Upper">
+                      <elementDefinition Id="c72b5d2e-02d1-457c-869b-41029c3e9a53" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="f610ef52-367e-4e33-9cb8-6c5a681c99b5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9abd5cfb-5651-4c7e-be32-0377f77e5118" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="c6434f13-fe2b-4ad2-ad7a-8a9ce2c12e9f" name="Lower">
+                      <elementDefinition Id="febdf3f6-1dd9-49e4-9561-8faee208e946" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="c6776a6a-92ed-4a09-92c8-9656de207873" name="Upper">
+                      <elementDefinition Id="f9ddbada-9fc7-4f91-b48d-fa99efe89ddc" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b35d7215-4461-4b92-a426-659d9d639dc9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4d736027-0cb0-4e7b-9d40-b47dcdbe283a" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="622f386c-0d3c-4441-ab28-f4b7467cc8eb" name="MaTaiKhoan" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="40684820-6b15-4261-891e-bdefda03768e" />
+          </property>
+          <property Id="455912e2-ce79-4381-90ac-26f8860da33c" name="Email" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dd69a219-c150-4ce6-9bcb-1f3a749a1242" />
+          </property>
+          <property Id="9701d5bb-eb3a-4f72-bcaf-966001a146db" name="MatKhau" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="607044e3-9a3e-4bc3-b093-882c02ac5a00" />
+          </property>
+          <property Id="d8e3b47f-febe-42e8-a4d2-a508181da32e" name="HoTen" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="400da544-6a41-4376-afc6-109ff0f6aca8" />
+          </property>
+          <property Id="8b6d360e-bce4-4a3d-aa4e-1af67cd7524c" name="MaPhanQuyen" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6fb7447b-d4ec-47d7-9e34-ec4baeda7c40" />
+          </property>
+          <property Id="180775de-b02d-4f10-934d-4f4731526f50" name="BiXoa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dd97d5c5-ca23-4cf5-8aea-7f5b83edeab2" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2341e076-7b7a-4a33-a1e2-e3ea40547d85" name="PhieuNhap" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5ee639bc-c988-4783-8769-a63ca540435d" />
+        <targetEnds>
+          <association Id="3ec25794-4aea-4cbf-a8d2-f55147586ba8" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="5c4f4f5c-09e4-40e3-be0d-b96076b08e44" LastKnownName="TaiKhoan" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c78b31f4-2baa-4040-b98b-5da98829db7e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="801608b4-b1b8-48a1-b1fb-10f584b413cc" name="Lower">
+                      <elementDefinition Id="1f289552-b085-4b57-94c4-16f7619a0766" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="6cecfb2e-f2b6-48df-85cb-9b4db2c4ee35" name="Upper">
+                      <elementDefinition Id="94b32088-0fa5-417a-a9a6-892950121b54" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b5017461-11e3-430d-a52c-ac78380d1465" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e2249717-774e-4ab6-8ce6-c03066d05891" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="00759e3b-e53b-4923-b800-037b7bcae1b0" name="Lower">
+                      <elementDefinition Id="7f02c204-2dde-4295-b7a3-7baba5cc4122" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="dd40ca29-d0de-46b0-bb75-d0ed834e0f3f" name="Upper">
+                      <elementDefinition Id="7c2ea2d8-0d87-427a-896b-0a703908ca24" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5f32d312-ef61-48b1-8428-58ffc48d5b1a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="60ee46ea-55e7-4c27-8818-c85d31d21eb3" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="8eeb13c9-6f14-464d-a493-e2da7ae3d20c" name="MaPhieuNhap" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3acb1fd-8819-40f8-adf0-57b22a98afd1" />
+          </property>
+          <property Id="cad557ee-6849-441f-92cf-62bbba810918" name="NgayNhapKho" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f22f255a-48b6-4bfe-baff-89f5c895bba6" />
+          </property>
+          <property Id="74021f86-c738-470b-bdaa-c8ea094c74e6" name="NgayTaoPhieu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a4332f32-bdc5-4e4e-8df5-254ebd7ab89e" />
+          </property>
+          <property Id="0e027b7f-2068-427e-873d-bd8c789515fe" name="MaTaiKhoan" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="703db9cf-c0f8-4351-b7dd-6f360b82d2be" />
+          </property>
+          <property Id="49b2a6bc-0888-4d0c-8825-7d6dcbbf829f" name="DaNhap" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2a914cf0-c34d-4437-9e1a-5a3dad8cbace" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="173b74de-626c-452c-bc69-6503ffb8df49" name="ChiTietPhieuNhap" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c0454472-98b6-491e-8d48-b6e6a32df6ca" />
+        <targetEnds>
+          <association Id="2bdf5306-7256-4b7d-ad1f-a083aaec85bb" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d09ca788-9797-4838-b06f-0e71726d4132" LastKnownName="Sach" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="668bb844-38e4-4bd3-9d8b-76627a093d40" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="b77174f9-a8b5-42c5-8d94-e70bc88eecae" name="Lower">
+                      <elementDefinition Id="704261d7-4e98-4e3e-bc3e-7ebd30acfae6" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="06aa0d07-f764-4d5f-b843-c1553d63d166" name="Upper">
+                      <elementDefinition Id="09c68244-c920-4773-9b8b-40dc8db42c57" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b2b66575-f6ef-4808-b6fe-08b9420a3498" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2a7aa9dc-cfbb-4c1e-85f1-8b86942c45b6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="734915bc-abfa-45ea-89c2-a47a795d04f1" name="Lower">
+                      <elementDefinition Id="024277e8-3c55-4f1f-a18f-15617f264596" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="6ad3d6ae-a67b-4586-b374-a5ea79f96944" name="Upper">
+                      <elementDefinition Id="a3fd467e-59f3-4f3b-808b-e4c8a366a97e" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="2ca8bab2-4e46-4103-8604-0db596f3b8d0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="063e5524-830a-4047-863f-1fbff3073878" />
+          </association>
+          <association Id="4fe99ef8-f09b-4dee-86a5-daf111989760" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="2341e076-7b7a-4a33-a1e2-e3ea40547d85" LastKnownName="PhieuNhap" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e23d3b33-2350-4b73-aa6b-ea185fcdae9b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="e7827ba2-8420-41bd-b203-eda285d34cf7" name="Lower">
+                      <elementDefinition Id="14028dae-044c-4180-9a4a-e9be63bf21ea" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="78be8386-5f7c-47ec-8b6f-be8bda6135a2" name="Upper">
+                      <elementDefinition Id="223d68a7-ad9d-4370-8506-fbeada66045c" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="5808175a-0aef-4034-a97e-3d2696e59ddc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b05f4046-1a62-4fb1-a696-1eff29595b17" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="7ebfb6a5-a3e1-4cda-a28a-cd3e2078b51b" name="Lower">
+                      <elementDefinition Id="26b8b59b-e545-41a5-85c8-a89bea81548c" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="ebb2b4e8-21b9-412f-a6f7-2e1ad5dda9a8" name="Upper">
+                      <elementDefinition Id="39eef694-a2d4-4d17-8442-e96a7b652aa6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="91af8ce4-8dde-41f2-9302-d870387c87ab" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="68468201-8577-43e7-871b-db803bb41e98" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="c78efee7-a996-47d6-8aad-c1ee4556fa95" name="MaPhieuNhap" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0fb3fb38-55be-4393-a0c1-fea6825a4bef" />
+          </property>
+          <property Id="6022562e-3a6a-4619-bf94-9e249f77cca8" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bac90c6d-22b5-413b-b383-da5afc742a80" />
+          </property>
+          <property Id="ab7ade61-e03a-4758-a21a-0873680848aa" name="SoLuong" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8580c71f-4bbf-4fdd-aa64-45477437c406" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cb3ed57f-376c-4b63-ba0e-cdf7fe4bf378" name="PhanQuyen" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ad0ac3e6-91d7-4d3b-960a-21da79e656a3" />
+        <ownedAttributesInternal>
+          <property Id="c0ff801d-0338-4ad2-a655-903f6a3e58b8" name="MaPhanQuyen" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="94c357fa-1884-48a3-8e3a-f959dac596e6" />
+          </property>
+          <property Id="314bcd75-0502-4cd2-bac0-4e389c537bd1" name="TenPhanQuyen" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5757572e-1f30-4cbc-a9bc-a46e7ec31b3f" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d09ca788-9797-4838-b06f-0e71726d4132" name="Sach" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c19a41b5-6f25-4b09-bbcb-fc3a06fb69a6" />
+        <ownedAttributesInternal>
+          <property Id="29e72db0-7481-4183-9a6a-d855b2f24c0e" name="BiXoa" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ff741331-824f-4876-95fc-e189c6dcd06b" />
+          </property>
+          <property Id="938dc305-a6d3-462d-96da-fbf05150b218" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="583ab3ee-8787-4f12-ae46-e2ebf4eabe6b" />
+          </property>
+          <property Id="d66fe29a-8ef5-4ddd-ac74-13c430fa2670" name="TenSach" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d7a3d792-516d-422d-85b6-d8630e163bcf" />
+          </property>
+          <property Id="10c7870f-3152-423a-9e20-354d8ed4b6b8" name="AnhBia" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="78472eb0-a717-492a-8121-ec9427c3206b" />
+          </property>
+          <property Id="cfd6968a-2f26-4d3a-a2f1-1231ac7ea392" name="SoLuongTon" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="71df6838-caf9-4545-a7cd-29b6f8ba5cf7" />
+          </property>
+          <property Id="eba3ab3a-b620-4fc2-8f84-08e7bb6408c3" name="DonGia" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1801545c-2293-41d1-ab0c-6d6dae8f71f9" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="22d4f295-17a1-4e80-98e4-23ab1096d5cc" name="TheLoai" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="793da913-8d56-4eb5-8d24-3c053fd20b21" />
+        <ownedAttributesInternal>
+          <property Id="be427824-9c09-4e8a-9abd-5107e40c1336" name="MaTheLoai" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0f6a6df6-284a-4f52-98de-f5be839c6de3" />
+          </property>
+          <property Id="2e6c7a48-2907-4b82-bd0d-5433de05ea37" name="TenTheLoai" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dd84c7f2-2835-4e63-96f9-8574a9cc9725" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="86ae74aa-67c4-487e-b6d5-2d53efea0c81" name="ChiTietLoaiSach" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9807fd2c-a823-4899-b030-eefc7869d2b9" />
+        <targetEnds>
+          <association Id="956f431f-c3ff-4388-bbbd-85e24e426658" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="22d4f295-17a1-4e80-98e4-23ab1096d5cc" LastKnownName="TheLoai" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd437f10-dec3-4628-996a-81b899f6c600" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="348122eb-820b-4dfa-ad49-6950a857a81c" name="Lower">
+                      <elementDefinition Id="1fb83e94-e8dc-4f36-9cd3-00faa3b63f7f" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="18d63edc-cb03-4ead-9838-e40e46c08b2b" name="Upper">
+                      <elementDefinition Id="17b54727-4400-4fe2-97c3-c2587e51fa0c" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="84bb4524-1387-4556-b5b5-505eedb02724" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e1cd78c-bc55-4b91-9fd4-b88ae9980429" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="6b028ca6-eda2-4e0c-a8ed-eb119db0e8ff" name="Lower">
+                      <elementDefinition Id="f7a84dc9-897e-483b-8126-3fe3baaf1e57" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="dbefed89-5450-4447-8a3f-433f738a83ca" name="Upper">
+                      <elementDefinition Id="f1d007aa-9ec8-4e64-bfac-46481e4fc9a7" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="703f9b48-003b-48ed-8e56-569fe4a6623e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="71caa928-b8c3-4610-ba6c-324e9d6fc4bc" />
+          </association>
+          <association Id="72dff78a-af82-431f-b3d2-7a6f408b1eb4" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d09ca788-9797-4838-b06f-0e71726d4132" LastKnownName="Sach" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a8ffb43a-218f-4ad2-a0fb-0a443ff5f32c" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="0e4e7440-67b5-4ddb-9462-2a0f99285d2f" name="Lower">
+                      <elementDefinition Id="b42e9f82-e8e8-460d-8ab3-92401b223230" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="3371db96-dd11-4fc1-a6d5-1adfbb5293cd" name="Upper">
+                      <elementDefinition Id="9c145e54-5985-485d-a9ed-755d4f91f18e" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="250f2d31-24ca-40a8-a1a7-fe4b83a22b25" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="109b5d26-e7e8-41a3-ad1c-25d2af2d42e9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="e5dd899d-bdbd-4502-915c-fe147a29d81f" name="Lower">
+                      <elementDefinition Id="7dc71383-935c-426b-a51b-a350b8c9b24d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="175de2c0-ff02-4eb8-a37d-d8c7caf76902" name="Upper">
+                      <elementDefinition Id="989715ad-b1ea-4470-a49b-7d04d1992934" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b6e99efd-7972-41e3-901d-79ace00454e7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="82c74377-fcd2-44a9-bc5b-c219bd108e4a" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="572d08c6-66ee-4a8d-b2e8-2c6c6e4d441f" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8910a37e-c37e-4241-99b7-5b2f8b36fbdd" />
+          </property>
+          <property Id="16dc80ff-0bb5-4abe-a880-a2e4df6d833a" name="MaTheLoai" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3538519a-a486-4217-8842-7a17f7e3e33a" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cc65f4e2-f76a-4c24-99b8-a2333d806272" name="TacGia" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4d8bdc28-77d7-4ea1-bfae-97cb89b4c311" />
+        <ownedAttributesInternal>
+          <property Id="ddc4ecc2-ee96-4c76-8f65-3abe90b1a5aa" name="MaTacGia" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="44d38d49-2a24-432e-9af0-baa40752d52d" />
+          </property>
+          <property Id="55c0c22f-9df1-4027-85c8-da6839713337" name="TenTacGia" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="eb989aba-d35a-4660-bd5f-c5a3b153b710" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6125224c-21ca-4c62-a0e2-f1534309b218" name="ChiTietTacGiaSach" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f3f32f91-bd16-4588-8e7c-30d72f70f523" />
+        <targetEnds>
+          <association Id="7d6a7a37-9a72-4c30-a047-a81a08349c3d" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d09ca788-9797-4838-b06f-0e71726d4132" LastKnownName="Sach" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="98d71c10-7f5e-41a8-9407-8823505d2b95" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="29bb3054-97eb-4125-8adc-5287dd10c0ec" name="Lower">
+                      <elementDefinition Id="1b3740ae-68c9-4dd2-9bff-8259b4f73abe" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="95021e17-90da-4baa-a4be-7f9fa324dfce" name="Upper">
+                      <elementDefinition Id="0bbce4cc-319b-4b9d-85f7-e565e8064bae" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="9423f6eb-3ae0-463e-b467-60fbc901aec0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e4f8168b-e010-41c9-8272-e7dc83ca1134" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="580acecb-8a23-4403-826e-e5b6707663c1" name="Lower">
+                      <elementDefinition Id="9b9f8af3-dd50-485d-9d4f-79039af1f119" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a1673f9f-62b3-44a7-a678-452b7ffcd42c" name="Upper">
+                      <elementDefinition Id="75f6d24f-4515-4360-a584-27f88e6a7b0d" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="524527ea-da25-4de1-8103-6d744bb62f9e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="800aa0b4-9bfe-464e-990f-a8340c3e0551" />
+          </association>
+          <association Id="d14a168d-b9e9-4546-9d86-12837eec0f87" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="cc65f4e2-f76a-4c24-99b8-a2333d806272" LastKnownName="TacGia" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="37c7d3bd-d439-4af2-aad3-b77a30d0819e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="2af33a7c-f7e5-4959-a1fc-3af86ff9851a" name="Lower">
+                      <elementDefinition Id="b78bbfbd-49a2-48c7-bf88-578d02f3f32d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="336ff08e-af5f-48e0-a870-5d1dc5b0fe52" name="Upper">
+                      <elementDefinition Id="3df71fab-d797-45bb-969c-8f8db4aab9dd" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="a9c5a718-e1f7-4e57-b6b1-72dd9b9fef4d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="196c1e74-d56e-4fc9-bb2c-93b74125d529" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="2f015677-302e-4252-8a30-e851e1e87090" name="Lower">
+                      <elementDefinition Id="be5ee592-3344-400d-87d8-5efca88c3738" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="361cea9d-91ea-4be2-a110-fd1851d2342d" name="Upper">
+                      <elementDefinition Id="15f3b5b8-31e2-4e7f-abc4-8cf084a97163" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="b430523a-6ed8-4e41-b8fe-1bebb89e63c7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bdc3e1a2-84e1-4937-bcc4-0196d030d153" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="e2702950-3dbe-4524-b364-ad4d0fdd72c6" name="MaSach" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="50784a83-4b73-4343-afb5-45eb4234863d" />
+          </property>
+          <property Id="46f025a5-eab1-4407-9ffd-15839a52f62f" name="MaTacGia" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="58e17702-0256-4720-9fbc-01a43e3df8c3" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cde519e0-22c6-40e0-8015-30e6afe3ebd1" name="BangThamSo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="99ccea19-5137-4c42-bc1e-17e65d180b47" />
+        <ownedAttributesInternal>
+          <property Id="62c43062-83af-4af8-b5fe-b51fd07b02e7" name="MaThamSo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0cbe0d54-c166-485b-b63f-d108b1d2c8b7" />
+          </property>
+          <property Id="bb60c9c4-b8a0-4784-a266-0eaabb0bdf5a" name="Ten" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d6c6a036-ad51-4cbb-b933-dbe3df5416e4" />
+          </property>
+          <property Id="98ba70b1-2fdd-4ba7-b45a-4fa574bc71cb" name="Kieu" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fdcb8ae5-3a79-443c-825e-e14244c77ebf" />
+          </property>
+          <property Id="2ac72550-c892-4e0e-8905-6c99778cdcfb" name="TinhTrang" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="34e7d2cc-e34e-4e45-8cdd-8ecab76d8e38" />
+          </property>
+          <property Id="d0bc25a3-4459-4953-8e3f-841d73397c57" name="GiaTri" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="197819a2-b295-448a-affb-d0e931f155ba" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="1b0510a0-9420-4464-b187-67efcd8f25a8" name="QuanLyNhaSach">
+    <elementDefinition Id="34b35df1-86a0-4746-a810-d237299a72f8" />
+  </package>
+</logicalClassDesignerModel>

@@ -87,11 +87,11 @@ namespace QuanLyNhaSach.Views.Views.UserControls
             set { _payMoney = value; NotifyPropertyChanged("PayMoney"); NotifyPropertyChanged("ReturnMoney"); NotifyPropertyChanged("ReturnMoneyFormat"); }
         }
 
-        public object CustomerTransfer
+        public int CustomerTransfer
         {
             set 
             {
-                var val = ListDebtor.FirstOrDefault(x => x.ID == (int)value);
+                var val = ListDebtor.FirstOrDefault(x => x.ID == value);
                 lv_ListDebtor.SelectedItem = val;
                 if (val != null)
                 {
@@ -114,11 +114,19 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         #endregion
 
         public tabPhieuThuTien()
-		{
-			this.InitializeComponent();
+        {
+            this.InitializeComponent();
             DataContext = this;
             ListDebtor = Bus.FillData.GetAllDebtor();
-		}
+        }
+
+        public tabPhieuThuTien(int customerTransfer)
+        {
+            this.InitializeComponent();
+            DataContext = this;
+            CustomerTransfer = customerTransfer;
+            ListDebtor = Bus.FillData.GetAllDebtor();
+        }
 
         private void tb_PayMoney_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

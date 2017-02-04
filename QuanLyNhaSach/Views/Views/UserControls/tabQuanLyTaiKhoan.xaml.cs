@@ -75,15 +75,12 @@ namespace QuanLyNhaSach.Views.Views.UserControls
                 return;
             }
 
-            var uc = (tabCapNhatTaiKhoan)Bus.AppHandler.OpenTab((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer, typeof(tabCapNhatTaiKhoan), "Cập nhật tài khoản", false);
-            uc.Account = account;
+            (this.Tag as WPF.MDI.MdiChild).Container.AddMDIChild(typeof(tabCapNhatTaiKhoan), "Cập nhật tài khoản", true, account);
         }
 
         private void Button_Click_Create(object sender, RoutedEventArgs e)
         {
-            object accountID = ((Button)sender).CommandParameter;
-
-            var uc = (tabTaoTaiKhoanMoi)Bus.AppHandler.OpenTab((Tag as WPF.MDI.MdiChild).Tag as WPF.MDI.MdiContainer, typeof(tabTaoTaiKhoanMoi), "Tạo tài khoản mới", false);
+            (this.Tag as WPF.MDI.MdiChild).Container.AddMDIChild(typeof(tabTaoTaiKhoanMoi), "Tạo tài khoản mới", true);
         }
 
         private void Button_Click_Search(object sender, RoutedEventArgs e)

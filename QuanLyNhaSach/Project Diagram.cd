@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="DTO vận chuyển data">
+    <Position X="0.558" Y="7.72" Height="0.291" Width="1.377" />
+  </Comment>
+  <Comment CommentText="DAO giao tiếp với CSDL">
+    <Position X="2.246" Y="4.903" Height="0.291" Width="1.524" />
+  </Comment>
+  <Comment CommentText="Xứ lý giữa UI và DAO">
+    <Position X="4.052" Y="2.628" Height="0.291" Width="1.392" />
+  </Comment>
+  <Comment CommentText="Xử lý các chức năng khác">
+    <Position X="3.92" Y="4.14" Height="0.291" Width="1.656" />
+  </Comment>
+  <Comment CommentText="Quản lý các module của chương trình">
+    <Position X="6.709" Y="1.455" Height="0.291" Width="2.346" />
+  </Comment>
+  <Comment CommentText="Các system/snippet hỗ trợ các chức năng nhỏ">
+    <Position X="12.272" Y="1.818" Height="1.187" Width="1.454" />
+  </Comment>
+  <Comment CommentText="UI và Event UI">
+    <Position X="8.001" Y="7.766" Height="0.291" Width="0.981" />
+  </Comment>
+  <Class Name="QuanLyNhaSach.Adapters.DataConnector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAEAAAEAAEAAAAAAAAAAACAAAAAAIAA=</HashCode>
+      <FileName>Adapters\~DataConnector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.AccessLevelAdapter" Collapsed="true">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAIAAAgAAAAAAAAA=</HashCode>
+      <FileName>Adapters\AccessLevelAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.AccountAdapter" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAIAAAAAAAAAAAAAQAAAAAAAAAAQAgEAAGAAAAA=</HashCode>
+      <FileName>Adapters\AccountAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.AddedBookAdapter" Collapsed="true">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAEAQAAABAAAAAAA=</HashCode>
+      <FileName>Adapters\AddedBookAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.AuthorAdapter" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEEAAAAAgAEAAEAAAA=</HashCode>
+      <FileName>Adapters\AuthorAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.BillAdapter" Collapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAAAAAAAgAAAAAAACAABAAAAEAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Adapters\BillAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.BillItemAdapter" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEQAAAAAIAAgAAAEIAAAA=</HashCode>
+      <FileName>Adapters\BillItemAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.BookAdapter" Collapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JBBBAAAAAAAAAAgAAEAAEQQAABABAAAAAxQABABAAAA=</HashCode>
+      <FileName>Adapters\BookAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.CustomerAdapter" Collapsed="true">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAACAAABAACAAABAAAAAQACAgAAAgABAAA=</HashCode>
+      <FileName>Adapters\CustomerAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.GenreAdapter" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAEAAAAAAAAAAAAAAAAAAAAEEAAAAAgAAAAEAAAA=</HashCode>
+      <FileName>Adapters\GenreAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.ManagerListAddedBookAdapter" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAEAAAgEAAAAAAAAAAAAAAAEAAAAAAgAAEAAAAAA=</HashCode>
+      <FileName>Adapters\ManagerListAddedBookAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.PayDebtMoneyAdapter" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\PayDebtMoneyAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.ReportAdapter" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAIAAAEIA=</HashCode>
+      <FileName>Adapters\ReportAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Adapters.RuleAdapter" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\RuleAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.CollectionExt" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Extensions\CollectionExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.SqlDataReaderExt" Collapsed="true">
+    <Position X="12.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Extensions\SqlDataReaderExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Extensions.Security" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Extensions\Security.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.AutoUpdate" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAQAEAAA=</HashCode>
+      <FileName>Assets\Scripts\AutoUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.Cursor" Collapsed="true">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Cursor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.DialogHelper" Collapsed="true">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DialogHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.EventClickOut" Collapsed="true">
+    <Position X="10.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAIAAIAAAAAAAAAAAAAAAAAAAgACAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\EventClickOut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.EventDoubleClick" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAgAAAAAAAAAAAEAAAAAAAAAAAACAAAAEQ=</HashCode>
+      <FileName>Assets\Scripts\EventDoubleClick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.User32DLL" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\User32DLL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.WindowsDragger" Collapsed="true">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAgAAAAAAAgAAAABAAgAQAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\WindowDragger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.WindowsResizer" Collapsed="true">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACQAgAAQAAAAAAAAQBAAgAIAAACAAIAAACAAgA=</HashCode>
+      <FileName>Assets\Scripts\WindowsResizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Assets.Scripts.WpfScreen" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAIAAAEAAIABAAAAAAAAQAAAAAAAAAAAAIAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\WpfScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.AppHandler" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEEAAAAAAAAAAAAAAAAAoQAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Bus\AppHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.CheckData" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bus\CheckData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.DeleteData" Collapsed="true">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bus\DeleteData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.FillData" Collapsed="true">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAEAACBAAgAAEAAAACABAAAAAAARAQoAAAEAAAAAA=</HashCode>
+      <FileName>Bus\FillData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.InsertData" Collapsed="true">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIgAAAAgAAAAAAABAAAAAAAIAAgAAIAAAAAA=</HashCode>
+      <FileName>Bus\InsertData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.ReportHandler" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bus\ReportHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.SaveChanges" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBAIAMAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bus\SaveChanges.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.SearchData" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAIAAgAAAAQAAgAAAAAAgAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Bus\SearchData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Bus.UpdateData" Collapsed="true">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAEAAAAAA=</HashCode>
+      <FileName>Bus\UpdateData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.ErrorManager" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAQAAQCAIBEQhIEACRAAkAAABAAQAAAAGABAAkIQA=</HashCode>
+      <FileName>Errors\ErrorTypes\AppErrors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.Manager" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAkAAAQAAAACAAAAAAAAAABAAAAAABAAAAAA=</HashCode>
+      <FileName>Managers\~Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.ConfigManager" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAABAAEAAIKAAAAAABAAAIAAEAEABAACAAA=</HashCode>
+      <FileName>Managers\ConfigManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.DataManager" Collapsed="true">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICAABAAgCBAAACAQAAAAAAAAAAAAIACBAAAAAI=</HashCode>
+      <FileName>Managers\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.RuleManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAIAAAACAAAAAgAAAAAAAAAABBAAAAAA=</HashCode>
+      <FileName>Managers\RuleManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Managers.UserManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAACAAAIAgAAAAIAAAAAQBEAAAAA=</HashCode>
+      <FileName>Managers\UserManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.AccessLevel" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\AccessLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Account" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQBIBAAACAAgAAAAABAAAQAAAAAAAACAAAAAQAAAAE=</HashCode>
+      <FileName>Objects\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.AddedBook" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgABAAEBAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Objects\AddedBook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Author" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAAAABAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Bill" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAAAIAAAAUwMAAAAJAECQAgAAAAAAAAAIGAABAAAA=</HashCode>
+      <FileName>Objects\Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.BillItem" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAASAAQAAAABAAEAAEAAAAAAAQABAAAAAAABAAAA=</HashCode>
+      <FileName>Objects\BillItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Book" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEEMAAAAQAAgAAASEJAEAQCAgFAQBAAQACCAUBISCA=</HashCode>
+      <FileName>Objects\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Customer" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIAoEACAAgAAAAABAAAQAAAgAAAAAAwgAISAAARE=</HashCode>
+      <FileName>Objects\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Editable" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAECAgBYAAgAAAgABAgAAAAAAAAAACQAAAQQg=</HashCode>
+      <FileName>Objects\Editable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Genre" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAAAABAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.ManagerListAddedBook" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAQAAAgAAAAABAEAAAQAAQAAAAACAECAAAAAA=</HashCode>
+      <FileName>Objects\ManagerListAddedBook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.PayDebtMoney" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAIAAAACAEAAAQAAQAAAAAAIEQAAAAAA=</HashCode>
+      <FileName>Objects\PayDebtMoney.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Objects.Rule" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAACAAAwQAAAABAAAAAAAAIIAAAAAEAAAEDAEA=</HashCode>
+      <FileName>Objects\Rule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.ListViewItemChiTietHD" Collapsed="true">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\ListViewItemChiTietHD.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.ListViewItemUserControl" Collapsed="true">
+    <Position X="10" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\ListViewItemUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.lvi_DSKhachHang" Collapsed="true">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\lvi_DSKhachHang.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabBaoCaoCongNo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAABAAAAoAAAAAAAAAAgAAABBEEAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabBaoCaoCongNo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabBaoCaoTonKho" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAABAAAAoAAAAAAAAAAgAAABBEEAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabBaoCaoTonKho.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabCapNhatTaiKhoan" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABQIAAAAAAAAAAgAAAQAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Views\Views\UserControls\tabCapNhatTaiKhoan.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabKhachHang" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAEAAAIAAgAAAAAAYgAAAAAAAAgABAAgAEAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabKhachHang.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabPhieuNhapSach" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAIAAgAAgAAEAgAABAAAAACAAAAAAgAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabPhieuNhapSach.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabPhieuThuTien" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIwAAQAAUQICCAAACAAQAgAAACAAAAAIEAAAAQQA=</HashCode>
+      <FileName>Views\Views\UserControls\tabPhieuThuTien.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyHoaDonCu" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABACAAICGAAAAAAAVgAAiAAAAAAAAAAgAMAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabQuanLyHoaDonCu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyPhieuNhap" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAACEAAAIABAAgAAAAQgAgEwAABAAQAAACAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabQuanLyPhieuNhap.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabQuanLySach" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACQAAAACIAEAACQAAAAiAAQABAlAAAQAADEAAI=</HashCode>
+      <FileName>Views\Views\UserControls\tabQuanLySach.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabQuanLyTaiKhoan" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQIABAAAAAAAAiAAAAACAAAAAAAgCIAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabQuanLyTaiKhoan.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabQuyDinh" Collapsed="true">
+    <Position X="4" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABEAAAAAAAAAIAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabQuyDinh.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTacGia" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAECgAAIAAKAAAACAAAACgABAAAAEAQAAAIBAACg=</HashCode>
+      <FileName>Views\Views\UserControls\tabTacGia.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTaoTaiKhoanMoi" Collapsed="true">
+    <Position X="7" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabTaoTaiKhoanMoi.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTheLoai" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAAAECgAAIAAKAAAAKAAAAAgAAAAAQEAQCIAIBAAAI=</HashCode>
+      <FileName>Views\Views\UserControls\tabTheLoai.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabThemHoaDonMoi" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQUAAACAEgAAAIAEAAAAAAAAgAAAAEAAAAAARAhAAAg=</HashCode>
+      <FileName>Views\Views\UserControls\tabThemHoaDonMoi.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTraCuuKhachHang" Collapsed="true">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabTraCuuKhachHang.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTraCuuSach" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabTraCuuSach.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.UserControls.tabTraCuuTaiKhoan" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Views\Views\UserControls\tabTraCuuTaiKhoan.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.About" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\Windows\About.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.Login" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAACIAAEQIAAAiIgIAASAACCAAAQAAAAAA=</HashCode>
+      <FileName>Views\Views\Windows\Handlers\Login.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IggIBDISAAAAIIFAkEAgACSIgIAAQIiCwCAAAAAYABA=</HashCode>
+      <FileName>Views\Views\Windows\Handlers\MainWindow.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.TitleMainRightClick" Collapsed="true">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAUAAAAABAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Views\Views\Windows\Handlers\TitleMainRightClick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.ToolBox" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Views\Views\Windows\Handlers\ToolBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuanLyNhaSach.Views.Views.Windows.WarningBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACQCAAAIBAAAAAAACIkAAEBQCAAIAAAAAAAAA=</HashCode>
+      <FileName>Views\Views\Windows\Handlers\WarningBox.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

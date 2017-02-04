@@ -56,11 +56,11 @@ namespace QuanLyNhaSach.Views.Views.Windows
             {
                 var _book = new Function();
                 {
-                    _book.Children.Add(new Function("Thư viện") { Data = typeof(tabQuanLySach) });
+                    _book.Children.Add(new Function("Đầu sách") { Data = typeof(tabQuanLySach) });
                     _book.Children.Add(new Function("Thể loại") { Data = typeof(tabTheLoai) });
                     _book.Children.Add(new Function("Tác giả") { Data = typeof(tabTacGia) });
-                    _book.Children.Add(new Function("Phiếu nhập") { Data = typeof(tabQuanLyPhieuNhap), Tag = 0 });
                     _book.Children.Add(new Function("Nhập sách") { Data = typeof(tabPhieuNhapSach), Tag = 0 });
+                    _book.Children.Add(new Function("Phiếu nhập") { Data = typeof(tabQuanLyPhieuNhap), Tag = 0 });
 
                 }
                 var _bill = new Function();
@@ -102,7 +102,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 }
                 var _customer = new Function();
                 {
-                    _customer.Children.Add(new Function("Tra cứu khách hàng") { Data = typeof(tabTraCuuKhachHang), Tag = 0 });
+                    _customer.Children.Add(new Function("Khách hàng") { Data = typeof(tabKhachHang) });
                     _customer.Children.Add(new Function("Đòi nợ") { Data = typeof(tabPhieuThuTien), Tag = 0 });
                 }
                 ShowFunction(btnSachFull, btnSachMini, true, _book);
@@ -254,7 +254,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
             Bus.AppHandler.OpenWindowExt<ToolBox>(this, ref ToolBox);
             var p = Assets.Scripts.Cursor.GetCursorPosition();
             ToolBox.Left = p.X;
-            ToolBox.Top = p.Y;
+            ToolBox.Top = p.Y - ToolBox.Height;
             ToolBox.Focus();
         }
         
@@ -331,7 +331,7 @@ namespace QuanLyNhaSach.Views.Views.Windows
                 var item = control.SelectedItem as Function;
                 control.SelectedItem = null;
                 if (item != null)
-                    Bus.AppHandler.OpenTab(mdiContainer, item.Data as Type, item.Title, item.CanDuplicate);
+                    mdiContainer.AddMDIChild(item.Data as Type, item.Title, !item.CanDuplicate);
             }
         }
 
@@ -430,13 +430,13 @@ namespace QuanLyNhaSach.Views.Views.Windows
         private void openQuyDinh(object sender, RoutedEventArgs e)
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 2)
-                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuyDinh) as Type, "Quy định cửa hàng", false);
+                mdiContainer.AddMDIChild(typeof(tabQuyDinh), "Quy định cửa hàng", true);
         }
 
         private void openTaiKhoan(object sender, RoutedEventArgs e)
         {
             if (Managers.UserManager.Current.Info.AccessLevel.ID == 3)
-                Bus.AppHandler.OpenTab(mdiContainer, typeof(tabQuanLyTaiKhoan) as Type, "Quản lý tài khoản", false);
+                mdiContainer.AddMDIChild(typeof(tabQuanLyTaiKhoan), "Quản lý tài khoản", true);
             else
                 showFunctionList(sender, e);
         }

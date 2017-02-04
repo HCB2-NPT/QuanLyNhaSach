@@ -103,7 +103,7 @@
                             <Setter Property="Resizable" Value="False" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Minimized">
-                            <Setter TargetName="btnMin_img" Property="Source" Value="{StaticResource ButtonMaximize}"/>
+                            <Setter TargetName="btnMin_img" Property="Source" Value="{StaticResource ButtonRestore}"/>
                             <Setter Property="Resizable" Value="True" />
                         </Trigger>
                         <Trigger Property="MaximizeBox" Value="False">

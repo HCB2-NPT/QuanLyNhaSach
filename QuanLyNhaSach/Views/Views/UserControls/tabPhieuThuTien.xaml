@@ -8,7 +8,7 @@
 	mc:Ignorable="d"
 	x:Class="QuanLyNhaSach.Views.Views.UserControls.tabPhieuThuTien"
 	x:Name="UserControl"
-	d:DesignHeight="600" d:DesignWidth="600" Background="#FFF1F1F1">
+	d:DesignHeight="600" d:DesignWidth="600" Background="#FFFAFAFA">
     <DockPanel Margin="0">
         <DockPanel Margin="0" DockPanel.Dock="Top" Height="40" Background="#FFF1F1F1">
             <Grid>
@@ -21,7 +21,7 @@
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <TextBlock FontSize="14" Foreground="Gray" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Text="Tìm kiếm khách hàng theo số điện thoại" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=tb_Search}"/>
+                <TextBlock FontSize="14" Foreground="#CC808080" IsHitTestVisible="False" Cursor="IBeam" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Text="Tìm kiếm khách hàng theo số điện thoại" Visibility="{Binding Text, Converter={StaticResource EmptyStringToVisibilityHiddenConverter}, ElementName=tb_Search}"/>
             </Grid>
         </DockPanel>
         <Grid DockPanel.Dock="Bottom" Height="200" Margin="0,16,0,0">
@@ -33,19 +33,20 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="160"/>
             </Grid.ColumnDefinitions>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Họ Tên" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Name, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Điện Thoại" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Phone, ElementName=lv_ListDebtor}" PreviewTextInput="tb_PayMoney_PreviewTextInput" IsReadOnly="True" FontSize="14"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Địa Chỉ" Grid.Row="2" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Adress, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,4" ToolTip="Email" Grid.Row="3" Foreground="#FF999999" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="Gray" Background="{x:Null}" Text="{Binding SelectedItem.Email, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14"/>
-            <TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0" Foreground="#FF999999" FontSize="14"/>
-            <TextBlock x:Name="tb_TotalMoney" Text="{Binding SelectedItem.DebtFormat, ElementName=lv_ListDebtor}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="#FF999999" d:IsHidden="True" FontSize="14" FontWeight="Bold"/>
-            <TextBlock Text="Tiền trả : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="4,0" Foreground="#FF999999"/>
-            <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Width="80" Margin="0,0,8,0" Foreground="#FF999999" Padding="0,0,-4,0" PreviewTextInput="tb_PayMoney_PreviewTextInput" BorderThickness="0,0,0,1" Background="{x:Null}" TextChanged="tb_PayMoney_TextChanged"/>
-            <TextBlock x:Name="tb_NameHoanTien" Text="{Binding EditText}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,0" Foreground="#FF999999"/>
-            <TextBlock x:Name="tb_DebtMoney" Text="{Binding ReturnMoneyFormat,Mode=OneWay}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="0,0,8,0" Foreground="#FF999999" FontSize="14" FontWeight="Bold"/>
-            <Button x:Name="btn_Inphieuthu" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,8,4" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="3" Grid.Column="1" Width="96" Height="40" Click="btn_Inphieuthu_Click" Padding="0">
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,15" ToolTip="Họ Tên" Foreground="Black" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#CC808080" Background="{x:Null}" Text="{Binding SelectedItem.Name, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14" BorderBrush="Gray"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,15" ToolTip="Điện Thoại" BorderThickness="0,0,0,1" Grid.Row="1" Foreground="Black" Style="{DynamicResource TextBoxWaterMask}" OpacityMask="#CC808080" Background="{x:Null}" Text="{Binding SelectedItem.Phone, ElementName=lv_ListDebtor}" PreviewTextInput="tb_PayMoney_PreviewTextInput" IsReadOnly="True" FontSize="14" BorderBrush="Gray"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,15" ToolTip="Địa Chỉ" Grid.Row="2" Foreground="Black" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#CC808080" Background="{x:Null}" Text="{Binding SelectedItem.Adress, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14" BorderBrush="Gray"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Margin="16,15" ToolTip="Email" Grid.Row="3" Foreground="Black" Style="{DynamicResource TextBoxWaterMask}" BorderThickness="0,0,0,1" OpacityMask="#CC808080" Background="{x:Null}" Text="{Binding SelectedItem.Email, ElementName=lv_ListDebtor}" IsReadOnly="True" FontSize="14" BorderBrush="Gray"/>
+            <TextBlock Text="Tiền nợ : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,16,0,15" Foreground="Black" FontSize="14"/>
+            <TextBlock x:Name="tb_TotalMoney" Text="{Binding SelectedItem.DebtFormat, ElementName=lv_ListDebtor}" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,16,8,15" Foreground="#FF999999" d:IsHidden="True" FontSize="14" FontWeight="Bold"/>
+            <TextBlock Text="Tiền trả : " Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="4,17,0,17" Foreground="Black"/>
+            <TextBox x:Name="tb_PayMoney" Text="{Binding PayMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Grid.Row="1" Margin="8,12" Foreground="#FF404040" Padding="0,0,-4,0" PreviewTextInput="tb_PayMoney_PreviewTextInput" BorderThickness="0,0,0,1" Background="{x:Null}" TextChanged="tb_PayMoney_TextChanged" BorderBrush="Gray"/>
+            <TextBlock x:Name="tb_NameHoanTien" Text="{Binding EditText}" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Margin="4,17,0,17" Foreground="#FF999999"/>
+            <TextBlock x:Name="tb_DebtMoney" Text="{Binding ReturnMoneyFormat,Mode=OneWay}" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Margin="0,16,8,15" Foreground="#FF999999" FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="btn_Inphieuthu" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,8,4" Style="{DynamicResource Btn_IconOnly}" OpacityMask="#FFB3D6F2" Grid.Row="3" Grid.Column="2" Width="96" Height="40" Click="btn_Inphieuthu_Click" Padding="0">
                 <DockPanel Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Checkmark-64 (blue).png" Margin="0" Width="24" Height="24"/>
                     <TextBlock Text="In phiếu thu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3498DB"/>
