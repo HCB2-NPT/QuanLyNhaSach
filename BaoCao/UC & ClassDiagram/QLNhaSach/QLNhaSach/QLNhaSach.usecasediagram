@@ -11,22 +11,6 @@
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="b6fc48c1-e83c-4467-acd2-3633f2b8c556" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Tra cứu khách hàng" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="413bfbc4-b2f0-4f2d-8899-d52ac22b97ff" LastKnownName="Tra cứu khách hàng" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="b8dce777-adce-49c7-96da-4aa297846987" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="1a0e3112-7395-43a8-ac7a-a4c2f825dfcd" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="8882d64f-e38e-4ff2-bf6d-83fcd25eeb36" name="Tra cứu khách hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="b06b4884-0764-42a6-9d7f-2b211b486c5a" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="b7d47935-89c7-4fa8-88cc-96b5085d3213" />
-          </association>
           <association Id="276fb9a4-d384-4e89-b933-17a2a5ac2145" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Quản lý hóa đơn cũ" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="92e5a4cb-1185-438c-a765-5ec5786e2f6b" LastKnownName="Quản lý đơn cũ" />
             <relationshipOwnedElementsInternal>
@@ -74,6 +58,38 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="41ccfdb8-0a6c-46af-bce2-7fce519695ed" />
+          </association>
+          <association Id="2ff3fe40-5a33-4ff6-87bc-468ac9a4330a" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Tra cứu sách" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4fe4cc3c-7a73-44d3-80e8-e3dbd0767791" LastKnownName="Tra cứu sách" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c45ababd-f795-4e0b-bb64-ca817763e6c7" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cae2a3d9-9c94-437e-9b88-da013051648f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e422a357-23cf-48a1-a2b4-1ad16bee69d1" name="Tra cứu sách" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d57cca4b-7bb4-400e-93a9-f63e10ff578b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8f7b59e3-c28e-45a5-ab1e-8bf45c956776" />
+          </association>
+          <association Id="4ea3b2d5-f714-433c-9f5f-b7ac5466f0cb" isDerived="false" sourceEndRoleName="Nhân viên" targetEndRoleName="Quản lý khách hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a441fb8e-16a3-447b-b3ff-0827e0f0c6c6" LastKnownName="Quản lý khách hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a2d53548-ad2a-49bf-8685-70b784aab5a6" name="Nhân viên" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6ec8fbb1-93e1-4b56-8be1-3565faf98008" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5ef30bde-a9cd-45ee-8288-de29064fc066" name="Quản lý khách hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="876e04e4-efd8-4d34-a96d-917f141616e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="05d6d3f5-a7eb-4146-bdca-b459d4ce38e9" />
           </association>
         </targetEnds>
       </actor>
