@@ -15,14 +15,14 @@ namespace QuanLyNhaSach.Adapters
 
         public static ObservableCollection<AccessLevel> GetAll()
         {
-            if (_accessLevels == null)
-            {
+            //if (_accessLevels == null)
+            //{
+                _accessLevels = new ObservableCollection<AccessLevel>();
                 try
                 {
                     var reader = DataConnector.ExecuteQuery(@"SELECT MaPhanQuyen, TenPhanQuyen FROM PhanQuyen");
                     if (reader != null)
                     {
-                        _accessLevels = new ObservableCollection<AccessLevel>();
                         while (reader.Read())
                         {
                             _accessLevels.Add(new AccessLevel(reader.GetInt32(0), (string)reader.GetValueDefault(1, null)));
@@ -33,8 +33,9 @@ namespace QuanLyNhaSach.Adapters
                 {
                     ErrorManager.Current.DataCantBeRead.Call(ex.Message);
                 }
-            }
-            return _accessLevels;
+                return _accessLevels;
+            //}
+            //return _accessLevels;
         }
 
         public static AccessLevel GetAcessLevelById(int id)

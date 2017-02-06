@@ -51,7 +51,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="Ngày Lập Phiếu : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.RowSpan="1" FontSize="14" FontWeight="Bold"/>
-                                <DatePicker Tag="{Binding}" Text="{Binding DateCreate,Mode=TwoWay}" VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Column="1" Background="Transparent" IsEnabled="False" Focusable="False"/>
+                                <DatePicker Tag="{Binding}" Text="{Binding DateCreated,Mode=TwoWay}" VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Column="1" Background="Transparent" IsEnabled="False" Focusable="False"/>
                                 <TextBlock Text="Ngày Nhập Kho : " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB8B8B8" Margin="0" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
                                 <DatePicker Tag="{Binding}" Text="{Binding DateAddIntoStorage,Mode=TwoWay}"  VerticalAlignment="Center" FirstDayOfWeek="Monday" HorizontalAlignment="Right" Width="120" Margin="0" Grid.Column="1" Grid.Row="1" Background="#FFF1F1F1" SelectedDateChanged="dt_SelectedDateChanged" CalendarOpened="DatePicker_CalendarOpened"/>
                             </Grid>

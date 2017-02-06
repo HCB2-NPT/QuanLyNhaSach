@@ -8,6 +8,9 @@
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="True">
             <DockPanel LastChildFill="True" DockPanel.Dock="Top">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="refresh" DockPanel.Dock="Right">
+                    <Image Source="/Tiki Bookshop;component/Assets/Images/Refresh-64 (blue).png" Width="24" Height="24"/>
+                </Button>
                 <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource Btn_IconOnly}" DockPanel.Dock="Right" Margin="0" Width="40" Height="40" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" OpacityMask="#FFB3D6F2" Click="searchBook_Click">
                     <Image Source="/Tiki Bookshop;component/Assets/Images/Search-64.png" Width="24" Height="24"/>
                 </Button>

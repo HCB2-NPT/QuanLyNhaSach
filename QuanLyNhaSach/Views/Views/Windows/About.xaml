@@ -46,7 +46,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Nhà sách Tiki" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
                 <TextBlock HorizontalAlignment="Left" Margin="16,0,0,0" TextWrapping="Wrap" Text="Made by team NPT" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
-                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="http://hcb2-npt.github.io/" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" Foreground="#FF636363"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="http://hcb2-npt.github.io/" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4" Foreground="#00636363"/>
                 <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderThickness="0,1,1,0" Padding="4,2">
                     <Border.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -73,12 +73,11 @@
 
                         <TextBlock Text=" ~ MahApps.Metro and WPF Toolkit" Grid.Row="1" Margin="0" ToolTip="http://mahapps.com/" Grid.ColumnSpan="2"/>
                         <TextBlock Text=" ~ WPF.MDI" Grid.Row="2" Margin="0" ToolTip="https://wpfmdi.codeplex.com/" Grid.ColumnSpan="2"/>
-                        <TextBlock Text=" ~ NUnit and NUnit Adapter" Grid.Row="3" Margin="0" ToolTip="From NuGet" Grid.ColumnSpan="2"/>
-                        <TextBlock Text=" ~ WPF Reporting Engine" Grid.Row="4" Margin="0" ToolTip="http://wpfreports.codeplex.com/" Grid.ColumnSpan="2"/>
+                        <TextBlock Text=" ~ WPF Reporting Engine" Grid.Row="3" Margin="0" ToolTip="http://wpfreports.codeplex.com/" Grid.ColumnSpan="2"/>
 
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0" ToolTip="1542243"/>
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0" ToolTip="1542255"/>
-                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" Text="Tô Chính Tín" Margin="0,0,4,0" ToolTip="1542276"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" Text="Võ Hoài Nam" Margin="0,0,4,0" ToolTip="1542243" Foreground="#00000000"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Center" TextAlignment="Right" Text="Huỳnh Chí Phong" Margin="0,0,4,0" ToolTip="1542255"/>
+                        <TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Right" Text="Tô Chính Tín" Margin="0,0,4,0" ToolTip="1542276"/>
                     </Grid>
                 </Border>
             </Grid>

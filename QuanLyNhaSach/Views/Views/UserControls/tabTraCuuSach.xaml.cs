@@ -36,5 +36,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         {
             lvResult.ItemsSource = Bus.SearchData.SearchBook(tbSearchBox.Text.ToLower());
         }
+
+        private void refresh(object sender, RoutedEventArgs e)
+        {
+            lvResult.ItemsSource = Bus.FillData.GetAllBook();
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         public tabQuanLyTaiKhoan()
         {
             InitializeComponent();
-            dgAccounts.ItemsSource = Accounts;
+            DataContext = this;
         }
 
         #endregion
@@ -95,5 +95,10 @@ namespace QuanLyNhaSach.Views.Views.UserControls
         }
 
         #endregion
+
+        private void refresh(object sender, RoutedEventArgs e)
+        {
+            Accounts = Bus.FillData.GetAllAccount();
+        }
     }
 }
